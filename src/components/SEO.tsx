@@ -6,17 +6,19 @@ interface SEOProps {
   type?: 'website' | 'article';
   url?: string;
   image?: string;
-  schema?: Record<string, any>;
+  schema?: Record<string, any> | any[];
 }
 
 export function SEO({ title, description, type = 'website', url, image, schema }: SEOProps) {
   const siteName = 'TechNova Blog';
   const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+  const canonicalUrl = url || 'https://tech-nova-iota.vercel.app';
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

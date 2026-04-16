@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
+import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
 
 export default function Home() {
   const featuredPost = POSTS.find(post => post.featured) || POSTS[0];
@@ -17,6 +18,8 @@ export default function Home() {
       <SEO 
         title="TechNova Blog | Modern Technology Insights"
         description="Discover the latest trends in AI, Web Development, Cybersecurity, and more. Expert insights for the modern technologist."
+        url="https://tech-nova-iota.vercel.app/"
+        schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
       />
 
       {/* Hero Section */}

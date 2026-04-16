@@ -7,6 +7,7 @@ import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
 import { Search, Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
+import { generateBreadcrumbSchema } from '../lib/seo';
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,11 +20,18 @@ export default function Blog() {
     return matchesSearch && matchesCategory;
   });
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Blog', item: '/blog' }
+  ]);
+
   return (
     <>
       <SEO 
         title="All Articles"
         description="Browse all our technology articles, tutorials, and insights."
+        url="https://tech-nova-iota.vercel.app/blog"
+        schema={breadcrumbSchema}
       />
 
       <div className="bg-background border-b border-border text-foreground py-16 md:py-24">

@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { Card, CardHeader, CardFooter } from '../components/ui/card';
 import { Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
+import { generateBreadcrumbSchema } from '../lib/seo';
 
 export default function Categories() {
   const [searchParams] = useSearchParams();
@@ -18,11 +19,24 @@ export default function Categories() {
     ? POSTS.filter(post => post.category === displayCategory)
     : POSTS;
 
+  const breadcrumbItems = [
+    { name: 'Home', item: '/' },
+    { name: 'Categories', item: '/categories' }
+  ];
+  
+  if (displayCategory) {
+    breadcrumbItems.push({ name: displayCategory, item: `/categories?c=${encodeURIComponent(displayCategory)}` });
+  }
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+
   return (
     <>
       <SEO 
-        title="Categories"
+        title={displayCategory ? `${displayCategory} Articles` : "Categories"}
         description="Browse TechNova articles by category."
+        url={`https://tech-nova-iota.vercel.app/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
+        schema={breadcrumbSchema}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">

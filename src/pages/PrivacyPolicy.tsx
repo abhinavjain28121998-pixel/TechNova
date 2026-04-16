@@ -1,11 +1,19 @@
 import { SEO } from '../components/SEO';
+import { generateBreadcrumbSchema } from '../lib/seo';
 
 export default function PrivacyPolicy() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Privacy Policy', item: '/privacy' }
+  ]);
+
   return (
     <>
       <SEO 
         title="Privacy Policy"
         description="Privacy Policy for TechNova Blog."
+        url="https://tech-nova-iota.vercel.app/privacy"
+        schema={breadcrumbSchema}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>

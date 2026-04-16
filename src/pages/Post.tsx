@@ -7,6 +7,7 @@ import { Separator } from '../components/ui/separator';
 import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
+import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -20,17 +21,12 @@ export default function Post() {
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 2);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "image": [post.coverImage],
-    "datePublished": post.date,
-    "author": [{
-        "@type": "Person",
-        "name": post.author.name
-    }]
-  };
+  const articleSchema = generateArticleSchema(post);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Blog', item: '/blog' },
+    { name: post.title, item: `/blog/${post.slug}` }
+  ]);
 
   return (
     <>
@@ -38,8 +34,9 @@ export default function Post() {
         title={post.title}
         description={post.excerpt}
         type="article"
+        url={`https://tech-nova-iota.vercel.app/blog/${post.slug}`}
         image={post.coverImage}
-        schema={schema}
+        schema={[articleSchema, breadcrumbSchema]}
       />
 
       <article className="bg-background">
