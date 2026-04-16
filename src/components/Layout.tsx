@@ -148,6 +148,7 @@ export function Layout() {
                 <li><Link to="/blog" className="hover:text-primary transition-colors">All Posts</Link></li>
                 <li><Link to="/categories" className="hover:text-primary transition-colors">Categories</Link></li>
                 <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+                <li><Link to="/admin" className="hover:text-primary transition-colors">Admin Dashboard</Link></li>
               </ul>
             </div>
 
