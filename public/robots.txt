@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tech-nova-iota.vercel.app/sitemap.xml
