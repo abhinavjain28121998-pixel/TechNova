@@ -23,12 +23,13 @@ export default function Post() {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   }
 
-  if (!post) {
+  // Prevent viewing unauthorized drafts
+  if (!post || (post.status === 'draft')) {
     return <Navigate to="/blog" replace />;
   }
 
   // Use all Firestore posts if available for related, otherwise static
-  const posts = allPosts.length > 0 ? allPosts : STATIC_POSTS;
+  const posts = (allPosts.length > 0 ? allPosts : STATIC_POSTS).filter(p => !p.status || p.status === 'published');
 
   const relatedPosts = posts
     .filter(p => p.category === post.category && p.id !== post.id)

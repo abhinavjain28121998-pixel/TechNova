@@ -17,6 +17,7 @@ export interface Post {
   author: Author;
   featured?: boolean;
   trending?: boolean;
+  status?: 'draft' | 'published';
 }
 
 export const CATEGORIES = [

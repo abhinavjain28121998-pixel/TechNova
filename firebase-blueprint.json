@@ -14,6 +14,7 @@
         "date": { "type": "string", "format": "date-time" },
         "readingTime": { "type": "string" },
         "category": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
         "author": {
           "type": "object",
           "properties": {

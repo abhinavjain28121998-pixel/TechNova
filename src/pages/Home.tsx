@@ -13,7 +13,7 @@ export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
   
   // Use Firestore posts if available, otherwise fallback to static data
-  const posts = fbPosts.length > 0 ? fbPosts : STATIC_POSTS;
+  const posts = (fbPosts.length > 0 ? fbPosts : STATIC_POSTS).filter(p => p.status === 'published' || !p.status); // fallback for posts without status
   
   const featuredPost = posts.find(post => post.featured) || posts[0];
   const recentPosts = posts.filter(post => post.id !== featuredPost.id).slice(0, 3);
