@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "Post": {
+      "title": "Post",
+      "description": "A blog post entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "readingTime": { "type": "string" },
+        "category": { "type": "string" },
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "avatar": { "type": "string" },
+            "role": { "type": "string" }
+          }
+        },
+        "featured": { "type": "boolean" },
+        "trending": { "type": "boolean" }
+      },
+      "required": ["slug", "title", "content", "date", "category", "author"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile for access control",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "editor"] }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Collection of blog posts"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and roles"
+    }
+  }
+}

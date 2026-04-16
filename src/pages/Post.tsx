@@ -1,23 +1,36 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { POSTS } from '../data/posts';
+import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
+import { usePost } from '../hooks/usePost';
+import { usePosts } from '../hooks/usePosts';
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
-  const post = POSTS.find(p => p.slug === slug);
+  const { post: fbPost, loading: loadingPost } = usePost(slug);
+  const { posts: allPosts } = usePosts();
+  
+  // Try Firestore post first, then static fallback
+  const post = fbPost || STATIC_POSTS.find(p => p.slug === slug);
+
+  if (loadingPost) {
+    return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
+  }
 
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
 
-  const relatedPosts = POSTS
+  // Use all Firestore posts if available for related, otherwise static
+  const posts = allPosts.length > 0 ? allPosts : STATIC_POSTS;
+
+  const relatedPosts = posts
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 2);
 

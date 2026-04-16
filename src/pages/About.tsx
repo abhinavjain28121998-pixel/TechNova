@@ -18,8 +18,8 @@ export default function About() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">About TechNova</h1>
         
-        <div className="prose prose-slate dark:prose-invert prose-lg max-w-none">
-          <p className="lead text-xl text-muted-foreground mb-8">
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-slate-300 prose-strong:text-white prose-li:text-slate-300">
+          <p className="lead text-xl text-slate-200 mb-8">
             TechNova is a premier destination for technology professionals, developers, and enthusiasts looking to stay ahead of the curve.
           </p>
           

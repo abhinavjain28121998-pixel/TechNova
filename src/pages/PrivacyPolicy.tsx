@@ -18,8 +18,8 @@ export default function PrivacyPolicy() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>
         
-        <div className="prose prose-slate dark:prose-invert prose-lg max-w-none">
-          <p>Last updated: April 16, 2026</p>
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-slate-300 prose-li:text-slate-300">
+          <p className="text-slate-400">Last updated: April 16, 2026</p>
           
           <p>
             At TechNova, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by TechNova and how we use it.

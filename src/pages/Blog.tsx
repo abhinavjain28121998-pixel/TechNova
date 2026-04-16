@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { SEO } from '../components/SEO';
-import { POSTS, CATEGORIES } from '../data/posts';
+import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
-import { Search, Calendar, Clock } from 'lucide-react';
+import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema } from '../lib/seo';
+import { usePosts } from '../hooks/usePosts';
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { posts: fbPosts, loading } = usePosts();
 
-  const filteredPosts = POSTS.filter(post => {
+  const posts = fbPosts.length > 0 ? fbPosts : STATIC_POSTS;
+
+  const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory ? post.category === selectedCategory : true;

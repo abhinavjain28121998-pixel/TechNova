@@ -1,5 +1,5 @@
 import { SEO } from '../components/SEO';
-import { POSTS, CATEGORIES } from '../data/posts';
+import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -7,11 +7,17 @@ import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
+import { usePosts } from '../hooks/usePosts';
 
 export default function Home() {
-  const featuredPost = POSTS.find(post => post.featured) || POSTS[0];
-  const recentPosts = POSTS.filter(post => post.id !== featuredPost.id).slice(0, 3);
-  const trendingPosts = POSTS.filter(post => post.trending).slice(0, 4);
+  const { posts: fbPosts, loading } = usePosts();
+  
+  // Use Firestore posts if available, otherwise fallback to static data
+  const posts = fbPosts.length > 0 ? fbPosts : STATIC_POSTS;
+  
+  const featuredPost = posts.find(post => post.featured) || posts[0];
+  const recentPosts = posts.filter(post => post.id !== featuredPost.id).slice(0, 3);
+  const trendingPosts = posts.filter(post => post.trending).slice(0, 4);
 
   return (
     <>
