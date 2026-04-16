@@ -18,6 +18,7 @@ export function SEO({ title, description, type = 'website', url, image, schema }
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph */}
