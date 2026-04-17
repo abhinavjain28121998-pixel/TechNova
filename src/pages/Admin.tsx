@@ -137,7 +137,13 @@ export default function Admin() {
       if (editingPost.id) {
         await updateDoc(doc(db, 'posts', editingPost.id), postData);
       } else {
-        const slug = editingPost.slug || editingPost.title?.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `post-${Date.now()}`;
+        const stopWords = ['a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'about', 'like', 'through', 'over', 'before', 'between', 'after', 'since', 'without', 'under', 'within', 'along', 'following', 'across', 'behind', 'beyond', 'plus', 'except', 'but', 'up', 'out', 'around', 'down', 'off', 'above', 'near'];
+        const titleWords = (editingPost.title || '').toLowerCase().split(/\s+/);
+        const filteredTitle = titleWords.filter(word => !stopWords.includes(word)).join('-');
+        
+        const generatedSlug = filteredTitle.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `post-${Date.now()}`;
+        const slug = editingPost.slug || generatedSlug;
+        
         await setDoc(doc(db, 'posts', slug), { ...postData, slug });
       }
 

@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="TechNova Blog | Modern Technology Insights"
+        title="Tech & AI Blog | Insights & Tutorials - TechNova"
         description="Discover the latest trends in AI, Web Development, Cybersecurity, and more. Expert insights for the modern technologist."
         url="https://tech-nova-iota.vercel.app/"
         schema={[generateWebSiteSchema(), generateOrganizationSchema()]}

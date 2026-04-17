@@ -106,7 +106,7 @@ export default function Post() {
 
         {/* Post Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl pb-20">
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl">
+          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover">
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
 

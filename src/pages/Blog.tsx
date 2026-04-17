@@ -32,7 +32,7 @@ export default function Blog() {
   return (
     <>
       <SEO 
-        title="All Articles"
+        title="Blog Post Archive & Tech Tutorials | TechNova"
         description="Browse all our technology articles, tutorials, and insights."
         url="https://tech-nova-iota.vercel.app/blog"
         schema={breadcrumbSchema}
