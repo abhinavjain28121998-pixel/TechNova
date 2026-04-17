@@ -56,7 +56,6 @@ export function Layout() {
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search className="h-5 w-5" />
               </Button>
-              <Button>Subscribe</Button>
             </div>
 
             {/* Mobile menu button */}
@@ -98,9 +97,6 @@ export function Layout() {
                   {item.name}
                 </Link>
               ))}
-              <div className="mt-4 px-3">
-                <Button className="w-full">Subscribe to Newsletter</Button>
-              </div>
             </div>
           </div>
         )}
@@ -114,7 +110,7 @@ export function Layout() {
       {/* Footer */}
       <footer className="bg-background border-t border-border mt-auto">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="col-span-1 md:col-span-1">
               <Link to="/" className="flex items-center gap-2 mb-4">
                 <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
@@ -159,22 +155,6 @@ export function Layout() {
                 <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
                 <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Newsletter</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Get the latest tech news delivered to your inbox weekly.
-              </p>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                  required
-                />
-                <Button type="submit" size="sm">Subscribe</Button>
-              </form>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
