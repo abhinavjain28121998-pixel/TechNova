@@ -35,7 +35,7 @@ export default function Blog() {
         title="Blog Post Archive & Tech Tutorials | TechNova"
         description="Browse all our technology articles, tutorials, and insights."
         url="https://tech-nova-iota.vercel.app/blog"
-        schema={breadcrumbSchema}
+        schema={[breadcrumbSchema]}
       />
 
       <div className="bg-background border-b border-border text-foreground py-16 md:py-24">

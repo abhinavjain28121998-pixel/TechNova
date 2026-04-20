@@ -68,3 +68,32 @@ export function generateArticleSchema(post: any) {
     },
   };
 }
+
+export function generateAboutPageSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About TechNova',
+    description: 'Learn more about TechNova and our mission to decode the future of technology.',
+    url: `${BASE_URL}/about`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'TechNova Blog',
+    }
+  };
+}
+
+export function generateContactPageSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact TechNova',
+    description: 'Get in touch with the TechNova team for inquiries, feedback, or collaborations.',
+    url: `${BASE_URL}/contact`,
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'TechNova Blog',
+      url: BASE_URL,
+    }
+  };
+}

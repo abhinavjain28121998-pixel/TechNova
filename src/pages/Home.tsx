@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button, buttonVariants } from '../components/ui/button';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -15,9 +16,23 @@ export default function Home() {
   // Use Firestore posts if available, otherwise fallback to static data
   const posts = (fbPosts.length > 0 ? fbPosts : STATIC_POSTS).filter(p => p.status === 'published' || !p.status); // fallback for posts without status
   
-  const featuredPost = posts.find(post => post.featured) || posts[0];
-  const recentPosts = posts.filter(post => post.id !== featuredPost.id).slice(0, 3);
+  const featuredPosts = posts.filter(post => post.featured);
+  const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
+  const recentPosts = posts.filter(post => !carouselPosts.find(p => p.id === post.id)).slice(0, 3);
   const trendingPosts = posts.filter(post => post.trending).slice(0, 4);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (carouselPosts.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselPosts.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [carouselPosts.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % carouselPosts.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselPosts.length) % carouselPosts.length);
 
   return (
     <>
@@ -51,43 +66,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Post */}
+      {/* Featured Posts Carousel */}
       <section className="py-16 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-foreground">Featured Story</h2>
+          <h2 className="text-2xl font-bold text-foreground">Featured Stories</h2>
+          {carouselPosts.length > 1 && (
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="icon" onClick={prevSlide} aria-label="Previous story">
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={nextSlide} aria-label="Next story">
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
         </div>
-        <Link to={`/blog/${featuredPost.slug}`} className="group block">
-          <div className="grid md:grid-cols-2 gap-8 items-center bg-card rounded-2xl overflow-hidden border border-border shadow-sm transition-all hover:border-primary">
-            <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
-              <img 
-                src={featuredPost.coverImage} 
-                alt={featuredPost.title}
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="p-8 md:p-12">
-              <Badge className="mb-4">{featuredPost.category}</Badge>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-                {featuredPost.title}
-              </h3>
-              <p className="text-muted-foreground mb-6 line-clamp-3">
-                {featuredPost.excerpt}
-              </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <img src={featuredPost.author.avatar} alt={featuredPost.author.name} className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
-                  <span className="font-medium text-foreground">{featuredPost.author.name}</span>
-                </div>
-                <span className="hidden sm:inline">•</span>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>{format(parseISO(featuredPost.date), 'MMM d, yyyy')}</span>
-                </div>
+        
+        <div className="relative overflow-hidden rounded-2xl border border-border shadow-sm">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out h-full"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {carouselPosts.map((post) => (
+              <div key={post.id} className="w-full flex-shrink-0">
+                <Link to={`/blog/${post.slug}`} className="group block h-full">
+                  <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
+                    <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
+                      <img 
+                        src={post.coverImage} 
+                        alt={post.title}
+                        className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="p-8 md:p-12">
+                      <Badge className="mb-4">{post.category}</Badge>
+                      <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-6 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                          <img src={post.author.avatar} alt={post.author.name} className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                          <span className="font-medium text-foreground">{post.author.name}</span>
+                        </div>
+                        <span className="hidden sm:inline">•</span>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </div>
+            ))}
           </div>
-        </Link>
+          
+          {/* Dot Indicators */}
+          {carouselPosts.length > 1 && (
+            <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              {carouselPosts.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-2 rounded-full transition-all ${idx === currentSlide ? 'bg-primary w-6' : 'bg-primary/30 w-2 hover:bg-primary/50'}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Latest & Trending Grid */}

@@ -36,7 +36,7 @@ export default function Categories() {
         title={displayCategory ? `${displayCategory} Articles` : "Categories"}
         description="Browse TechNova articles by category."
         url={`https://tech-nova-iota.vercel.app/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
-        schema={breadcrumbSchema}
+        schema={[breadcrumbSchema]}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">

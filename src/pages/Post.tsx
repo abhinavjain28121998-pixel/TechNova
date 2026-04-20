@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2 } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
@@ -15,6 +16,36 @@ export default function Post() {
   const { slug } = useParams<{ slug: string }>();
   const { post: fbPost, loading: loadingPost } = usePost(slug);
   const { posts: allPosts } = usePosts();
+  
+  // Readability state
+  const [fontSize, setFontSize] = useState<'sm' | 'base' | 'lg' | 'xl'>('lg');
+  const [lineSpacing, setLineSpacing] = useState<'normal' | 'relaxed' | 'loose'>('relaxed');
+  const [showControls, setShowControls] = useState(false);
+
+  const increaseFontSize = () => {
+    setFontSize(prev => {
+      if (prev === 'sm') return 'base';
+      if (prev === 'base') return 'lg';
+      return 'xl';
+    });
+  };
+
+  const decreaseFontSize = () => {
+    setFontSize(prev => {
+      if (prev === 'xl') return 'lg';
+      if (prev === 'lg') return 'base';
+      return 'sm';
+    });
+  };
+
+  const toggleLineSpacing = () => {
+    setLineSpacing(prev => {
+      if (prev === 'normal') return 'relaxed';
+      if (prev === 'relaxed') return 'loose';
+      return 'normal';
+    });
+  };
+
   
   // Try Firestore post first, then static fallback
   const post = fbPost || STATIC_POSTS.find(p => p.slug === slug);
@@ -106,7 +137,41 @@ export default function Post() {
 
         {/* Post Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl pb-20">
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover">
+          {/* Readability Controls */}
+          <div className="mb-8 flex flex-col items-end">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => setShowControls(!showControls)}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Type className="w-4 h-4 mr-2" />
+              Appearance
+            </Button>
+            
+            {showControls && (
+              <div className="mt-2 p-3 bg-card border border-border rounded-lg shadow-sm flex items-center gap-4 transition-all duration-200">
+                <div className="flex items-center gap-2 border-r border-border pr-4">
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider mr-1">Text Size</span>
+                  <Button variant="outline" size="icon" className="h-8 w-8" onClick={decreaseFontSize} disabled={fontSize === 'sm'}>
+                    <Minus className="h-3 w-3" />
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-8 w-8" onClick={increaseFontSize} disabled={fontSize === 'xl'}>
+                    <Plus className="h-3 w-3" />
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider mr-1">Spacing</span>
+                  <Button variant="outline" size="sm" className="h-8 px-3" onClick={toggleLineSpacing}>
+                    <AlignLeft className="h-3 w-3 mr-2" />
+                    <span className="capitalize text-xs">{lineSpacing}</span>
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover prose-${fontSize} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
 

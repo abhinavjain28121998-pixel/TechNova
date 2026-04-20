@@ -1,7 +1,7 @@
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { generateBreadcrumbSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, generateContactPageSchema } from '../lib/seo';
 
 export default function Contact() {
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -9,13 +9,15 @@ export default function Contact() {
     { name: 'Contact Us', item: '/contact' }
   ]);
 
+  const contactSchema = generateContactPageSchema();
+
   return (
     <>
       <SEO 
         title="Contact Us"
         description="Get in touch with the TechNova team."
         url="https://tech-nova-iota.vercel.app/contact"
-        schema={breadcrumbSchema}
+        schema={[breadcrumbSchema, contactSchema]}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-2xl">
         <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>

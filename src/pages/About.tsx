@@ -1,5 +1,5 @@
 import { SEO } from '../components/SEO';
-import { generateBreadcrumbSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, generateAboutPageSchema } from '../lib/seo';
 
 export default function About() {
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -7,13 +7,15 @@ export default function About() {
     { name: 'About Us', item: '/about' }
   ]);
 
+  const aboutSchema = generateAboutPageSchema();
+
   return (
     <>
       <SEO 
         title="About Us"
         description="Learn more about TechNova and our mission to decode the future of technology."
         url="https://tech-nova-iota.vercel.app/about"
-        schema={breadcrumbSchema}
+        schema={[breadcrumbSchema, aboutSchema]}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">About TechNova</h1>
