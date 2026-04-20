@@ -58,56 +58,128 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 px-3 py-1 flex w-fit items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5" />
-                Welcome to TechNova
-              </Badge>
-            </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Text Content */}
+            <div className="max-w-3xl">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 px-4 py-1.5 flex w-fit items-center gap-2 rounded-full backdrop-blur-sm">
+                  <Sparkles className="w-4 h-4 animate-pulse" />
+                  <span className="font-semibold tracking-wide uppercase text-xs">Welcome to TechNova</span>
+                </Badge>
+              </motion.div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1]"
-            >
-              Decoding the Future of <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Technology</span>
-            </motion.h1>
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1] pb-2"
+              >
+                Decoding the <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-gradient bg-[length:200%_auto]">Future of Tech</span>
+              </motion.h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl"
-            >
-              Expert analysis, tutorials, and insights on AI, web development, and the software shaping our world.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 items-start"
-            >
-              <Link to="/blog" className="group">
-                <div className={buttonVariants({ size: 'lg', className: 'relative overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.3)]' })}>
-                  <span className="relative z-10 flex items-center gap-2">
-                    Read Latest Posts
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-xl"
+              >
+                Expert analysis, tutorials, and deep-dive insights on Artificial Intelligence, advanced Web Development, and the Software shaping tomorrow.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col sm:flex-row gap-4 items-start"
+              >
+                <Link to="/blog" className="group w-full sm:w-auto">
+                  <div className={buttonVariants({ size: 'lg', className: 'w-full relative overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-105 duration-300' })}>
+                    <span className="relative z-10 flex items-center gap-2 font-semibold">
+                      Explore Latest Posts
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </span>
+                    <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/25 to-transparent z-0" />
+                  </div>
+                </Link>
+                <Link to="/categories" className={buttonVariants({ size: 'lg', variant: 'outline', className: 'w-full sm:w-auto hover:bg-primary/5 hover:text-primary border-primary/20 hover:border-primary/50 transition-all duration-300' })}>
+                  Browse Categories
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Floating Tech Graphics */}
+            <div className="hidden lg:block relative h-[600px] w-full perspective-[2000px]">
+              {/* Primary Floating Image */}
+              <motion.div
+                animate={{ 
+                  y: [-10, 10, -10],
+                  rotateY: [-5, 5, -5],
+                  rotateX: [2, -2, 2]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] z-20 hover:z-30 transition-all duration-500 hover:scale-105"
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-2">
+                  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" />
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    <Badge variant="secondary" className="bg-black/80 text-primary border-primary/20 backdrop-blur-md">AI Model</Badge>
+                  </div>
                 </div>
-              </Link>
-              <Link to="/categories" className={buttonVariants({ size: 'lg', variant: 'outline', className: 'hover:bg-primary/5 border-primary/20 hover:border-primary/50 transition-colors' })}>
-                Explore Categories
-              </Link>
-            </motion.div>
+              </motion.div>
+
+              {/* Secondary Floating Image - Top Right */}
+              <motion.div
+                animate={{ 
+                  y: [15, -15, 15],
+                  x: [5, -5, 5]
+                }}
+                transition={{ 
+                  duration: 7, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1 
+                }}
+                className="absolute top-10 right-0 w-[240px] z-10 opacity-80 hover:opacity-100 hover:z-30 transition-all duration-500"
+              >
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-1.5 transform rotate-3 hover:rotate-0 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" />
+                </div>
+              </motion.div>
+
+              {/* Tertiary Floating Image - Bottom Left */}
+              <motion.div
+                animate={{ 
+                  y: [-20, 20, -20],
+                  rotateZ: [-2, 2, -2]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 2 
+                }}
+                className="absolute bottom-10 left-0 w-[280px] z-30 opacity-90 hover:opacity-100 transition-all duration-500"
+              >
+                <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 border border-primary/20 bg-background/80 backdrop-blur-xl p-4 transform -rotate-6 hover:rotate-0 transition-transform flex items-center gap-4">
+                  <div className="bg-primary/20 p-3 rounded-full">
+                    <Sparkles className="w-6 h-6 text-primary animate-pulse" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-foreground">Zero Trust Security</h4>
+                    <p className="text-xs text-muted-foreground mt-0.5">Enterprise Architecture</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -201,38 +273,47 @@ export default function Home() {
                 </Link>
               </div>
               <div className="grid sm:grid-cols-2 gap-6">
-                {recentPosts.map(post => (
-                  <Card key={post.id} className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
-                    <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
-                      <img 
-                        src={post.coverImage} 
-                        alt={post.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                        referrerPolicy="no-referrer"
-                      />
-                    </Link>
-                    <CardHeader className="p-5 pb-0 flex-grow">
-                      <Badge variant="secondary" className="w-fit mb-3">{post.category}</Badge>
-                      <Link to={`/blog/${post.slug}`}>
-                        <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-2">
-                          {post.title}
-                        </h3>
+                {recentPosts.map((post, i) => (
+                  <motion.div
+                    key={post.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    className="h-full"
+                  >
+                    <Card className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
+                      <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
+                        <img 
+                          src={post.coverImage} 
+                          alt={post.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                          referrerPolicy="no-referrer"
+                        />
                       </Link>
-                      <p className="text-muted-foreground text-sm line-clamp-2">
-                        {post.excerpt}
-                      </p>
-                    </CardHeader>
-                    <CardFooter className="p-5 pt-4 text-sm text-muted-foreground flex items-center justify-between border-t border-border mt-4">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{format(parseISO(post.date), 'MMM d')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readingTime}</span>
-                      </div>
-                    </CardFooter>
-                  </Card>
+                      <CardHeader className="p-5 pb-0 flex-grow">
+                        <Badge variant="secondary" className="w-fit mb-3">{post.category}</Badge>
+                        <Link to={`/blog/${post.slug}`}>
+                          <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-2">
+                            {post.title}
+                          </h3>
+                        </Link>
+                        <p className="text-muted-foreground text-sm line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      </CardHeader>
+                      <CardFooter className="p-5 pt-4 text-sm text-muted-foreground flex items-center justify-between border-t border-border mt-4">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readingTime}</span>
+                        </div>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -240,38 +321,67 @@ export default function Home() {
             {/* Sidebar */}
             <div className="space-y-12">
               {/* Trending */}
-              <div>
-                <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border">Trending Now</h2>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                  Trending Now
+                </h2>
                 <div className="space-y-6">
                   {trendingPosts.map((post, index) => (
-                    <Link key={post.id} to={`/blog/${post.slug}`} className="group flex gap-4 items-start">
-                      <span className="text-3xl font-bold text-muted-foreground/30 group-hover:text-primary/50 transition-colors">
-                        0{index + 1}
-                      </span>
-                      <div>
-                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-1">
-                          {post.title}
-                        </h4>
-                        <span className="text-xs text-muted-foreground">{format(parseISO(post.date), 'MMM d, yyyy')}</span>
-                      </div>
-                    </Link>
+                    <motion.div 
+                      key={post.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
+                      <Link to={`/blog/${post.slug}`} className="group flex gap-4 items-start">
+                        <span className="text-3xl font-bold text-muted-foreground/20 group-hover:text-primary transition-colors duration-300">
+                          0{index + 1}
+                        </span>
+                        <div>
+                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-1">
+                            {post.title}
+                          </h4>
+                          <span className="text-xs text-muted-foreground">{format(parseISO(post.date), 'MMM d, yyyy')}</span>
+                        </div>
+                      </Link>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Categories */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border">Popular Categories</h2>
                 <div className="flex flex-wrap gap-2">
-                  {CATEGORIES.map(category => (
-                    <Link key={category} to={`/categories?c=${encodeURIComponent(category)}`}>
-                      <Badge variant="outline" className="hover:bg-secondary text-sm py-1.5 px-3">
-                        {category}
-                      </Badge>
-                    </Link>
+                  {CATEGORIES.map((category, idx) => (
+                    <motion.div
+                      key={category}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    >
+                      <Link to={`/categories?c=${encodeURIComponent(category)}`}>
+                        <Badge variant="outline" className="hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-all duration-300 text-sm py-1.5 px-3">
+                          {category}
+                        </Badge>
+                      </Link>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
           </div>
