@@ -50,7 +50,7 @@ export default function Post() {
   // Try Firestore post first, then static fallback
   const post = fbPost || STATIC_POSTS.find(p => p.slug === slug);
 
-  if (loadingPost) {
+  if (!post && loadingPost) {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   }
 
