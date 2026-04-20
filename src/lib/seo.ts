@@ -42,16 +42,20 @@ export function generateWebSiteSchema() {
 }
 
 export function generateArticleSchema(post: any) {
+  const imageUrl = post.coverImage 
+    ? (post.coverImage.startsWith('http') ? post.coverImage : `${BASE_URL}${post.coverImage}`)
+    : `${BASE_URL}/default-cover.jpg`; // Fallback image
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
-    image: post.coverImage.startsWith('http') ? post.coverImage : `${BASE_URL}${post.coverImage}`,
+    image: imageUrl,
     datePublished: post.date,
     dateModified: post.date,
     author: {
       '@type': 'Person',
-      name: post.author.name,
+      name: post.author?.name || 'TechNova Team',
     },
     publisher: {
       '@type': 'Organization',
@@ -61,7 +65,7 @@ export function generateArticleSchema(post: any) {
         url: `${BASE_URL}/logo.png`,
       },
     },
-    description: post.excerpt,
+    description: post.excerpt || post.title,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${BASE_URL}/blog/${post.slug}`,

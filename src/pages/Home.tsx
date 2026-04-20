@@ -211,7 +211,7 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
                     <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
                       <img 
-                        src={post.coverImage} 
+                        src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
                         alt={post.title}
                         className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105"
                         referrerPolicy="no-referrer"
@@ -227,8 +227,8 @@ export default function Home() {
                       </p>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <img src={post.author.avatar} alt={post.author.name} className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
-                          <span className="font-medium text-foreground">{post.author.name}</span>
+                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" />
+                          <span className="font-medium text-foreground">{post.author?.name || 'TechNova Team'}</span>
                         </div>
                         <span className="hidden sm:inline">•</span>
                         <div className="flex items-center gap-1">
@@ -285,7 +285,7 @@ export default function Home() {
                     <Card className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
                       <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
                         <img 
-                          src={post.coverImage} 
+                          src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                           alt={post.title} 
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                           referrerPolicy="no-referrer"

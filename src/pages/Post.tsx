@@ -103,10 +103,16 @@ export default function Post() {
           
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
             <div className="flex items-center gap-3" itemProp="author" itemScope itemType="https://schema.org/Person">
-              <img src={post.author.avatar} alt={post.author.name} className="w-12 h-12 rounded-full" referrerPolicy="no-referrer" itemProp="image" />
+              <img 
+                src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} 
+                alt={post.author?.name || 'Author'} 
+                className="w-12 h-12 rounded-full bg-slate-800" 
+                referrerPolicy="no-referrer" 
+                itemProp="image" 
+              />
               <div>
-                <div className="font-semibold text-foreground" itemProp="name">{post.author.name}</div>
-                <div className="text-sm" itemProp="jobTitle">{post.author.role}</div>
+                <div className="font-semibold text-foreground" itemProp="name">{post.author?.name || 'TechNova Team'}</div>
+                <div className="text-sm" itemProp="jobTitle">{post.author?.role || 'Guest Writer'}</div>
               </div>
             </div>
             
@@ -134,7 +140,7 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <img 
-              src={post.coverImage} 
+              src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
               alt={post.title} 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -217,7 +223,7 @@ export default function Post() {
                 <Link key={related.id} to={`/blog/${related.slug}`} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
                   <div className="aspect-video overflow-hidden">
                     <img 
-                      src={related.coverImage} 
+                      src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                       alt={related.title} 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       referrerPolicy="no-referrer"
