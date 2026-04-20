@@ -7,12 +7,26 @@ interface SEOProps {
   url?: string;
   image?: string;
   schema?: Record<string, any> | any[];
+  author?: string;
+  publishedTime?: string;
 }
 
-export function SEO({ title, description, type = 'website', url, image, schema }: SEOProps) {
+export function SEO({ 
+  title, 
+  description, 
+  type = 'website', 
+  url, 
+  image, 
+  schema,
+  author,
+  publishedTime
+}: SEOProps) {
   const siteName = 'TechNova Blog';
   const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
   const canonicalUrl = url || 'https://tech-nova-iota.vercel.app';
+  // Fallback image for Twitter and OG
+  const defaultImage = 'https://source.unsplash.com/1200x630/?technology,abstract';
+  const socialImage = image || defaultImage;
 
   return (
     <Helmet>
@@ -21,19 +35,25 @@ export function SEO({ title, description, type = 'website', url, image, schema }
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
       
-      {/* Open Graph */}
+      {/* Open Graph Tags */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
-      {url && <meta property="og:url" content={url} />}
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:image" content={socialImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteName} />
+      
+      {/* Optional OG properties for Articles */}
+      {author && <meta property="article:author" content={author} />}
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
-      {/* Twitter */}
+      {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={socialImage} />
 
       {/* Schema.org JSON-LD */}
       {schema && (

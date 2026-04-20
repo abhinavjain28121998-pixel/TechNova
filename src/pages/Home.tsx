@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button, buttonVariants } from '../components/ui/button';
-import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -44,24 +45,69 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="bg-background border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-background border-b border-border">
+        {/* Subtle Background Glows */}
+        <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3">
+          <div className="w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px] opacity-70 animate-pulse-slow mix-blend-screen pointer-events-none" />
+        </div>
+        <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3">
+          <div className="w-[400px] h-[400px] rounded-full bg-blue-500/10 blur-[100px] opacity-50 mix-blend-screen pointer-events-none" />
+        </div>
+
+        {/* Optional Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="max-w-3xl">
-            <Badge className="mb-6 bg-primary/20 text-primary hover:bg-primary/30 border-none">Welcome to TechNova</Badge>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 leading-tight">
-              Decoding the Future of <br className="hidden md:block" /><span className="text-primary">Technology</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 px-3 py-1 flex w-fit items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                Welcome to TechNova
+              </Badge>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+              className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1]"
+            >
+              Decoding the Future of <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Technology</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl"
+            >
               Expert analysis, tutorials, and insights on AI, web development, and the software shaping our world.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/blog" className={buttonVariants({ size: 'lg' })}>
-                Read Latest Posts
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4 items-start"
+            >
+              <Link to="/blog" className="group">
+                <div className={buttonVariants({ size: 'lg', className: 'relative overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.3)]' })}>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Read Latest Posts
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
+                </div>
               </Link>
-              <Link to="/categories" className={buttonVariants({ size: 'lg', variant: 'outline' })}>
+              <Link to="/categories" className={buttonVariants({ size: 'lg', variant: 'outline', className: 'hover:bg-primary/5 border-primary/20 hover:border-primary/50 transition-colors' })}>
                 Explore Categories
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

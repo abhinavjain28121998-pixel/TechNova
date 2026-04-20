@@ -81,10 +81,12 @@ export default function Post() {
         type="article"
         url={`https://tech-nova-iota.vercel.app/blog/${post.slug}`}
         image={post.coverImage}
+        author={post.author.name}
+        publishedTime={post.date}
         schema={[articleSchema, breadcrumbSchema]}
       />
 
-      <article className="bg-background">
+      <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">
         {/* Post Header */}
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
           <Link to="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 mb-8 transition-colors">
@@ -92,19 +94,19 @@ export default function Post() {
           </Link>
           
           <div className="mb-6">
-            <Badge variant="secondary" className="text-sm px-3 py-1">{post.category}</Badge>
+            <Badge variant="secondary" className="text-sm px-3 py-1" itemProp="articleSection">{post.category}</Badge>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-8 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-8 leading-tight" itemProp="headline">
             {post.title}
           </h1>
           
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
-            <div className="flex items-center gap-3">
-              <img src={post.author.avatar} alt={post.author.name} className="w-12 h-12 rounded-full" referrerPolicy="no-referrer" />
+            <div className="flex items-center gap-3" itemProp="author" itemScope itemType="https://schema.org/Person">
+              <img src={post.author.avatar} alt={post.author.name} className="w-12 h-12 rounded-full" referrerPolicy="no-referrer" itemProp="image" />
               <div>
-                <div className="font-semibold text-foreground">{post.author.name}</div>
-                <div className="text-sm">{post.author.role}</div>
+                <div className="font-semibold text-foreground" itemProp="name">{post.author.name}</div>
+                <div className="text-sm" itemProp="jobTitle">{post.author.role}</div>
               </div>
             </div>
             
@@ -113,9 +115,14 @@ export default function Post() {
             <div className="flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <time dateTime={post.date}>{format(parseISO(post.date), 'MMMM d, yyyy')}</time>
+                <time 
+                  dateTime={new Date(post.date).toISOString()} 
+                  itemProp="datePublished dateModified"
+                >
+                  {format(parseISO(post.date), 'MMMM d, yyyy')}
+                </time>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" title="Estimated reading time">
                 <Clock className="w-4 h-4" />
                 <span>{post.readingTime}</span>
               </div>
@@ -131,6 +138,7 @@ export default function Post() {
               alt={post.title} 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              itemProp="image"
             />
           </div>
         </div>
@@ -172,7 +180,9 @@ export default function Post() {
           </div>
 
           <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover prose-${fontSize} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <div itemProp="articleBody">
+              <ReactMarkdown>{post.content}</ReactMarkdown>
+            </div>
           </div>
 
           <Separator className="my-12" />
