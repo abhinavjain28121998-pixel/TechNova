@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
 import { Badge } from '../components/ui/badge';
@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
+import NotFound from './NotFound';
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -54,9 +55,9 @@ export default function Post() {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   }
 
-  // Prevent viewing unauthorized drafts
+  // Prevent viewing unauthorized drafts or non-existent posts
   if (!post || (post.status === 'draft')) {
-    return <Navigate to="/blog" replace />;
+    return <NotFound />;
   }
 
   // Use all Firestore posts if available for related, otherwise static
