@@ -14,8 +14,8 @@ import { motion } from 'motion/react';
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
   
-  // Use Firestore posts if available, otherwise fallback to static data
-  const posts = (fbPosts.length > 0 ? fbPosts : STATIC_POSTS).filter(p => p.status === 'published' || !p.status); // fallback for posts without status
+  // Use strictly Firestore posts so it doesn't accidentally revert to static posts when empty
+  const posts = fbPosts.filter(p => p.status === 'published' || !p.status);
   
   const featuredPosts = posts.filter(post => post.featured);
   const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);

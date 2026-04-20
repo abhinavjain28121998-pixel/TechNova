@@ -15,7 +15,7 @@ export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { posts: fbPosts, loading } = usePosts();
 
-  const posts = (fbPosts.length > 0 ? fbPosts : STATIC_POSTS).filter(p => !p.status || p.status === 'published');
+  const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 

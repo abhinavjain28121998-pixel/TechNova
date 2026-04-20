@@ -155,20 +155,29 @@ export default function Admin() {
       setEditingPost(null);
       setActiveTab('list');
       fetchPosts();
-    } catch (error) {
-      handleFirestoreError(error, OperationType.WRITE, path);
+      alert("Post saved successfully!");
+    } catch (error: any) {
+      console.error("Save failed:", error);
+      alert(`Failed to save post. Error: ${error.message}`);
     }
   };
 
   const deletePostRecord = async (id: string) => {
     if (!confirm("Are you sure you want to delete this post? This cannot be undone.")) return;
     
+    // Optimistically remove from UI
+    setPosts(prev => prev.filter(p => p.id !== id));
+    
     const path = `posts/${id}`;
     try {
       await deleteDoc(doc(db, 'posts', id));
+      // Re-fetch to guarantee sync with server
       fetchPosts();
-    } catch (error) {
-      handleFirestoreError(error, OperationType.DELETE, path);
+    } catch (error: any) {
+      console.error("Failed to delete post:", error);
+      alert(`Failed to delete the blog post. Make sure you have the correct permissions. Error: ${error.message}`);
+      // Re-fetch to revert the optimistic UI update if it failed
+      fetchPosts();
     }
   };
 

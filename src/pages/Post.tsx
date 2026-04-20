@@ -48,8 +48,7 @@ export default function Post() {
   };
 
   
-  // Try Firestore post first, then static fallback
-  const post = fbPost || STATIC_POSTS.find(p => p.slug === slug);
+  const post = fbPost;
 
   if (!post && loadingPost) {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
@@ -60,8 +59,8 @@ export default function Post() {
     return <NotFound />;
   }
 
-  // Use all Firestore posts if available for related, otherwise static
-  const posts = (allPosts.length > 0 ? allPosts : STATIC_POSTS).filter(p => !p.status || p.status === 'published');
+  // Use strictly Firestore posts for related
+  const posts = allPosts.filter(p => !p.status || p.status === 'published');
 
   const relatedPosts = posts
     .filter(p => p.category === post.category && p.id !== post.id)
