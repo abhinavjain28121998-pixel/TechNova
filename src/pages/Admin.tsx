@@ -89,8 +89,13 @@ export default function Admin() {
   const login = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login failed", error);
+      if (error.code === 'auth/unauthorized-domain') {
+        alert("Domain Not Authorized. To fix this:\n\n1. Go to Firebase Console\n2. Click Authentication -> Settings -> Authorized domains\n3. Add 'tech-nova-iota.vercel.app'\n\nThis is a standard security protection from Firebase.");
+      } else {
+        alert(`Login failed: ${error.message}`);
+      }
     }
   };
 
