@@ -18,8 +18,9 @@ export default function Blog() {
   const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
   const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const titleMatch = (post.title || '').toLowerCase().includes(searchQuery.toLowerCase());
+    const excerptMatch = (post.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = titleMatch || excerptMatch;
     const matchesCategory = selectedCategory ? post.category === selectedCategory : true;
     return matchesSearch && matchesCategory;
   });

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
@@ -8,6 +8,8 @@ import { Separator } from '../components/ui/separator';
 import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
+import rehypeSlug from 'rehype-slug';
+import GithubSlugger from 'github-slugger';
 import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
@@ -22,6 +24,42 @@ export default function Post() {
   const [fontSize, setFontSize] = useState<'sm' | 'base' | 'lg' | 'xl'>('lg');
   const [lineSpacing, setLineSpacing] = useState<'normal' | 'relaxed' | 'loose'>('relaxed');
   const [showControls, setShowControls] = useState(false);
+  const [activeId, setActiveId] = useState<string>('');
+
+  const toc = useMemo(() => {
+    if (!fbPost?.content) return [];
+    const slugger = new GithubSlugger();
+    const regex = /^(#{2})\s+(.+)$/gm;
+    const headings = [];
+    let match;
+    while ((match = regex.exec(fbPost.content)) !== null) {
+      const text = match[2].replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').replace(/[*_~`]/g, '').trim();
+      const id = slugger.slug(text);
+      headings.push({
+        level: match[1].length,
+        text,
+        id
+      });
+    }
+    return headings;
+  }, [fbPost?.content]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -80% 0px' }
+    );
+
+    const elements = document.querySelectorAll('h2');
+    elements.forEach((elem) => observer.observe(elem));
+    return () => observer.disconnect();
+  }, [toc]);
 
   const increaseFontSize = () => {
     setFontSize(prev => {
@@ -46,6 +84,13 @@ export default function Post() {
       return 'normal';
     });
   };
+
+  const fontSizeClass = {
+    sm: 'prose-sm',
+    base: 'prose-base',
+    lg: 'prose-lg',
+    xl: 'prose-xl',
+  }[fontSize];
 
   
   const post = fbPost;
@@ -149,10 +194,43 @@ export default function Post() {
           </div>
         </div>
 
-        {/* Post Content */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl pb-20">
-          {/* Readability Controls */}
-          <div className="mb-8 flex flex-col items-end">
+        {/* Post Content & TOC Area */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[85rem] pb-20 flex flex-col md:flex-row gap-8 lg:gap-12 xl:gap-20">
+          
+          {/* Table of Contents - Sidebar on Desktop / Top block on Mobile */}
+          <aside className="w-full md:w-56 lg:w-64 shrink-0">
+            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm">
+              <h3 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
+                Table of Contents
+              </h3>
+              <nav className="flex flex-col gap-3 text-sm">
+                {toc.length > 0 ? (
+                  toc.map(heading => (
+                    <a 
+                      key={heading.id} 
+                      href={`#${heading.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className={`transition-colors block font-medium hover:text-primary ${
+                        activeId === heading.id ? 'text-primary font-bold' : 'text-foreground'
+                      }`}
+                    >
+                      {heading.text}
+                    </a>
+                  ))
+                ) : (
+                  <span className="text-muted-foreground italic">No quick links available.</span>
+                )}
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main Article Content */}
+          <div className="flex-1 max-w-3xl min-w-0 mx-auto lg:mx-0 w-full">
+            {/* Readability Controls */}
+            <div className="mb-8 flex flex-col items-end">
             <Button 
               variant="ghost" 
               size="sm" 
@@ -185,9 +263,9 @@ export default function Post() {
             )}
           </div>
 
-          <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover prose-${fontSize} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
+          <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
             <div itemProp="articleBody">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown rehypePlugins={[rehypeSlug]}>{post.content}</ReactMarkdown>
             </div>
           </div>
 
@@ -210,6 +288,7 @@ export default function Post() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </article>
 
