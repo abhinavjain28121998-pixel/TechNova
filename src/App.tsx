@@ -8,7 +8,10 @@ import Categories from './pages/Categories';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 import Admin from './pages/Admin';
+
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
@@ -23,8 +26,9 @@ export default function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfService />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
