@@ -18,6 +18,7 @@ export interface Post {
   featured?: boolean;
   trending?: boolean;
   status?: 'draft' | 'published';
+  faqs?: { question: string; answer: string }[];
 }
 
 export const CATEGORIES = [

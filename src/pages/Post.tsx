@@ -14,6 +14,7 @@ import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -268,6 +269,24 @@ export default function Post() {
               <ReactMarkdown rehypePlugins={[rehypeSlug]}>{post.content}</ReactMarkdown>
             </div>
           </div>
+
+          {post.faqs && post.faqs.length > 0 && (
+            <div className="mt-16 bg-card border border-border p-6 sm:p-8 rounded-2xl shadow-sm">
+              <h2 className="text-2xl font-bold text-foreground mb-6" id="frequently-asked-questions">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {post.faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-border">
+                    <AccordionTrigger className="text-left font-semibold hover:text-primary transition-colors data-[state=open]:text-primary">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed prose prose-invert prose-sm">
+                      <ReactMarkdown>{faq.answer}</ReactMarkdown>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          )}
 
           <Separator className="my-12" />
 
