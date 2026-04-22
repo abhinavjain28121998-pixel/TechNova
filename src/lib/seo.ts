@@ -93,6 +93,23 @@ export function generateArticleSchema(post: any) {
   };
 }
 
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+  if (!faqs || faqs.length === 0) return null;
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  };
+}
+
 export function generateAboutPageSchema() {
   return {
     '@context': 'https://schema.org',

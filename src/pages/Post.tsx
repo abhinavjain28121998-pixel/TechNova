@@ -11,7 +11,7 @@ import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
-import { generateArticleSchema, generateBreadcrumbSchema } from '../lib/seo';
+import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
@@ -158,18 +158,22 @@ export default function Post() {
     { name: 'Blog', item: '/blog' },
     { name: post.title, item: `/blog/${post.slug}` }
   ]);
+  const faqSchema = post.faqs ? generateFAQSchema(post.faqs) : null;
+
+  const schemas: any[] = [articleSchema, breadcrumbSchema];
+  if (faqSchema) schemas.push(faqSchema);
 
   return (
     <>
       <SEO 
         title={post.title}
-        description={post.excerpt}
+        description={post.metaDescription || post.excerpt}
         type="article"
         url={`https://tech-nova-iota.vercel.app/blog/${post.slug}`}
         image={post.coverImage}
         author={post.author.name}
         publishedTime={post.date}
-        schema={[articleSchema, breadcrumbSchema]}
+        schema={schemas}
       />
 
       <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">

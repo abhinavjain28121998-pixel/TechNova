@@ -108,6 +108,10 @@ export default function Admin() {
   const syncStaticPosts = async () => {
     if (!confirm("This will migrate all static posts to Firestore. Existing Firestore posts with same slugs will be overwritten. Continue?")) return;
     
+    let successCount = 0;
+    let failCount = 0;
+    const errors: string[] = [];
+
     for (const post of STATIC_POSTS) {
       const path = `posts/${post.slug}`;
       try {
@@ -115,11 +119,20 @@ export default function Admin() {
           ...post,
           status: 'published'
         });
-      } catch (error) {
-        handleFirestoreError(error, OperationType.WRITE, path);
+        successCount++;
+      } catch (error: any) {
+        failCount++;
+        errors.push(`${post.slug}: ${error.message}`);
+        console.error(`Sync failed for ${post.slug}:`, error);
       }
     }
-    alert("Sync complete!");
+
+    if (failCount === 0) {
+      alert(`Sync complete! Successfully updated ${successCount} articles.`);
+    } else {
+      alert(`Sync finished with issues.\nSuccess: ${successCount}\nFailed: ${failCount}\n\nErrors:\n${errors.join('\n')}`);
+    }
+    
     fetchPosts();
   };
 
