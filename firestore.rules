@@ -23,6 +23,14 @@ service cloud.firestore {
     //   - featured: bool (optional)
     //   - trending: bool (optional)
     //
+    // Collection: posts/{postId}/comments
+    // Document ID: commentId
+    // Fields:
+    //   - postId: string
+    //   - authorName: string
+    //   - content: string
+    //   - createdAt: timestamp
+    //
     // Collection: users
     // Document ID: userId
     // Fields:
@@ -73,6 +81,22 @@ service cloud.firestore {
       
       // Only admins can modify blog posts
       allow write: if isAdmin();
+      
+      match /comments/{commentId} {
+        // Anyone can read comments
+        allow read: if true;
+        // Anyone can create comments, as long as it has required fields and reasonable size
+        allow create: if request.resource.data.keys().hasAll(["postId", "authorName", "content", "createdAt"])
+                      && request.resource.data.postId == postId
+                      && request.resource.data.content is string
+                      && request.resource.data.content.size() > 0 
+                      && request.resource.data.content.size() <= 2000
+                      && request.resource.data.authorName is string
+                      && request.resource.data.authorName.size() > 0
+                      && request.resource.data.authorName.size() <= 100;
+        // Users cannot edit or delete comments natively right now, admins can do what they want
+        allow update, delete: if isAdmin();
+      }
     }
     
     // Default deny for everything else

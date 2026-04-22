@@ -18,6 +18,19 @@ import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
 
+const XIcon = ({ className }: { className?: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
   const { post: fbPost, loading: loadingPost } = usePost(slug);
@@ -115,11 +128,11 @@ export default function Post() {
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 2);
 
-  const handleShareTwitter = () => {
+  const handleShareX = () => {
     if (!post) return;
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent(post.title);
-    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    window.open(`https://x.com/intent/tweet?url=${url}&text=${text}`, '_blank');
   };
 
   const handleShareLinkedIn = () => {
@@ -322,8 +335,8 @@ export default function Post() {
             <div className="flex items-center gap-2 text-muted-foreground font-medium">
               <span>Share this article:</span>
               <div className="flex gap-2">
-                <Button variant="outline" size="icon" className="rounded-full" onClick={handleShareTwitter} title="Share on Twitter" aria-label="Share on Twitter">
-                  <Twitter className="w-4 h-4" />
+                <Button variant="outline" size="icon" className="rounded-full" onClick={handleShareX} title="Share on X" aria-label="Share on X">
+                  <XIcon className="w-4 h-4" />
                 </Button>
                 <Button variant="outline" size="icon" className="rounded-full" onClick={handleShareLinkedIn} title="Share on LinkedIn" aria-label="Share on LinkedIn">
                   <Linkedin className="w-4 h-4" />
