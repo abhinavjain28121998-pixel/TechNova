@@ -36,8 +36,6 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
       </div>
       <p className="text-xs text-muted-foreground mt-4 text-center">
         Powered by <a href="https://utteranc.es" target="_blank" rel="noreferrer" className="text-primary hover:underline">Utterances</a>. Open source comments backed by GitHub.
-        <br />
-        <span className="text-yellow-600 dark:text-yellow-400 font-medium tracking-tight">Currently targeting <strong className="font-bold">leewayhertz/blog-comments</strong> (Make sure the Utterances GitHub App is installed there!)</span>
       </p>
     </div>
   );
