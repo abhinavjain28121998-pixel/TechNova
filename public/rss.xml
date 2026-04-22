@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>TechNova Blog</title>
+  <description>Expert analysis, tutorials, and deep-dive insights on Artificial Intelligence, Web Development, and Tech.</description>
+  <link>https://tech-nova-iota.vercel.app</link>
+  <atom:link href="https://tech-nova-iota.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[How Enterprise AI Agents Are Reshaping Modern Workflows (2026 Guide)]]></title>
+    <description><![CDATA[Enterprise AI agents are moving beyond chatbots to autonomous agentic workflows. Learn how these AI systems integrate with legacy tools, optimize operations, and reshape modern enterprise architecture.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/how-ai-agents-are-reshaping-modern-enterprise-workflows</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/how-ai-agents-are-reshaping-modern-enterprise-workflows</guid>
+    <pubDate>Tue, 21 Apr 2026 14:31:12 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Advancing Global Business Services with Generative AI Capabilities (2026)]]></title>
+    <description><![CDATA[Discover how advancing global business services with generative AI capabilities transforms digital transformation, enterprise operations, and large-scale service delivery models.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/advancing-global-business-services-generative-ai-capabilities</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/advancing-global-business-services-generative-ai-capabilities</guid>
+    <pubDate>Mon, 20 Apr 2026 11:01:59 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Understanding Artificial Intelligence 2026: A Deep Dive]]></title>
+    <description><![CDATA[Start properly understanding artificial intelligence 2026 with our comprehensive guide to multi-modal networks, edge inference, and enterprise implementation strategies.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/understanding-artificial-intelligence-2026</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/understanding-artificial-intelligence-2026</guid>
+    <pubDate>Sun, 19 Apr 2026 10:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[10 Secure Web Development Practices for Frontend Architects]]></title>
+    <description><![CDATA[Master the absolute most critical secure web development practices to eliminate cross-site scripting, prevent injection vulnerabilities, and build hardened APIs.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</guid>
+    <pubDate>Sat, 18 Apr 2026 14:30:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Driving Procurement Excellence with AI Logistics Models]]></title>
+    <description><![CDATA[Learn the mechanics of driving procurement excellence with AI. We cover supplier negotiation, spend analysis automation, and supply chain risk mitigation using modern AI.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/driving-procurement-excellence-ai</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/driving-procurement-excellence-ai</guid>
+    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Demystifying Zero Trust: A Complete Enterprise Security Guide]]></title>
+    <description><![CDATA[Demystifying zero trust architecture is crucial for modern cybersecurity. Learn the core methodologies, implementation strategies, and operational frameworks for enterprise networks.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</guid>
+    <pubDate>Wed, 15 Apr 2026 09:15:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[The Future of AI in Web Development: Frontend Tools & Trends]]></title>
+    <description><![CDATA[Explore the future of AI in web development. Dive into the changing role of developers, autonomous coding agents, and the impact of the React compiler on modern engineering.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/future-of-ai-in-web-development</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/future-of-ai-in-web-development</guid>
+    <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Zero Trust Architecture Explained: Security Without Perimeters]]></title>
+    <description><![CDATA[Having zero trust architecture explained fundamentally clarifies how strictly verified access and micro-segmentations effectively halt cyber threats within hybrid networks.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/zero-trust-architecture-explained</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/zero-trust-architecture-explained</guid>
+    <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[React 19 Features You Need to Know: A Frontend Guide]]></title>
+    <description><![CDATA[Explore the groundbreaking React 19 features, including the new React Compiler, Server Components, and native Actions. This guide explains how React 19 transforms frontend development and web performance.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/react-19-features-you-need-to-know</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/react-19-features-you-need-to-know</guid>
+    <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Top Gadgets MWC 2026: The Best Hardware and AI Spectacles]]></title>
+    <description><![CDATA[We review the top gadgets MWC 2026 had to offer, analyzing the convergence of durable foldable interfaces, extended Reality (XR) glasses, and raw edge AI mobile processing power.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/top-gadgets-mwc-2026</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/top-gadgets-mwc-2026</guid>
+    <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Sustainable Software Engineering: Building Green Tech Solutions]]></title>
+    <description><![CDATA[Discover how sustainable software engineering reduces data center footprints and maximizes energy efficiency within edge computing and global cloud systems.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/sustainable-software-engineering</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/sustainable-software-engineering</guid>
+    <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[The Next Quantum Computing Breakthrough: Cryptography & Speed]]></title>
+    <description><![CDATA[Analyze the latest quantum computing breakthrough and how it redefines hardware acceleration, post-quantum cryptography, and complex algorithmic simulations for the enterprise.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/quantum-computing-breakthrough</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/quantum-computing-breakthrough</guid>
+    <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

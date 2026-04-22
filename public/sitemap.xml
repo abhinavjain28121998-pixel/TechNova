@@ -2,104 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tech-nova-iota.vercel.app/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/categories</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/privacy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/advancing-global-business-services-generative-ai-capabilities</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/driving-procurement-excellence-ai</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/future-of-ai-in-web-development</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-04-22</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/how-ai-agents-are-reshaping-modern-enterprise-workflows</loc>
     <lastmod>2026-04-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/quantum-computing-breakthrough</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/react-19-features-you-need-to-know</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</loc>
-    <lastmod>2026-04-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/sustainable-software-engineering</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/top-gadgets-mwc-2026</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://tech-nova-iota.vercel.app/blog/advancing-global-business-services-generative-ai-capabilities</loc>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/understanding-artificial-intelligence-2026</loc>
     <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</loc>
+    <lastmod>2026-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/driving-procurement-excellence-ai</loc>
+    <lastmod>2026-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/future-of-ai-in-web-development</loc>
+    <lastmod>2026-04-15</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/zero-trust-architecture-explained</loc>
     <lastmod>2026-04-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/react-19-features-you-need-to-know</loc>
+    <lastmod>2026-04-10</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/top-gadgets-mwc-2026</loc>
+    <lastmod>2026-04-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/sustainable-software-engineering</loc>
+    <lastmod>2026-04-02</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/quantum-computing-breakthrough</loc>
+    <lastmod>2026-03-28</lastmod>
   </url>
 </urlset>

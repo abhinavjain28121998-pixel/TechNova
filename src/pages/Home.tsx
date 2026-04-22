@@ -206,7 +206,7 @@ export default function Home() {
             className="flex transition-transform duration-500 ease-in-out h-full"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            {carouselPosts.map((post) => (
+            {carouselPosts.map((post, index) => (
               <div key={post.id} className="w-full flex-shrink-0">
                 <Link to={`/blog/${post.slug}`} className="group block h-full">
                   <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
@@ -214,8 +214,9 @@ export default function Home() {
                       <img 
                         src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
                         alt={post.title}
-                        className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105 bg-muted"
                         referrerPolicy="no-referrer"
+                        loading={index === 0 ? "eager" : "lazy"}
                       />
                     </div>
                     <div className="p-8 md:p-12">
@@ -288,8 +289,9 @@ export default function Home() {
                         <img 
                           src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                           alt={post.title} 
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
                           referrerPolicy="no-referrer"
+                          loading="lazy"
                         />
                       </Link>
                       <CardHeader className="p-5 pb-0 flex-grow">
