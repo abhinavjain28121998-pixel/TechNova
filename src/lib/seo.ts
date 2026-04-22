@@ -19,7 +19,12 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: 'TechNova Blog',
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.png`, // Placeholder, assuming there's a logo or it will be added
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/logo.png`,
+      width: 600,
+      height: 60
+    },
     sameAs: [
       'https://twitter.com/technova',
       'https://github.com/technova',
@@ -50,9 +55,14 @@ export function generateArticleSchema(post: any) {
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': 'Article', // Using specific Article instead of BlogPosting for broader SEO
     headline: post.title,
-    image: [imageUrl],
+    image: {
+      '@type': 'ImageObject',
+      url: imageUrl,
+      width: 1200,
+      height: 630
+    },
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -67,7 +77,9 @@ export function generateArticleSchema(post: any) {
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.png`,
+        url: `${BASE_URL}/logo.png`, // Placeholder, assuming there's a logo or it will be added
+        width: 600,
+        height: 60
       },
     },
     description: post.excerpt || post.title,

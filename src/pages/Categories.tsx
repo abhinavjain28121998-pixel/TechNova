@@ -3,6 +3,7 @@ import { CATEGORIES, POSTS } from '../data/posts';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Badge } from '../components/ui/badge';
 import { Card, CardHeader, CardFooter } from '../components/ui/card';
+import { calculateReadingTime } from '../lib/utils';
 import { Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema } from '../lib/seo';
@@ -98,7 +99,7 @@ export default function Categories() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  <span>{post.readingTime}</span>
+                  <span>{calculateReadingTime(post.content)}</span>
                 </div>
               </CardFooter>
             </Card>

@@ -3,6 +3,7 @@ import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { calculateReadingTime } from '../lib/utils';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
@@ -309,7 +310,7 @@ export default function Home() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4" />
-                          <span>{post.readingTime}</span>
+                          <span>{calculateReadingTime(post.content)}</span>
                         </div>
                       </CardFooter>
                     </Card>

@@ -3,9 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
 import { Badge } from '../components/ui/badge';
+import { calculateReadingTime } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
@@ -26,6 +27,7 @@ export default function Post() {
   const [lineSpacing, setLineSpacing] = useState<'normal' | 'relaxed' | 'loose'>('relaxed');
   const [showControls, setShowControls] = useState(false);
   const [activeId, setActiveId] = useState<string>('');
+  const [copied, setCopied] = useState(false);
 
   const toc = useMemo(() => {
     if (!fbPost?.content) return [];
@@ -112,6 +114,30 @@ export default function Post() {
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 2);
 
+  const handleShareTwitter = () => {
+    if (!post) return;
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(post.title);
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+  };
+
+  const handleShareLinkedIn = () => {
+    if (!post) return;
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(post.title);
+    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`, '_blank');
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
   const articleSchema = generateArticleSchema(post);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
@@ -176,7 +202,7 @@ export default function Post() {
               </div>
               <div className="flex items-center gap-2" title="Estimated reading time">
                 <Clock className="w-4 h-4" />
-                <span>{post.readingTime}</span>
+                <span>{calculateReadingTime(post.content)}</span>
               </div>
             </div>
           </div>
@@ -295,14 +321,14 @@ export default function Post() {
             <div className="flex items-center gap-2 text-muted-foreground font-medium">
               <span>Share this article:</span>
               <div className="flex gap-2">
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full" onClick={handleShareTwitter} title="Share on Twitter" aria-label="Share on Twitter">
                   <Twitter className="w-4 h-4" />
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
+                <Button variant="outline" size="icon" className="rounded-full" onClick={handleShareLinkedIn} title="Share on LinkedIn" aria-label="Share on LinkedIn">
                   <Linkedin className="w-4 h-4" />
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <LinkIcon className="w-4 h-4" />
+                <Button variant="outline" size="icon" className="rounded-full" onClick={handleCopyLink} title="Copy Link" aria-label="Copy Link">
+                  {copied ? <Check className="w-4 h-4 text-green-500" /> : <LinkIcon className="w-4 h-4" />}
                 </Button>
               </div>
             </div>
