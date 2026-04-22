@@ -41,7 +41,7 @@ import {
   CheckCircle2,
   Clock,
   CircleDashed,
-  User
+  User as UserIcon
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import ReactMarkdown from 'react-markdown';
@@ -319,7 +319,7 @@ export default function Admin() {
                           <div className="flex items-center gap-2 text-[10px] font-mono text-slate-600 truncate">
                             <span>/{post.slug || 'no-slug'}</span>
                             <span>•</span>
-                            <span className="flex items-center gap-1"><User className="w-2.5 h-2.5" /> {post.author?.name || 'TechNova Team'}</span>
+                            <span className="flex items-center gap-1"><UserIcon className="w-2.5 h-2.5" /> {post.author?.name || 'TechNova Team'}</span>
                             <span>•</span>
                             <span>{post.date ? new Date(post.date).toLocaleDateString() : 'Unpublished'}</span>
                             {post.featured && <span className="px-1 py-[1px] bg-primary/20 text-primary border border-primary/20 rounded">Featured</span>}
@@ -518,6 +518,16 @@ export default function Admin() {
                             onChange={e => setEditingPost({ ...editingPost, trending: e.target.checked })}
                           />
                         </div>
+                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, isExpertVerified: !prev?.isExpertVerified }))}>
+                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Expert Verified (EEAT)</label>
+                          <input 
+                            type="checkbox" 
+                            className="w-4 h-4 accent-primary cursor-pointer" 
+                            checked={editingPost?.isExpertVerified || false} 
+                            onClick={e => e.stopPropagation()}
+                            onChange={e => setEditingPost({ ...editingPost, isExpertVerified: e.target.checked })}
+                          />
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -525,7 +535,7 @@ export default function Admin() {
                   <Card className="bg-white/5 border-white/10 text-white">
                     <CardHeader className="pb-4">
                       <CardTitle className="text-xs font-mono uppercase tracking-widest flex items-center gap-2">
-                        <User className="w-3.5 h-3.5" /> Author Settings
+                        <UserIcon className="w-3.5 h-3.5" /> Author Settings
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">

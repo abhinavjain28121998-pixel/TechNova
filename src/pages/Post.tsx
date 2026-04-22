@@ -197,7 +197,15 @@ export default function Post() {
                 itemProp="image" 
               />
               <div>
-                <div className="font-semibold text-foreground" itemProp="name">{post.author?.name || 'TechNova Team'}</div>
+                <div className="flex items-center gap-2">
+                  <div className="font-semibold text-foreground" itemProp="name">{post.author?.name || 'TechNova Team'}</div>
+                  {post.isExpertVerified && (
+                    <Badge variant="secondary" className="h-5 px-1.5 py-0 text-[10px] bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                      <Check className="w-3 h-3" />
+                      Verified Expert
+                    </Badge>
+                  )}
+                </div>
                 <div className="text-sm" itemProp="jobTitle">{post.author?.role || 'Guest Writer'}</div>
               </div>
             </div>
@@ -313,7 +321,7 @@ export default function Post() {
           {post.faqs && post.faqs.length > 0 && (
             <div className="mt-16 bg-card border border-border p-6 sm:p-8 rounded-2xl shadow-sm">
               <h2 className="text-2xl font-bold text-foreground mb-6" id="frequently-asked-questions">Frequently Asked Questions</h2>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion className="w-full">
                 {post.faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border-border">
                     <AccordionTrigger className="text-left font-semibold hover:text-primary transition-colors data-[state=open]:text-primary">

@@ -24,18 +24,18 @@ export default function NotFound() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Button asChild size="lg" className="w-full sm:w-auto">
-            <Link to="/">
+          <Link to="/" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full">
               <Home className="w-4 h-4 mr-2" />
               Back to Homepage
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-            <Link to="/blog">
+            </Button>
+          </Link>
+          <Link to="/blog" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="w-full">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Read Our Blog
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
     </>
