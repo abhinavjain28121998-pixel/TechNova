@@ -18,6 +18,7 @@ export interface Post {
   featured?: boolean;
   trending?: boolean;
   status?: 'draft' | 'published';
+  tags?: string[];
   faqs?: { question: string; answer: string }[];
 }
 
@@ -105,7 +106,8 @@ The coming era will likely be defined by a massive synthesis of historically dis
     author: authors.sarah,
     featured: true,
     trending: true,
-    status: 'published'
+    status: 'published',
+    tags: ['AI', 'Future', 'Tech']
   },
   {
     id: 'clean-post-2',
@@ -173,7 +175,8 @@ The coming era will likely be defined by a massive synthesis of historically dis
         question: 'How does CSP prevent XSS attacks?',
         answer: 'Content Security Policy (CSP) prevents Cross-Site Scripting (XSS) by restricting the sources from which executable scripts and other resources can be loaded. By defining strict directives in HTTP headers, browsers know to block any inline scripts or external scripts that do not originate from explicitly trusted domains.'
       }
-    ]
+    ],
+    tags: ['Security', 'Web', 'Serverless']
   },
   {
     id: 'clean-post-3',
@@ -231,6 +234,7 @@ The coming era will likely be defined by a massive synthesis of historically dis
     author: authors.marcus,
     featured: true,
     trending: false,
-    status: 'published'
+    status: 'published',
+    tags: ['Zero Trust', 'Cybersecurity', 'Enterprise']
   }
 ];

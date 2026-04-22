@@ -121,20 +121,6 @@ export function Layout() {
               <p className="text-sm text-muted-foreground mb-4">
                 Exploring the frontiers of technology, one article at a time. Stay updated with the latest in AI, Web Dev, and more.
               </p>
-              <div className="flex gap-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Twitter className="h-5 w-5" />
-                  <span className="sr-only">Twitter</span>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-              </div>
             </div>
 
             <div>

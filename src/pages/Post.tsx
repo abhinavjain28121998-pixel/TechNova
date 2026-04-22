@@ -346,6 +346,17 @@ export default function Post() {
                 </Button>
               </div>
             </div>
+
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm font-medium text-muted-foreground mr-2">Tags:</span>
+                {post.tags.map(tag => (
+                  <Badge key={tag} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground">
+                    #{tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
           </div>
 
           <PostComments issueTerm={post.slug} />

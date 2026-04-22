@@ -466,6 +466,16 @@ export default function Admin() {
                           onChange={e => setEditingPost({ ...editingPost, category: e.target.value })}
                         />
                       </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-mono text-slate-500">Tags (Comma Separated)</label>
+                        <Input 
+                          placeholder="e.g. Protocol, Guide, Web"
+                          className="bg-black/20 border-white/10 text-sm h-8"
+                          value={editingPost?.tags?.join(', ') || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) })}
+                        />
+                      </div>
                       
                       <div className="space-y-2">
                         <label className="text-[10px] uppercase font-mono text-slate-500">Custom Slug</label>

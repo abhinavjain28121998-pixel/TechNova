@@ -112,7 +112,15 @@ export default function Blog() {
                   />
                 </Link>
                 <CardHeader className="p-6 pb-0 flex-grow">
-                  <Badge variant="secondary" className="w-fit mb-4">{post.category}</Badge>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="secondary">{post.category}</Badge>
+                    {post.tags?.slice(0, 2).map(tag => (
+                      <Badge key={tag} variant="outline" className="text-xs font-normal">#{tag}</Badge>
+                    ))}
+                    {(post.tags?.length || 0) > 2 && (
+                      <Badge variant="outline" className="text-xs font-normal">+{post.tags!.length - 2}</Badge>
+                    )}
+                  </div>
                   <Link to={`/blog/${post.slug}`}>
                     <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
                       <Highlighter

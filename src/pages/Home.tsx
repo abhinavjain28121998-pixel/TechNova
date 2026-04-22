@@ -302,7 +302,12 @@ export default function Home() {
                         />
                       </Link>
                       <CardHeader className="p-5 pb-0 flex-grow">
-                        <Badge variant="secondary" className="w-fit mb-3">{post.category}</Badge>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          <Badge variant="secondary">{post.category}</Badge>
+                          {post.tags?.slice(0, 1).map(tag => (
+                            <Badge key={tag} variant="outline" className="text-[10px] font-normal">#{tag}</Badge>
+                          ))}
+                        </div>
                         <Link to={`/blog/${post.slug}`}>
                           <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-2">
                             {post.title}
