@@ -16,6 +16,7 @@ import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { PostComments } from '../components/PostComments';
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -333,6 +334,9 @@ export default function Post() {
               </div>
             </div>
           </div>
+
+          <PostComments issueTerm={post.slug} />
+
         </div>
         </div>
       </article>

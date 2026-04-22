@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,8 @@ import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
+import Fuse from 'fuse.js';
+import Highlighter from 'react-highlight-words';
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,13 +20,26 @@ export default function Blog() {
 
   const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
-  const filteredPosts = posts.filter(post => {
-    const titleMatch = (post.title || '').toLowerCase().includes(searchQuery.toLowerCase());
-    const excerptMatch = (post.excerpt || '').toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesSearch = titleMatch || excerptMatch;
-    const matchesCategory = selectedCategory ? post.category === selectedCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredPosts = useMemo(() => {
+    let result = posts;
+
+    // First filter by category if selected
+    if (selectedCategory) {
+      result = result.filter(post => post.category === selectedCategory);
+    }
+
+    // Then fuzzy search if there's a query
+    if (searchQuery.trim()) {
+      const fuse = new Fuse(result, {
+        keys: ['title', 'excerpt'],
+        threshold: 0.4,
+        includeMatches: true,
+      });
+      result = fuse.search(searchQuery).map(res => res.item);
+    }
+
+    return result;
+  }, [posts, searchQuery, selectedCategory]);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
@@ -100,11 +115,21 @@ export default function Blog() {
                   <Badge variant="secondary" className="w-fit mb-4">{post.category}</Badge>
                   <Link to={`/blog/${post.slug}`}>
                     <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
-                      {post.title}
+                      <Highlighter
+                        searchWords={searchQuery.trim().split(/\s+/)}
+                        autoEscape={true}
+                        textToHighlight={post.title || ''}
+                        highlightClassName="bg-primary/20 text-primary font-bold px-1 rounded-sm"
+                      />
                     </h3>
                   </Link>
                   <p className="text-muted-foreground text-sm line-clamp-3">
-                    {post.excerpt}
+                    <Highlighter
+                      searchWords={searchQuery.trim().split(/\s+/)}
+                      autoEscape={true}
+                      textToHighlight={post.excerpt || ''}
+                      highlightClassName="bg-primary/20 text-primary font-medium px-1 rounded-sm"
+                    />
                   </p>
                 </CardHeader>
                 <CardFooter className="p-6 pt-6 text-sm text-muted-foreground flex items-center justify-between border-t border-border mt-6">
