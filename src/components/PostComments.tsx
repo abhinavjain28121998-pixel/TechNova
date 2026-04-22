@@ -10,8 +10,13 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
   useEffect(() => {
     if (!containerRef.current) return;
     
-    // Clear any existing script to prevent duplicates on route changes
+    // Clear any existing content
     containerRef.current.innerHTML = '';
+    
+    // Use a wrapper div so that the script always has a parent, 
+    // even if it gets removed from the DOM before executing (React StrictMode).
+    // This prevents the 'insertAdjacentHTML' NoModificationAllowedError.
+    const wrapper = document.createElement('div');
     
     const script = document.createElement('script');
     script.src = 'https://utteranc.es/client.js';
@@ -24,7 +29,15 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
     script.setAttribute('theme', 'preferred-color-scheme');
     script.crossOrigin = 'anonymous';
     
-    containerRef.current.appendChild(script);
+    wrapper.appendChild(script);
+    containerRef.current.appendChild(wrapper);
+
+    return () => {
+      // Safely unmount by removing the wrapper, but leaving the script inside the detached wrapper
+      if (containerRef.current && containerRef.current.contains(wrapper)) {
+        containerRef.current.removeChild(wrapper);
+      }
+    };
   }, [issueTerm]);
 
   return (
