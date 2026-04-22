@@ -10,7 +10,7 @@ import { format, parseISO } from 'date-fns';
 import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -35,6 +35,13 @@ export default function Home() {
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % carouselPosts.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselPosts.length) % carouselPosts.length);
+
+  const { scrollY } = useScroll();
+  const yText = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
+  const yHeroGraphic1 = useTransform(scrollY, [0, 500], [0, -100]);
+  const yHeroGraphic2 = useTransform(scrollY, [0, 500], [0, -200]);
+  const yHeroGraphic3 = useTransform(scrollY, [0, 500], [0, -50]);
 
   return (
     <>
@@ -61,7 +68,7 @@ export default function Home() {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column: Text Content */}
-            <div className="max-w-3xl">
+            <motion.div className="max-w-3xl" style={{ y: yText, opacity: opacityText }}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -111,14 +118,14 @@ export default function Home() {
                   Browse Categories
                 </Link>
               </motion.div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Floating Tech Graphics */}
             <div className="hidden lg:block relative h-[600px] w-full perspective-[2000px]">
               {/* Primary Floating Image */}
               <motion.div
+                style={{ y: yHeroGraphic1 }}
                 animate={{ 
-                  y: [-10, 10, -10],
                   rotateY: [-5, 5, -5],
                   rotateX: [2, -2, 2]
                 }}
@@ -139,8 +146,8 @@ export default function Home() {
 
               {/* Secondary Floating Image - Top Right */}
               <motion.div
+                style={{ y: yHeroGraphic2 }}
                 animate={{ 
-                  y: [15, -15, 15],
                   x: [5, -5, 5]
                 }}
                 transition={{ 
@@ -158,8 +165,8 @@ export default function Home() {
 
               {/* Tertiary Floating Image - Bottom Left */}
               <motion.div
+                style={{ y: yHeroGraphic3 }}
                 animate={{ 
-                  y: [-20, 20, -20],
                   rotateZ: [-2, 2, -2]
                 }}
                 transition={{ 

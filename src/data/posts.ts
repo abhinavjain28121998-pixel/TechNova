@@ -163,7 +163,17 @@ The coming era will likely be defined by a massive synthesis of historically dis
     author: authors.alex,
     featured: false,
     trending: true,
-    status: 'published'
+    status: 'published',
+    faqs: [
+      {
+        question: 'What is input sanitization?',
+        answer: 'Input sanitization is the process of examining, cleaning, and filtering user-supplied data to prevent malicious code from executing. It involves escaping special characters and stripping out potentially dangerous elements like HTML tags or script blocks before the data is processed or stored in a database.'
+      },
+      {
+        question: 'How does CSP prevent XSS attacks?',
+        answer: 'Content Security Policy (CSP) prevents Cross-Site Scripting (XSS) by restricting the sources from which executable scripts and other resources can be loaded. By defining strict directives in HTTP headers, browsers know to block any inline scripts or external scripts that do not originate from explicitly trusted domains.'
+      }
+    ]
   },
   {
     id: 'clean-post-3',

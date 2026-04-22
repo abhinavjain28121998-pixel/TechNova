@@ -40,7 +40,8 @@ import {
   LayoutDashboard,
   CheckCircle2,
   Clock,
-  CircleDashed
+  CircleDashed,
+  User
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import ReactMarkdown from 'react-markdown';
@@ -314,8 +315,15 @@ export default function Admin() {
                     {posts.map(post => (
                       <div key={post.id} className="grid grid-cols-[1fr_120px_120px_100px] gap-4 px-6 py-4 border-b border-white/5 items-center hover:bg-white/[0.02] transition-colors group">
                         <div className="flex flex-col gap-1">
-                          <span className="font-semibold text-white group-hover:text-primary transition-colors truncate">{post.title}</span>
-                          <span className="text-[10px] font-mono text-slate-600 truncate">/{post.slug}</span>
+                          <span className="font-semibold text-white group-hover:text-primary transition-colors truncate">{post.title || 'Untitled'}</span>
+                          <div className="flex items-center gap-2 text-[10px] font-mono text-slate-600 truncate">
+                            <span>/{post.slug || 'no-slug'}</span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1"><User className="w-2.5 h-2.5" /> {post.author?.name || 'TechNova Team'}</span>
+                            <span>•</span>
+                            <span>{post.date ? new Date(post.date).toLocaleDateString() : 'Unpublished'}</span>
+                            {post.featured && <span className="px-1 py-[1px] bg-primary/20 text-primary border border-primary/20 rounded">Featured</span>}
+                          </div>
                         </div>
                         
                         <div>
@@ -440,6 +448,16 @@ export default function Admin() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-mono text-slate-500">Publish Date</label>
+                        <Input 
+                          type="datetime-local"
+                          className="bg-black/20 border-white/10 text-sm h-8 cursor-pointer"
+                          value={editingPost?.date ? new Date(editingPost.date).toISOString().slice(0, 16) : ''} 
+                          onChange={e => setEditingPost({ ...editingPost, date: new Date(e.target.value).toISOString() })}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
                         <label className="text-[10px] uppercase font-mono text-slate-500">Category</label>
                         <Input 
                           placeholder="e.g. AI, Development"
@@ -466,6 +484,66 @@ export default function Admin() {
                           className="bg-black/20 border-white/10 text-sm h-8"
                           value={editingPost?.readingTime || ''} 
                           onChange={e => setEditingPost({ ...editingPost, readingTime: e.target.value })}
+                        />
+                      </div>
+
+                      <div className="space-y-2 pt-2">
+                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, featured: !prev?.featured }))}>
+                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Featured Post</label>
+                          <input 
+                            type="checkbox" 
+                            className="w-4 h-4 accent-primary cursor-pointer" 
+                            checked={editingPost?.featured || false} 
+                            onClick={e => e.stopPropagation()}
+                            onChange={e => setEditingPost({ ...editingPost, featured: e.target.checked })}
+                          />
+                        </div>
+                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, trending: !prev?.trending }))}>
+                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Trending</label>
+                          <input 
+                            type="checkbox" 
+                            className="w-4 h-4 accent-primary cursor-pointer" 
+                            checked={editingPost?.trending || false} 
+                            onClick={e => e.stopPropagation()}
+                            onChange={e => setEditingPost({ ...editingPost, trending: e.target.checked })}
+                          />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-white/5 border-white/10 text-white">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-xs font-mono uppercase tracking-widest flex items-center gap-2">
+                        <User className="w-3.5 h-3.5" /> Author Settings
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-mono text-slate-500">Author Name</label>
+                        <Input 
+                          placeholder="e.g. Jane Doe"
+                          className="bg-black/20 border-white/10 text-sm h-8"
+                          value={editingPost?.author?.name || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova', role: 'Editor' }), name: e.target.value } })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-mono text-slate-500">Author Role</label>
+                        <Input 
+                          placeholder="e.g. Senior Editor"
+                          className="bg-black/20 border-white/10 text-sm h-8"
+                          value={editingPost?.author?.role || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { name: 'TechNova Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova' }), role: e.target.value } })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase font-mono text-slate-500">Avatar URL</label>
+                        <Input 
+                          placeholder="https://..."
+                          className="bg-black/20 border-white/10 text-sm h-8"
+                          value={editingPost?.author?.avatar || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { name: 'TechNova Team', role: 'Editor' }), avatar: e.target.value } })}
                         />
                       </div>
                     </CardContent>
