@@ -1,12 +1,17 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
 import { Badge } from '../components/ui/badge';
 import { calculateReadingTime } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check, Edit2 } from 'lucide-react';
+import { auth } from '../lib/firebase';
+import { onAuthStateChanged, User } from 'firebase/auth';
+
+const ADMIN_EMAIL = 'abhinavj@leewayhertz.com';
+
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
@@ -33,6 +38,7 @@ const XIcon = ({ className }: { className?: string }) => (
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const { post: fbPost, loading: loadingPost } = usePost(slug);
   const { posts: allPosts } = usePosts();
   
@@ -43,13 +49,26 @@ export default function Post() {
   const [activeId, setActiveId] = useState<string>('');
   const [copied, setCopied] = useState(false);
 
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+      setIsAdmin(!!u && u.email === ADMIN_EMAIL);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const cleanContent = fbPost?.content ? fbPost.content.replace(/^#\s+.*$/gm, '').trim() : '';
+
   const toc = useMemo(() => {
-    if (!fbPost?.content) return [];
+    if (!cleanContent) return [];
     const slugger = new GithubSlugger();
     const regex = /^(#{2})\s+(.+)$/gm;
     const headings = [];
     let match;
-    while ((match = regex.exec(fbPost.content)) !== null) {
+    while ((match = regex.exec(cleanContent)) !== null) {
       const text = match[2].replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').replace(/[*_~`]/g, '').trim();
       const id = slugger.slug(text);
       headings.push({
@@ -59,7 +78,7 @@ export default function Post() {
       });
     }
     return headings;
-  }, [fbPost?.content]);
+  }, [cleanContent]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,7 +129,7 @@ export default function Post() {
   }[fontSize];
 
   
-  const post = fbPost;
+  const post = fbPost ? { ...fbPost, content: cleanContent } : null;
 
   if (!post && loadingPost) {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
@@ -179,9 +198,16 @@ export default function Post() {
       <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">
         {/* Post Header */}
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
-          <Link to="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 mb-8 transition-colors">
-            <ChevronLeft className="w-4 h-4 mr-1" /> Back to blog
-          </Link>
+          <div className="flex justify-between items-center mb-8">
+            <Link to="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+              <ChevronLeft className="w-4 h-4 mr-1" /> Back to blog
+            </Link>
+            {isAdmin && (
+              <Button variant="outline" size="sm" onClick={() => navigate('/admin', { state: { editPost: post } })}>
+                <Edit2 className="w-4 h-4 mr-2" /> Edit Post
+              </Button>
+            )}
+          </div>
           
           <div className="mb-6">
             <Badge variant="secondary" className="text-sm px-3 py-1" itemProp="articleSection">{post.category}</Badge>

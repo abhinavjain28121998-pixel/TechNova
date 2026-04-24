@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { auth, db, googleProvider } from '../lib/firebase';
 import { 
   signInWithPopup, 
@@ -60,6 +61,9 @@ export default function Admin() {
   const [editingPost, setEditingPost] = useState<Partial<PostRecord> | null>(null);
   const [activeTab, setActiveTab] = useState('list');
   const [editTab, setEditTab] = useState('content');
+  
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => {
@@ -71,6 +75,15 @@ export default function Admin() {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (location.state?.editPost && user?.email === ADMIN_EMAIL && !loading) {
+      setEditingPost(location.state.editPost as PostRecord);
+      setActiveTab('edit');
+      // Replace the location state so it doesn't trigger again on refresh
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location.state, user, loading, navigate]);
 
   const fetchPosts = async () => {
     const path = 'posts';
