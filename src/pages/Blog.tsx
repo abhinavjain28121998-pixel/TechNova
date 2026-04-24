@@ -51,7 +51,7 @@ export default function Blog() {
       <SEO 
         title="Blog Post Archive & Tech Tutorials | TechNova"
         description="Browse all our technology articles, tutorials, and insights."
-        url="https://tech-nova-iota.vercel.app/blog"
+        keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
         schema={[breadcrumbSchema]}
       />
 
@@ -102,16 +102,17 @@ export default function Blog() {
         {filteredPosts.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map(post => (
-              <Card key={post.id} className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
-                <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden">
+              <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
+                <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden" aria-label={`Read article: ${post.title}`}>
                   <img 
                     src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                     alt={post.title} 
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </Link>
-                <CardHeader className="p-6 pb-0 flex-grow">
+                <CardHeader className="p-6 pb-0 flex-grow" as="header">
                   <div className="flex flex-wrap gap-2 mb-4">
                     <Badge variant="secondary">{post.category}</Badge>
                     {post.tags?.slice(0, 2).map(tag => (
@@ -122,14 +123,14 @@ export default function Blog() {
                     )}
                   </div>
                   <Link to={`/blog/${post.slug}`}>
-                    <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
+                    <h2 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
                       <Highlighter
                         searchWords={searchQuery.trim().split(/\s+/)}
                         autoEscape={true}
                         textToHighlight={post.title || ''}
                         highlightClassName="bg-primary/20 text-primary font-bold px-1 rounded-sm"
                       />
-                    </h3>
+                    </h2>
                   </Link>
                   <p className="text-muted-foreground text-sm line-clamp-3">
                     <Highlighter

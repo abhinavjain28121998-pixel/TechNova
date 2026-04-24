@@ -16,7 +16,7 @@ export default function Contact() {
       <SEO 
         title="Contact Us"
         description="Get in touch with the TechNova team."
-        url="https://tech-nova-iota.vercel.app/contact"
+        keywords={['contact', 'support', 'feedback', 'TechNova']}
         schema={[breadcrumbSchema, contactSchema]}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-2xl">

@@ -15,6 +15,7 @@ export default function About() {
         title="About Us"
         description="Learn more about TechNova and our mission to decode the future of technology."
         url="https://tech-nova-iota.vercel.app/about"
+        keywords={['about us', 'TechNova', 'technology blog', 'tech news', 'tech writers']}
         schema={[breadcrumbSchema, aboutSchema]}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">

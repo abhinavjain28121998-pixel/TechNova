@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
       <SEO 
         title="Privacy Policy"
         description="Privacy Policy for TechNova Blog."
-        url="https://tech-nova-iota.vercel.app/privacy"
+        keywords={['privacy policy', 'TechNova privacy', 'data protection']}
         schema={[breadcrumbSchema]}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">

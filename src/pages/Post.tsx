@@ -183,16 +183,19 @@ export default function Post() {
   const schemas: any[] = [articleSchema, breadcrumbSchema];
   if (faqSchema) schemas.push(faqSchema);
 
+  const rawDesc = post.metaDescription || post.excerpt || '';
+  const seoDescription = rawDesc.length > 150 ? `${rawDesc.slice(0, 147).trim()}...` : rawDesc;
+
   return (
     <>
       <SEO 
         title={post.title}
-        description={post.metaDescription || post.excerpt}
+        description={seoDescription}
         type="article"
-        url={`https://tech-nova-iota.vercel.app/blog/${post.slug}`}
         image={post.coverImage}
         author={post.author.name}
         publishedTime={post.date}
+        keywords={post.tags}
         schema={schemas}
       />
 
@@ -405,25 +408,28 @@ export default function Post() {
                 <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
                 <div className="grid sm:grid-cols-2 gap-8">
                   {relatedPosts.map(related => (
-                    <Link key={related.id} to={`/blog/${related.slug}`} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
-                      <div className="aspect-video overflow-hidden">
-                        <img 
-                          src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
-                          alt={related.title} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <Badge variant="secondary" className="mb-3">{related.category}</Badge>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
-                          {related.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm line-clamp-2">
-                          {related.excerpt}
-                        </p>
-                      </div>
-                    </Link>
+                    <article key={related.id} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
+                      <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>
+                        <div className="aspect-video overflow-hidden">
+                          <img 
+                            src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
+                            alt={related.title} 
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <Badge variant="secondary" className="mb-3">{related.category}</Badge>
+                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                            {related.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm line-clamp-2">
+                            {related.excerpt}
+                          </p>
+                        </div>
+                      </Link>
+                    </article>
                   ))}
                 </div>
               </div>

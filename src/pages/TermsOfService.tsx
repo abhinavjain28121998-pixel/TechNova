@@ -6,7 +6,7 @@ export default function TermsOfService() {
       <SEO 
         title="Terms of Service | TechNova"
         description="Read the Terms of Service and user agreements for the TechNova blog."
-        url="https://tech-nova-iota.vercel.app/terms"
+        keywords={['terms of service', 'TechNova terms', 'user agreement']}
       />
       <div className="bg-background min-h-screen py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">

@@ -46,9 +46,9 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="Tech & AI Blog | Insights & Tutorials - TechNova"
-        description="Discover the latest trends in AI, Web Development, Cybersecurity, and more. Expert insights for the modern technologist."
-        url="https://tech-nova-iota.vercel.app/"
+        title="TechNova | Decoding the Future of AI & Technology"
+        description="TechNova is your premier destination for expert insights, cutting-edge tutorials, and the latest news in Artificial Intelligence, Web Development, and Cybersecurity."
+        keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
         schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
       />
 
@@ -291,8 +291,8 @@ export default function Home() {
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     className="h-full"
                   >
-                    <Card className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
-                      <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
+                    <Card as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
+                      <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden" aria-label={`Read article: ${post.title}`}>
                         <img 
                           src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                           alt={post.title} 
@@ -301,7 +301,7 @@ export default function Home() {
                           loading="lazy"
                         />
                       </Link>
-                      <CardHeader className="p-5 pb-0 flex-grow">
+                      <CardHeader className="p-5 pb-0 flex-grow" as="header">
                         <div className="flex flex-wrap gap-2 mb-3">
                           <Badge variant="secondary">{post.category}</Badge>
                           {post.tags?.slice(0, 1).map(tag => (

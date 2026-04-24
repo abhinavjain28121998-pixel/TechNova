@@ -34,9 +34,9 @@ export default function Categories() {
   return (
     <>
       <SEO 
-        title={displayCategory ? `${displayCategory} Articles` : "Categories"}
-        description="Browse TechNova articles by category."
-        url={`https://tech-nova-iota.vercel.app/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
+        title={displayCategory ? `${displayCategory} Articles | TechNova` : "All Categories | TechNova"}
+        description={displayCategory ? `Browse TechNova articles related to ${displayCategory}.` : "Browse TechNova articles by category."}
+        keywords={['tech categories', 'tech topics', displayCategory || '']}
         schema={[breadcrumbSchema]}
       />
 
@@ -75,16 +75,17 @@ export default function Categories() {
 
         <div className="grid sm:grid-cols-2 gap-8">
           {filteredPosts.map(post => (
-            <Card key={post.id} className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
-              <Link to={`/blog/${post.slug}`} className="block aspect-[16/9] overflow-hidden">
+            <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
+              <Link to={`/blog/${post.slug}`} className="block aspect-[16/9] overflow-hidden" aria-label={`Read article: ${post.title}`}>
                 <img 
                   src={post.coverImage} 
                   alt={post.title} 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </Link>
-              <CardHeader className="p-6 pb-0 flex-grow">
+              <CardHeader className="p-6 pb-0 flex-grow" as="header">
                 <Badge variant="secondary" className="w-fit mb-4">{post.category}</Badge>
                 <Link to={`/blog/${post.slug}`}>
                   <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
