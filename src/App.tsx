@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Admin from './pages/Admin';
+import CaseStudies from './pages/CaseStudies';
 
 import NotFound from './pages/NotFound';
 
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<Post />} />
             <Route path="categories" element={<Categories />} />
+            <Route path="case-studies" element={<CaseStudies />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="privacy" element={<PrivacyPolicy />} />

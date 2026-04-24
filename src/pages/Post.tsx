@@ -278,42 +278,13 @@ export default function Post() {
         </div>
 
         {/* Post Content & TOC Area */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[85rem] pb-20 flex flex-col md:flex-row gap-8 lg:gap-12 xl:gap-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pb-20 flex flex-col lg:flex-row gap-12 lg:gap-16">
           
-          {/* Table of Contents - Sidebar on Desktop / Top block on Mobile */}
-          <aside className="w-full md:w-56 lg:w-64 shrink-0">
-            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm">
-              <h3 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
-                Table of Contents
-              </h3>
-              <nav className="flex flex-col gap-3 text-sm">
-                {toc.length > 0 ? (
-                  toc.map(heading => (
-                    <a 
-                      key={heading.id} 
-                      href={`#${heading.id}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className={`transition-colors block font-medium hover:text-primary ${
-                        activeId === heading.id ? 'text-primary font-bold' : 'text-foreground'
-                      }`}
-                    >
-                      {heading.text}
-                    </a>
-                  ))
-                ) : (
-                  <span className="text-muted-foreground italic">No quick links available.</span>
-                )}
-              </nav>
-            </div>
-          </aside>
-
           {/* Main Article Content */}
-          <div className="flex-1 max-w-3xl min-w-0 mx-auto lg:mx-0 w-full">
+          <div className="flex-1 max-w-3xl min-w-0 mx-auto lg:mx-0 w-full lg:order-1 order-2">
             {/* Readability Controls */}
             <div className="mb-8 flex flex-col items-end">
+
             <Button 
               variant="ghost" 
               size="sm" 
@@ -438,7 +409,38 @@ export default function Post() {
 
           <PostComments issueTerm={post.slug} />
 
-        </div>
+          </div>
+
+          {/* Table of Contents - Sidebar on Desktop / Top block on Mobile */}
+          <aside className="w-full lg:w-72 shrink-0 lg:order-2 order-1">
+            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm">
+              <h3 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
+                Table of Contents
+              </h3>
+              <nav className="flex flex-col gap-3 text-sm">
+                {toc.length > 0 ? (
+                  toc.map(heading => (
+                    <a 
+                      key={heading.id} 
+                      href={`#${heading.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className={`transition-colors block font-medium hover:text-primary ${
+                        activeId === heading.id ? 'text-primary font-bold' : 'text-foreground'
+                      }`}
+                    >
+                      {heading.text}
+                    </a>
+                  ))
+                ) : (
+                  <span className="text-muted-foreground italic">No quick links available.</span>
+                )}
+              </nav>
+            </div>
+          </aside>
+
         </div>
       </article>
     </>

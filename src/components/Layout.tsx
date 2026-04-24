@@ -11,6 +11,7 @@ export function Layout() {
     { name: 'Home', href: '/' },
     { name: 'Blog', href: '/blog' },
     { name: 'Categories', href: '/categories' },
+    { name: 'Case Studies', href: '/case-studies' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -128,9 +129,9 @@ export function Layout() {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
                 <li><Link to="/blog" className="hover:text-primary transition-colors">All Posts</Link></li>
+                <li><Link to="/case-studies" className="hover:text-primary transition-colors">Case Studies</Link></li>
                 <li><Link to="/categories" className="hover:text-primary transition-colors">Categories</Link></li>
                 <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link to="/admin" className="hover:text-primary transition-colors">Admin Dashboard</Link></li>
               </ul>
             </div>
 
