@@ -14,18 +14,41 @@ export function usePosts() {
       try {
         const q = query(collection(db, path), orderBy('date', 'desc'));
         const snapshot = await getDocs(q);
-        const fbPosts = snapshot.docs.map(doc => ({ 
-          id: doc.id, 
-          ...doc.data() 
-        })) as Post[];
+        const fbPostsMap = new Map();
         
-        // If Firestore is empty, we don't return anything (admin should sync first)
-        // Or we could merge, but for a clean migration, we just use Firestore.
-        setPosts(fbPosts);
+        snapshot.docs.forEach(doc => {
+          fbPostsMap.set(doc.id, { id: doc.id, ...doc.data() });
+        });
+
+        // Combine static posts with Firestore posts. 
+        // Firestore posts take precedence if they share the same 'id' or 'slug'
+        import('../data/posts').then(({ POSTS: staticPosts }) => {
+          const combined = [...staticPosts];
+          const combinedMap = new Map();
+          
+          // First add static
+          combined.forEach(p => {
+             // We use slug or id as key
+             combinedMap.set(p.slug || p.id, p);
+          });
+          
+          // Then override/add with firebase
+          fbPostsMap.forEach((p, key) => {
+             combinedMap.set(p.slug || p.id || key, p);
+          });
+          
+          const finalPosts = Array.from(combinedMap.values());
+          // Sort by date desc
+          finalPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+          
+          setPosts(finalPosts);
+        });
       } catch (error) {
-        // We handle but don't block, so UI can show empty state or fallback
-        console.warn("Firestore fetch error, possibly empty collection:", error);
-        setPosts([]);
+        // Fallback to static posts if fetch fails
+        import('../data/posts').then(({ POSTS: staticPosts }) => {
+          setPosts(staticPosts);
+        });
+        console.warn("Firestore fetch error, fallback to static collection:", error);
       } finally {
         setLoading(false);
       }

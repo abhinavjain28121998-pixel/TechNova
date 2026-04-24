@@ -23,10 +23,19 @@ export function usePost(slug: string | undefined) {
         if (docSnap.exists()) {
           setPost({ id: docSnap.id, ...docSnap.data() } as Post);
         } else {
-          setPost(null);
+          // Check static data
+          import('../data/posts').then(({ POSTS: staticPosts }) => {
+            const staticMatch = staticPosts.find(p => p.slug === slug || p.id === slug);
+            setPost(staticMatch || null);
+          });
         }
       } catch (error) {
-        handleFirestoreError(error, OperationType.GET, path);
+        // Fallback to static on error
+        import('../data/posts').then(({ POSTS: staticPosts }) => {
+          const staticMatch = staticPosts.find(p => p.slug === slug || p.id === slug);
+          setPost(staticMatch || null);
+        });
+        console.warn('Fallback to static source for single post.', error);
       } finally {
         setLoading(false);
       }

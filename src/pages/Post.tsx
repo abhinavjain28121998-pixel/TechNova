@@ -145,6 +145,7 @@ export default function Post() {
 
   const relatedPosts = posts
     .filter(p => p.category === post.category && p.id !== post.id)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 2);
 
   const handleShareX = () => {
@@ -397,43 +398,43 @@ export default function Post() {
             )}
           </div>
 
+          {/* Related Posts */}
+          {relatedPosts.length > 0 && (
+            <section className="bg-background py-16 border-t border-border mt-12 mb-8">
+              <div className="container mx-auto px-0">
+                <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
+                <div className="grid sm:grid-cols-2 gap-8">
+                  {relatedPosts.map(related => (
+                    <Link key={related.id} to={`/blog/${related.slug}`} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
+                      <div className="aspect-video overflow-hidden">
+                        <img 
+                          src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
+                          alt={related.title} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <Badge variant="secondary" className="mb-3">{related.category}</Badge>
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                          {related.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm line-clamp-2">
+                          {related.excerpt}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
           <PostComments issueTerm={post.slug} />
 
         </div>
         </div>
       </article>
-
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="bg-background py-16 border-t border-border">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-            <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
-            <div className="grid sm:grid-cols-2 gap-8">
-              {relatedPosts.map(related => (
-                <Link key={related.id} to={`/blog/${related.slug}`} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
-                      alt={related.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <Badge variant="secondary" className="mb-3">{related.category}</Badge>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
-                      {related.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-2">
-                      {related.excerpt}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </>
   );
 }

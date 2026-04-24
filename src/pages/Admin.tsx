@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth, db, googleProvider } from '../lib/firebase';
 import { 
@@ -42,7 +42,16 @@ import {
   CheckCircle2,
   Clock,
   CircleDashed,
-  User as UserIcon
+  User as UserIcon,
+  MessageSquare,
+  Paintbrush,
+  Plug,
+  Wrench,
+  Search,
+  Bell,
+  Home,
+  Image as ImageIcon,
+  Files
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import ReactMarkdown from 'react-markdown';
@@ -61,6 +70,51 @@ export default function Admin() {
   const [editingPost, setEditingPost] = useState<Partial<PostRecord> | null>(null);
   const [activeTab, setActiveTab] = useState('list');
   const [editTab, setEditTab] = useState('content');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image is too large. Please select an image under 5MB.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 800;
+        const MAX_HEIGHT = 600;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0, width, height);
+        
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+        setEditingPost(prev => prev ? { ...prev, coverImage: dataUrl } : null);
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -166,8 +220,11 @@ export default function Admin() {
         }
       };
 
+      const cleanPostData = JSON.parse(JSON.stringify(postData));
+      delete cleanPostData.id;
+
       if (editingPost.id) {
-        await updateDoc(doc(db, 'posts', editingPost.id), postData);
+        await updateDoc(doc(db, 'posts', editingPost.id), cleanPostData);
       } else {
         const stopWords = ['a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'about', 'like', 'through', 'over', 'before', 'between', 'after', 'since', 'without', 'under', 'within', 'along', 'following', 'across', 'behind', 'beyond', 'plus', 'except', 'but', 'up', 'out', 'around', 'down', 'off', 'above', 'near'];
         const titleWords = (editingPost.title || '').toLowerCase().split(/\s+/);
@@ -176,7 +233,7 @@ export default function Admin() {
         const generatedSlug = filteredTitle.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `post-${Date.now()}`;
         const slug = editingPost.slug || generatedSlug;
         
-        await setDoc(doc(db, 'posts', slug), { ...postData, slug });
+        await setDoc(doc(db, 'posts', slug), { ...cleanPostData, slug });
       }
 
       setEditingPost(null);
@@ -225,33 +282,24 @@ export default function Admin() {
 
   if (!user || user.email !== ADMIN_EMAIL) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen space-y-8 bg-[#0a0a0a] p-4 font-mono">
-        <SEO title="Admin Login" description="Restricted Access Area" />
-        
-        <div className="w-full max-w-md border border-white/10 bg-white/5 p-8 rounded-lg shadow-2xl backdrop-blur-sm">
-          <div className="flex flex-col items-center mb-8">
-            <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center mb-4">
-              <span className="text-primary-foreground font-bold text-2xl">T</span>
-            </div>
-            <h1 className="text-xl font-bold text-white tracking-widest uppercase">TechNova | Mission Control</h1>
-            <p className="text-xs text-white/40 mt-2">SECURE ENDPOINT v2.0</p>
+      <div className="flex flex-col items-center justify-center min-h-screen space-y-8 bg-[#f0f0f1] p-4 font-sans text-[#3c434a]">
+        <SEO title="Log In ‹ TechNova — WordPress" description="Log In" />
+        <div className="w-full max-w-sm">
+          <div className="flex justify-center mb-6">
+            <div className="h-20 w-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl font-serif italic shadow-sm hover:opacity-90 transition-opacity">W</div>
           </div>
-
-          <div className="space-y-6">
-            <div className="p-4 border border-yellow-500/20 bg-yellow-500/5 text-yellow-500 text-xs rounded leading-relaxed">
-              [WARNING] Restricted area. Unauthorized access attempts are monitored. 
-              Please authenticate with the primary administrator account.
-            </div>
-            
-            <Button onClick={login} className="w-full py-6 font-bold tracking-widest uppercase text-xs" variant="default">
-              Initialize Google Auth
+          <div className="bg-white p-6 border border-[#c3c4c7] shadow-sm">
+            {user && user.email !== ADMIN_EMAIL && (
+              <div className="mb-4 p-3 border-l-4 border-[#d63638] bg-[#fcf0f1] text-[#3c434a] text-sm">
+                <strong>Error:</strong> Unauthorized access. Please log in with the admin account.
+              </div>
+            )}
+            <Button onClick={login} className="w-full py-5 text-base border-none hover:bg-stone-900" variant="default" autoFocus>
+              Log In
             </Button>
-
-            <div className="flex items-center justify-center gap-2 pt-4 opacity-30">
-              <div className="h-[1px] w-8 bg-white/20"></div>
-              <span className="text-[10px] text-white">SYSTEM READY</span>
-              <div className="h-[1px] w-8 bg-white/20"></div>
-            </div>
+          </div>
+          <div className="text-center mt-6">
+            <a href="/" className="text-[#2271b1] hover:text-[#0a4b78] hover:underline text-sm">&larr; Go to TechNova</a>
           </div>
         </div>
       </div>
@@ -259,375 +307,506 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] text-slate-300 font-sans selection:bg-primary/30">
-      <SEO title="Mission Control" description="TechNova Backend" />
-      
+    <div className="min-h-screen bg-[#f0f0f1] text-[#3c434a] font-sans flex flex-col md:flex-row pb-20 md:pb-0">
+      <SEO title="Dashboard ‹ TechNova — WordPress" description="Admin Dashboard" />
+
       {/* Sidebar Navigation */}
-      <div className="fixed left-0 top-0 bottom-0 w-16 md:w-64 border-r border-white/5 bg-black/40 backdrop-blur-xl hidden sm:flex flex-col">
-        <div className="p-4 border-b border-white/5 h-16 flex items-center gap-3">
-          <div className="h-8 w-8 rounded bg-primary flex items-center justify-center flex-shrink-0">
-            <span className="text-primary-foreground font-bold">T</span>
-          </div>
-          <span className="font-bold text-white hidden md:block">Mission Control</span>
+      <div className="w-full md:w-[160px] lg:w-[200px] xl:w-[260px] bg-[#1d2327] text-white flex-shrink-0 flex flex-col md:min-h-screen md:fixed md:top-0 md:left-0 z-20 overflow-y-auto">
+        <div className="hidden md:flex p-4 items-center gap-2 border-b border-white/10 shrink-0">
+          <div className="h-8 w-8 bg-primary rounded flex items-center justify-center text-white font-serif italic text-xl">W</div>
+          <span className="font-semibold select-none">TechNova</span>
         </div>
         
-        <nav className="flex-grow py-6 px-3 space-y-1">
-          <button 
-            onClick={() => setActiveTab('list')}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all ${activeTab === 'list' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'}`}
-          >
-            <LayoutDashboard className="w-5 h-5" />
-            <span className="font-medium text-sm hidden md:block">All Content</span>
-          </button>
-          <button 
-            onClick={() => { setEditingPost({}); setActiveTab('edit'); setEditTab('content'); }}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all ${activeTab === 'edit' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'}`}
-          >
-            <Plus className="w-5 h-5" />
-            <span className="font-medium text-sm hidden md:block">New Entry</span>
-          </button>
+        <nav className="flex-1 py-3 overflow-y-auto w-full flex md:block overflow-x-auto md:overflow-visible">
+          <div className="px-2 mb-2 hidden md:block">
+            <button className="w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] active:bg-[#2271b1] hover:bg-white/5 disabled:opacity-50 text-sm mb-1 transition-colors">
+              <Home className="w-4 h-4" /> Dashboard
+            </button>
+          </div>
+          <div className="px-2 space-y-1 w-full flex md:block gap-1 md:gap-0">
+            <button 
+              onClick={() => setActiveTab('list')}
+              className={`flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 transition-colors text-sm break-keep whitespace-nowrap md:whitespace-normal
+                ${activeTab === 'list' 
+                  ? 'bg-primary text-white font-medium' 
+                  : 'text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5'
+                }`}
+            >
+              <FileText className="w-4 h-4" /> Posts
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <ImageIcon className="w-4 h-4" /> Media
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <Files className="w-4 h-4" /> Pages
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <MessageSquare className="w-4 h-4" /> Comments
+            </button>
+            <div className="my-2 border-t border-white/10 hidden md:block"></div>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <Paintbrush className="w-4 h-4" /> Appearance
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <Plug className="w-4 h-4" /> Plugins
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <UserIcon className="w-4 h-4" /> Users
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <Wrench className="w-4 h-4" /> Tools
+            </button>
+            <button 
+              className="flex-shrink-0 md:w-full flex items-center gap-3 px-3 py-2 text-[#f0f0f1] hover:text-[#72aee6] hover:bg-white/5 disabled:opacity-50 text-sm whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              <Settings className="w-4 h-4" /> Settings
+            </button>
+          </div>
         </nav>
-
-        <div className="p-4 border-t border-white/5">
-          <button onClick={logout} className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-slate-500 hover:text-red-400 hover:bg-red-500/5 transition-all">
-            <LogOut className="w-5 h-5" />
-            <span className="font-medium text-sm hidden md:block">Sign Out</span>
-          </button>
-        </div>
       </div>
 
-      {/* Main Panel */}
-      <div className="sm:ml-16 md:ml-64 p-4 md:p-8">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Header Area */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-primary mb-2 font-mono">Terminal / {activeTab === 'list' ? 'Dashboard' : 'Editor'}</p>
-              <h1 className="text-3xl font-extrabold text-white tracking-tight">{activeTab === 'list' ? 'Content Management' : (editingPost?.id ? 'Edit Entry' : 'Create New Entry')}</h1>
-            </div>
-            
-            {activeTab === 'list' && (
-              <Button variant="outline" size="sm" onClick={syncStaticPosts} className="font-mono text-[10px] uppercase border-white/10 bg-white/5 hover:bg-white/10 h-9">
-                <RefreshCcw className="w-3 h-3 mr-2" /> RE-SYNC SEED DATA
-              </Button>
-            )}
+      {/* Main Panel Content */}
+      <div className="flex-1 flex flex-col min-w-0 md:ml-[160px] lg:ml-[200px] xl:ml-[260px]">
+        {/* Top Header Bar */}
+        <header className="h-14 bg-white md:bg-[#1d2327] md:text-white border-b border-[#c3c4c7] md:border-transparent flex items-center justify-between px-4 sticky top-0 z-10 shrink-0">
+          <div className="flex items-center gap-4">
+            <span className="hidden md:flex items-center gap-2 font-medium hover:text-[#72aee6] cursor-pointer">
+              <Home className="w-4 h-4" /> TechNova
+            </span>
+            <span className="flex md:hidden items-center gap-2 font-medium text-[#1d2327]">
+              <div className="h-8 w-8 bg-primary rounded flex items-center justify-center text-white font-serif italic text-xl">W</div>
+            </span>
+            <Button 
+              size="sm" 
+              variant="outline" 
+              className="h-8 md:border-white/20 md:text-white md:bg-white/5 md:hover:bg-white/10 border-[#2271b1] text-[#2271b1] hover:bg-[#135e96] hover:text-white"
+              onClick={() => { setEditingPost({}); setActiveTab('edit'); setEditTab('content'); }}
+            >
+              <Plus className="w-4 h-4 mr-1 md:text-white" /> New Post
+            </Button>
           </div>
+          <div className="flex items-center gap-3 md:gap-4 text-[#3c434a] md:text-gray-300">
+            <Search className="w-5 h-5 cursor-pointer hover:text-primary hidden sm:block md:hover:text-[#72aee6]" />
+            <Bell className="w-5 h-5 cursor-pointer hover:text-primary hidden sm:block md:hover:text-[#72aee6]" />
+            <div className="flex items-center gap-2 cursor-pointer md:hover:bg-white/5 hover:bg-gray-100 p-1 px-2 rounded group">
+              <span className="text-sm hidden sm:block group-hover:text-primary md:group-hover:text-[#72aee6]">Howdy, {user.displayName || 'Admin'}</span>
+              <img src={user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=admin`} alt="User" className="w-8 h-8 rounded-full border md:border-white/20 border-gray-200" referrerPolicy="no-referrer" />
+            </div>
+            <Button variant="ghost" size="icon" onClick={logout} title="Sign Out" className="md:hover:bg-white/5 md:text-white text-slate-500">
+              <LogOut className="w-5 h-5" />
+            </Button>
+          </div>
+        </header>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        {/* Dynamic Content */}
+        <main className="p-4 md:p-6 lg:p-8 flex-1 overflow-auto w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1200px] mx-auto">
             <TabsContent value="list" className="mt-0">
-              <div className="grid gap-4">
-                {posts.length === 0 ? (
-                  <div className="border border-dashed border-white/10 rounded-xl p-20 flex flex-col items-center text-center">
-                    <FileText className="w-12 h-12 text-slate-700 mb-4" />
-                    <h3 className="text-lg font-bold text-white mb-2">No content records found</h3>
-                    <p className="text-sm text-slate-500 max-w-xs mb-6">Your Firestore database is currently empty. Start by syncing static data or creating a new post.</p>
-                    <div className="flex gap-4">
-                      <Button onClick={() => { setEditingPost({}); setActiveTab('edit'); setEditTab('content'); }}>Create First Entry</Button>
-                      <Button variant="outline" onClick={syncStaticPosts}>Sync Seed Data</Button>
-                    </div>
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <h1 className="text-2xl font-normal text-[#1d2327]">Posts</h1>
+                  <div className="flex gap-2">
+                    <Input placeholder="Search posts..." className="h-9 w-full sm:w-64 border-[#8c8f94]" />
+                    <Button variant="outline" className="h-9 border-[#8c8f94] whitespace-nowrap">Search Posts</Button>
                   </div>
-                ) : (
-                  <div className="border border-white/5 bg-black/20 rounded-xl overflow-hidden shadow-sm">
-                    {/* List Headers */}
-                    <div className="grid grid-cols-[1fr_120px_120px_100px] gap-4 px-6 py-3 bg-white/5 border-b border-white/5 text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                      <span>Article Title</span>
-                      <span>Category</span>
-                      <span>Status</span>
-                      <span className="text-right">Actions</span>
-                    </div>
-                    
-                    {/* Rows */}
-                    {posts.map(post => (
-                      <div key={post.id} className="grid grid-cols-[1fr_120px_120px_100px] gap-4 px-6 py-4 border-b border-white/5 items-center hover:bg-white/[0.02] transition-colors group">
-                        <div className="flex flex-col gap-1">
-                          <span className="font-semibold text-white group-hover:text-primary transition-colors truncate">{post.title || 'Untitled'}</span>
-                          <div className="flex items-center gap-2 text-[10px] font-mono text-slate-600 truncate">
-                            <span>/{post.slug || 'no-slug'}</span>
-                            <span>•</span>
-                            <span className="flex items-center gap-1"><UserIcon className="w-2.5 h-2.5" /> {post.author?.name || 'TechNova Team'}</span>
-                            <span>•</span>
-                            <span>{post.date ? new Date(post.date).toLocaleDateString() : 'Unpublished'}</span>
-                            {post.featured && <span className="px-1 py-[1px] bg-primary/20 text-primary border border-primary/20 rounded">Featured</span>}
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <Badge variant="outline" className="border-white/10 bg-white/5 text-[10px] font-mono px-2 py-0 h-5">
-                            {post.category}
-                          </Badge>
-                        </div>
-                        
-                        <div className="flex items-center gap-2">
-                          {post.status === 'published' ? (
-                            <div className="flex items-center gap-1.5 text-emerald-500">
-                              <CheckCircle2 className="w-3 h-3" />
-                              <span className="text-[10px] font-mono uppercase">Live</span>
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-1.5 text-amber-500">
-                              <CircleDashed className="w-3 h-3" />
-                              <span className="text-[10px] font-mono uppercase">Draft</span>
-                            </div>
-                          )}
-                        </div>
-                        
-                        <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-primary/20 hover:text-primary" onClick={() => startEdit(post)}>
-                            <Edit2 className="w-3.5 h-3.5" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-red-500/20 hover:text-red-500" onClick={() => deletePostRecord(post.id)}>
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+                </div>
+
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex gap-3 text-[#2271b1]">
+                    <span className="font-semibold text-black cursor-pointer">All <span className="text-gray-500 font-normal">({posts.length})</span></span>
+                    <span className="cursor-pointer hover:text-[#0a4b78]">Published <span className="text-gray-500">({posts.filter(p => p.status === 'published').length})</span></span>
+                    <span className="cursor-pointer hover:text-[#0a4b78]">Draft <span className="text-gray-500">({posts.filter(p => !p.status || p.status === 'draft').length})</span></span>
                   </div>
-                )}
+                  {posts.length === 0 && (
+                    <Button variant="outline" size="sm" onClick={syncStaticPosts} className="h-8 border-[#2271b1] text-[#2271b1]">
+                      <RefreshCcw className="w-3 h-3 mr-2" /> Sync Seed Data
+                    </Button>
+                  )}
+                </div>
+
+                <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                  <div className="flex items-center gap-2 p-2 border-b border-[#c3c4c7] bg-[#f9f9f9]">
+                    <select className="text-sm border border-[#8c8f94] rounded-sm px-2 py-1 h-8 bg-transparent">
+                      <option>Bulk actions</option>
+                      <option>Edit</option>
+                      <option>Move to Trash</option>
+                    </select>
+                    <Button variant="outline" size="sm" className="h-8 border-[#8c8f94]">Apply</Button>
+                    <select className="text-sm border border-[#8c8f94] rounded-sm px-2 py-1 h-8 ml-auto hidden sm:block bg-transparent">
+                      <option>All dates</option>
+                    </select>
+                    <select className="text-sm border border-[#8c8f94] rounded-sm px-2 py-1 h-8 hidden sm:block bg-transparent">
+                      <option>All Categories</option>
+                    </select>
+                    <Button variant="outline" size="sm" className="h-8 border-[#8c8f94] hidden sm:flex">Filter</Button>
+                  </div>
+                  
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm whitespace-nowrap">
+                      <thead>
+                        <tr className="border-b border-[#c3c4c7]">
+                          <th className="p-2 w-8 text-center"><input type="checkbox" className="rounded-sm border-[#8c8f94] cursor-pointer" /></th>
+                          <th className="p-2 font-medium text-[#2c3338] hover:text-[#2271b1] cursor-pointer">Title</th>
+                          <th className="p-2 font-medium text-[#2c3338] hover:text-[#2271b1] cursor-pointer">Author</th>
+                          <th className="p-2 font-medium text-[#2c3338] hover:text-[#2271b1] cursor-pointer">Categories</th>
+                          <th className="p-2 font-medium text-[#2c3338] hover:text-[#2271b1] cursor-pointer">Tags</th>
+                          <th className="p-2 font-medium text-[#2c3338] hover:text-[#2271b1] cursor-pointer">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#c3c4c7]">
+                        {posts.map((post, idx) => (
+                          <tr key={post.id} className={idx % 2 === 0 ? 'bg-white group' : 'bg-[#f9f9f9] group'}>
+                            <td className="p-2 text-center"><input type="checkbox" className="rounded-sm border-[#8c8f94] cursor-pointer" /></td>
+                            <td className="p-2">
+                              <div className="font-medium text-[#2271b1] hover:underline cursor-pointer" onClick={() => startEdit(post)}>
+                                {post.title || '(no title)'} {post.status !== 'published' && <span className="font-bold text-black">— Draft</span>}
+                              </div>
+                              <div className="text-[11px] text-[#2271b1] mt-1 space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span className="cursor-pointer hover:text-black" onClick={() => startEdit(post)}>Edit</span>
+                                <span className="text-[#a7aaad]">|</span>
+                                <span className="text-[#d63638] cursor-pointer hover:text-black" onClick={() => deletePostRecord(post.id)}>Trash</span>
+                                <span className="text-[#a7aaad]">|</span>
+                                <span className="cursor-pointer hover:text-black" onClick={() => window.open(`/blog/${post.slug}`, '_blank')}>View</span>
+                              </div>
+                            </td>
+                            <td className="p-2 text-[#2271b1] hover:underline cursor-pointer">{post.author?.name || 'Admin'}</td>
+                            <td className="p-2 text-[#2271b1] hover:underline cursor-pointer">{post.category || 'Uncategorized'}</td>
+                            <td className="p-2 text-[#2c3338] truncate max-w-[150px]">{post.tags?.join(', ') || '—'}</td>
+                            <td className="p-2 text-[#2c3338]">
+                              {post.status === 'published' ? 'Published' : 'Last Modified'}
+                              <br/>
+                              <span className="text-[#8c8f94]">{post.date ? new Date(post.date).toLocaleDateString() : 'N/A'}</span>
+                            </td>
+                          </tr>
+                        ))}
+                        {posts.length === 0 && (
+                          <tr>
+                            <td colSpan={6} className="p-4 text-center text-gray-500">No posts found.</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="flex items-center gap-2 p-2 border-t border-[#c3c4c7] bg-[#f9f9f9]">
+                    <select className="text-sm border border-[#8c8f94] rounded-sm px-2 py-1 h-8 bg-transparent">
+                      <option>Bulk actions</option>
+                    </select>
+                    <Button variant="outline" size="sm" className="h-8 border-[#8c8f94]">Apply</Button>
+                  </div>
+                </div>
               </div>
             </TabsContent>
 
-            <TabsContent value="edit" className="mt-0 space-y-6">
-              <div className="flex items-center justify-between mb-8 sticky top-20 bg-[#0d0d0d]/90 backdrop-blur pb-4 z-10 border-b border-white/5">
-                <Button variant="ghost" size="sm" onClick={() => setActiveTab('list')} className="text-slate-500 hover:text-white">
-                  <ArrowLeft className="w-4 h-4 mr-2" /> Back to Dashboard
-                </Button>
-                
-                <div className="flex gap-3">
-                   <div className="flex border border-white/10 rounded-md p-0.5 bg-black/40">
-                    <button 
-                      onClick={() => setEditingPost({...editingPost, status: 'draft'})}
-                      className={`px-3 py-1 text-[10px] uppercase font-mono rounded transition-all ${editingPost?.status === 'draft' || !editingPost?.status ? 'bg-amber-500/20 text-amber-500' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                      Draft
-                    </button>
-                    <button 
-                      onClick={() => setEditingPost({...editingPost, status: 'published'})}
-                      className={`px-3 py-1 text-[10px] uppercase font-mono rounded transition-all ${editingPost?.status === 'published' ? 'bg-emerald-500/20 text-emerald-500' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                      Published
-                    </button>
-                  </div>
-                  <Button onClick={() => savePost()} className="font-bold uppercase text-[10px] h-9">
-                    <Save className="w-4 h-4 mr-2" /> Commit Changes
-                  </Button>
+            <TabsContent value="edit" className="mt-0 space-y-6 pb-24">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <h1 className="text-2xl font-normal text-[#1d2327]">
+                    {editingPost?.id ? 'Edit Post' : 'Add New Post'}
+                  </h1>
+                  <button className="border border-[#2271b1] text-[#2271b1] rounded-sm px-2 py-0.5 text-sm hover:bg-[#2271b1] hover:text-white transition-colors" onClick={() => setActiveTab('list')}>
+                    Back to posts
+                  </button>
                 </div>
+                {editingPost?.id && (
+                   <a 
+                     className="border border-[#8c8f94] text-[#2c3338] bg-white rounded-sm px-3 py-1 text-sm hover:bg-[#f0f0f1] transition-colors"
+                     href={`/blog/${editingPost?.slug || ''}`} target="_blank" rel="noreferrer"
+                   >
+                     View Post
+                   </a>
+                )}
               </div>
 
-              <div className="grid lg:grid-cols-4 gap-8">
-                {/* Main Content Pane */}
-                <div className="lg:col-span-3 space-y-6">
-                  <div className="space-y-4">
-                    <Input 
-                      className="text-2xl md:text-4xl font-black bg-transparent border-none px-0 h-auto focus-visible:ring-0 placeholder:text-slate-800"
-                      placeholder="Article Title..."
-                      value={editingPost?.title || ''} 
-                      onChange={e => setEditingPost({ ...editingPost, title: e.target.value })}
-                    />
-                    
-                    <div className="flex items-center gap-4 text-xs font-mono text-slate-500">
-                      <span className="flex items-center gap-1.5"><FileText className="w-3 h-3" /> Permalink: /{editingPost?.slug || '...'}</span>
-                      <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {editingPost?.readingTime || '0 min'} read</span>
-                    </div>
+              <div className="flex flex-col xl:flex-row gap-6 items-start">
+                {/* Main Content Column */}
+                <div className="flex-1 w-full space-y-4">
+                  <Input 
+                    placeholder="Add title"
+                    className="w-full text-xl rounded-sm border-[#8c8f94] shadow-sm py-6 h-auto focus-visible:ring-1 focus-visible:ring-[#2271b1] focus-visible:border-[#2271b1] bg-white"
+                    value={editingPost?.title || ''} 
+                    onChange={e => setEditingPost({ ...editingPost, title: e.target.value })}
+                  />
+
+                  <div className="flex items-center gap-2 text-sm max-w-full overflow-hidden">
+                    <span className="font-medium text-[#2c3338] shrink-0">Permalink:</span>
+                    <a className="text-[#2271b1] hover:underline truncate" href={`/blog/${editingPost?.slug || 'new-post'}`} target="_blank" rel="noreferrer">
+                      https://technova.com/blog/<span className="bg-[#fff9c2] px-1 rounded">{editingPost?.slug || 'new-post'}</span>
+                    </a>
                   </div>
 
-                  <Tabs value={editTab} onValueChange={setEditTab} className="bg-black/30 rounded-xl border border-white/5 overflow-hidden">
-                    <TabsList className="bg-white/5 border-b border-white/5 w-full justify-start rounded-none h-12 px-4 gap-6">
-                      <TabsTrigger value="content" className="data-[state=active]:bg-transparent data-[state=active]:text-primary border-b-2 border-transparent data-[state=active]:border-primary rounded-none h-12 uppercase text-[10px] font-mono tracking-widest">
-                        <FileText className="w-3.5 h-3.5 mr-2" /> Editor
-                      </TabsTrigger>
-                      <TabsTrigger value="preview" className="data-[state=active]:bg-transparent data-[state=active]:text-primary border-b-2 border-transparent data-[state=active]:border-primary rounded-none h-12 uppercase text-[10px] font-mono tracking-widest">
-                        <Eye className="w-3.5 h-3.5 mr-2" /> Live Preview
-                      </TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="content" className="p-0 m-0">
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="bg-[#f0f0f1] border-b border-[#c3c4c7] p-2 flex gap-1 items-center">
+                       <Button variant="ghost" size="sm" className={`h-8 ${editTab === 'content' ? 'bg-white border border-[#c3c4c7] border-b-transparent shadow-none text-black relative top-[1px]' : 'hover:bg-[#c3c4c7] text-[#2c3338]'}`} onClick={() => setEditTab('content')}><Edit2 className="w-4 h-4 mr-1"/> Write</Button>
+                       <Button variant="ghost" size="sm" className={`h-8 ${editTab === 'preview' ? 'bg-white border border-[#c3c4c7] border-b-transparent shadow-none text-black relative top-[1px]' : 'hover:bg-[#c3c4c7] text-[#2c3338]'}`} onClick={() => setEditTab('preview')}><Eye className="w-4 h-4 mr-1"/> Preview</Button>
+                    </div>
+
+                    {editTab === 'content' && (
                       <textarea 
-                        className="w-full min-h-[600px] bg-transparent p-8 text-slate-300 font-mono text-sm leading-relaxed focus:outline-none resize-none"
-                        placeholder="Write something brilliant in Markdown..."
+                        className="w-full min-h-[500px] border-none p-4 font-mono text-[13px] text-[#2c3338] focus:outline-none resize-y"
+                        placeholder="Start typing or insert Markdown..."
                         value={editingPost?.content || ''} 
                         onChange={e => setEditingPost({ ...editingPost, content: e.target.value })}
                       />
-                    </TabsContent>
-                    
-                    <TabsContent value="preview" className="p-0 m-0">
-                      <div className="p-8 prose prose-invert max-w-none prose-headings:font-black prose-p:text-slate-400 prose-slate prose-img:rounded-xl">
+                    )}
+
+                    {editTab === 'preview' && (
+                      <div className="w-full min-h-[500px] p-6 max-w-none prose prose-slate">
                         {editingPost?.content ? (
                           <ReactMarkdown>{editingPost.content}</ReactMarkdown>
                         ) : (
-                          <div className="flex flex-col items-center justify-center py-20 text-slate-600 italic">
-                            No content yet. Start writing to see the preview.
-                          </div>
+                          <p className="text-gray-400 italic">Preview will appear here...</p>
                         )}
                       </div>
-                    </TabsContent>
-                  </Tabs>
+                    )}
+                  </div>
+                  
+                  {/* Excerpt panel */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm mt-4">
+                    <div className="border-b border-[#c3c4c7] px-4 py-3 bg-white font-medium text-[#1d2327]">
+                      Excerpt
+                    </div>
+                    <div className="p-4">
+                      <textarea 
+                        className="w-full h-24 border border-[#8c8f94] rounded-sm p-3 text-sm focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]"
+                        placeholder="Write a custom excerpt..."
+                        value={editingPost?.excerpt || ''} 
+                        onChange={e => setEditingPost({ ...editingPost, excerpt: e.target.value })}
+                      />
+                      <p className="text-[#646970] text-xs mt-1">Excerpts are optional hand-crafted summaries of your content that can be used in your theme.</p>
+                    </div>
+                  </div>
+                  
+                  {/* Author panel */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm mt-4">
+                    <div className="border-b border-[#c3c4c7] px-4 py-3 bg-white font-medium text-[#1d2327]">
+                      Author Information
+                    </div>
+                    <div className="p-4 grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-sm font-medium mb-1 block text-[#2c3338]">Name</label>
+                        <Input 
+                          className="border-[#8c8f94] h-9" 
+                          value={editingPost?.author?.name || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { avatar: '', role: '' }), name: e.target.value } })}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium mb-1 block text-[#2c3338]">Role</label>
+                        <Input 
+                          className="border-[#8c8f94] h-9" 
+                          value={editingPost?.author?.role || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { avatar: '', name: '' }), role: e.target.value } })}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Sidebar Pane */}
-                <div className="space-y-6">
-                  <Card className="bg-white/5 border-white/10 text-white">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xs font-mono uppercase tracking-widest flex items-center gap-2">
-                        <Settings className="w-3.5 h-3.5" /> Properties
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Publish Date</label>
-                        <Input 
-                          type="datetime-local"
-                          className="bg-black/20 border-white/10 text-sm h-8 cursor-pointer"
-                          value={editingPost?.date ? new Date(editingPost.date).toISOString().slice(0, 16) : ''} 
-                          onChange={e => setEditingPost({ ...editingPost, date: new Date(e.target.value).toISOString() })}
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Category</label>
-                        <Input 
-                          placeholder="e.g. AI, Development"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.category || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, category: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Tags (Comma Separated)</label>
-                        <Input 
-                          placeholder="e.g. Protocol, Guide, Web"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.tags?.join(', ') || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) })}
-                        />
+                {/* Right Sidebar Column */}
+                <div className="w-full xl:w-[280px] shrink-0 space-y-4">
+                  {/* Publish Box */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="border-b border-[#c3c4c7] px-3 py-2 bg-white font-medium text-[#1d2327] flex items-center justify-between">
+                      Publish
+                    </div>
+                    <div className="p-3 space-y-3 border-b border-[#c3c4c7]">
+                      <div className="flex justify-between items-center text-sm">
+                        <Button variant="outline" size="sm" className="h-8 border-[#2271b1] text-[#2271b1]" onClick={() => setEditingPost({...editingPost, status: 'draft'})}>Save Draft</Button>
+                        <Button variant="outline" size="sm" className="h-8 border-[#8c8f94]" onClick={() => setEditTab('preview')}>Preview</Button>
                       </div>
                       
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Custom Slug</label>
-                        <Input 
-                          placeholder="URL identifier"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.slug || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, slug: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Reading Time</label>
-                        <Input 
-                          placeholder="e.g. 5 min read"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.readingTime || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, readingTime: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="space-y-2 pt-2">
-                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, featured: !prev?.featured }))}>
-                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Featured Post</label>
-                          <input 
-                            type="checkbox" 
-                            className="w-4 h-4 accent-primary cursor-pointer" 
-                            checked={editingPost?.featured || false} 
-                            onClick={e => e.stopPropagation()}
-                            onChange={e => setEditingPost({ ...editingPost, featured: e.target.checked })}
-                          />
+                      <div className="text-[13px] text-[#2c3338] space-y-2 pt-2">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className={`w-4 h-4 ${editingPost?.status === 'published' ? 'text-[#00a32a]' : 'text-gray-400'}`} /> 
+                          Status: <span className="font-semibold capitalize">{editingPost?.status || 'Draft'}</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, trending: !prev?.trending }))}>
-                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Trending</label>
-                          <input 
-                            type="checkbox" 
-                            className="w-4 h-4 accent-primary cursor-pointer" 
-                            checked={editingPost?.trending || false} 
-                            onClick={e => e.stopPropagation()}
-                            onChange={e => setEditingPost({ ...editingPost, trending: e.target.checked })}
-                          />
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4 text-gray-400" />
+                          Publish: <input type="datetime-local" className="bg-transparent border-none text-[13px] p-0 h-auto font-semibold text-[#2271b1] underline" value={editingPost?.date ? new Date(editingPost.date).toISOString().slice(0, 16) : ''} onChange={e => setEditingPost({ ...editingPost, date: new Date(e.target.value).toISOString() })} />
                         </div>
-                        <div className="flex items-center justify-between p-3 rounded-md border border-white/10 bg-black/20 hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setEditingPost(prev => ({ ...prev, isExpertVerified: !prev?.isExpertVerified }))}>
-                          <label className="text-xs font-mono text-slate-300 pointer-events-none">Expert Verified (EEAT)</label>
-                          <input 
-                            type="checkbox" 
-                            className="w-4 h-4 accent-primary cursor-pointer" 
-                            checked={editingPost?.isExpertVerified || false} 
-                            onClick={e => e.stopPropagation()}
-                            onChange={e => setEditingPost({ ...editingPost, isExpertVerified: e.target.checked })}
-                          />
+                        <div className="flex items-center gap-2">
+                          <CircleDashed className="w-4 h-4 text-gray-400" />
+                          Read Time: <Input className="h-6 text-[13px] w-20 px-1 border-[#8c8f94]" value={editingPost?.readingTime || ''} onChange={e => setEditingPost({ ...editingPost, readingTime: e.target.value })} placeholder="5 min" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                           <FileText className="w-4 h-4 text-gray-400" />
+                           Slug: <Input className="h-6 text-[13px] w-32 px-1 border-[#8c8f94]" value={editingPost?.slug || ''} onChange={e => setEditingPost({ ...editingPost, slug: e.target.value })} placeholder="Custom URL" />
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                    
+                    <div className="p-3 bg-[#f6f7f7] flex items-center justify-between rounded-b-sm">
+                      <button className="text-[#d63638] hover:text-[#d63638] p-0 h-auto text-[13px] underline bg-transparent" onClick={() => editingPost?.id && deletePostRecord(editingPost.id)}>Move to Trash</button>
+                      <Button 
+                        size="sm" 
+                        onClick={() => savePost()} 
+                        className="bg-[#2271b1] hover:bg-[#135e96] text-white h-8 text-[13px] rounded-sm"
+                      >
+                        {editingPost?.status === 'published' ? 'Update' : 'Publish'}
+                      </Button>
+                    </div>
+                  </div>
 
-                  <Card className="bg-white/5 border-white/10 text-white">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xs font-mono uppercase tracking-widest flex items-center gap-2">
-                        <UserIcon className="w-3.5 h-3.5" /> Author Settings
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Author Name</label>
-                        <Input 
-                          placeholder="e.g. Jane Doe"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.author?.name || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova', role: 'Editor' }), name: e.target.value } })}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Author Role</label>
-                        <Input 
-                          placeholder="e.g. Senior Editor"
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.author?.role || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { name: 'TechNova Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova' }), role: e.target.value } })}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Avatar URL</label>
-                        <Input 
-                          placeholder="https://..."
-                          className="bg-black/20 border-white/10 text-sm h-8"
-                          value={editingPost?.author?.avatar || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, author: { ...(editingPost.author || { name: 'TechNova Team', role: 'Editor' }), avatar: e.target.value } })}
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
+                  {/* Categories Box */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="border-b border-[#c3c4c7] px-3 py-2 bg-white font-medium text-[#1d2327]">
+                      Categories
+                    </div>
+                    <div className="p-3">
+                      <Input 
+                        placeholder="Select or enter category..." 
+                        className="border-[#8c8f94] h-8 text-sm"
+                        value={editingPost?.category || ''} 
+                        onChange={e => setEditingPost({ ...editingPost, category: e.target.value })}
+                      />
+                    </div>
+                  </div>
 
-                  <Card className="bg-white/5 border-white/10 text-white">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xs font-mono uppercase tracking-widest flex items-center gap-2">
-                        Metadata
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Excerpt</label>
-                        <textarea 
-                          className="w-full bg-black/20 border border-white/10 rounded-md p-3 text-xs text-slate-400 focus:outline-none focus:border-primary min-h-[100px]"
-                          placeholder="Short summary for SEO and lists..."
-                          value={editingPost?.excerpt || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, excerpt: e.target.value })}
+                  {/* Tags Box */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="border-b border-[#c3c4c7] px-3 py-2 bg-white font-medium text-[#1d2327]">
+                      Tags
+                    </div>
+                    <div className="p-3">
+                      <div className="flex gap-2">
+                        <Input 
+                          placeholder="Add new tag" 
+                          className="border-[#8c8f94] h-8 text-sm flex-1"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              const newTag = e.currentTarget.value.trim();
+                              if (newTag) {
+                                setEditingPost({ 
+                                  ...editingPost, 
+                                  tags: [...(editingPost?.tags || []), newTag] 
+                                });
+                                e.currentTarget.value = '';
+                              }
+                            }
+                          }}
                         />
+                        <Button variant="outline" size="sm" className="h-8 border-[#8c8f94]" onClick={(e) => {
+                           const input = e.currentTarget.previousElementSibling as HTMLInputElement;
+                           const newTag = input.value.trim();
+                           if (newTag) {
+                             setEditingPost({ 
+                                ...editingPost, 
+                                tags: [...(editingPost?.tags || []), newTag] 
+                             });
+                             input.value = '';
+                           }
+                        }}>Add</Button>
                       </div>
+                      <p className="text-xs text-[#646970] mt-2 italic">Separate tags with commas. Press Enter to add.</p>
                       
-                      <div className="space-y-2">
-                        <label className="text-[10px] uppercase font-mono text-slate-500">Cover Image URL</label>
-                        <Input 
-                          placeholder="https://images.unsplash..."
-                          className="bg-black/20 border-white/10 text-xs h-8"
-                          value={editingPost?.coverImage || ''} 
-                          onChange={e => setEditingPost({ ...editingPost, coverImage: e.target.value })}
-                        />
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {editingPost?.tags?.map((tag, i) => (
+                          <div key={i} className="flex items-center gap-1 bg-[#f0f0f1] px-2 py-0.5 rounded text-xs border border-[#c3c4c7]">
+                            <button className="text-gray-500 hover:text-red-500 rounded-full hover:bg-[#c3c4c7] p-0.5" onClick={() => setEditingPost({...editingPost, tags: editingPost.tags?.filter(t => t !== tag)})}>
+                              <X className="w-3 h-3" />
+                            </button>
+                            {tag}
+                          </div>
+                        ))}
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
+
+                  {/* Featured Image Box */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="border-b border-[#c3c4c7] px-3 py-2 bg-white font-medium text-[#1d2327]">
+                      Featured Image
+                    </div>
+                    <div className="p-3">
+                      {editingPost?.coverImage ? (
+                        <div className="space-y-3">
+                          <img src={editingPost.coverImage} className="w-full h-auto border border-[#c3c4c7]" alt="Featured" />
+                          <div className="space-y-2">
+                            <Input 
+                              placeholder="Image URL" 
+                              className="border-[#8c8f94] h-8 text-sm"
+                              value={editingPost?.coverImage || ''} 
+                              onChange={e => setEditingPost({ ...editingPost, coverImage: e.target.value })}
+                            />
+                            <button className="text-[#d63638] h-auto text-sm underline bg-transparent px-0 hover:bg-transparent" onClick={() => setEditingPost({...editingPost, coverImage: ''})}>
+                              Remove featured image
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <button className="text-[#2271b1] px-0 h-auto text-sm underline bg-transparent hover:bg-transparent" onClick={(e) => { e.preventDefault(); fileInputRef.current?.click(); }}>
+                            Set featured image (Upload)
+                          </button>
+                          <p className="text-xs text-[#646970] text-center my-1">OR</p>
+                          <Input 
+                              placeholder="Paste Image URL here" 
+                              className="border-[#8c8f94] h-8 text-sm"
+                              value={editingPost?.coverImage || ''} 
+                              onChange={e => setEditingPost({ ...editingPost, coverImage: e.target.value })}
+                            />
+                        </div>
+                      )}
+                      <input type="file" accept="image/*" className="hidden" ref={fileInputRef} onChange={handleImageUpload} />
+                    </div>
+                  </div>
+
+                  {/* Settings Box */}
+                  <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
+                    <div className="border-b border-[#c3c4c7] px-3 py-2 bg-white font-medium text-[#1d2327]">
+                      Post Attributes
+                    </div>
+                    <div className="p-4 space-y-3">
+                      <label className="flex items-center gap-2 text-sm text-[#2c3338] cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="rounded-sm border-[#8c8f94] text-[#2271b1] focus:ring-[#2271b1]" 
+                          checked={editingPost?.featured || false}
+                          onChange={e => setEditingPost({ ...editingPost, featured: e.target.checked })}
+                        />
+                        Featured Post
+                      </label>
+                      <label className="flex items-center gap-2 text-sm text-[#2c3338] cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="rounded-sm border-[#8c8f94] text-[#2271b1] focus:ring-[#2271b1]" 
+                          checked={editingPost?.trending || false}
+                          onChange={e => setEditingPost({ ...editingPost, trending: e.target.checked })}
+                        />
+                        Mark as Trending
+                      </label>
+                      <label className="flex items-center gap-2 text-sm text-[#2c3338] cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="rounded-sm border-[#8c8f94] text-[#2271b1] focus:ring-[#2271b1]" 
+                          checked={editingPost?.isExpertVerified || false}
+                          onChange={e => setEditingPost({ ...editingPost, isExpertVerified: e.target.checked })}
+                        />
+                        Expert Verified (EEAT)
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabsContent>
           </Tabs>
-        </div>
+        </main>
       </div>
     </div>
   );
