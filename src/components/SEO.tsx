@@ -10,6 +10,7 @@ interface SEOProps {
   author?: string;
   publishedTime?: string;
   keywords?: string[];
+  noindex?: boolean;
 }
 
 export function SEO({ 
@@ -21,12 +22,13 @@ export function SEO({
   schema,
   author,
   publishedTime,
-  keywords
+  keywords,
+  noindex = false
 }: SEOProps) {
   const siteName = 'TechNova';
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   const fullDescription = description.includes(siteName) ? description : `${description} | ${siteName}`;
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://tech-nova-iota.vercel.app';
+  const currentUrl = typeof window !== 'undefined' ? window.location.href.split('?')[0].split('#')[0] : 'https://www.thehackettgroup.com';
   const canonicalUrl = url || currentUrl;
   // Fallback image using images.unsplash.com as source.unsplash is deprecated
   const defaultImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
@@ -38,7 +40,11 @@ export function SEO({
       <meta name="description" content={fullDescription} />
       {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      )}
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph Tags */}

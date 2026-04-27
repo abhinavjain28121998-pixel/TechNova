@@ -58,7 +58,7 @@ export default function About() {
       <SEO 
         title="About Us"
         description="Learn more about TechNova and our mission to decode the future of technology."
-        url="https://tech-nova-iota.vercel.app/about"
+        url="https://www.thehackettgroup.com/about"
         keywords={['about us', 'TechNova', 'technology blog', 'tech news', 'tech writers']}
         schema={[breadcrumbSchema, aboutSchema]}
       />
