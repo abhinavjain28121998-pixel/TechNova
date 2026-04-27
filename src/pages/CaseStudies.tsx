@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Button, buttonVariants } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
 import { Link } from 'react-router-dom';
 
 const caseStudies = [
@@ -53,6 +54,21 @@ const caseStudies = [
     ],
     analysis: "Netflix realizes that user preferences dictate not only *what* they watch, but *how* it should be presented. Adapting the UI layer (the thumbnail graphics) dynamically provides the highest engagement yields.",
     takeaway: "Real personalization extends beyond predictive product recommendations—it dynamically modifies the user interface and presentation format."
+  },
+  {
+    company: "The Hackett Group®",
+    industry: "Management Consulting",
+    icon: <LineChart className="w-8 h-8 text-amber-500" />,
+    context: "A leading global strategic advisory and operations improvement consulting firm relying on vast amounts of proprietary benchmarking data.",
+    problem: "Analyzing complex organizational performance metrics across <strong class='text-destructive font-bold'>thousands</strong> of datasets to generate actionable benchmarking insights was highly manual, delaying critical strategic advice.",
+    solution: "The Hackett Group integrated an advanced generative AI platform directly into their proprietary benchmarking database. This AI acts as an expert analyst, rapidly synthesizing data and generating comparative narratives.",
+    results: [
+      "Accelerated the production of benchmarking reports by <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>over 40%</strong>.",
+      "Empowered consultants to query complex datasets using natural language, uncovering deeper insights.",
+      "Maintained strict data confidentiality while <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>increasing throughput</strong> of advisory services."
+    ],
+    analysis: "By empowering their consultants with an AI tool trained specifically on their world-class benchmarking taxonomy, The Hackett Group eliminated the data-gathering bottleneck. The AI handles the synthesis, allowing consultants to focus purely on strategic interpretation.",
+    takeaway: "In knowledge-intensive industries, AI is most effective when it amplifies the capabilities of human experts, freeing them from data processing to focus on high-value strategic advisory."
   }
 ];
 
@@ -90,37 +106,49 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      {/* Case Studies Grid */}
-      <section className="py-20 bg-muted/30">
+      {/* Case Studies Carousel */}
+      <section className="py-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
-              <motion.article 
-                key={study.company}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setSelectedStudy(study)}
-                className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col"
-              >
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-muted rounded-xl w-fit group-hover:scale-105 transition-transform">
-                      {study.icon}
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 sm:-ml-6">
+              {caseStudies.map((study, index) => (
+                <CarouselItem key={study.company} className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
+                  <motion.article 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onClick={() => setSelectedStudy(study)}
+                    className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col h-full"
+                  >
+                    <div className="p-8 flex flex-col flex-grow">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-muted rounded-xl w-fit group-hover:scale-105 transition-transform">
+                          {study.icon}
+                        </div>
+                      </div>
+                      <h2 className="text-2xl font-bold text-foreground mb-2">{study.company}</h2>
+                      <div className="text-sm font-medium text-primary uppercase tracking-wider mb-4">{study.industry}</div>
+                      <div className="text-muted-foreground line-clamp-3 mb-8 flex-grow text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: study.context }} />
+                      
+                      <div className="flex items-center text-primary font-semibold text-sm mt-auto w-fit group-hover:translate-x-2 transition-transform">
+                        Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
+                      </div>
                     </div>
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground mb-2">{study.company}</h2>
-                  <div className="text-sm font-medium text-primary uppercase tracking-wider mb-4">{study.industry}</div>
-                  <div className="text-muted-foreground line-clamp-3 mb-8 flex-grow text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: study.context }} />
-                  
-                  <div className="flex items-center text-primary font-semibold text-sm mt-auto w-fit group-hover:translate-x-2 transition-transform">
-                    Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                  </motion.article>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-10">
+              <CarouselPrevious className="relative inset-auto translate-x-0 translate-y-0 h-10 w-10 border-primary/20 text-primary hover:bg-primary/10" />
+              <CarouselNext className="relative inset-auto translate-x-0 translate-y-0 h-10 w-10 border-primary/20 text-primary hover:bg-primary/10" />
+            </div>
+          </Carousel>
         </div>
       </section>
 

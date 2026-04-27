@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from '../components/ui/pagination';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -16,7 +17,10 @@ import Highlighter from 'react-highlight-words';
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const { posts: fbPosts, loading } = usePosts();
+  
+  const POSTS_PER_PAGE = 10;
 
   const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
@@ -40,6 +44,23 @@ export default function Blog() {
 
     return result;
   }, [posts, searchQuery, selectedCategory]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
+  const paginatedPosts = filteredPosts.slice(
+    (safeCurrentPage - 1) * POSTS_PER_PAGE,
+    safeCurrentPage * POSTS_PER_PAGE
+  );
+
+  const handlePageChange = (pageNum: number) => {
+    setCurrentPage(pageNum);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
@@ -100,8 +121,9 @@ export default function Blog() {
 
         {/* Posts Grid */}
         {filteredPosts.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map(post => (
+          <div className="space-y-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {paginatedPosts.map(post => (
               <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
                 <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden" aria-label={`Read article: ${post.title}`}>
                   <img 
@@ -153,6 +175,60 @@ export default function Blog() {
                 </CardFooter>
               </Card>
             ))}
+            </div>
+
+            {totalPages > 1 && (
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious 
+                      href="#" 
+                      onClick={(e) => { e.preventDefault(); handlePageChange(Math.max(1, safeCurrentPage - 1)); }}
+                      className={safeCurrentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                    />
+                  </PaginationItem>
+                  
+                  {Array.from({ length: totalPages }).map((_, i) => {
+                    const pageNum = i + 1;
+                    if (
+                      pageNum === 1 || 
+                      pageNum === totalPages || 
+                      (pageNum >= safeCurrentPage - 1 && pageNum <= safeCurrentPage + 1)
+                    ) {
+                      return (
+                        <PaginationItem key={pageNum}>
+                          <PaginationLink 
+                            href="#" 
+                            isActive={safeCurrentPage === pageNum}
+                            onClick={(e) => { e.preventDefault(); handlePageChange(pageNum); }}
+                          >
+                            {pageNum}
+                          </PaginationLink>
+                        </PaginationItem>
+                      );
+                    } else if (
+                      pageNum === safeCurrentPage - 2 || 
+                      pageNum === safeCurrentPage + 2
+                    ) {
+                      return (
+                        <PaginationItem key={pageNum}>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                      );
+                    }
+                    return null;
+                  })}
+
+                  <PaginationItem>
+                    <PaginationNext 
+                      href="#" 
+                      onClick={(e) => { e.preventDefault(); handlePageChange(Math.min(totalPages, safeCurrentPage + 1)); }}
+                      className={safeCurrentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            )}
           </div>
         ) : (
           <div className="text-center py-24">
