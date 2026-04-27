@@ -148,23 +148,27 @@ export default function Post() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 2);
 
+  const getCanonicalUrl = () => {
+    return `${window.location.origin}/blog/${post?.slug}`;
+  };
+
   const handleShareX = () => {
     if (!post) return;
-    const url = encodeURIComponent(window.location.href);
+    const url = encodeURIComponent(getCanonicalUrl());
     const text = encodeURIComponent(post.title);
-    window.open(`https://x.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    window.open(`https://x.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleShareLinkedIn = () => {
     if (!post) return;
-    const url = encodeURIComponent(window.location.href);
+    const url = encodeURIComponent(getCanonicalUrl());
     const title = encodeURIComponent(post.title);
-    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`, '_blank');
+    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleCopyLink = async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await navigator.clipboard.writeText(getCanonicalUrl());
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
