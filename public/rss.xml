@@ -3,14 +3,49 @@
 <channel>
   <title>TechNova Blog</title>
   <description>Expert analysis, tutorials, and deep-dive insights on Artificial Intelligence, Web Development, and Tech.</description>
-  <link>https://tech-nova-iota.vercel.app</link>
+  <link>https://www.thehackettgroup.com</link>
   <atom:link href="https://tech-nova-iota.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Next-Gen Logistics: Mastering Agility with Gen AI in Supply Chain Operations]]></title>
+    <description><![CDATA[Understand how generative artificial intelligence is transforming global supply chains, optimizing freight logistics, and building unprecedented network resilience.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-supply-chain-next-gen-logistics</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-supply-chain-next-gen-logistics</guid>
+    <pubDate>Thu, 23 Apr 2026 11:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Unlocking Strategic Value with Gen AI in Finance: A 2026 Roadmap]]></title>
+    <description><![CDATA[Explore how Gen AI in Finance is revolutionizing forecasting, risk management, and operational efficiency for modern CFOs.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-finance-strategic-roadmap</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-finance-strategic-roadmap</guid>
+    <pubDate>Wed, 22 Apr 2026 09:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Strategic Sourcing Evolution: Leveraging Gen AI in Procurement]]></title>
+    <description><![CDATA[Explore how generative artificial intelligence is redefining procurement strategies, optimizing contract negotiations, and enhancing supplier relationship management.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-procurement-strategic-sourcing</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-procurement-strategic-sourcing</guid>
+    <pubDate>Wed, 22 Apr 2026 08:30:00 GMT</pubDate>
+  </item>
   <item>
     <title><![CDATA[How Enterprise AI Agents Are Reshaping Modern Workflows (2026 Guide)]]></title>
     <description><![CDATA[Enterprise AI agents are moving beyond chatbots to autonomous agentic workflows. Learn how these AI systems integrate with legacy tools, optimize operations, and reshape modern enterprise architecture.]]></description>
     <link>https://tech-nova-iota.vercel.app/blog/how-ai-agents-are-reshaping-modern-enterprise-workflows</link>
     <guid>https://tech-nova-iota.vercel.app/blog/how-ai-agents-are-reshaping-modern-enterprise-workflows</guid>
     <pubDate>Tue, 21 Apr 2026 14:31:12 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[The Future of Compensation: Optimizing Workflows with Gen AI in Payroll]]></title>
+    <description><![CDATA[Discover how generative AI is transforming payroll management from a manual, error-prone administrative task into an intelligent, compliant strategic operation.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-payroll-future-of-compensation</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-payroll-future-of-compensation</guid>
+    <pubDate>Tue, 21 Apr 2026 10:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Transforming Global Business Services with Gen AI: A 2026 Perspective]]></title>
+    <description><![CDATA[Discover how Gen AI in GBS is driving a radical shift from transaction-heavy operations to value-led, intelligent digital hubs.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-gbs-future-of-shared-services</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-gbs-future-of-shared-services</guid>
+    <pubDate>Tue, 21 Apr 2026 10:00:00 GMT</pubDate>
   </item>
   <item>
     <title><![CDATA[Advancing Global Business Services with Generative AI Capabilities (2026)]]></title>
@@ -20,15 +55,29 @@
     <pubDate>Mon, 20 Apr 2026 11:01:59 GMT</pubDate>
   </item>
   <item>
-    <title><![CDATA[Understanding Artificial Intelligence 2026: A Deep Dive]]></title>
-    <description><![CDATA[Start properly understanding artificial intelligence 2026 with our comprehensive guide to multi-modal networks, edge inference, and enterprise implementation strategies.]]></description>
+    <title><![CDATA[The Future of Human Resources: Leading the Gen AI Revolution]]></title>
+    <description><![CDATA[Explore how Gen HR is transforming the employee lifecycle—from hyper-personalized recruitment to automated talent development.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-hr-human-centric-automation</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-hr-human-centric-automation</guid>
+    <pubDate>Mon, 20 Apr 2026 11:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Future of Tech Ops: Revolutionizing Systems with Gen AI in IT]]></title>
+    <description><![CDATA[Explore how generative artificial intelligence is transforming IT operations, automating complex workflows, and elevating cybersecurity protocols.]]></description>
+    <link>https://tech-nova-iota.vercel.app/blog/gen-ai-in-it-future-of-tech-ops</link>
+    <guid>https://tech-nova-iota.vercel.app/blog/gen-ai-in-it-future-of-tech-ops</guid>
+    <pubDate>Mon, 20 Apr 2026 09:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title><![CDATA[Expert Outlook: Navigating Artificial Intelligence in 2026]]></title>
+    <description><![CDATA[Sarah Chen, Lead AI Researcher, shares field-tested insights on multi-modal models, ethical protocols, and the practical future of agentic workflows.]]></description>
     <link>https://tech-nova-iota.vercel.app/blog/understanding-artificial-intelligence-2026</link>
     <guid>https://tech-nova-iota.vercel.app/blog/understanding-artificial-intelligence-2026</guid>
     <pubDate>Sun, 19 Apr 2026 10:00:00 GMT</pubDate>
   </item>
   <item>
-    <title><![CDATA[10 Secure Web Development Practices for Frontend Architects]]></title>
-    <description><![CDATA[Master the absolute most critical secure web development practices to eliminate cross-site scripting, prevent injection vulnerabilities, and build hardened APIs.]]></description>
+    <title><![CDATA[Security-First Web Development: A Senior Engineer’s Manual]]></title>
+    <description><![CDATA[Alex Rivera draws on a decade of senior engineering experience to detail resilient, serverless security practices that go beyond the basics.]]></description>
     <link>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</link>
     <guid>https://tech-nova-iota.vercel.app/blog/secure-web-development-practices</guid>
     <pubDate>Sat, 18 Apr 2026 14:30:00 GMT</pubDate>
@@ -41,8 +90,8 @@
     <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title><![CDATA[Demystifying Zero Trust: A Complete Enterprise Security Guide]]></title>
-    <description><![CDATA[Demystifying zero trust architecture is crucial for modern cybersecurity. Learn the core methodologies, implementation strategies, and operational frameworks for enterprise networks.]]></description>
+    <title><![CDATA[Zero Trust Architectures: An Analyst’s Field Manual]]></title>
+    <description><![CDATA[Security analyst Marcus Johnson breaks down the Zero Trust framework based on real-world audits and federal security standards.]]></description>
     <link>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</link>
     <guid>https://tech-nova-iota.vercel.app/blog/demystifying-zero-trust</guid>
     <pubDate>Wed, 15 Apr 2026 09:15:00 GMT</pubDate>

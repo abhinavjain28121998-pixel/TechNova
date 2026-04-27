@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tech-nova-iota.vercel.app/</loc>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://www.thehackettgroup.com/</loc>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/categories</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/about</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/contact</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/privacy</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-supply-chain-next-gen-logistics</loc>
+    <lastmod>2026-04-23</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-finance-strategic-roadmap</loc>
+    <lastmod>2026-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-procurement-strategic-sourcing</loc>
     <lastmod>2026-04-22</lastmod>
   </url>
   <url>
@@ -29,7 +41,23 @@
     <lastmod>2026-04-21</lastmod>
   </url>
   <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-payroll-future-of-compensation</loc>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-gbs-future-of-shared-services</loc>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+  <url>
     <loc>https://tech-nova-iota.vercel.app/blog/advancing-global-business-services-generative-ai-capabilities</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-hr-human-centric-automation</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-in-it-future-of-tech-ops</loc>
     <lastmod>2026-04-20</lastmod>
   </url>
   <url>

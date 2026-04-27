@@ -567,7 +567,13 @@ export default function Admin() {
                     {editTab === 'preview' && (
                       <div className="w-full min-h-[500px] p-6 max-w-none prose prose-slate">
                         {editingPost?.content ? (
-                          <ReactMarkdown>{editingPost.content}</ReactMarkdown>
+                          <ReactMarkdown
+                            components={{
+                              a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
+                            }}
+                          >
+                            {editingPost.content}
+                          </ReactMarkdown>
                         ) : (
                           <p className="text-gray-400 italic">Preview will appear here...</p>
                         )}

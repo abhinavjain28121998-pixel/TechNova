@@ -129,6 +129,8 @@ export default function Blog() {
                   <img 
                     src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                     alt={post.title} 
+                    width={800}
+                    height={450}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
                     loading="lazy"

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tech-nova-iota.vercel.app/sitemap.xml
+Sitemap: https://www.thehackettgroup.com/sitemap.xml

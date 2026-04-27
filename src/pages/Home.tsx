@@ -137,7 +137,7 @@ export default function Home() {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] z-20 hover:z-30 transition-all duration-500 hover:scale-105"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-2">
-                  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" />
+                  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" width={1200} height={800} alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" fetchPriority="high" />
                   <div className="absolute top-4 left-4 flex gap-2">
                     <Badge variant="secondary" className="bg-black/80 text-primary border-primary/20 backdrop-blur-md">AI Model</Badge>
                   </div>
@@ -159,7 +159,7 @@ export default function Home() {
                 className="absolute top-10 right-0 w-[240px] z-10 opacity-80 hover:opacity-100 hover:z-30 transition-all duration-500"
               >
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-1.5 transform rotate-3 hover:rotate-0 transition-transform">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" />
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" width={800} height={450} alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" loading="lazy" />
                 </div>
               </motion.div>
 
@@ -221,9 +221,12 @@ export default function Home() {
                       <img 
                         src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
                         alt={post.title}
+                        width={1200}
+                        height={800}
                         className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105 bg-muted"
                         referrerPolicy="no-referrer"
                         loading={index === 0 ? "eager" : "lazy"}
+                        fetchPriority={index === 0 ? "high" : "auto"}
                       />
                     </div>
                     <div className="p-8 md:p-12">
@@ -236,7 +239,7 @@ export default function Home() {
                       </p>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" />
+                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} width={32} height={32} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" loading="lazy" />
                           <span className="font-medium text-foreground">{post.author?.name || 'TechNova Team'}</span>
                         </div>
                         <span className="hidden sm:inline">•</span>
@@ -296,6 +299,8 @@ export default function Home() {
                         <img 
                           src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                           alt={post.title} 
+                          width={800}
+                          height={450}
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
                           referrerPolicy="no-referrer"
                           loading="lazy"

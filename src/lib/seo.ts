@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://tech-nova-iota.vercel.app';
+export const BASE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://www.thehackettgroup.com';
 
 export function generateBreadcrumbSchema(items: { name: string; item: string }[]) {
   return {

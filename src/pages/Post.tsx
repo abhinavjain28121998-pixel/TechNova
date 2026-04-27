@@ -226,6 +226,8 @@ export default function Post() {
               <img 
                 src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} 
                 alt={post.author?.name || 'Author'} 
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full bg-slate-800" 
                 referrerPolicy="no-referrer" 
                 itemProp="image" 
@@ -270,9 +272,12 @@ export default function Post() {
             <img 
               src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
               alt={post.title} 
+              width={1200}
+              height={675}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
               itemProp="image"
+              fetchPriority="high"
             />
           </div>
         </div>
@@ -319,7 +324,14 @@ export default function Post() {
 
           <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
             <div itemProp="articleBody">
-              <ReactMarkdown rehypePlugins={[rehypeSlug]}>{post.content}</ReactMarkdown>
+              <ReactMarkdown 
+                rehypePlugins={[rehypeSlug]}
+                components={{
+                  a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
             </div>
           </div>
 
@@ -333,7 +345,13 @@ export default function Post() {
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground leading-relaxed prose prose-invert prose-sm">
-                      <ReactMarkdown>{faq.answer}</ReactMarkdown>
+                      <ReactMarkdown
+                        components={{
+                          a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
+                        }}
+                      >
+                        {faq.answer}
+                      </ReactMarkdown>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -385,6 +403,8 @@ export default function Post() {
                           <img 
                             src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
                             alt={related.title} 
+                            width={800}
+                            height={450}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                             loading="lazy"
