@@ -50,6 +50,7 @@ export default function Home() {
         description="TechNova is your premier destination for expert insights, cutting-edge tutorials, and the latest news in Artificial Intelligence, Web Development, and Cybersecurity."
         keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
         schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
+        url="https://tech-nova-iota.vercel.app"
       />
 
       {/* Hero Section */}

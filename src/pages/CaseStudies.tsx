@@ -81,6 +81,7 @@ export default function CaseStudies() {
         title="Case Studies & Real-World AI Insights" 
         description="Explore how industry leaders like Netflix, Klarna, and Morgan Stanley are leveraging artificial intelligence and digital transformation to solve complex real-world business challenges."
         keywords={['AI case studies', 'real-world AI applications', 'business case studies', 'digital transformation examples', 'enterprise AI implementation']}
+        url="https://tech-nova-iota.vercel.app/case-studies"
       />
       
       {/* Header Section */}

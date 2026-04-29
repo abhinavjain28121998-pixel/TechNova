@@ -29,7 +29,11 @@ export function SEO({
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   const fullDescription = description.includes(siteName) ? description : `${description} | ${siteName}`;
   const currentUrl = typeof window !== 'undefined' ? window.location.href.split('?')[0].split('#')[0] : 'https://tech-nova-iota.vercel.app';
-  const canonicalUrl = url || currentUrl;
+  let rawUrl = url || currentUrl;
+  if (rawUrl.length > 1 && rawUrl.endsWith('/')) {
+    rawUrl = rawUrl.slice(0, -1);
+  }
+  const canonicalUrl = rawUrl;
   // Fallback image using images.unsplash.com as source.unsplash is deprecated
   const defaultImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
   const socialImage = image || defaultImage;

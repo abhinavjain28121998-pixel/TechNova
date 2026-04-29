@@ -18,6 +18,7 @@ export default function Contact() {
         description="Get in touch with the TechNova team."
         keywords={['contact', 'support', 'feedback', 'TechNova']}
         schema={[breadcrumbSchema, contactSchema]}
+        url="https://tech-nova-iota.vercel.app/contact"
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-2xl">
         <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>

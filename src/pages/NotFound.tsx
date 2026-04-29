@@ -9,7 +9,7 @@ export default function NotFound() {
       <SEO 
         title="Page Not Found | TechNova"
         description="The page you are looking for does not exist or has been moved."
-        url="https://www.thehackettgroup.com/404"
+        url="https://tech-nova-iota.vercel.app/404"
         noindex
       />
       <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 max-w-2xl mx-auto">

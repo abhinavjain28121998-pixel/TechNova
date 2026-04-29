@@ -14,6 +14,7 @@ export default function PrivacyPolicy() {
         description="Privacy Policy for TechNova Blog."
         keywords={['privacy policy', 'TechNova privacy', 'data protection']}
         schema={[breadcrumbSchema]}
+        url="https://tech-nova-iota.vercel.app/privacy"
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>
