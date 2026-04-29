@@ -61,17 +61,46 @@ async function startServer() {
         template = fs.readFileSync(path.resolve(__dirname, 'dist/index.html'), 'utf-8');
       }
 
+      // Inject canonical URL globally for all routes
+      const baseUrl = 'https://tech-nova-iota.vercel.app';
+      let cleanPath = url.split('?')[0].split('#')[0];
+      if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
+        cleanPath = cleanPath.slice(0, -1);
+      }
+      const canonicalUrl = `${baseUrl}${cleanPath === '/' ? '' : cleanPath}`;
+      
+      if (template.includes('<link rel="canonical"')) {
+        template = template.replace(
+          /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
+          `<link rel="canonical" href="${canonicalUrl}" />`
+        );
+      } else {
+        template = template.replace('</head>', `<link rel="canonical" href="${canonicalUrl}" />\n</head>`);
+      }
+
       // Check if trying to view a blog post
       const blogMatch = url.match(/^\/blog\/([^/?#&]+)/);
-      if (blogMatch && db) {
+      if (blogMatch) {
         const slug = blogMatch[1];
         try {
-          const postsRef = collection(db, 'posts');
-          const q = query(postsRef, where('slug', '==', slug));
-          const snap = await getDocs(q);
+          let postData: any = null;
           
-          if (!snap.empty) {
-            const postData = snap.docs[0].data();
+          if (db) {
+            const postsRef = collection(db, 'posts');
+            const q = query(postsRef, where('slug', '==', slug));
+            const snap = await getDocs(q);
+            if (!snap.empty) {
+              postData = snap.docs[0].data();
+            }
+          }
+          
+          if (!postData) {
+            // Fallback to local posts data
+            const { POSTS } = await import('./src/data/posts.ts');
+            postData = POSTS.find((p: any) => p.slug === slug);
+          }
+          
+          if (postData) {
             const siteName = 'TechNova';
             // ensure we show "Post Name | TechNova"
             const title = postData.title.includes(siteName) ? postData.title : `${postData.title} | ${siteName}`;
@@ -108,7 +137,7 @@ async function startServer() {
             template = template.replace('</head>', `${ogTags}\n</head>`);
           }
         } catch (dbErr) {
-          console.error("Firestore lookup error in server:", dbErr);
+          console.error("Firestore lookup / local post import error in server:", dbErr);
         }
       }
 

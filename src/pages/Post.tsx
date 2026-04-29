@@ -149,7 +149,7 @@ export default function Post() {
     .slice(0, 2);
 
   const getCanonicalUrl = () => {
-    return `${window.location.origin}/blog/${post?.slug}`;
+    return `https://tech-nova-iota.vercel.app/blog/${post?.slug}`;
   };
 
   const handleShareX = () => {
@@ -196,6 +196,7 @@ export default function Post() {
         title={post.title}
         description={seoDescription}
         type="article"
+        url={getCanonicalUrl()}
         image={post.coverImage}
         author={post.author.name}
         publishedTime={post.date}

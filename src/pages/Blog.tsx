@@ -74,6 +74,7 @@ export default function Blog() {
         description="Browse all our technology articles, tutorials, and insights."
         keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
         schema={[breadcrumbSchema]}
+        url="https://tech-nova-iota.vercel.app/blog"
       />
 
       <div className="bg-background border-b border-border text-foreground py-16 md:py-24">
