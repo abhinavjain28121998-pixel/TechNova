@@ -71,11 +71,11 @@ async function startServer() {
       
       if (template.includes('<link rel="canonical"')) {
         template = template.replace(
-          /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
-          `<link rel="canonical" href="${canonicalUrl}" />`
+          /<link\s+(?:data-rh="true"\s+)?rel="canonical"\s+href="[^"]*"\s*(?:data-rh="true"\s*)?\/?>/i,
+          `<link rel="canonical" href="${canonicalUrl}" data-rh="true" />`
         );
       } else {
-        template = template.replace('</head>', `<link rel="canonical" href="${canonicalUrl}" />\n</head>`);
+        template = template.replace('</head>', `<link rel="canonical" href="${canonicalUrl}" data-rh="true" />\n</head>`);
       }
 
       let jsonLdScript = '';
@@ -113,25 +113,31 @@ async function startServer() {
 
             const { generateBlogPostGraphSchema } = await import('./src/lib/seo.ts');
             const schema = generateBlogPostGraphSchema(postData);
-            jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(schema)}\n</script>\n`;
+            jsonLdScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(schema)}\n</script>\n`;
 
-            template = template.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
+            if (template.includes('<title data-rh="true">')) {
+              template = template.replace(/<title data-rh="true">.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
+            } else if (template.includes('<title>')) {
+              template = template.replace(/<title>.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
+            } else {
+              template = template.replace('</head>', `<title data-rh="true">${title}</title>\n</head>`);
+            }
             
             if (template.includes('<meta name="description"')) {
-              template = template.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${description}" />`);
+              template = template.replace(/<meta\s+(?:data-rh="true"\s+)?name="description"\s+content="[^"]*"\s*(?:data-rh="true"\s*)?\/?>/i, `<meta name="description" content="${description}" data-rh="true" />`);
             } else {
-              template = template.replace('</head>', `<meta name="description" content="${description}" />\n</head>`);
+              template = template.replace('</head>', `<meta name="description" content="${description}" data-rh="true" />\n</head>`);
             }
 
             const ogTags = `
-              <meta property="og:title" content="${title}" />
-              <meta property="og:description" content="${description}" />
-              <meta property="og:image" content="${image}" />
-              <meta property="og:type" content="article" />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="${title}" />
-              <meta name="twitter:description" content="${description}" />
-              <meta name="twitter:image" content="${image}" />${jsonLdScript}
+              <meta property="og:title" content="${title}" data-rh="true" />
+              <meta property="og:description" content="${description}" data-rh="true" />
+              <meta property="og:image" content="${image}" data-rh="true" />
+              <meta property="og:type" content="article" data-rh="true" />
+              <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+              <meta name="twitter:title" content="${title}" data-rh="true" />
+              <meta name="twitter:description" content="${description}" data-rh="true" />
+              <meta name="twitter:image" content="${image}" data-rh="true" />${jsonLdScript}
             `;
             template = template.replace('</head>', `${ogTags}\n</head>`);
           }
@@ -167,11 +173,11 @@ async function startServer() {
             }))
           };
           genericSchemas.push(blogListSchema);
-          jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
+          jsonLdScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
           template = template.replace('</head>', `${jsonLdScript}\n</head>`);
         } else {
           // All other pages (Home, About, Contact)
-          jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
+          jsonLdScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
           template = template.replace('</head>', `${jsonLdScript}\n</head>`);
         }
       } catch (e) {

@@ -48,32 +48,34 @@ async function createPreRenderedPage(outputFilePath, title, description, urlStr,
     const { pathname } = new URL(canonicalUrl);
 
     // standard replacements
-    if (html.includes('<title>')) {
-      html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
+    if (html.includes('<title data-rh="true">')) {
+      html = html.replace(/<title data-rh="true">.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
+    } else if (html.includes('<title>')) {
+      html = html.replace(/<title>.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
     } else {
-      html = html.replace('</head>', `<title>${title}</title>\n</head>`);
+      html = html.replace('</head>', `<title data-rh="true">${title}</title>\n</head>`);
     }
 
     if (html.includes('<meta name="description"')) {
-      html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${description}" />`);
+      html = html.replace(/<meta\s+(?:data-rh="true"\s+)?name="description"\s+content="[^"]*"\s*(?:data-rh="true"\s*)?\/?>/i, `<meta name="description" content="${description}" data-rh="true" />`);
     } else {
-      html = html.replace('</head>', `<meta name="description" content="${description}" />\n</head>`);
+      html = html.replace('</head>', `<meta name="description" content="${description}" data-rh="true" />\n</head>`);
     }
 
     // append canonical and schemas
-    const schemaScript = `\n<script type="application/ld+json">\n${JSON.stringify(jsonLds)}\n</script>\n`;
+    const schemaScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(jsonLds)}\n</script>\n`;
 
     const ogTags = `
-      <link rel="canonical" href="${canonicalUrl}" />
-      <meta property="og:title" content="${title}" />
-      <meta property="og:description" content="${description}" />
-      <meta property="og:image" content="${image}" />
-      <meta property="og:type" content="${ogType}" />
-      <meta property="og:url" content="${canonicalUrl}" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="${title}" />
-      <meta name="twitter:description" content="${description}" />
-      <meta name="twitter:image" content="${image}" />${schemaScript}
+      <link rel="canonical" href="${canonicalUrl}" data-rh="true" />
+      <meta property="og:title" content="${title}" data-rh="true" />
+      <meta property="og:description" content="${description}" data-rh="true" />
+      <meta property="og:image" content="${image}" data-rh="true" />
+      <meta property="og:type" content="${ogType}" data-rh="true" />
+      <meta property="og:url" content="${canonicalUrl}" data-rh="true" />
+      <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+      <meta name="twitter:title" content="${title}" data-rh="true" />
+      <meta name="twitter:description" content="${description}" data-rh="true" />
+      <meta name="twitter:image" content="${image}" data-rh="true" />${schemaScript}
     `;
 
     html = html.replace('</head>', `${ogTags}\n</head>`);
@@ -159,7 +161,7 @@ async function run() {
 
   await createPreRenderedPage(
     path.join(distBlogDir, 'index.html'),
-    `Blog | ${siteName}`,
+    `Blog Post Archive & Tech Tutorials | ${siteName}`,
     'Browse all our technology articles, tutorials, and insights.',
     `${BASE_URL}/blog`,
     defaultImage,
@@ -170,7 +172,7 @@ async function run() {
   // 4. Output Home
   await createPreRenderedPage(
     path.join(distDir, 'index.html'), // update root index
-    `${siteName} Blog | Modern Technology Insights`,
+    `${siteName} | Decoding the Future of AI & Technology`,
     'TechNova Blog - Decoding the Future of Technology. Expert analysis, tutorials, and insights on AI, web development, and software.',
     `${BASE_URL}/`,
     defaultImage,

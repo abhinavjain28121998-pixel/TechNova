@@ -28,7 +28,7 @@ export function SEO({
 }: SEOProps) {
   const siteName = 'TechNova';
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
-  const fullDescription = description.includes(siteName) ? description : `${description} | ${siteName}`;
+  const fullDescription = description;
   const currentUrl = typeof window !== 'undefined' 
     ? window.location.origin + window.location.pathname
     : (typeof process !== 'undefined' ? process.env.VITE_SITE_URL : 'https://tech-nova-iota.vercel.app') || 'https://tech-nova-iota.vercel.app';

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-dev-5myg5sl5nzbawzn2monxvt-756170678377.asia-southeast1.run.app/sitemap.xml
+Sitemap: https://tech-nova-iota.vercel.app/sitemap.xml
