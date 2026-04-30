@@ -1,6 +1,6 @@
 export const BASE_URL = typeof window !== 'undefined' 
   ? window.location.origin 
-  : (process.env.VITE_SITE_URL || 'https://ais-dev-5myg5sl5nzbawzn2monxvt-756170678377.asia-southeast1.run.app');
+  : (process.env.VITE_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://tech-nova-iota.vercel.app'));
 
 export function generateBreadcrumbSchema(items: { name: string; item: string }[]) {
   return {
