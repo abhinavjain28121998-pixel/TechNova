@@ -1,0 +1,21 @@
+<svg width="600" height="60" viewBox="0 0 600 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Icon: Nova/Star -->
+  <path d="M40 10 L45 25 L60 30 L45 35 L40 50 L35 35 L20 30 L35 25 Z" fill="url(#grad1)" />
+  <circle cx="40" cy="30" r="5" fill="#fff" />
+  
+  <!-- Text: TechNova -->
+  <text x="80" y="42" font-family="Inter, sans-serif" font-size="32" font-weight="bold" fill="#1e293b">
+    Tech<tspan fill="#2563eb">Nova</tspan>
+  </text>
+  
+  <!-- Slogan/Tagline -->
+  <text x="250" y="40" font-family="Inter, sans-serif" font-size="14" fill="#64748b">
+    | Decoding the Future
+  </text>
+</svg>

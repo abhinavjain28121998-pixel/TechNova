@@ -23,9 +23,10 @@ export function generateOrganizationSchema() {
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${BASE_URL}/logo.png`,
+      url: `${BASE_URL}/logo.svg`,
       width: 600,
-      height: 60
+      height: 60,
+      caption: 'TechNova Blog Logo'
     }
   };
 }
@@ -77,9 +78,10 @@ export function generateArticleSchema(post: any) {
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.png`, // Placeholder, assuming there's a logo or it will be added
+        url: `${BASE_URL}/logo.svg`,
         width: 600,
-        height: 60
+        height: 60,
+        caption: 'TechNova Blog Logo'
       },
     },
     description: post.excerpt || post.title,
@@ -114,7 +116,7 @@ export function generateBlogPostGraphSchema(post: any) {
     logo: {
       '@type': 'ImageObject',
       '@id': `${BASE_URL}/#logo`,
-      url: `${BASE_URL}/logo.png`,
+      url: `${BASE_URL}/logo.svg`,
       width: 600,
       height: 60,
       caption: 'TechNova Blog Logo'
