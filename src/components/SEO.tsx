@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { generateOrganizationSchema, generateWebSiteSchema } from '../lib/seo';
 
 interface SEOProps {
   title: string;
@@ -40,6 +41,30 @@ export function SEO({
   const defaultImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
   const socialImage = image || defaultImage;
 
+  // Combine provided schemas with base site schemas
+  let finalSchema: any[] = [];
+  const baseSchemas = [generateWebSiteSchema(keywords), generateOrganizationSchema()];
+  
+  if (schema) {
+    if (Array.isArray(schema)) {
+      finalSchema = [...schema];
+    } else {
+      finalSchema = [schema];
+    }
+  }
+
+  // Add base schemas if they aren't already included (simple deduplication by @type)
+  // Skip this if the user is passing a @graph schema directly
+  if (!schema || !('@graph' in schema)) {
+    baseSchemas.forEach(baseSchema => {
+      if (!finalSchema.some(s => s['@type'] === baseSchema['@type'])) {
+        finalSchema.push(baseSchema);
+      }
+    });
+  }
+
+  const jsonLdContent = schema && '@graph' in schema ? schema : finalSchema;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -75,9 +100,9 @@ export function SEO({
       {author && <meta name="twitter:creator" content={author} />}
 
       {/* Schema.org JSON-LD */}
-      {schema && (
+      {jsonLdContent && (Array.isArray(jsonLdContent) ? jsonLdContent.length > 0 : true) && (
         <script type="application/ld+json">
-          {JSON.stringify(schema)}
+          {JSON.stringify(jsonLdContent)}
         </script>
       )}
     </Helmet>

@@ -1,3 +1,5 @@
+import { transformationPosts } from './transformationPosts';
+import { moreTransformationPosts } from './moreTransformationPosts';
 export interface Author {
   name: string;
   avatar: string;
@@ -52,6 +54,8 @@ const authors = {
 };
 
 export const POSTS: Post[] = [
+  ...transformationPosts,
+  ...moreTransformationPosts,
   {
     id: 'gbs-applied-intelligence-strategic-guide',
     slug: 'global-business-services-applied-intelligence',

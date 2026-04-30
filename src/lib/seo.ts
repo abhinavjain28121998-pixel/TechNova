@@ -26,20 +26,18 @@ export function generateOrganizationSchema() {
       url: `${BASE_URL}/logo.png`,
       width: 600,
       height: 60
-    },
-    sameAs: [
-      'https://twitter.com/technova',
-      'https://github.com/technova',
-    ],
+    }
   };
 }
 
-export function generateWebSiteSchema() {
+export function generateWebSiteSchema(keywords?: string[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'TechNova Blog',
     url: BASE_URL,
+    description: 'Exploring the frontiers of technology, one article at a time. Stay updated with the latest in AI, Web Dev, and Cybersecurity.',
+    ...(keywords && keywords.length > 0 ? { keywords: keywords.join(', ') } : {}),
     potentialAction: {
       '@type': 'SearchAction',
       target: `${BASE_URL}/blog?q={search_term_string}`,
@@ -95,20 +93,142 @@ export function generateArticleSchema(post: any) {
   };
 }
 
-export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
-  if (!faqs || faqs.length === 0) return null;
+export function generateBlogPostGraphSchema(post: any) {
+  const imageUrl = post.coverImage 
+    ? (post.coverImage.startsWith('http') ? post.coverImage : `${BASE_URL}${post.coverImage}`)
+    : `${BASE_URL}/default-cover.jpg`;
+
+  const wordCount = post.content ? post.content.split(/\s+/).length : 0;
+  const postUrl = `${BASE_URL}/blog/${post.slug}`;
+  const authorName = post.author?.name || 'TechNova Team';
+  const authorUrl = `${BASE_URL}/author/${authorName.toLowerCase().replace(/\s+/g, '-')}`;
+
+  const graph: any[] = [];
+
+  // 1. Organization Schema
+  graph.push({
+    '@type': 'Organization',
+    '@id': `${BASE_URL}/#organization`,
+    name: 'TechNova Blog',
+    url: BASE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      '@id': `${BASE_URL}/#logo`,
+      url: `${BASE_URL}/logo.png`,
+      width: 600,
+      height: 60,
+      caption: 'TechNova Blog Logo'
+    }
+  });
+
+  // 2. WebSite Schema
+  graph.push({
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    url: BASE_URL,
+    name: 'TechNova Blog',
+    description: 'Exploring the frontiers of technology, one article at a time.',
+    publisher: { '@id': `${BASE_URL}/#organization` }
+  });
+
+  // 3. BlogPosting Schema
+  const blogPosting: any = {
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl
+    },
+    headline: post.title ? post.title.substring(0, 110) : '',
+    description: post.metaDescription || post.excerpt || post.title,
+    image: {
+      '@type': 'ImageObject',
+      '@id': `${postUrl}#image`,
+      url: imageUrl,
+      width: 1200,
+      height: 630
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      '@id': `${authorUrl}#person`,
+      name: authorName,
+      url: authorUrl
+    },
+    publisher: { '@id': `${BASE_URL}/#organization` },
+    inLanguage: "en-US",
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    articleSection: post.category || 'Technology',
+    wordCount: wordCount
+  };
+
+  if (post.tags && post.tags.length > 0) {
+    blogPosting.keywords = post.tags.join(', ');
+  }
+
+  // Adding about and mentions conceptually based on tags or category for EEAT
+  blogPosting.about = [
+    {
+      "@type": "Thing",
+      "name": post.category || 'Technology'
+    }
+  ];
   
+  if (post.tags && post.tags.length > 0) {
+    blogPosting.mentions = post.tags.map((tag: string) => ({
+      "@type": "Thing",
+      "name": tag
+    }));
+  }
+
+  graph.push(blogPosting);
+
+  // 4. BreadcrumbList Schema
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${postUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: BASE_URL
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: post.category || 'Blog',
+        item: `${BASE_URL}/blog?category=${encodeURIComponent(post.category || '')}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: postUrl
+      }
+    ]
+  });
+
+  // 5. FAQPage Schema
+  if (post.faqs && post.faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${postUrl}#faq`,
+      mainEntity: post.faqs.map((faq: { question: string; answer: string }) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
+    });
+  }
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
+    '@graph': graph
   };
 }
 

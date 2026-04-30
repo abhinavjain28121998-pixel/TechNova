@@ -1,0 +1,126 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{site_url}}/#organization",
+      "name": "{{site_name}}",
+      "url": "{{site_url}}",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "{{site_url}}/#logo",
+        "url": "{{logo_url}}",
+        "width": 600,
+        "height": 60,
+        "caption": "{{site_name}} Logo"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{site_url}}/#website",
+      "url": "{{site_url}}",
+      "name": "{{site_name}}",
+      "description": "{{site_description}}",
+      "publisher": {
+        "@id": "{{site_url}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{article_url}}#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{article_url}}"
+      },
+      "headline": "{{title}}",
+      "description": "{{description}}",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "{{article_url}}#image",
+        "url": "{{image_url}}",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "{{publish_date}}",
+      "dateModified": "{{modified_date}}",
+      "author": {
+        "@type": "Person",
+        "@id": "{{author_url}}#person",
+        "name": "{{author_name}}",
+        "url": "{{author_url}}"
+      },
+      "publisher": {
+        "@id": "{{site_url}}/#organization"
+      },
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "{{site_url}}/#website"
+      },
+      "articleSection": "{{category}}",
+      "wordCount": "{{wordCount}}",
+      "keywords": "{{keywords}}",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "{{category}}"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "Thing",
+          "name": "{{tag_1}}"
+        },
+        {
+          "@type": "Thing",
+          "name": "{{tag_2}}"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{article_url}}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{site_url}}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{category}}",
+          "item": "{{site_url}}/category/{{category_slug}}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{title}}",
+          "item": "{{article_url}}"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{article_url}}#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "{{faq_question_1}}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{faq_answer_1}}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{{faq_question_2}}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{faq_answer_2}}"
+          }
+        }
+      ]
+    }
+  ]
+}

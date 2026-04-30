@@ -10,7 +10,7 @@ import { format, parseISO } from 'date-fns';
 import { generateWebSiteSchema, generateOrganizationSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -37,11 +37,16 @@ export default function Home() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselPosts.length) % carouselPosts.length);
 
   const { scrollY } = useScroll();
-  const yText = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
-  const yHeroGraphic1 = useTransform(scrollY, [0, 500], [0, -100]);
-  const yHeroGraphic2 = useTransform(scrollY, [0, 500], [0, -200]);
-  const yHeroGraphic3 = useTransform(scrollY, [0, 500], [0, -50]);
+  const smoothScrollY = useSpring(scrollY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  // Text content moves slower
+  const yText = useTransform(smoothScrollY, [0, 1000], [0, 80]);
+  const opacityText = useTransform(smoothScrollY, [0, 600], [1, 0]);
+  
+  // Graphics move faster with varying speeds for depth
+  const yHeroGraphic1 = useTransform(smoothScrollY, [0, 1000], [0, -200]);
+  const yHeroGraphic2 = useTransform(smoothScrollY, [0, 1000], [0, -350]);
+  const yHeroGraphic3 = useTransform(smoothScrollY, [0, 1000], [0, -120]);
 
   return (
     <>

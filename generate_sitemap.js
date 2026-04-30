@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import fs from 'fs';
+import { POSTS } from './src/data/posts.ts';
 
 const firebaseConfig = JSON.parse(fs.readFileSync('./firebase-applet-config.json', 'utf8'));
 const app = initializeApp(firebaseConfig);
@@ -52,8 +53,14 @@ async function generateSitemapAndRSS() {
   <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />
 `;
 
+  const allPosts = new Map();
+  POSTS.forEach(post => allPosts.set(post.id || post.slug, post));
+  
   snap.forEach(doc => {
-    const data = doc.data();
+    allPosts.set(doc.id, { id: doc.id, ...doc.data() });
+  });
+
+  Array.from(allPosts.values()).forEach(data => {
     if (data.status === 'draft') return; // Skip drafts
 
     // Use the post date if available, otherwise today
@@ -80,7 +87,7 @@ async function generateSitemapAndRSS() {
 
   fs.writeFileSync('./public/sitemap.xml', xml);
   fs.writeFileSync('./public/rss.xml', rss);
-  console.log("Sitemap and RSS generated successfully with " + snap.docs.filter(d => d.data().status !== 'draft').length + " posts.");
+  console.log("Sitemap and RSS generated successfully with " + Array.from(allPosts.values()).filter(d => d.status !== 'draft').length + " posts.");
 }
 
 generateSitemapAndRSS().catch(console.error);

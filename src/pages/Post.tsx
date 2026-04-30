@@ -16,7 +16,7 @@ import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema, BASE_URL } from '../lib/seo';
+import { generateBlogPostGraphSchema, BASE_URL } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
@@ -176,16 +176,7 @@ export default function Post() {
     }
   };
 
-  const articleSchema = generateArticleSchema(post);
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: '/' },
-    { name: 'Blog', item: '/blog' },
-    { name: post.title, item: `/blog/${post.slug}` }
-  ]);
-  const faqSchema = post.faqs ? generateFAQSchema(post.faqs) : null;
-
-  const schemas: any[] = [articleSchema, breadcrumbSchema];
-  if (faqSchema) schemas.push(faqSchema);
+  const postGraphSchema = generateBlogPostGraphSchema(post);
 
   const rawDesc = post.metaDescription || post.excerpt || '';
   const seoDescription = rawDesc.length > 150 ? `${rawDesc.slice(0, 147).trim()}...` : rawDesc;
@@ -201,7 +192,7 @@ export default function Post() {
         author={post.author.name}
         publishedTime={post.date}
         keywords={post.tags}
-        schema={schemas}
+        schema={postGraphSchema}
       />
 
       <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">
