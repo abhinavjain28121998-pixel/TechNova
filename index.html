@@ -11,6 +11,38 @@
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="TechNova Blog RSS Feed" href="/rss.xml" />
     <title>TechNova Blog | Modern Technology Insights</title>
+    <!-- Default Schema for Home Page & Fallback -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://tech-nova-iota.vercel.app/#organization",
+          "name": "TechNova Blog",
+          "url": "https://tech-nova-iota.vercel.app",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://tech-nova-iota.vercel.app/#logo",
+            "url": "https://tech-nova-iota.vercel.app/logo.png",
+            "width": 600,
+            "height": 60,
+            "caption": "TechNova Blog Logo"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://tech-nova-iota.vercel.app/#website",
+          "url": "https://tech-nova-iota.vercel.app",
+          "name": "TechNova Blog",
+          "description": "Exploring the frontiers of technology, one article at a time.",
+          "publisher": {
+            "@id": "https://tech-nova-iota.vercel.app/#organization"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
