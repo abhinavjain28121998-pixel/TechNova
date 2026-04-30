@@ -28,9 +28,11 @@ export function SEO({
   const siteName = 'TechNova';
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   const fullDescription = description.includes(siteName) ? description : `${description} | ${siteName}`;
-  const currentUrl = typeof window !== 'undefined' ? window.location.href.split('?')[0].split('#')[0] : 'https://tech-nova-iota.vercel.app';
+  const currentUrl = typeof window !== 'undefined' 
+    ? window.location.origin + window.location.pathname
+    : (typeof process !== 'undefined' ? process.env.VITE_SITE_URL : 'https://tech-nova-iota.vercel.app') || 'https://tech-nova-iota.vercel.app';
   let rawUrl = url || currentUrl;
-  if (rawUrl.length > 1 && rawUrl.endsWith('/')) {
+  if (rawUrl && rawUrl.length > 1 && rawUrl.endsWith('/')) {
     rawUrl = rawUrl.slice(0, -1);
   }
   const canonicalUrl = rawUrl;

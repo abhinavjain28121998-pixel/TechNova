@@ -7,7 +7,7 @@ import { calculateReadingTime } from '../lib/utils';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateWebSiteSchema, generateOrganizationSchema } from '../lib/seo';
+import { generateWebSiteSchema, generateOrganizationSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
@@ -50,7 +50,7 @@ export default function Home() {
         description="TechNova is your premier destination for expert insights, cutting-edge tutorials, and the latest news in Artificial Intelligence, Web Development, and Cybersecurity."
         keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
         schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
-        url="https://tech-nova-iota.vercel.app"
+        url={BASE_URL}
       />
 
       {/* Hero Section */}

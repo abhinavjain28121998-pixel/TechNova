@@ -1,5 +1,5 @@
 import { SEO } from '../components/SEO';
-import { generateBreadcrumbSchema, generateAboutPageSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, generateAboutPageSchema, BASE_URL } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Code, Shield, Bot, Newspaper, Zap, Users, Target } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
@@ -58,7 +58,7 @@ export default function About() {
       <SEO 
         title="About Us"
         description="Learn more about TechNova and our mission to decode the future of technology."
-        url="https://tech-nova-iota.vercel.app/about"
+        url={`${BASE_URL}/about`}
         keywords={['about us', 'TechNova', 'technology blog', 'tech news', 'tech writers']}
         schema={[breadcrumbSchema, aboutSchema]}
       />

@@ -6,7 +6,7 @@ import { Card, CardHeader, CardFooter } from '../components/ui/card';
 import { calculateReadingTime } from '../lib/utils';
 import { Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateBreadcrumbSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, BASE_URL } from '../lib/seo';
 
 export default function Categories() {
   const [searchParams] = useSearchParams();
@@ -38,7 +38,7 @@ export default function Categories() {
         description={displayCategory ? `Browse TechNova articles related to ${displayCategory}.` : "Browse TechNova articles by category."}
         keywords={['tech categories', 'tech topics', displayCategory || '']}
         schema={[breadcrumbSchema]}
-        url={`https://tech-nova-iota.vercel.app/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
+        url={`${BASE_URL}/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">

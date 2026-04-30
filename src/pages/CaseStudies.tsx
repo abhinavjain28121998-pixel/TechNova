@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { BASE_URL } from '../lib/seo';
 import { Button, buttonVariants } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
@@ -81,7 +82,7 @@ export default function CaseStudies() {
         title="Case Studies & Real-World AI Insights" 
         description="Explore how industry leaders like Netflix, Klarna, and Morgan Stanley are leveraging artificial intelligence and digital transformation to solve complex real-world business challenges."
         keywords={['AI case studies', 'real-world AI applications', 'business case studies', 'digital transformation examples', 'enterprise AI implementation']}
-        url="https://tech-nova-iota.vercel.app/case-studies"
+        url={`${BASE_URL}/case-studies`}
       />
       
       {/* Header Section */}

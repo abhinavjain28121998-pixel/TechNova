@@ -6,7 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { calculateReadingTime } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { Calendar, Clock, ChevronLeft, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check, Edit2 } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, ChevronRight, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check, Edit2 } from 'lucide-react';
 import { auth } from '../lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 
@@ -16,7 +16,7 @@ import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo';
+import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema, BASE_URL } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
@@ -149,7 +149,7 @@ export default function Post() {
     .slice(0, 2);
 
   const getCanonicalUrl = () => {
-    return `https://tech-nova-iota.vercel.app/blog/${post?.slug}`;
+    return `${BASE_URL}/blog/${post?.slug}`;
   };
 
   const handleShareX = () => {
@@ -206,6 +206,17 @@ export default function Post() {
 
       <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">
         {/* Post Header */}
+        {/* Breadcrumbs */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-8 -mb-4">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground" aria-label="Breadcrumb">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-foreground font-medium truncate max-w-[150px] sm:max-w-none" aria-current="page">{post.title}</span>
+          </nav>
+        </div>
+
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
           <div className="flex justify-between items-center mb-8">
             <Link to="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors">

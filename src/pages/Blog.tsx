@@ -9,7 +9,7 @@ import { calculateReadingTime } from '../lib/utils';
 import { Input } from '../components/ui/input';
 import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateBreadcrumbSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import Fuse from 'fuse.js';
 import Highlighter from 'react-highlight-words';
@@ -74,7 +74,7 @@ export default function Blog() {
         description="Browse all our technology articles, tutorials, and insights."
         keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
         schema={[breadcrumbSchema]}
-        url="https://tech-nova-iota.vercel.app/blog"
+        url={`${BASE_URL}/blog`}
       />
 
       <div className="bg-background border-b border-border text-foreground py-16 md:py-24">
