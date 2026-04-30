@@ -38,7 +38,7 @@ async function startServer() {
     // Vite middleware for development
     vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'spa',
+      appType: 'custom',
     });
     app.use(vite.middlewares);
   } else {
@@ -78,11 +78,16 @@ async function startServer() {
         template = template.replace('</head>', `<link rel="canonical" href="${canonicalUrl}" />\n</head>`);
       }
 
-      // Check if trying to view a blog post
-      const blogMatch = url.match(/^\/blog\/([^/?#&]+)/);
-      if (blogMatch) {
-        const slug = blogMatch[1];
-        try {
+      let jsonLdScript = '';
+
+      try {
+        const { generateOrganizationSchema, generateWebSiteSchema } = await import('./src/lib/seo.ts');
+        const genericSchemas = [generateOrganizationSchema(), generateWebSiteSchema()];
+
+        // Check if trying to view a blog post
+        const blogMatch = url.match(/^\/blog\/([^/?#&]+)/);
+        if (blogMatch) {
+          const slug = blogMatch[1];
           let postData: any = null;
           
           if (db) {
@@ -102,38 +107,22 @@ async function startServer() {
           
           if (postData) {
             const siteName = 'TechNova';
-            // ensure we show "Post Name | TechNova"
             const title = postData.title.includes(siteName) ? postData.title : `${postData.title} | ${siteName}`;
             const description = postData.metaDescription || postData.excerpt || title;
             const image = postData.coverImage || 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
 
-            // Generate Schema
-            let jsonLdScript = '';
-            try {
-              const { generateBlogPostGraphSchema } = await import('./src/lib/seo.ts');
-              const schema = generateBlogPostGraphSchema(postData);
-              jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(schema)}\n</script>\n`;
-            } catch (err) {
-              console.error('Failed to generate schema in server:', err);
-            }
+            const { generateBlogPostGraphSchema } = await import('./src/lib/seo.ts');
+            const schema = generateBlogPostGraphSchema(postData);
+            jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(schema)}\n</script>\n`;
 
-            // Replace standard title and meta tags
-            template = template.replace(
-              /<title>.*?<\/title>/i,
-              `<title>${title}</title>`
-            );
+            template = template.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
             
-            // Replaces description if exists
             if (template.includes('<meta name="description"')) {
-              template = template.replace(
-                /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i,
-                `<meta name="description" content="${description}" />`
-              );
+              template = template.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${description}" />`);
             } else {
               template = template.replace('</head>', `<meta name="description" content="${description}" />\n</head>`);
             }
 
-            // Inject OpenGraph / Twitter tags right before head close
             const ogTags = `
               <meta property="og:title" content="${title}" />
               <meta property="og:description" content="${description}" />
@@ -146,9 +135,47 @@ async function startServer() {
             `;
             template = template.replace('</head>', `${ogTags}\n</head>`);
           }
-        } catch (dbErr) {
-          console.error("Firestore lookup / local post import error in server:", dbErr);
+        } else if (url.startsWith('/blog')) {
+          // Blog List Page
+          const { BASE_URL, generateBreadcrumbSchema } = await import('./src/lib/seo.ts');
+          
+          let postsList: any[] = [];
+          if (db) {
+            try {
+              const postsRef = collection(db, 'posts');
+              const snap = await getDocs(postsRef);
+              postsList = snap.docs.map(d => d.data());
+            } catch (e) {}
+          }
+          if (postsList.length === 0) {
+            const { POSTS } = await import('./src/data/posts.ts');
+            postsList = POSTS;
+          }
+          
+          genericSchemas.push(generateBreadcrumbSchema([
+            { name: 'Home', item: '/' },
+            { name: 'Blog', item: '/blog' }
+          ]));
+          
+          const blogListSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            'itemListElement': postsList.slice(0, 10).map((post: any, index: number) => ({
+              '@type': 'ListItem',
+              'position': index + 1,
+              'url': `${BASE_URL}/blog/${post.slug}`
+            }))
+          };
+          genericSchemas.push(blogListSchema);
+          jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
+          template = template.replace('</head>', `${jsonLdScript}\n</head>`);
+        } else {
+          // All other pages (Home, About, Contact)
+          jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
+          template = template.replace('</head>', `${jsonLdScript}\n</head>`);
         }
+      } catch (e) {
+        console.error("Error generating schema:", e);
       }
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
