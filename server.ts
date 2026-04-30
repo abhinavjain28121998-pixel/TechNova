@@ -107,6 +107,16 @@ async function startServer() {
             const description = postData.metaDescription || postData.excerpt || title;
             const image = postData.coverImage || 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
 
+            // Generate Schema
+            let jsonLdScript = '';
+            try {
+              const { generateBlogPostGraphSchema } = await import('./src/lib/seo.ts');
+              const schema = generateBlogPostGraphSchema(postData);
+              jsonLdScript = `\n<script type="application/ld+json">\n${JSON.stringify(schema)}\n</script>\n`;
+            } catch (err) {
+              console.error('Failed to generate schema in server:', err);
+            }
+
             // Replace standard title and meta tags
             template = template.replace(
               /<title>.*?<\/title>/i,
@@ -132,7 +142,7 @@ async function startServer() {
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:title" content="${title}" />
               <meta name="twitter:description" content="${description}" />
-              <meta name="twitter:image" content="${image}" />
+              <meta name="twitter:image" content="${image}" />${jsonLdScript}
             `;
             template = template.replace('</head>', `${ogTags}\n</head>`);
           }

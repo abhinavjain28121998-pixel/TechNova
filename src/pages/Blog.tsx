@@ -67,13 +67,23 @@ export default function Blog() {
     { name: 'Blog', item: '/blog' }
   ]);
 
+  const blogListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': paginatedPosts.map((post, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'url': `${BASE_URL}/blog/${post.slug}`
+    }))
+  };
+
   return (
     <>
       <SEO 
         title="Blog Post Archive & Tech Tutorials | TechNova"
         description="Browse all our technology articles, tutorials, and insights."
         keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
-        schema={[breadcrumbSchema]}
+        schema={[breadcrumbSchema, blogListSchema]}
         url={`${BASE_URL}/blog`}
       />
 
