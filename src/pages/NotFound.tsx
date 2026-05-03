@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <>
       <SEO 
-        title="Page Not Found | TechNova"
+        title="Page Not Found | TechNova Blog"
         description="The page you are looking for does not exist or has been moved."
         url="https://tech-nova-iota.vercel.app/404"
         noindex

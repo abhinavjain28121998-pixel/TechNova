@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
           <p className="text-slate-400">Last updated: April 16, 2026</p>
           
           <p>
-            At TechNova, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by TechNova and how we use it.
+            At TechNova Blog, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by TechNova Blog and how we use it.
           </p>
 
           <h2>Information We Collect</h2>
@@ -48,12 +48,12 @@ export default function PrivacyPolicy() {
 
           <h2>Log Files</h2>
           <p>
-            TechNova follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.
+            TechNova Blog follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.
           </p>
 
           <h2>Cookies and Web Beacons</h2>
           <p>
-            Like any other website, TechNova uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
+            Like any other website, TechNova Blog uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
           </p>
         </div>
       </div>

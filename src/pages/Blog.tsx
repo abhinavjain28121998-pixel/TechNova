@@ -80,8 +80,8 @@ export default function Blog() {
   return (
     <>
       <SEO 
-        title="Blog Post Archive & Tech Tutorials | TechNova"
-        description="Browse all our technology articles, tutorials, and insights."
+        title="TechNova Blog | AI & Software Engineering Articles"
+        description="Read our latest articles on Artificial Intelligence, Web Development, and Cybersecurity. Actionable tutorials and insights for tech professionals."
         keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
         schema={[breadcrumbSchema, blogListSchema]}
         url={`${BASE_URL}/blog`}

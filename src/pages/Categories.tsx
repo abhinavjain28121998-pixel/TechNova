@@ -34,8 +34,8 @@ export default function Categories() {
   return (
     <>
       <SEO 
-        title={displayCategory ? `${displayCategory} Articles | TechNova` : "All Categories | TechNova"}
-        description={displayCategory ? `Browse TechNova articles related to ${displayCategory}.` : "Browse TechNova articles by category."}
+        title={displayCategory ? `${displayCategory} Articles & Tutorials | TechNova Blog` : "Tech Topics & Categories | TechNova Blog"}
+        description={displayCategory ? `Explore expert articles, tutorials, and news about ${displayCategory} on TechNova Blog.` : "Browse all technology categories on TechNova Blog. Find targeted insights into AI, Web Dev, Security, and more."}
         keywords={['tech categories', 'tech topics', displayCategory || '']}
         schema={[breadcrumbSchema]}
         url={`${BASE_URL}/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}

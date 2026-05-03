@@ -114,7 +114,7 @@ export function Layout() {
                 <img src="/logo.svg" alt="TechNova Logo" className="h-8 w-auto" />
               </Link>
               <p className="text-sm text-muted-foreground mb-4">
-                Exploring the frontiers of technology, one article at a time. Stay updated with the latest in AI, Web Dev, and more.
+                Build the Future of Software & AI. Master modern engineering with in-depth tutorials, architectural deep-dives, and strategic tech insights.
               </p>
             </div>
 

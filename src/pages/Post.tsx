@@ -60,12 +60,13 @@ export default function Post() {
     return () => unsubscribe();
   }, []);
 
-  const cleanContent = fbPost?.content ? fbPost.content.replace(/^#\s+.*$/gm, '').trim() : '';
+  // Keep # if any, but we will render it as h2
+  const cleanContent = fbPost?.content || '';
 
   const toc = useMemo(() => {
     if (!cleanContent) return [];
     const slugger = new GithubSlugger();
-    const regex = /^(#{2})\s+(.+)$/gm;
+    const regex = /^(#{1,2})\s+(.+)$/gm;
     const headings = [];
     let match;
     while ((match = regex.exec(cleanContent)) !== null) {
@@ -334,7 +335,8 @@ export default function Post() {
               <ReactMarkdown 
                 rehypePlugins={[rehypeSlug]}
                 components={{
-                  a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
+                  a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />,
+                  h1: ({ node, ...props }) => <h2 {...props} />
                 }}
               >
                 {post.content}

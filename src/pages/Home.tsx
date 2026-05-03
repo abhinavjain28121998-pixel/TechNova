@@ -51,8 +51,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="TechNova | Decoding the Future of AI & Technology"
-        description="TechNova is your premier destination for expert insights, cutting-edge tutorials, and the latest news in Artificial Intelligence, Web Development, and Cybersecurity."
+        title="TechNova Blog | Build the Future of Software & AI"
+        description="Explore expert insights, technical tutorials, and strategic deep-dives into Artificial Intelligence, software architecture, and the future of enterprise tech at TechNova."
         keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
         schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
         url={BASE_URL}
@@ -72,17 +72,18 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column: Text Content */}
-            <motion.div className="max-w-3xl" style={{ y: yText, opacity: opacityText }}>
+          <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+            {/* Text Content */}
+            <motion.div style={{ y: yText, opacity: opacityText }}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
+                className="flex justify-center"
               >
                 <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 px-4 py-1.5 flex w-fit items-center gap-2 rounded-full backdrop-blur-sm">
                   <Sparkles className="w-4 h-4 animate-pulse" />
-                  <span className="font-semibold tracking-wide uppercase text-xs">Welcome to TechNova</span>
+                  <span className="font-semibold tracking-wide uppercase text-xs">For Developers & Tech Leaders</span>
                 </Badge>
               </motion.div>
 
@@ -92,24 +93,24 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1] pb-2"
               >
-                Decoding the <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-gradient bg-[length:200%_auto]">Future of Tech</span>
+                Build the Future of <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-gradient bg-[length:200%_auto]">Software & AI</span>
               </motion.h1>
 
               <motion.p 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-xl"
+                className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto"
               >
-                Expert analysis, tutorials, and deep-dive insights on Artificial Intelligence, advanced Web Development, and the Software shaping tomorrow.
+                Master modern engineering. Skip the noise and get in-depth tutorials, architectural deep-dives, and strategic tech insights to build better products.
               </motion.p>
               
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col sm:flex-row gap-4 items-start"
+                className="flex flex-col sm:flex-row gap-4 items-center justify-center"
               >
                 <Link to="/blog" className="group w-full sm:w-auto">
                   <div className={buttonVariants({ size: 'lg', className: 'w-full relative overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-105 duration-300' })}>
@@ -125,75 +126,6 @@ export default function Home() {
                 </Link>
               </motion.div>
             </motion.div>
-
-            {/* Right Column: Floating Tech Graphics */}
-            <div className="hidden lg:block relative h-[600px] w-full perspective-[2000px]">
-              {/* Primary Floating Image */}
-              <motion.div
-                style={{ y: yHeroGraphic1 }}
-                animate={{ 
-                  rotateY: [-5, 5, -5],
-                  rotateX: [2, -2, 2]
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] z-20 hover:z-30 transition-all duration-500 hover:scale-105"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-2">
-                  <img src="/regenerated_image_1777809819998.png" width={1200} height={800} alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" fetchPriority="high" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge variant="secondary" className="bg-black/80 text-primary border-primary/20 backdrop-blur-md">AI Model</Badge>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Secondary Floating Image - Top Right */}
-              <motion.div
-                style={{ y: yHeroGraphic2 }}
-                animate={{ 
-                  x: [5, -5, 5]
-                }}
-                transition={{ 
-                  duration: 7, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 1 
-                }}
-                className="absolute top-10 right-0 w-[240px] z-10 opacity-80 hover:opacity-100 hover:z-30 transition-all duration-500"
-              >
-                <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-1.5 transform rotate-3 hover:rotate-0 transition-transform">
-                  <img src="/regenerated_image_1777809822215.png" width={800} height={450} alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" loading="lazy" />
-                </div>
-              </motion.div>
-
-              {/* Tertiary Floating Image - Bottom Left */}
-              <motion.div
-                style={{ y: yHeroGraphic3 }}
-                animate={{ 
-                  rotateZ: [-2, 2, -2]
-                }}
-                transition={{ 
-                  duration: 8, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 2 
-                }}
-                className="absolute bottom-10 left-0 w-[280px] z-30 opacity-90 hover:opacity-100 transition-all duration-500"
-              >
-                <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 border border-primary/20 bg-background/80 backdrop-blur-xl p-4 transform -rotate-6 hover:rotate-0 transition-transform flex items-center gap-4">
-                  <div className="bg-primary/20 p-3 rounded-full">
-                    <Sparkles className="w-6 h-6 text-primary animate-pulse" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-foreground">Zero Trust Security</h4>
-                    <p className="text-xs text-muted-foreground mt-0.5">Enterprise Architecture</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>

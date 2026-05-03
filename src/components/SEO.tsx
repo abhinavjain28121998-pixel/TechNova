@@ -26,8 +26,8 @@ export function SEO({
   keywords,
   noindex = false
 }: SEOProps) {
-  const siteName = 'TechNova';
-  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const siteName = 'TechNova Blog';
+  const fullTitle = title.includes('TechNova') ? title : `${title} | ${siteName}`;
   const fullDescription = description;
   const currentUrl = typeof window !== 'undefined' 
     ? window.location.origin + window.location.pathname

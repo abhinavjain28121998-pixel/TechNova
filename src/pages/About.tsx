@@ -56,10 +56,10 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="About Us"
-        description="Learn more about TechNova and our mission to decode the future of technology."
+        title="About TechNova Blog | Our Mission & Values"
+        description="Discover the story behind TechNova Blog. We are a team of industry practitioners delivering deep research, tutorials, and practical insights into AI and software engineering."
         url={`${BASE_URL}/about`}
-        keywords={['about us', 'TechNova', 'technology blog', 'tech news', 'tech writers']}
+        keywords={['about us', 'TechNova Blog', 'technology blog', 'tech news', 'tech writers']}
         schema={[breadcrumbSchema, aboutSchema]}
       />
       
@@ -73,7 +73,7 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight mb-6"
           >
-            Decoding the <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">Future</span> of Technology
+            Build the <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">Future</span> of Software & AI
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,7 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xl text-muted-foreground md:text-2xl max-w-3xl mx-auto leading-relaxed"
           >
-            TechNova is a premier destination for technology professionals, developers, and enthusiasts looking to stay ahead of the curve.
+            TechNova Blog is a premier destination for technology professionals, developers, and tech leaders looking to master modern engineering and stay ahead of the curve.
           </motion.p>
         </div>
       </section>

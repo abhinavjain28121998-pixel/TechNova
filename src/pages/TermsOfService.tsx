@@ -4,7 +4,7 @@ export default function TermsOfService() {
   return (
     <>
       <SEO 
-        title="Terms of Service | TechNova"
+        title="Terms of Service | TechNova Blog"
         description="Read the Terms of Service and user agreements for the TechNova blog."
         keywords={['terms of service', 'TechNova terms', 'user agreement']}
         url="https://tech-nova-iota.vercel.app/terms-of-service"
@@ -17,14 +17,14 @@ export default function TermsOfService() {
             
             <h2 className="text-2xl font-semibold mt-10 mb-4 text-foreground">1. Acceptance of Terms</h2>
             <p className="mb-6">
-              By accessing and using the TechNova website, you accept and agree to be bound by the terms and provision of this agreement. 
+              By accessing and using the TechNova Blog website, you accept and agree to be bound by the terms and provision of this agreement. 
               In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services.
             </p>
 
             <h2 className="text-2xl font-semibold mt-10 mb-4 text-foreground">2. Description of Service</h2>
             <p className="mb-6">
-              TechNova provides users with access to a rich collection of resources, including technology blogs, tutorials, industry news, and 
-              AI developments. You understand and agree that the service is provided "AS-IS" and that TechNova assumes no responsibility for 
+              TechNova Blog provides users with access to a rich collection of resources, including technology blogs, tutorials, industry news, and 
+              AI developments. You understand and agree that the service is provided "AS-IS" and that TechNova Blog assumes no responsibility for 
               the timeliness, deletion, mis-delivery, or failure to store any user communications or personalization settings.
             </p>
 

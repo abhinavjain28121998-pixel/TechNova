@@ -283,7 +283,7 @@ export default function Admin() {
   if (!user || user.email !== ADMIN_EMAIL) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen space-y-8 bg-[#f0f0f1] p-4 font-sans text-[#3c434a]">
-        <SEO title="Log In ‹ TechNova — WordPress" description="Log In" noindex />
+      <SEO title="Log In ‹ TechNova Blog — WordPress" description="Log In" noindex />
         <div className="w-full max-w-sm">
           <div className="flex justify-center mb-6">
             <div className="h-20 w-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl font-serif italic shadow-sm hover:opacity-90 transition-opacity">W</div>
@@ -308,7 +308,7 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-[#f0f0f1] text-[#3c434a] font-sans flex flex-col md:flex-row pb-20 md:pb-0">
-      <SEO title="Dashboard ‹ TechNova — WordPress" description="Admin Dashboard" noindex />
+      <SEO title="Dashboard ‹ TechNova Blog — WordPress" description="Admin Dashboard" noindex />
 
       {/* Sidebar Navigation */}
       <div className="w-full md:w-[160px] lg:w-[200px] xl:w-[260px] bg-[#1d2327] text-white flex-shrink-0 flex flex-col md:min-h-screen md:fixed md:top-0 md:left-0 z-20 overflow-y-auto">
