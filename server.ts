@@ -82,7 +82,7 @@ async function startServer() {
 
       try {
         const { generateOrganizationSchema, generateWebSiteSchema } = await import('./src/lib/seo.ts');
-        const genericSchemas = [generateOrganizationSchema(), generateWebSiteSchema()];
+        const genericSchemas: any[] = [generateOrganizationSchema(), generateWebSiteSchema()];
 
         // Check if trying to view a blog post
         const blogMatch = url.match(/^\/blog\/([^/?#&]+)/);

@@ -39,7 +39,7 @@ if (fs.existsSync(firebaseConfigPath)) {
   }
 }
 
-async function createPreRenderedPage(outputFilePath, title, description, urlStr, image, ogType = 'website', jsonLds = []) {
+async function createPreRenderedPage(outputFilePath, title, description, urlStr, image, ogType = 'website', jsonLd: any = null) {
   try {
     let html = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 
@@ -63,7 +63,7 @@ async function createPreRenderedPage(outputFilePath, title, description, urlStr,
     }
 
     // append canonical and schemas
-    const schemaScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(jsonLds)}\n</script>\n`;
+    const schemaScript = jsonLd ? `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(jsonLd)}\n</script>\n` : '';
 
     const ogTags = `
       <link rel="canonical" href="${canonicalUrl}" data-rh="true" />

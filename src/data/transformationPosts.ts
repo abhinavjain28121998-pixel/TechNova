@@ -60,7 +60,7 @@ Navigating modernization demands a structured, scientifically sound deployment m
 
 The transition toward total enterprise modernization replaces slow, reactive business processes with highly proactive, digitally native operations. Securing long-term international competitive superiority explicitly requires weaving robust digital strategies heavily into the foundational core of enterprise operations.
 `,
-    coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
+    coverImage: '/regenerated_image_1777809818303.png',
     date: new Date().toISOString(),
     readingTime: '10 min read',
     category: 'Technology',

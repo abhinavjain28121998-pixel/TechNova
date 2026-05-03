@@ -143,7 +143,7 @@ export default function Home() {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] z-20 hover:z-30 transition-all duration-500 hover:scale-105"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-2">
-                  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" width={1200} height={800} alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" fetchPriority="high" />
+                  <img src="/regenerated_image_1777809819998.png" width={1200} height={800} alt="Artificial Intelligence Neural Network" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" fetchPriority="high" />
                   <div className="absolute top-4 left-4 flex gap-2">
                     <Badge variant="secondary" className="bg-black/80 text-primary border-primary/20 backdrop-blur-md">AI Model</Badge>
                   </div>
@@ -165,7 +165,7 @@ export default function Home() {
                 className="absolute top-10 right-0 w-[240px] z-10 opacity-80 hover:opacity-100 hover:z-30 transition-all duration-500"
               >
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm p-1.5 transform rotate-3 hover:rotate-0 transition-transform">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" width={800} height={450} alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" loading="lazy" />
+                  <img src="/regenerated_image_1777809822215.png" width={800} height={450} alt="Web Development Code" className="rounded-xl object-cover aspect-video w-full" referrerPolicy="no-referrer" loading="lazy" />
                 </div>
               </motion.div>
 
