@@ -1,3 +1,4 @@
+import { eeatPosts } from './eeatPosts';
 import { transformationPosts } from './transformationPosts';
 import { moreTransformationPosts } from './moreTransformationPosts';
 export interface Author {
@@ -56,6 +57,7 @@ const authors = {
 export const POSTS: Post[] = [
   ...transformationPosts,
   ...moreTransformationPosts,
+  ...eeatPosts,
   {
     id: 'gbs-applied-intelligence-strategic-guide',
     slug: 'global-business-services-applied-intelligence',
@@ -611,7 +613,7 @@ By leveraging advanced machine learning, predictive analytics, and natural langu
 
 Applied Intelligence Programs are comprehensive, enterprise-grade frameworks designed to integrate artificial intelligence, automation, and advanced analytics into core business workflows. Unlike standalone AI tools or ad-hoc generative model experiments, these programs focus on holistic operational integration. They ensure that AI deployments are secure, scalable, aligned with business objectives, and capable of delivering continuous value.
 
-Organizations successfully deploying Applied Intelligence Programs move beyond simple automation. They employ complex, multi-agent frameworks to tackle high-friction areas such as supply chain optimization, financial forecasting, and human capital management. For insights on where to start, consider evaluating your overall strategy through comprehensive [Gen AI Consulting](/blog/strategic-guide-gen-ai-consulting-enterprise-transformation).
+Organizations successfully deploying Applied Intelligence Programs move beyond simple automation. They employ complex, multi-agent frameworks to tackle high-friction areas such as supply chain optimization, financial forecasting, and human capital management. For insights on where to start, consider evaluating your overall strategy through comprehensive [Gen AI Consulting](/blog/gen-ai-consulting-enterprise-transformation).
 
 ## How It Works in Real-World Scenarios
 
@@ -1386,7 +1388,7 @@ The integration of generative AI is marking the definitive end of the reactive s
   },
   {
     id: 'hackett-gen-ai-consulting',
-    slug: 'strategic-guide-gen-ai-consulting-enterprise-transformation',
+    slug: 'gen-ai-consulting-enterprise-transformation',
     title: 'The Strategic Value of Gen AI Consulting in Enterprise Transformation',
     excerpt: 'Discover why expert Gen AI Consulting is crucial for modern enterprises looking to safely, strategically, and effectively adopt artificial intelligence at scale.',
     metaDescription: 'Strategic Gen AI Consulting minimizes risk and maximizes ROI during enterprise digital transformation. Learn how expert guidance accelerates AI adoption safely.',
