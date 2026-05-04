@@ -7,7 +7,7 @@ const firebaseConfig = JSON.parse(fs.readFileSync('./firebase-applet-config.json
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 
-const baseUrl = process.env.VITE_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://tech-nova-iota.vercel.app');
+const baseUrl = process.env.VITE_SITE_URL || 'https://tech-nova-iota.vercel.app';
 
 async function generateSitemapAndRSS() {
   const postsRef = collection(db, 'posts');

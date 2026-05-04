@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart } from 'lucide-react';
+import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart, Coffee, Music, ShoppingCart, Truck } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { BASE_URL } from '../lib/seo';
 import { Button, buttonVariants } from '../components/ui/button';
@@ -70,6 +70,66 @@ const caseStudies = [
     ],
     analysis: "By empowering their consultants with an AI tool trained specifically on their world-class benchmarking taxonomy, The Hackett Group eliminated the data-gathering bottleneck. The AI handles the synthesis, allowing consultants to focus purely on strategic interpretation.",
     takeaway: "In knowledge-intensive industries, AI is most effective when it amplifies the capabilities of human experts, freeing them from data processing to focus on high-value strategic advisory."
+  },
+  {
+    company: "Starbucks",
+    industry: "Retail & Food Beverage",
+    icon: <Coffee className="w-8 h-8 text-orange-500" />,
+    context: "A global coffeehouse chain serving <strong class='text-primary font-bold'>millions</strong> of customers daily across thousands of physical retail locations.",
+    problem: "Balancing highly personalized customer experiences with the intense operational demands of peak-hour store traffic and inventory management.",
+    solution: "Starbucks launched Deep Brew, an overarching AI platform connecting the Starbucks Rewards app with in-store operations. It leverages purchasing data, localized weather, and time-of-day to provide hyper-personalized recommendations while predicting inventory needs and automating preventative maintenance for espresso machines.",
+    results: [
+      "Driven an astronomical percentage of total revenue through the <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>Rewards App</strong> ecosystem.",
+      "Significantly reduced <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>machine downtime</strong> via IoT predictive maintenance.",
+      "Maximized upsells through context-aware <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>dynamic recommendations</strong>."
+    ],
+    analysis: "Deep Brew succeeds because it serves both the customer and the barista. It enhances the frontend digital experience while simultaneously optimizing backend store operations.",
+    takeaway: "True digital transformation connects customer-facing personalization with back-office operational automation."
+  },
+  {
+    company: "Spotify",
+    industry: "Audio Streaming",
+    icon: <Music className="w-8 h-8 text-green-500" />,
+    context: "A dominant music streaming platform fighting for user retention in a highly commoditized market with almost identical content libraries to competitors.",
+    problem: "When users have access to almost every song ever recorded, discovery becomes overwhelming. <strong class='text-destructive font-bold'>Choice paralysis</strong> threatened to lower engagement and increase subscriber churn.",
+    solution: "Spotify deployed an aggressively intelligent curation engine, famously utilized in 'Discover Weekly.' The AI combines collaborative filtering (finding similar users) with Natural Language Processing (reading music blogs) to autonomously curate highly specific, hyper-personalized playlists for every single user globally.",
+    results: [
+      "Discover Weekly drove <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>billions</strong> of track streams within its first year.",
+      "Created an incredibly strong <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>competitive moat</strong> based on algorithmic understanding.",
+      "Increased average daily listening times by consistently surfacing <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>high-affinity</strong> content."
+    ],
+    analysis: "Spotify fundamentally shifted from being a massive repository of music to an active, intelligent curator. They realized their actual product was discovery, not just access.",
+    takeaway: "In heavily commoditized markets, advanced AI-driven personalization is the ultimate differentiator."
+  },
+  {
+    company: "Amazon",
+    industry: "E-commerce & Logistics",
+    icon: <ShoppingCart className="w-8 h-8 text-amber-500" />,
+    context: "The world's largest online retailer managing an incomprehensibly vast global supply chain that processes <strong class='text-primary font-bold'>billions</strong> of packages annually.",
+    problem: "Meeting the increasingly intense consumer expectation for <strong class='text-destructive font-bold'>next-day or same-day</strong> delivery without completely destroying profit margins through exorbitant localized warehousing and shipping costs.",
+    solution: "Amazon deployed 'Anticipatory Shipping' algorithms alongside autonomous Kiva warehouse robots. The AI analyzes granular search and purchase history to predict what a region will buy, shipping items to localized fulfillment centers before the customer even clicks purchase.",
+    results: [
+      "Drastically reduced <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>delivery times</strong> across massive geographic areas.",
+      "Lowered <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>warehousing overhead</strong> through dynamic, predictive inventory placement.",
+      "Enabled the massive scale of the <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>Amazon Prime</strong> next-day delivery standard."
+    ],
+    analysis: "Amazon uses machine learning to bend supply chain logistics. By forecasting demand with hyper-accuracy, they eliminate the traditional reactive lag in retail fulfillment.",
+    takeaway: "Predictive AI can completely rewrite the physical limitations of legacy supply chains."
+  },
+  {
+    company: "Maersk",
+    industry: "Global Shipping",
+    icon: <Truck className="w-8 h-8 text-sky-500" />,
+    context: "An international maritime shipping giant responsible for transporting nearly <strong class='text-primary font-bold'>20% of the world's</strong> food, materials, and consumer goods.",
+    problem: "Global maritime shipping is incredibly volatile. Unexpected weather anomalies, port congestions, or geopolitical events frequently create <strong class='text-destructive font-bold'>cascading delays</strong> that disrupt the entire planetary supply chain.",
+    solution: "Maersk developed intelligent digital twins of their active shipping network. By ingesting massive continuous data streams—including live weather, port capacity, and vessel telemetrics—the AI can simulate millions of routing variables instantly to autonomously predict shortages and optimize cargo rerouting before a crisis hits.",
+    results: [
+      "Saved <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>tens of millions</strong> in annual fuel costs via algorithmic routing.",
+      "Dramatically reduced the impact of <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>port congestion</strong> delays.",
+      "Provided critical <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>real-time visibility</strong> to global enterprise clients."
+    ],
+    analysis: "Maersk shifted from reacting to maritime disruptions to predicting them. Digital twins allowed them to safely stress-test supply chain scenarios in a virtual environment before executing massive physical fleet changes.",
+    takeaway: "Digital twins combined with predictive ML offer unparalleled risk mitigation for complex, heavy-asset industries."
   }
 ];
 
