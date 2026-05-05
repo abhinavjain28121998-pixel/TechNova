@@ -1,7 +1,7 @@
 import { SEO } from '../components/SEO';
 import { generateBreadcrumbSchema, generateAboutPageSchema, BASE_URL } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Code, Shield, Bot, Newspaper, Zap, Users, Target } from 'lucide-react';
+import { Code, Shield, Bot, Newspaper, Zap, Users, Target, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
 
 export default function About() {
@@ -14,19 +14,19 @@ export default function About() {
   
   const coreValues = [
     {
-      icon: <Target className="w-6 h-6 text-primary" />,
-      title: "Accuracy First",
-      description: "We prioritize fact-checking, deep research, and technical correctness over speed to publish."
+      icon: <CheckCircle2 className="w-8 h-8 text-primary" />,
+      title: "Accuracy",
+      description: "Every guide and insight we publish goes through rigorous technical verification. We value precision and depth over being first to the press."
     },
     {
-      icon: <Zap className="w-6 h-6 text-primary" />,
+      icon: <Zap className="w-8 h-8 text-primary" />,
       title: "Actionable Insights",
-      description: "Our content isn't just theory. We provide practical tutorials and takeaways you can use."
+      description: "We bridge the gap between theory and practice. Our goal is to provide takeaways that you can apply to your projects immediately."
     },
     {
-      icon: <Users className="w-6 h-6 text-primary" />,
-      title: "Community Driven",
-      description: "We listen to our readers and cover the topics that matter most to developers today."
+      icon: <MessageSquare className="w-8 h-8 text-primary" />,
+      title: "Community Engagement",
+      description: "TechNova is a conversation, not a lecture. We evolve our content strategy based on reader feedback and emerging community needs."
     }
   ];
 
@@ -88,41 +88,50 @@ export default function About() {
 
       {/* Mission Section */}
       <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Our Mission</h2>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              We believe that technology is the most powerful force shaping our future. Our mission is to decode complex technological advancements and present them in clear, actionable, and insightful ways.
+            </p>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Our writers are industry practitioners—senior developers, security analysts, and AI researchers who bring real-world experience to every article they write. We prioritize depth, accuracy, and practical value over clickbait.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="py-24 bg-background border-y border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl font-bold text-foreground mb-6">Our Mission</h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                We believe that technology is the most powerful force shaping our future. Our mission is to decode complex technological advancements and present them in clear, actionable, and insightful ways.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Our writers are industry practitioners—senior developers, security analysts, and AI researchers who bring real-world experience to every article they write. We prioritize depth, accuracy, and practical value over clickbait.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="grid gap-6"
-            >
-              {coreValues.map((value, index) => (
-                <div key={index} className="flex gap-4 p-6 bg-card rounded-xl border border-border/50 shadow-sm">
-                  <div className="flex-shrink-0 mt-1">
-                    {value.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">{value.title}</h3>
-                    <p className="text-muted-foreground">{value.description}</p>
-                  </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Core Values</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              These principles guide everything we do, from choosing topics to the way we verify our technical code snippets.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {coreValues.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex flex-col items-center text-center p-8 bg-card rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="mb-6 p-4 bg-primary/10 rounded-2xl ring-1 ring-primary/20">
+                  {value.icon}
                 </div>
-              ))}
-            </motion.div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
