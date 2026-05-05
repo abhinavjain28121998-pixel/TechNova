@@ -17,98 +17,6 @@ export function generateBreadcrumbSchema(items: { name: string; item: string }[]
 
 export function generateOrganizationSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'TechNova Blog',
-    url: BASE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${BASE_URL}/logo.svg`,
-      width: 600,
-      height: 60,
-      caption: 'TechNova Blog Logo'
-    }
-  };
-}
-
-export function generateWebSiteSchema(keywords?: string[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'TechNova Blog',
-    url: BASE_URL,
-    description: 'Exploring the frontiers of technology, one article at a time. Stay updated with the latest in AI, Web Dev, and Cybersecurity.',
-    ...(keywords && keywords.length > 0 ? { keywords: keywords.join(', ') } : {}),
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${BASE_URL}/blog?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
-  };
-}
-
-export function generateArticleSchema(post: any) {
-  const imageUrl = post.coverImage 
-    ? (post.coverImage.startsWith('http') ? post.coverImage : `${BASE_URL}${post.coverImage}`)
-    : `${BASE_URL}/default-cover.jpg`; // Fallback image
-    
-  const wordCount = post.content ? post.content.split(/\s+/).length : 0;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article', // Using specific Article instead of BlogPosting for broader SEO
-    headline: post.title,
-    image: {
-      '@type': 'ImageObject',
-      url: imageUrl,
-      width: 1200,
-      height: 630
-    },
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      '@type': 'Person',
-      name: post.author?.name || 'TechNova Team',
-      url: `${BASE_URL}/author/${(post.author?.name || 'TechNova Team').toLowerCase().replace(/\s+/g, '-')}`,
-      image: post.author?.avatar ? (post.author.avatar.startsWith('http') ? post.author.avatar : `${BASE_URL}${post.author.avatar}`) : undefined
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'TechNova Blog',
-      url: BASE_URL,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.svg`,
-        width: 600,
-        height: 60,
-        caption: 'TechNova Blog Logo'
-      },
-    },
-    description: post.excerpt || post.title,
-    articleBody: post.content ? post.content.substring(0, 1500) + '...' : '',
-    wordCount: wordCount,
-    inLanguage: "en-US",
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${BASE_URL}/blog/${post.slug}`,
-    },
-  };
-}
-
-export function generateBlogPostGraphSchema(post: any) {
-  const imageUrl = post.coverImage 
-    ? (post.coverImage.startsWith('http') ? post.coverImage : `${BASE_URL}${post.coverImage}`)
-    : `${BASE_URL}/default-cover.jpg`;
-
-  const wordCount = post.content ? post.content.split(/\s+/).length : 0;
-  const postUrl = `${BASE_URL}/blog/${post.slug}`;
-  const authorName = post.author?.name || 'TechNova Team';
-  const authorUrl = `${BASE_URL}/author/${authorName.toLowerCase().replace(/\s+/g, '-')}`;
-
-  const graph: any[] = [];
-
-  // 1. Organization Schema
-  graph.push({
     '@type': 'Organization',
     '@id': `${BASE_URL}/#organization`,
     name: 'TechNova Blog',
@@ -120,99 +28,211 @@ export function generateBlogPostGraphSchema(post: any) {
       width: 600,
       height: 60,
       caption: 'TechNova Blog Logo'
-    }
-  });
+    },
+    image: {
+      '@id': `${BASE_URL}/#logo`
+    },
+    sameAs: [
+      'https://twitter.com/technova',
+      'https://linkedin.com/company/technova',
+      'https://github.com/technova'
+    ]
+  };
+}
 
-  // 2. WebSite Schema
-  graph.push({
+export function generateWebSiteSchema(keywords?: string[]) {
+  return {
     '@type': 'WebSite',
     '@id': `${BASE_URL}/#website`,
     url: BASE_URL,
     name: 'TechNova Blog',
-    description: 'Exploring the frontiers of technology, one article at a time.',
-    publisher: { '@id': `${BASE_URL}/#organization` }
-  });
-
-  // 3. BlogPosting Schema
-  const blogPosting: any = {
-    '@type': 'BlogPosting',
-    '@id': `${postUrl}#article`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl
+    description: 'Expert insights into AI, software architecture, and enterprise technology.',
+    publisher: {
+      '@id': `${BASE_URL}/#organization`
     },
-    headline: post.title ? post.title.substring(0, 110) : '',
-    description: post.metaDescription || post.excerpt || post.title,
-    image: {
-      '@type': 'ImageObject',
-      '@id': `${postUrl}#image`,
-      url: imageUrl,
-      width: 1200,
-      height: 630
+    potentialAction: [
+      {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${BASE_URL}/blog?search={search_term_string}`
+        },
+        'query-input': 'required name=search_term_string'
+      }
+    ],
+    inLanguage: 'en-US',
+    keywords: keywords ? keywords.join(', ') : undefined
+  };
+}
+
+export function generateAboutPageSchema() {
+  return {
+    '@type': 'AboutPage',
+    '@id': `${BASE_URL}/about/#webpage`,
+    url: `${BASE_URL}/about`,
+    name: 'About TechNova Blog',
+    description: 'Learn about our mission, values, and the expert team behind TechNova Blog.',
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    },
+    breadcrumb: {
+      '@id': `${BASE_URL}/about/#breadcrumb`
+    }
+  };
+}
+
+export function generateContactPageSchema() {
+  return {
+    '@type': 'ContactPage',
+    '@id': `${BASE_URL}/contact/#webpage`,
+    url: `${BASE_URL}/contact`,
+    name: 'Contact TechNova Blog',
+    description: 'Get in touch with the TechNova team for support, feedback, or collaboration.',
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    },
+    breadcrumb: {
+      '@id': `${BASE_URL}/contact/#breadcrumb`
+    }
+  };
+}
+
+export function generateCollectionPageSchema(name: string, description: string, url: string) {
+  return {
+    '@type': 'CollectionPage',
+    '@id': `${url}/#webpage`,
+    url: url,
+    name: name,
+    description: description,
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    }
+  };
+}
+
+export function generateArticleSchema(post: any) {
+  // Keeping this for backward compatibility if needed, but generateBlogPostGraphSchema is preferred
+  const postUrl = `${BASE_URL}/blog/${post.slug}`;
+  return {
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}/#article`,
+    headline: post.title,
+    description: post.metaDescription || post.excerpt,
+    author: {
+      '@type': 'Person',
+      name: post.author?.name || 'TechNova Team'
     },
     datePublished: post.date,
     dateModified: post.date,
-    author: {
-      '@type': 'Person',
-      '@id': `${authorUrl}#person`,
-      name: authorName,
-      url: authorUrl
+    image: post.coverImage,
+    publisher: {
+      '@id': `${BASE_URL}/#organization`
     },
-    publisher: { '@id': `${BASE_URL}/#organization` },
-    inLanguage: "en-US",
-    isPartOf: { '@id': `${BASE_URL}/#website` },
-    articleSection: post.category || 'Technology',
-    wordCount: wordCount
-  };
-
-  if (post.tags && post.tags.length > 0) {
-    blogPosting.keywords = post.tags.join(', ');
-  }
-
-  // Adding about and mentions conceptually based on tags or category for EEAT
-  blogPosting.about = [
-    {
-      "@type": "Thing",
-      "name": post.category || 'Technology'
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl
     }
-  ];
+  };
+}
+
+export function generateBlogPostGraphSchema(post: any) {
+  const postUrl = `${BASE_URL}/blog/${post.slug}`;
+  const authorName = post.author?.name || 'TechNova Team';
   
-  if (post.tags && post.tags.length > 0) {
-    blogPosting.mentions = post.tags.map((tag: string) => ({
-      "@type": "Thing",
-      "name": tag
-    }));
-  }
+  const graph: any[] = [];
 
-  graph.push(blogPosting);
+  // 1. Organization
+  graph.push(generateOrganizationSchema());
 
-  // 4. BreadcrumbList Schema
+  // 2. WebSite
+  graph.push(generateWebSiteSchema(post.tags));
+
+  // 3. WebPage (container for the article)
   graph.push({
-    '@type': 'BreadcrumbList',
-    '@id': `${postUrl}#breadcrumb`,
-    itemListElement: [
+    '@type': 'WebPage',
+    '@id': postUrl,
+    url: postUrl,
+    name: post.title,
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    },
+    primaryImageOfPage: {
+      '@id': `${postUrl}#primaryimage`
+    },
+    breadcrumb: {
+      '@id': `${postUrl}#breadcrumb`
+    },
+    description: post.metaDescription || post.excerpt,
+    inLanguage: 'en-US',
+    potentialAction: [
       {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: BASE_URL
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: post.category || 'Blog',
-        item: `${BASE_URL}/blog?category=${encodeURIComponent(post.category || '')}`
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: post.title,
-        item: postUrl
+        '@type': 'ReadAction',
+        target: [postUrl]
       }
     ]
   });
 
-  // 5. FAQPage Schema
+  // 4. Primary Image
+  if (post.coverImage) {
+    graph.push({
+      '@type': 'ImageObject',
+      '@id': `${postUrl}#primaryimage`,
+      url: post.coverImage,
+      contentUrl: post.coverImage,
+      width: 1200,
+      height: 675,
+      caption: post.title
+    });
+  }
+
+  // 5. Article / BlogPosting Schema
+  graph.push({
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    isPartOf: {
+      '@id': postUrl
+    },
+    author: {
+      '@type': 'Person',
+      '@id': `${BASE_URL}/author/${authorName.toLowerCase().replace(/\s+/g, '-')}#person`,
+      name: authorName,
+      url: `${BASE_URL}/about`,
+      jobTitle: post.author?.role || 'Tech Researcher',
+      image: post.author?.avatar || undefined
+    },
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: {
+      '@id': postUrl
+    },
+    wordCount: post.content ? post.content.split(/\s+/).length : undefined,
+    publisher: {
+      '@id': `${BASE_URL}/#organization`
+    },
+    image: {
+      '@id': `${postUrl}#primaryimage`
+    },
+    keywords: post.tags ? post.tags.join(', ') : undefined,
+    articleSection: post.category,
+    description: post.metaDescription || post.excerpt,
+    about: [
+      {
+        '@type': 'Thing',
+        name: post.category,
+        '@id': `${BASE_URL}/categories?c=${encodeURIComponent(post.category)}`
+      }
+    ]
+  });
+
+  // 6. BreadcrumbList Schema
+  graph.push(generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Blog', item: '/blog' },
+    { name: post.title, item: `/blog/${post.slug}` }
+  ]));
+
+  // 7. FAQPage Schema
   if (post.faqs && post.faqs.length > 0) {
     graph.push({
       '@type': 'FAQPage',
@@ -231,34 +251,5 @@ export function generateBlogPostGraphSchema(post: any) {
   return {
     '@context': 'https://schema.org',
     '@graph': graph
-  };
-}
-
-export function generateAboutPageSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'About TechNova',
-    description: 'Learn more about TechNova and our mission to decode the future of technology.',
-    url: `${BASE_URL}/about`,
-    publisher: {
-      '@type': 'Organization',
-      name: 'TechNova Blog',
-    }
-  };
-}
-
-export function generateContactPageSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ContactPage',
-    name: 'Contact TechNova',
-    description: 'Get in touch with the TechNova team for inquiries, feedback, or collaborations.',
-    url: `${BASE_URL}/contact`,
-    mainEntity: {
-      '@type': 'Organization',
-      name: 'TechNova Blog',
-      url: BASE_URL,
-    }
   };
 }

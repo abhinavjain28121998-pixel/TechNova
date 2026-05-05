@@ -136,6 +136,44 @@ const caseStudies = [
 export default function CaseStudies() {
   const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
 
+  const caseStudiesSchema = caseStudies.map((study, index) => ({
+    '@type': 'Article',
+    '@id': `${BASE_URL}/case-studies#case-study-${index}`,
+    headline: `Case Study: ${study.company} - ${study.industry}`,
+    description: study.context.replace(/<[^>]+>/g, ''),
+    articleSection: study.industry,
+    author: {
+      '@type': 'Organization',
+      name: 'TechNova Blog',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TechNova Blog',
+    },
+    about: {
+      '@type': 'Organization',
+      name: study.company,
+    },
+  }));
+
+  const pageSchema = {
+    '@type': 'WebPage',
+    '@id': `${BASE_URL}/case-studies`,
+    name: 'Case Studies & Real-World AI Insights',
+    description: 'Explore how industry leaders like Netflix, Klarna, and Morgan Stanley are leveraging artificial intelligence and digital transformation to solve complex real-world business challenges.',
+    url: `${BASE_URL}/case-studies`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: caseStudies.map((study, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@id': `${BASE_URL}/case-studies#case-study-${index}`
+        }
+      }))
+    }
+  };
+
   return (
     <>
       <SEO 
@@ -143,6 +181,7 @@ export default function CaseStudies() {
         description="Explore how industry leaders like Netflix, Klarna, and Morgan Stanley are leveraging artificial intelligence and digital transformation to solve complex real-world business challenges."
         keywords={['AI case studies', 'real-world AI applications', 'business case studies', 'digital transformation examples', 'enterprise AI implementation']}
         url={`${BASE_URL}/case-studies`}
+        schema={[pageSchema, ...caseStudiesSchema]}
       />
       
       {/* Header Section */}

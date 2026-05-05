@@ -101,7 +101,7 @@ export function SEO({
 
       {/* Schema.org JSON-LD */}
       {jsonLdContent && (Array.isArray(jsonLdContent) ? jsonLdContent.length > 0 : true) && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(
+        <script id="schema-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(
           Array.isArray(jsonLdContent) ? { "@context": "https://schema.org", "@graph": jsonLdContent } : jsonLdContent
         ) }} />
       )}

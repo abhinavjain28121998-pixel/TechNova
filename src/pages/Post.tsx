@@ -196,7 +196,7 @@ export default function Post() {
         schema={postGraphSchema}
       />
 
-      <article className="bg-background max-w-none" itemScope itemType="https://schema.org/BlogPosting">
+      <article className="bg-background max-w-none">
         {/* Post Header */}
         {/* Breadcrumbs */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-8 -mb-4">
@@ -222,15 +222,15 @@ export default function Post() {
           </div>
           
           <div className="mb-6">
-            <Badge variant="secondary" className="text-sm px-3 py-1" itemProp="articleSection">{post.category}</Badge>
+            <Badge variant="secondary" className="text-sm px-3 py-1">{post.category}</Badge>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-8 leading-tight" itemProp="headline">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-8 leading-tight">
             {post.title}
           </h1>
           
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
-            <div className="flex items-center gap-3" itemProp="author" itemScope itemType="https://schema.org/Person">
+            <div className="flex items-center gap-3">
               <img 
                 src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} 
                 alt={post.author?.name || 'Author'} 
@@ -238,11 +238,10 @@ export default function Post() {
                 height={48}
                 className="w-12 h-12 rounded-full bg-slate-800" 
                 referrerPolicy="no-referrer" 
-                itemProp="image" 
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <div className="font-semibold text-foreground" itemProp="name">{post.author?.name || 'TechNova Team'}</div>
+                  <div className="font-semibold text-foreground">{post.author?.name || 'TechNova Team'}</div>
                   {post.isExpertVerified && (
                     <Badge variant="secondary" className="h-5 px-1.5 py-0 text-[10px] bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
                       <Check className="w-3 h-3" />
@@ -250,7 +249,7 @@ export default function Post() {
                     </Badge>
                   )}
                 </div>
-                <div className="text-sm" itemProp="jobTitle">{post.author?.role || 'Guest Writer'}</div>
+                <div className="text-sm">{post.author?.role || 'Guest Writer'}</div>
               </div>
             </div>
             
@@ -261,7 +260,6 @@ export default function Post() {
                 <Calendar className="w-4 h-4" />
                 <time 
                   dateTime={new Date(post.date).toISOString()} 
-                  itemProp="datePublished dateModified"
                 >
                   {format(parseISO(post.date), 'MMMM d, yyyy')}
                 </time>
@@ -284,7 +282,6 @@ export default function Post() {
               height={675}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
-              itemProp="image"
               fetchPriority="high"
             />
           </div>
@@ -331,7 +328,7 @@ export default function Post() {
           </div>
 
           <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
-            <div itemProp="articleBody">
+            <div>
               <ReactMarkdown 
                 rehypePlugins={[rehypeSlug]}
                 components={{

@@ -6,7 +6,7 @@ import { Card, CardHeader, CardFooter } from '../components/ui/card';
 import { calculateReadingTime } from '../lib/utils';
 import { Calendar, Clock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateBreadcrumbSchema, BASE_URL } from '../lib/seo';
+import { generateBreadcrumbSchema, generateCollectionPageSchema, BASE_URL } from '../lib/seo';
 
 export default function Categories() {
   const [searchParams] = useSearchParams();
@@ -30,6 +30,13 @@ export default function Categories() {
   }
 
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+  
+  const categoryUrl = `${BASE_URL}/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`;
+  const collectionSchema = generateCollectionPageSchema(
+    displayCategory ? `${displayCategory} - TechNova Blog` : "All Categories - TechNova Blog",
+    displayCategory ? `Expert articles and tutorials about ${displayCategory}.` : "Browse all technology topics covered by TechNova.",
+    categoryUrl
+  );
 
   return (
     <>
@@ -37,8 +44,8 @@ export default function Categories() {
         title={displayCategory ? `${displayCategory} Articles & Tutorials | TechNova Blog` : "Tech Topics & Categories | TechNova Blog"}
         description={displayCategory ? `Explore expert articles, tutorials, and news about ${displayCategory} on TechNova Blog.` : "Browse all technology categories on TechNova Blog. Find targeted insights into AI, Web Dev, Security, and more."}
         keywords={['tech categories', 'tech topics', displayCategory || '']}
-        schema={[breadcrumbSchema]}
-        url={`${BASE_URL}/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`}
+        schema={[breadcrumbSchema, collectionSchema]}
+        url={categoryUrl}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">

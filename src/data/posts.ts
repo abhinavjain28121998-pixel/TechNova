@@ -288,7 +288,7 @@ The shift toward Procurement Applied Intelligence replaces slow, reactive sourci
 
 
 `,
-    coverImage: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?auto=format&fit=crop&q=80&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
     date: new Date().toISOString(),
     readingTime: '12 min read',
     category: 'Procurement',
@@ -822,7 +822,7 @@ As systems grow in complexity, the surface area for failure scales linearly. Res
 ## Final Projections
 The next decade promises breakthroughs that blur lines between computation and biology. As the friction between human intent and machine execution trends toward zero, the definition of productivity will undergo massive redefinition. The responsibility rests on us to prepare for the dramatic paradigm shifts ahead.
     `,
-    coverImage: 'https://images.unsplash.com/photo-1614064641936-732be666aab8?auto=format&fit=crop&q=80&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200',
     date: '2026-04-15T09:15:00Z',
     readingTime: '14 min read',
     category: 'Cybersecurity',
