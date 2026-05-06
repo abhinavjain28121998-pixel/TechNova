@@ -23,6 +23,59 @@ import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
 
+const AIImage = ({ src, alt, context, ...props }: any) => {
+  const [altText, setAltText] = useState(alt || '');
+  const [isLoading, setIsLoading] = useState(!altText);
+
+  useEffect(() => {
+    // If the image already has good alt text that isn't just a generic file name or empty, we might keep it.
+    // However, to ensure it's "descriptive alt text ... using an AI image analysis tool", we generate it if it's missing or if we want to enhance it.
+    // Let's generate it always or if alt is weak. Note: generating for every image on load might take a second.
+    const generateAlt = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/generate-alt-text', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ imageUrl: src, context })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.altText) {
+            setAltText(data.altText);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to generate alt text:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    // Only generate if alt is suspiciously generic or missing
+    if (!alt || alt.length < 5 || alt.includes('image') || alt.includes('cover')) {
+      generateAlt();
+    } else {
+      setIsLoading(false);
+    }
+  }, [src, alt, context]);
+
+  return (
+    <span className="relative block">
+      <img src={src} alt={altText} title={altText} {...props} />
+      {isLoading && (
+        <span className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20">
+          <Loader2 className="w-3 h-3 animate-spin" />
+          <span className="hidden sm:inline">Generating Alt Text</span>
+        </span>
+      )}
+      {!isLoading && altText && (
+        <span className="sr-only">{altText}</span>
+      )}
+    </span>
+  );
+};
+
 const XIcon = ({ className }: { className?: string }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -275,9 +328,10 @@ export default function Post() {
         {/* Cover Image */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
-            <img 
+            <AIImage 
               src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
               alt={post.title} 
+              context={post.content}
               width={1200}
               height={675}
               className="w-full h-full object-cover"
@@ -333,7 +387,8 @@ export default function Post() {
                 rehypePlugins={[rehypeSlug]}
                 components={{
                   a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />,
-                  h1: ({ node, ...props }) => <h2 {...props} />
+                  h1: ({ node, ...props }) => <h2 {...props} />,
+                  img: ({ node, ...props }) => <AIImage context={post.content} {...props} />
                 }}
               >
                 {post.content}

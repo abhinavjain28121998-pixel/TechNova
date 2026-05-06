@@ -114,7 +114,7 @@ The successful, hyper-scalable integration of artificial intelligence is fundame
     author: authorSarah,
     date: '2026-05-04',
     readingTime: '8 min read',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1200',
     tags: ['Data & Analytics', 'Data Governance', 'Machine Learning', 'Big Data'],
     status: 'published',
     content: `
@@ -199,7 +199,7 @@ The hard truth of enterprise architecture is immutable: there is no effective Ar
     author: authorAlex,
     date: '2026-05-04',
     readingTime: '9 min read',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1200',
     tags: ['Digital Transformation', 'Enterprise IT', 'Automation', 'Change Management'],
     status: 'published',
     content: `
@@ -284,7 +284,7 @@ The aggressive integration of AI and smart automation is heavily forcing organiz
     author: authorSarah,
     date: '2026-05-04',
     readingTime: '7 min read',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200',
     tags: ['Solution Intelligence', 'Automation', 'Enterprise AI', 'Decision Engines'],
     status: 'published',
     content: `
