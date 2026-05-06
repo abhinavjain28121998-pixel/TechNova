@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { Post } from '../data/posts';
-import { OperationType, handleFirestoreError } from '../lib/firestoreUtils';
 
 export function usePost(slug: string | undefined) {
   const [post, setPost] = useState<Post | null>(null);

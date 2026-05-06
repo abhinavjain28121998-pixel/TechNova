@@ -124,17 +124,14 @@ async function run() {
     
     const postSchema = generateBlogPostGraphSchema(post);
 
-    const postDir = path.join(distBlogDir, post.slug);
-    if (!fs.existsSync(postDir)) fs.mkdirSync(postDir, { recursive: true });
-
     await createPreRenderedPage(
-      path.join(postDir, 'index.html'),
+      path.join(distBlogDir, `${post.slug}.html`),
       title,
       description,
       url,
       image,
       'article',
-      postSchema // already outputs @context and @graph
+      postSchema
     );
   }
 
@@ -160,7 +157,7 @@ async function run() {
   };
 
   await createPreRenderedPage(
-    path.join(distBlogDir, 'index.html'),
+    path.join(distDir, 'blog.html'),
     `Blog Post Archive & Tech Tutorials | ${siteName}`,
     'Browse all our technology articles, tutorials, and insights.',
     `${BASE_URL}/blog`,

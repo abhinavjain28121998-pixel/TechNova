@@ -141,7 +141,7 @@ export default function Post() {
     return <NotFound />;
   }
 
-  // Use strictly Firestore posts for related
+  // Use strictly published posts for related
   const posts = allPosts.filter(p => !p.status || p.status === 'published');
 
   const relatedPosts = posts
