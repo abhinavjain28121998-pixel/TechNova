@@ -7,7 +7,7 @@ import { calculateReadingTime } from '../lib/utils';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateWebSiteSchema, generateOrganizationSchema, BASE_URL } from '../lib/seo';
+import { generateWebPageSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
@@ -48,13 +48,19 @@ export default function Home() {
   const yHeroGraphic2 = useTransform(smoothScrollY, [0, 1000], [0, -350]);
   const yHeroGraphic3 = useTransform(smoothScrollY, [0, 1000], [0, -120]);
 
+  const homeSchema = generateWebPageSchema({
+    url: BASE_URL,
+    name: 'TechNova Blog | Build the Future of Software & AI',
+    description: 'Explore expert insights, technical tutorials, and strategic deep-dives into Artificial Intelligence, software architecture, and the future of enterprise tech at TechNova.'
+  });
+
   return (
     <>
       <SEO 
         title="TechNova Blog | Build the Future of Software & AI"
         description="Explore expert insights, technical tutorials, and strategic deep-dives into Artificial Intelligence, software architecture, and the future of enterprise tech at TechNova."
         keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
-        schema={[generateWebSiteSchema(), generateOrganizationSchema()]}
+        schema={[homeSchema]}
         url={BASE_URL}
       />
 

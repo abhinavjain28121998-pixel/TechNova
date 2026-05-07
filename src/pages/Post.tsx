@@ -22,6 +22,7 @@ import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
+import regeneratedImage from '../assets/images/regenerated_image_1778073976543.png';
 
 const AIImage = ({ src, alt, context, ...props }: any) => {
   const [altText, setAltText] = useState(alt || '');
@@ -329,7 +330,7 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <AIImage 
-              src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
+              src={post.slug === 'how-ai-agents-are-reshaping-modern-enterprise-workflows' ? regeneratedImage : (post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`)} 
               alt={post.title} 
               context={post.content}
               width={1200}

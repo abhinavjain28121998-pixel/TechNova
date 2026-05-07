@@ -29,14 +29,17 @@ export default function Categories() {
     breadcrumbItems.push({ name: displayCategory, item: `/categories?c=${encodeURIComponent(displayCategory)}` });
   }
 
-  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
-  
   const categoryUrl = `${BASE_URL}/categories${displayCategory ? `?c=${encodeURIComponent(displayCategory)}` : ''}`;
+  const breadcrumbId = `${categoryUrl}/#breadcrumb`;
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems, breadcrumbId);
+  
   const collectionSchema = generateCollectionPageSchema(
     displayCategory ? `${displayCategory} - TechNova Blog` : "All Categories - TechNova Blog",
     displayCategory ? `Expert articles and tutorials about ${displayCategory}.` : "Browse all technology topics covered by TechNova.",
     categoryUrl
   );
+  // inject breadcrumbId
+  (collectionSchema as any).breadcrumb = { '@id': breadcrumbId };
 
   return (
     <>

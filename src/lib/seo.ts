@@ -2,10 +2,11 @@ export const BASE_URL = typeof window !== 'undefined'
   ? window.location.origin 
   : (process.env.VITE_SITE_URL || 'https://tech-nova-iota.vercel.app');
 
-export function generateBreadcrumbSchema(items: { name: string; item: string }[]) {
+export function generateBreadcrumbSchema(items: { name: string; item: string }[], id?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    ...(id ? { '@id': id } : {}),
     itemListElement: items.map((breadcrumb, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -65,7 +66,25 @@ export function generateWebSiteSchema(keywords?: string[]) {
   };
 }
 
+export function generateWebPageSchema(options: { url: string; name: string; description: string; breadcrumbId?: string; type?: string }) {
+  const schema: any = {
+    '@type': options.type || 'WebPage',
+    '@id': `${options.url}/#webpage`,
+    url: options.url,
+    name: options.name,
+    description: options.description,
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    }
+  };
+  if (options.breadcrumbId) {
+    schema.breadcrumb = { '@id': options.breadcrumbId };
+  }
+  return schema;
+}
+
 export function generateAboutPageSchema() {
+
   return {
     '@type': 'AboutPage',
     '@id': `${BASE_URL}/about/#webpage`,

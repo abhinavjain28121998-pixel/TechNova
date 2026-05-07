@@ -7,7 +7,7 @@ export default function Contact() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
     { name: 'Contact Us', item: '/contact' }
-  ]);
+  ], `${BASE_URL}/contact/#breadcrumb`);
 
   const contactSchema = generateContactPageSchema();
 

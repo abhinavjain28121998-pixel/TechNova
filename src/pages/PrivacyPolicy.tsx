@@ -1,11 +1,18 @@
 import { SEO } from '../components/SEO';
-import { generateBreadcrumbSchema } from '../lib/seo';
+import { generateBreadcrumbSchema, generateWebPageSchema, BASE_URL } from '../lib/seo';
 
 export default function PrivacyPolicy() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
     { name: 'Privacy Policy', item: '/privacy' }
-  ]);
+  ], `${BASE_URL}/privacy/#breadcrumb`);
+
+  const privacySchema = generateWebPageSchema({
+    url: `${BASE_URL}/privacy`,
+    name: 'Privacy Policy',
+    description: 'Privacy Policy for TechNova Blog.',
+    breadcrumbId: `${BASE_URL}/privacy/#breadcrumb`
+  });
 
   return (
     <>
@@ -13,8 +20,8 @@ export default function PrivacyPolicy() {
         title="Privacy Policy"
         description="Privacy Policy for TechNova Blog."
         keywords={['privacy policy', 'TechNova privacy', 'data protection']}
-        schema={[breadcrumbSchema]}
-        url="https://tech-nova-iota.vercel.app/privacy"
+        schema={[breadcrumbSchema, privacySchema]}
+        url={`${BASE_URL}/privacy`}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>

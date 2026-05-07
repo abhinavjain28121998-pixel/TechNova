@@ -12,7 +12,7 @@ export const aiArticles = [
     coverImage: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200',
     excerpt: "Personalization is no longer optional. Discover how generative AI is transforming every touchpoint of the modern marketing funnel.",
     metaDescription: "Explore how AI drives hyper-personalization in marketing for 2026. Learn about generative creative, predictive CLV, and autonomous path orchestration.",
-    tags: ["AI in Marketing", "Digital Transformation", "GenAI", "Customer Experience"],
+    tags: ["AI in Marketing", "[Digital Transformation](/blog/expert-guide-digital-transformation)", "GenAI", "Customer Experience"],
     isExpertVerified: true,
     faqs: [
       {
@@ -315,7 +315,7 @@ In 2026, the best customer support is the one that is so fast, accurate, and emp
   {
     id: 'ai-in-due-diligence-2026',
     slug: 'mastering-ai-powered-due-diligence-mergers-acquisitions-risk',
-    title: "Mastering AI-Powered Due Diligence: Accelerating M&A and Risk Assessment",
+    title: "Mastering AI-Powered [Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk): Accelerating M&A and Risk Assessment",
     category: "AI",
     date: "2026-05-04",
     readingTime: "14 min read",
@@ -323,7 +323,7 @@ In 2026, the best customer support is the one that is so fast, accurate, and emp
     coverImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
     excerpt: "Due diligence is the ultimate bottleneck in major transactions. Discover how AI is slashing audit times by 90% while surfacing hidden risks in M&A.",
     metaDescription: "Learn how AI is revolutionizing due diligence for M&A and risk assessment in 2026. Insights into automated document review, fraud detection, and compliance.",
-    tags: ["Due Diligence", "M&A Tech", "FinTech AI", "Legal AI"],
+    tags: ["[Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk)", "M&A Tech", "FinTech AI", "Legal AI"],
     isExpertVerified: true,
     faqs: [
       {
@@ -346,15 +346,15 @@ In 2026, the best customer support is the one that is so fast, accurate, and emp
     content: `
 In the high-stakes world of Mergers & Acquisitions (M&A), Venture Capital, and Corporate Compliance, information is the most valuable currency. However, the sheer volume of information has become a burden. A typical mid-sized M&A transaction involves thousands of contracts, financial statements, HR records, intellectual property filings, and complex regulatory documents. 
 
-Historically, due diligence was a grueling, manual process that took weeks or months, often leading to "deal fatigue," high legal costs, or, worse, critical missed risks. In 2026, **AI-Powered Due Diligence** is changing the game, allowing deal teams to move with unprecedented speed and surgical precision.
+Historically, due diligence was a grueling, manual process that took weeks or months, often leading to "deal fatigue," high legal costs, or, worse, critical missed risks. In 2026, **AI-Powered [Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk)** is changing the game, allowing deal teams to move with unprecedented speed and surgical precision.
 
-## What AI Means for Due Diligence
+## What AI Means for [Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk)
 
 AI in due diligence is about **Scale, connectivity, and cognitive synthesis**. It's not just about reading one document faster; it's about seeing the non-obvious connection between ten thousand documents. [Legal and Financial AI frameworks](/blog/gen-ai-in-finance-strategic-roadmap) allow teams to cross-reference data points from disparate sources—for example, comparing an obscure clause in a supplier contract in South America with a specific line item in a consolidated global balance sheet.
 
 This is the move from "sampling" (looking at a representative 10% of documents) to "total review" (analyzing 100% of the data room) without increasing the headcount or budget of the audit team.
 
-## Key AI Use Cases in Due Diligence
+## Key AI Use Cases in [Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk)
 
 ### 1. Automated Contract Analysis and Risk Redlining
 The core of legal diligence is the review of contracts to find "red flags." AI models, fine-tuned on decades of corporate law, can now scan thousands of documents in minutes to identify:
