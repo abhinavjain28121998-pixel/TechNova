@@ -4,7 +4,7 @@ export const transformationPosts: Post[] = [
   {
     id: 'expert-guide-digital-transformation-2026',
     slug: 'expert-guide-digital-transformation',
-    title: 'The Blueprint for Enterprise [Digital Transformation](/blog/expert-guide-digital-transformation) in 2026',
+    title: 'The Blueprint for Enterprise Digital Transformation in 2026',
     excerpt: 'Explore how organizations are executing digital transformation to modernize operations, enhance customer experience, and secure competitive dominance.',
     metaDescription: 'Learn the core strategies behind successful digital transformation in 2026. Discover how enterprises align technology, culture, and data for measurable ROI.',
     content: `
@@ -75,11 +75,11 @@ The transition toward total enterprise modernization replaces slow, reactive bus
     },
     featured: true,
     isExpertVerified: true,
-    tags: ['[Digital Transformation](/blog/expert-guide-digital-transformation)', 'Enterprise IT', 'Data Strategy'],
+    tags: ['Digital Transformation', 'Enterprise IT', 'Data Strategy'],
     faqs: [
       {
-        question: "What exactly constitutes [Digital Transformation](/blog/expert-guide-digital-transformation)?",
-        answer: "[Digital Transformation](/blog/expert-guide-digital-transformation) is the strategic, enterprise-wide integration of digital technology into all areas of a business, fundamentally changing how organizations operate and deliver value to customers."
+        question: "What exactly constitutes Digital Transformation?",
+        answer: "Digital Transformation is the strategic, enterprise-wide integration of digital technology into all areas of a business, fundamentally changing how organizations operate and deliver value to customers."
       },
       {
         question: "Why do many digital initiatives fail?",
@@ -185,9 +185,9 @@ The strategic transition toward total Finance Transformation ends reactive globa
   {
     id: 'expert-guide-gbs-transformation-2026',
     slug: 'expert-guide-gbs-transformation',
-    title: 'Executing [Global Business Services](/blog/expert-guide-gbs-transformation) Transformation in the Modern Enterprise',
-    excerpt: 'Explore how [Global Business Services](/blog/expert-guide-gbs-transformation) Transformation is evolving shared services hubs from basic cost centers into proactive, cross-functional value generation engines.',
-    metaDescription: 'Discover how [Global Business Services](/blog/expert-guide-gbs-transformation) Transformation empowers enterprise leaders to create highly intelligent, automated, and cross-functional shared service hubs.',
+    title: 'Executing Global Business Services Transformation in the Modern Enterprise',
+    excerpt: 'Explore how Global Business Services Transformation is evolving shared services hubs from basic cost centers into proactive, cross-functional value generation engines.',
+    metaDescription: 'Discover how Global Business Services Transformation empowers enterprise leaders to create highly intelligent, automated, and cross-functional shared service hubs.',
     content: `
 The traditional model of enterprise shared services relied excessively on massive offshore labor centralization, fundamental cost arbitrage, and highly isolated transactional processing. However, as the digital economy drastically accelerates through 2026, relying primarily on heavily fragmented, labor-intensive centralization is no longer competitively viable. To survive complex supply chain shocks and massive shifting regulatory frameworks, enterprise leaders are pivoting rapidly toward an augmented global operational model. This profound shift is driven by the strategic execution of [Global Business Services Transformation](https://www.thehackettgroup.com/global-business-services/gbs-transformation/). Rather than just standardizing fundamental back-office tasks, visionary organizations are actively evolving their GBS hubs from mere administrative cost centers into dynamic, predictive cross-functional powerhouses.
 
@@ -248,11 +248,11 @@ The transition toward overarching [Global Business Services](/blog/expert-guide-
     },
     featured: true,
     isExpertVerified: true,
-    tags: ['[Global Business Services](/blog/expert-guide-gbs-transformation)', 'GBS', 'Enterprise Operations', 'Transformation'],
+    tags: ['Global Business Services', 'GBS', 'Enterprise Operations', 'Transformation'],
     faqs: [
       {
-        question: "What exactly is [Global Business Services](/blog/expert-guide-gbs-transformation) Transformation?",
-        answer: "[Global Business Services](/blog/expert-guide-gbs-transformation) Transformation is the evolution of isolated shared service centers into integrated, highly intelligent, cross-functional organizational hubs that drive enterprise value and end-to-end process efficiency."
+        question: "What exactly is Global Business Services Transformation?",
+        answer: "Global Business Services Transformation is the evolution of isolated shared service centers into integrated, highly intelligent, cross-functional organizational hubs that drive enterprise value and end-to-end process efficiency."
       },
       {
         question: "How does GBS outpace traditional shared services?",
@@ -271,9 +271,9 @@ The transition toward overarching [Global Business Services](/blog/expert-guide-
   {
     id: 'expert-guide-hr-transformation-2026',
     slug: 'expert-guide-hr-transformation',
-    title: 'Navigating [Human Resources](/blog/expert-guide-hr-transformation) Transformation for the Modern Workforce',
-    excerpt: 'Find out how [Human Resources](/blog/expert-guide-hr-transformation) Transformation reshapes the employee experience, modernizes talent acquisition, and builds dynamic, scalable global workforces.',
-    metaDescription: 'Discover how [Human Resources](/blog/expert-guide-hr-transformation) Transformation empowers CHROs to implement predictive talent analytics, modernize onboarding, and drive significant global corporate growth.',
+    title: 'Navigating Human Resources Transformation for the Modern Workforce',
+    excerpt: 'Find out how Human Resources Transformation reshapes the employee experience, modernizes talent acquisition, and builds dynamic, scalable global workforces.',
+    metaDescription: 'Discover how Human Resources Transformation empowers CHROs to implement predictive talent analytics, modernize onboarding, and drive significant global corporate growth.',
     content: `
 The operational dynamics of global talent management are shifting far faster than conventional human infrastructure can logically accommodate. As progressive enterprise strategy demands highly specialized technical abilities and intense operational adaptability, [Human Resources](/blog/expert-guide-hr-transformation) (HR) leaders universally recognize that relying entirely on traditional applicant tracking systems and static annual review processes is fundamentally obsolete. Today's definitive competitive advantage resides actively within the strategic implementation of overarching [Human Resources Transformation](https://www.thehackettgroup.com/hr-strategy/hr-transformation/). Rather than treating employee data simply as a basic administrative ledger, modern Chief [Human Resources](/blog/expert-guide-hr-transformation) Officers (CHROs) utilize deep, predictive analytics to orchestrate deeply personalized talent pipelines and map out complex corporate skill deficiencies proactively.
 
@@ -321,11 +321,11 @@ The intelligently safely beautifully comfortably deeply completely successfully 
     },
     featured: true,
     isExpertVerified: true,
-    tags: ['[Human Resources](/blog/expert-guide-hr-transformation) Transformation', 'HR Strategy', 'Future of Work', 'Talent Optimization'],
+    tags: ['Human Resources Transformation', 'HR Strategy', 'Future of Work', 'Talent Optimization'],
     faqs: [
       {
-        question: "What exactly is [Human Resources](/blog/expert-guide-hr-transformation) Transformation?",
-        answer: "[Human Resources](/blog/expert-guide-hr-transformation) Transformation is the comprehensive modernization of HR operations, moving away from simple administrative functions toward predictive talent acquisition, advanced employee engagement, and data-driven workforce planning."
+        question: "What exactly is Human Resources Transformation?",
+        answer: "Human Resources Transformation is the comprehensive modernization of HR operations, moving away from simple administrative functions toward predictive talent acquisition, advanced employee engagement, and data-driven workforce planning."
       },
       {
         question: "How does HR Transformation impact employee retention?",

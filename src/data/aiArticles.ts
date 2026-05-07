@@ -12,7 +12,7 @@ export const aiArticles = [
     coverImage: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200',
     excerpt: "Personalization is no longer optional. Discover how generative AI is transforming every touchpoint of the modern marketing funnel.",
     metaDescription: "Explore how AI drives hyper-personalization in marketing for 2026. Learn about generative creative, predictive CLV, and autonomous path orchestration.",
-    tags: ["AI in Marketing", "[Digital Transformation](/blog/expert-guide-digital-transformation)", "GenAI", "Customer Experience"],
+    tags: ["AI in Marketing", "Digital Transformation", "GenAI", "Customer Experience"],
     isExpertVerified: true,
     faqs: [
       {
@@ -315,7 +315,7 @@ In 2026, the best customer support is the one that is so fast, accurate, and emp
   {
     id: 'ai-in-due-diligence-2026',
     slug: 'mastering-ai-powered-due-diligence-mergers-acquisitions-risk',
-    title: "Mastering AI-Powered [Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk): Accelerating M&A and Risk Assessment",
+    title: "Mastering AI-Powered Due Diligence: Accelerating M&A and Risk Assessment",
     category: "AI",
     date: "2026-05-04",
     readingTime: "14 min read",
@@ -323,7 +323,7 @@ In 2026, the best customer support is the one that is so fast, accurate, and emp
     coverImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
     excerpt: "Due diligence is the ultimate bottleneck in major transactions. Discover how AI is slashing audit times by 90% while surfacing hidden risks in M&A.",
     metaDescription: "Learn how AI is revolutionizing due diligence for M&A and risk assessment in 2026. Insights into automated document review, fraud detection, and compliance.",
-    tags: ["[Due Diligence](/blog/mastering-ai-powered-due-diligence-mergers-acquisitions-risk)", "M&A Tech", "FinTech AI", "Legal AI"],
+    tags: ["Due Diligence", "M&A Tech", "FinTech AI", "Legal AI"],
     isExpertVerified: true,
     faqs: [
       {
