@@ -51,6 +51,10 @@ const authors = {
 
 export const CATEGORIES = [
   'AI',
+  'Marketing',
+  'Sales',
+  'Customer Support',
+  'Due Diligence',
   'Technology',
   'Supply Chain',
   'Information Technology',

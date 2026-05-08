@@ -108,7 +108,14 @@ export default function Blog() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Category Filter */}
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-24">
+            <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
+            <p className="text-muted-foreground">Loading expert articles...</p>
+          </div>
+        ) : (
+          <>
+            {/* Category Filter */}
         <div className="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-border">
           <span className="text-sm font-medium text-muted-foreground mr-2">Filter by:</span>
           <Badge 
@@ -248,6 +255,8 @@ export default function Blog() {
             <h3 className="text-2xl font-semibold text-foreground mb-2">No articles found</h3>
             <p className="text-muted-foreground">Try adjusting your search or category filter.</p>
           </div>
+        )}
+          </>
         )}
       </div>
     </>
