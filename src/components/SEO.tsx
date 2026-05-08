@@ -30,8 +30,8 @@ export function SEO({
   const fullTitle = title.includes('TechNova') ? title : `${title} | ${siteName}`;
   const fullDescription = description;
   const currentUrl = typeof window !== 'undefined' 
-    ? window.location.origin + window.location.pathname
-    : (typeof process !== 'undefined' ? process.env.VITE_SITE_URL : 'https://tech-nova-iota.vercel.app') || 'https://tech-nova-iota.vercel.app';
+    ? 'https://tech-nova-iota.vercel.app' + window.location.pathname
+    : 'https://tech-nova-iota.vercel.app';
   let rawUrl = url || currentUrl;
   if (rawUrl && rawUrl.length > 1 && rawUrl.endsWith('/')) {
     rawUrl = rawUrl.slice(0, -1);
