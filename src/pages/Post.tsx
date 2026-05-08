@@ -62,7 +62,7 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
   }, [src, alt, context]);
 
   return (
-    <span className="relative block">
+    <span className={`relative block overflow-hidden ${props.className || ''}`}>
       <img src={src} alt={altText} title={altText} {...props} />
       {isLoading && (
         <span className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20">
