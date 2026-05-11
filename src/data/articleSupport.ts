@@ -1,4 +1,4 @@
-import { Post } from './posts';
+import { Post } from '../types';
 
 export const articleSupport: Post = {
     id: "scaling-frictionless-customer-support-gen-ai",

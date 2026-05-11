@@ -1,4 +1,4 @@
-import { Post } from './posts';
+import { Post } from '../types';
 
 export const articleSales: Post = {
     id: "transforming-enterprise-revenue-sales-gen-ai",

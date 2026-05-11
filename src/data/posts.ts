@@ -1,35 +1,11 @@
+import { Post, Author } from '../types';
 import { eeatPosts } from './eeatPosts';
 import { transformationPosts } from './transformationPosts';
 import { moreTransformationPosts } from './moreTransformationPosts';
 import { aiArticles } from './aiArticles';
 import { newSeoArticles } from './newSeoArticles';
 import { hackettArticles } from './hackettArticles';
-
-export interface Author {
-  name: string;
-  avatar: string;
-  role: string;
-}
-
-export interface Post {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  metaDescription?: string;
-  content: string;
-  coverImage: string;
-  date: string;
-  readingTime: string;
-  category: string;
-  author: Author;
-  featured?: boolean;
-  trending?: boolean;
-  status?: 'draft' | 'published';
-  isExpertVerified?: boolean;
-  tags?: string[];
-  faqs?: { question: string; answer: string }[];
-}
+import { newHackettArticles } from './newHackettArticles';
 
 const authors = {
   alex: {
@@ -51,10 +27,16 @@ const authors = {
 
 export const CATEGORIES = [
   'AI',
+  'GBS',
+  'HR',
+  'Procurement',
+  'Payroll',
+  'Finance',
+  'Applied Intelligence',
+  'Strategy',
   'Marketing',
   'Sales',
   'Customer Support',
-  'Due Diligence',
   'Technology',
   'Supply Chain',
   'Information Technology',
@@ -72,6 +54,7 @@ export const POSTS: Post[] = [
   ...eeatPosts,
   ...newSeoArticles,
   ...hackettArticles,
+  ...newHackettArticles,
   {
     id: 'gbs-applied-intelligence-strategic-guide',
     slug: 'global-business-services-applied-intelligence',
@@ -139,7 +122,8 @@ To ensure your organization navigates these complexities successfully, consider 
       avatar: 'https://picsum.photos/seed/sarah/100/100',
       role: 'Lead AI Researcher'
     },
-    featured: true,
+    featured: false,
+    status: 'published',
     isExpertVerified: true,
     tags: ["Global Business Services", "GBS", "Applied Intelligence", "Enterprise Gen AI"],
     faqs: [
@@ -220,7 +204,7 @@ The paradigm shift toward [Human Resources](/blog/expert-guide-hr-transformation
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
     coverImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-11',
     readingTime: '12 min read',
     category: 'HR',
     author: {
@@ -228,7 +212,8 @@ To ensure your organization navigates these complexities successfully, consider 
       avatar: 'https://picsum.photos/seed/sarah/100/100',
       role: 'Lead AI Researcher'
     },
-    featured: true,
+    featured: false,
+    status: 'published',
     isExpertVerified: true,
     tags: ["HR", "Human Resources Applied Intelligence", "Future of Work", "Talent Optimization"],
     faqs: [
@@ -309,7 +294,7 @@ The shift toward Procurement [Applied Intelligence](/blog/applied-intelligence-p
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
     coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-11',
     readingTime: '12 min read',
     category: 'Procurement',
     author: {
@@ -317,7 +302,8 @@ To ensure your organization navigates these complexities successfully, consider 
       avatar: 'https://picsum.photos/seed/sarah/100/100',
       role: 'Lead AI Researcher'
     },
-    featured: true,
+    featured: false,
+    status: 'published',
     isExpertVerified: true,
     tags: ["Procurement", "Procurement Applied Intelligence", "Supply Chain", "Gen AI"],
     faqs: [

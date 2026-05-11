@@ -1,4 +1,4 @@
-import { Post } from './posts';
+import { Post } from '../types';
 
 export const articleDueDiligence: Post = {
     id: "mastering-gen-ai-powered-due-diligence-workflows",

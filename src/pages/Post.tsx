@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
+import { POSTS as STATIC_POSTS } from '../data/posts';
+import { Post as StaticPost } from '../types';
 import { Badge } from '../components/ui/badge';
 import { calculateReadingTime } from '../lib/utils';
 import { Button } from '../components/ui/button';
@@ -16,6 +17,7 @@ import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
+import { GoogleGenAI } from "@google/genai";
 import { generateBlogPostGraphSchema, BASE_URL } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
@@ -26,39 +28,76 @@ import regeneratedImage from '../assets/images/regenerated_image_1778073976543.p
 
 const AIImage = ({ src, alt, context, ...props }: any) => {
   const [altText, setAltText] = useState(alt || '');
-  const [isLoading, setIsLoading] = useState(!altText);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // If the image already has good alt text that isn't just a generic file name or empty, we might keep it.
-    // However, to ensure it's "descriptive alt text ... using an AI image analysis tool", we generate it if it's missing or if we want to enhance it.
-    // Let's generate it always or if alt is weak. Note: generating for every image on load might take a second.
     const generateAlt = async () => {
+      // Logic for determining if alt text is descriptive enough
+      const isWeakAlt = !alt || 
+                        alt.length < 5 || 
+                        /image|img|picture|photo|cover/i.test(alt) ||
+                        alt.includes('http');
+      
+      if (!isWeakAlt) {
+        setIsLoading(false);
+        return;
+      }
+
       try {
         setIsLoading(true);
-        const response = await fetch('/api/generate-alt-text', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageUrl: src, context })
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (!apiKey) {
+          console.warn("GEMINI_API_KEY not found in environment");
+          return;
+        }
+
+        const ai = new GoogleGenAI({ apiKey });
+        
+        // Fetch image as blob for analysis
+        const imageResp = await fetch(src);
+        if (!imageResp.ok) throw new Error(`HTTP error! status: ${imageResp.status}`);
+        const blob = await imageResp.blob();
+        
+        const base64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const res = reader.result as string;
+            resolve(res.split(',')[1]);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
         });
-        if (response.ok) {
-          const data = await response.json();
-          if (data.altText) {
-            setAltText(data.altText);
+
+        const prompt = `Provide a concise, descriptive alt text for this image to be used by screen readers in a blog post.
+        Article context: ${context?.substring(0, 300) || 'General technology article'}.
+        Respond ONLY with the alt text, no quotes or explanations.`;
+
+        const response = await ai.models.generateContent({
+          model: 'gemini-3-flash-preview',
+          contents: {
+            parts: [
+              { text: prompt },
+              {
+                inlineData: {
+                  data: base64,
+                  mimeType: blob.type
+                }
+              }
+            ]
           }
+        });
+
+        if (response.text) {
+          setAltText(response.text.trim());
         }
       } catch (err) {
-        console.error("Failed to generate alt text:", err);
+        console.error("AI Alt Text Generation failed:", err);
       } finally {
         setIsLoading(false);
       }
     };
-    
-    // Only generate if alt is suspiciously generic or missing
-    if (!alt || alt.length < 5 || alt.includes('image') || alt.includes('cover')) {
-      generateAlt();
-    } else {
-      setIsLoading(false);
-    }
+
+    generateAlt();
   }, [src, alt, context]);
 
   return (
@@ -186,6 +225,33 @@ export default function Post() {
   
   const post = fbPost ? { ...fbPost, content: cleanContent } : null;
 
+  // Compute related posts before returns so it's not conditional
+  const posts = useMemo(() => {
+    if (!post) return [];
+    return allPosts.filter(p => (!p.status || p.status === 'published') && p.id !== post.id);
+  }, [allPosts, post?.id]);
+
+  const relatedPosts = useMemo(() => {
+    if (!post || posts.length === 0) return [];
+    return posts
+      .map(p => {
+        let score = 0;
+        if (p.category === post.category) score += 5;
+        
+        const sharedTags = p.tags?.filter(tag => post.tags?.includes(tag)) || [];
+        score += sharedTags.length * 2;
+        
+        return { post: p, score };
+      })
+      .filter(item => item.score > 0)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+      })
+      .slice(0, 3)
+      .map(item => item.post);
+  }, [posts, post?.category, post?.tags, post?.id]);
+
   if (!post && loadingPost) {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   }
@@ -195,13 +261,7 @@ export default function Post() {
     return <NotFound />;
   }
 
-  // Use strictly published posts for related
-  const posts = allPosts.filter(p => !p.status || p.status === 'published');
-
-  const relatedPosts = posts
-    .filter(p => p.category === post.category && p.id !== post.id)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 2);
+  // relatedPosts logic moved up
 
   const getCanonicalUrl = () => {
     return `${BASE_URL}/blog/${post?.slug}`;
@@ -457,7 +517,7 @@ export default function Post() {
             <section className="bg-background py-16 border-t border-border mt-12 mb-8">
               <div className="container mx-auto px-0">
                 <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
-                <div className="grid sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {relatedPosts.map(related => (
                     <article key={related.id} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
                       <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>

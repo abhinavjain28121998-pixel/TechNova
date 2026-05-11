@@ -5,7 +5,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-import { GoogleGenAI } from '@google/genai';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,56 +19,6 @@ async function startServer() {
   // API routes FIRST
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
-  });
-
-  app.post('/api/generate-alt-text', async (req, res) => {
-    try {
-      const { imageUrl, context } = req.body;
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: 'Gemini API Key missing' });
-      }
-
-      if (!imageUrl) {
-        return res.status(400).json({ error: 'imageUrl is required' });
-      }
-
-      // Fetch the image
-      const imageResp = await fetch(imageUrl);
-      if (!imageResp.ok) {
-        return res.status(400).json({ error: 'Failed to fetch image from URL' });
-      }
-      
-      const arrayBuffer = await imageResp.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      const mimeType = imageResp.headers.get('content-type') || 'image/jpeg';
-      
-      const base64Image = buffer.toString('base64');
-      
-      const ai = new GoogleGenAI({ apiKey });
-      const prompt = `You are an expert alt-text generator and content editor. Analyze the following image. Generate a concise, highly descriptive alt text for this image that is contextually relevant to the following article context:\n\nArticle Context:\n${context?.substring(0, 500) || 'No context provided'}\n\nReturn ONLY the alt text string, without quotes or prefixes.`;
-      
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: {
-          parts: [
-            { text: prompt },
-            {
-              inlineData: {
-                data: base64Image,
-                mimeType: mimeType
-              }
-            }
-          ]
-        }
-      });
-      
-      let altText = response.text || 'Descriptive image';
-      res.json({ altText: altText.trim() });
-    } catch (error: any) {
-      console.error('Error generating alt text:', error);
-      res.status(500).json({ error: error.message });
-    }
   });
 
   // Load Firebase Config conditionally

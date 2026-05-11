@@ -20,7 +20,8 @@ import {
   Timestamp
 } from 'firebase/firestore';
 import { OperationType, handleFirestoreError } from '../lib/firestoreUtils';
-import { POSTS as STATIC_POSTS, Post as StaticPost } from '../data/posts';
+import { POSTS as STATIC_POSTS } from '../data/posts';
+import { Post as StaticPost } from '../types';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';

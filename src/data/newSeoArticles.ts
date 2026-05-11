@@ -1,4 +1,4 @@
-import { Post } from './posts';
+import { Post } from '../types';
 import { articleMarketing } from './articleMarketing';
 import { articleSales } from './articleSales';
 import { articleSupport } from './articleSupport';

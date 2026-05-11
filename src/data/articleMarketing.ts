@@ -1,4 +1,4 @@
-import { Post } from './posts';
+import { Post } from '../types';
 
 export const articleMarketing: Post = {
     id: "ai-in-marketing-enterprise-strategy",

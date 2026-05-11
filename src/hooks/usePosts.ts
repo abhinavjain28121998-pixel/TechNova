@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
-import { Post } from '../data/posts';
+import { Post } from '../types';
 import { OperationType, handleFirestoreError } from '../lib/firestoreUtils';
 
 export function usePosts() {

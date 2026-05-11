@@ -1,5 +1,5 @@
 
-import { Post } from './posts';
+import { Post } from '../types';
 
 export const hackettArticles: Post[] = [
   {
