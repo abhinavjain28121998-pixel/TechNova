@@ -45,11 +45,69 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    // In production, serve dist assets
+    // In production, serve dist assets with caching for immutable assets
     const distPath = path.join(process.cwd(), 'dist');
+    app.use('/assets', express.static(path.join(distPath, 'assets'), { maxAge: '1y', immutable: true }));
     // Important: we serve static files EXCEPT index.html so our catch-all below processes it
     app.use(express.static(distPath, { index: false }));
   }
+
+  // Sitemap generation
+  app.get('/sitemap.xml', async (req, res) => {
+    try {
+      let postsList: any[] = [];
+      if (db) {
+        try {
+          const postsRef = collection(db, 'posts');
+          const snap = await getDocs(postsRef);
+          postsList = snap.docs.map(d => d.data());
+        } catch (e) {
+          console.error("Firestore read error for sitemap:", e);
+        }
+      }
+      if (postsList.length === 0) {
+        const { POSTS } = await import('./src/data/posts.ts');
+        postsList = POSTS;
+      }
+
+      const baseUrl = 'https://tech-nova-iota.vercel.app';
+      
+      const staticPages = [
+        '',
+        '/about',
+        '/services',
+        '/case-studies',
+        '/blog',
+        '/contact',
+        '/categories',
+        '/privacy-policy',
+        '/terms-of-service'
+      ];
+
+      res.setHeader('Content-Type', 'application/xml');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticPages.map(page => `  <url>
+    <loc>${baseUrl}${page}</loc>
+    <changefreq>${page === '/blog' || page === '' ? 'daily' : 'weekly'}</changefreq>
+    <priority>${page === '' ? '1.0' : '0.8'}</priority>
+  </url>`).join('\n')}
+${postsList.filter((p: any) => !p.status || p.status === 'published').map((post: any) => `  <url>
+    <loc>${baseUrl}/blog/${post.slug}</loc>
+    <lastmod>${new Date(post.date || Date.now()).toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+      res.status(200).send(sitemap.trim());
+    } catch (error) {
+      console.error('Error generating sitemap', error);
+      res.status(500).end();
+    }
+  });
 
   // Catch-all to inject dynamic SEO metadata
   app.get('*', async (req, res, next) => {

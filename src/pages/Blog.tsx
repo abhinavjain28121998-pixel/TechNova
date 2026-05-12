@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from '../components/ui/pagination';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { calculateReadingTime } from '../lib/utils';
@@ -15,9 +15,13 @@ import Fuse from 'fuse.js';
 import Highlighter from 'react-highlight-words';
 
 export default function Blog() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const searchQuery = searchParams.get('q') || '';
+  const selectedCategory = searchParams.get('category') || null;
+  const currentPageParams = searchParams.get('page');
+  const currentPage = currentPageParams ? parseInt(currentPageParams, 10) : 1;
+  
   const { posts: fbPosts, loading } = usePosts();
   
   const POSTS_PER_PAGE = 10;
@@ -45,21 +49,38 @@ export default function Blog() {
     return result;
   }, [posts, searchQuery, selectedCategory]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, selectedCategory]);
-
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
-  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const safeCurrentPage = Math.max(1, Math.min(currentPage, totalPages));
 
   const paginatedPosts = filteredPosts.slice(
     (safeCurrentPage - 1) * POSTS_PER_PAGE,
     safeCurrentPage * POSTS_PER_PAGE
   );
 
-  const handlePageChange = (pageNum: number) => {
-    setCurrentPage(pageNum);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const getPageUrl = (pageNum: number) => {
+    const params = new URLSearchParams(searchParams);
+    if (pageNum > 1) {
+      params.set('page', pageNum.toString());
+    } else {
+      params.delete('page');
+    }
+    return `?${params.toString()}`;
+  };
+
+  const updateParams = (updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+    // Reset to page 1 for filter changes unless page is explicitly updated
+    if (!('page' in updates)) {
+      params.delete('page');
+    }
+    setSearchParams(params, { replace: true });
   };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -101,7 +122,7 @@ export default function Blog() {
               placeholder="Search articles..." 
               className="pl-10 h-12 bg-card border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => updateParams({ q: e.target.value || null })}
             />
           </div>
         </div>
@@ -121,7 +142,7 @@ export default function Blog() {
           <Badge 
             variant={selectedCategory === null ? 'default' : 'outline'}
             className="cursor-pointer hover:bg-secondary hover:text-foreground transition-colors"
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => updateParams({ category: null })}
           >
             All
           </Badge>
@@ -130,7 +151,7 @@ export default function Blog() {
               key={category}
               variant={selectedCategory === category ? 'default' : 'outline'}
               className="cursor-pointer hover:bg-secondary hover:text-foreground transition-colors"
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => updateParams({ category })}
             >
               {category}
             </Badge>
@@ -202,8 +223,8 @@ export default function Blog() {
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious 
-                      href="#" 
-                      onClick={(e) => { e.preventDefault(); handlePageChange(Math.max(1, safeCurrentPage - 1)); }}
+                      href={getPageUrl(Math.max(1, safeCurrentPage - 1))}
+                      onClick={(e) => { e.preventDefault(); updateParams({ page: Math.max(1, safeCurrentPage - 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className={safeCurrentPage === 1 ? 'pointer-events-none opacity-50' : ''}
                     />
                   </PaginationItem>
@@ -218,9 +239,9 @@ export default function Blog() {
                       return (
                         <PaginationItem key={pageNum}>
                           <PaginationLink 
-                            href="#" 
+                            href={getPageUrl(pageNum)}
                             isActive={safeCurrentPage === pageNum}
-                            onClick={(e) => { e.preventDefault(); handlePageChange(pageNum); }}
+                            onClick={(e) => { e.preventDefault(); updateParams({ page: pageNum.toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                           >
                             {pageNum}
                           </PaginationLink>
@@ -241,8 +262,8 @@ export default function Blog() {
 
                   <PaginationItem>
                     <PaginationNext 
-                      href="#" 
-                      onClick={(e) => { e.preventDefault(); handlePageChange(Math.min(totalPages, safeCurrentPage + 1)); }}
+                      href={getPageUrl(Math.min(totalPages, safeCurrentPage + 1))}
+                      onClick={(e) => { e.preventDefault(); updateParams({ page: Math.min(totalPages, safeCurrentPage + 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className={safeCurrentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
                     />
                   </PaginationItem>

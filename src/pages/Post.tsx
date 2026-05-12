@@ -293,8 +293,7 @@ export default function Post() {
 
   const postGraphSchema = generateBlogPostGraphSchema(post);
 
-  const rawDesc = post.metaDescription || post.excerpt || '';
-  const seoDescription = rawDesc.length > 150 ? `${rawDesc.slice(0, 147).trim()}...` : rawDesc;
+  const seoDescription = post.metaDescription || post.excerpt || '';
 
   return (
     <>

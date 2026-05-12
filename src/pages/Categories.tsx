@@ -1,24 +1,28 @@
 import { SEO } from '../components/SEO';
-import { CATEGORIES, POSTS } from '../data/posts';
+import { CATEGORIES } from '../data/posts';
+import { usePosts } from '../hooks/usePosts';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Badge } from '../components/ui/badge';
 import { Card, CardHeader, CardFooter } from '../components/ui/card';
 import { calculateReadingTime } from '../lib/utils';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, BASE_URL } from '../lib/seo';
 
 export default function Categories() {
   const [searchParams] = useSearchParams();
   const activeCategory = searchParams.get('c');
+  const { posts: fbPosts, loading } = usePosts();
+  
+  const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
   const displayCategory = activeCategory && CATEGORIES.includes(activeCategory) 
     ? activeCategory 
     : null;
 
   const filteredPosts = displayCategory 
-    ? POSTS.filter(post => post.category === displayCategory)
-    : POSTS;
+    ? posts.filter(post => post.category === displayCategory)
+    : posts;
 
   const breadcrumbItems = [
     { name: 'Home', item: '/' },
@@ -71,7 +75,7 @@ export default function Categories() {
               >
                 {category}
                 <span className="ml-2 opacity-60 text-xs">
-                  {POSTS.filter(p => p.category === category).length}
+                  {posts.filter(p => p.category === category).length}
                 </span>
               </Badge>
             </Link>
@@ -84,6 +88,12 @@ export default function Categories() {
           </h2>
         </div>
 
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-24">
+            <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
+            <p className="text-muted-foreground">Loading categories...</p>
+          </div>
+        ) : (
         <div className="grid sm:grid-cols-2 gap-8">
           {filteredPosts.map(post => (
             <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
@@ -117,6 +127,7 @@ export default function Categories() {
             </Card>
           ))}
         </div>
+        )}
       </div>
     </>
   );
