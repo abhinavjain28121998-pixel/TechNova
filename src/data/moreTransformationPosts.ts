@@ -16,7 +16,7 @@ In an era defined by artificial intelligence, edge computing, and distributed cl
 
 Historically, the IT department was traditionally viewed purely as an unavoidable cost center—a strictly technical group dedicated exclusively to keeping the servers running and managing basic employee hardware. Decision-making was heavily siloed, and business leaders rarely consulted technical directors on strategic corporate maneuvering. 
 
-Today, that archaic view is a devastating organizational liability. Technology is natively infused into every aspect of product delivery, customer experience, and supply chain logistics. To successfully survive massive economic volatility and digital disruption, modern IT architectures absolutely must be fundamentally elastic, inherently secure by design, and deeply integrated with every corporate department's strategic roadmap.
+Today, that archaic view is a devastating organizational liability. Technology is natively infused into every aspect of product delivery, customer experience, and [supply chain](/blog/gen-ai-in-procurement-strategic-sourcing) logistics. To successfully survive massive economic volatility and digital disruption, modern IT architectures absolutely must be fundamentally elastic, inherently secure by design, and deeply integrated with every corporate department's strategic roadmap.
 
 ## Three Pillars of Successful IT Transformation
 

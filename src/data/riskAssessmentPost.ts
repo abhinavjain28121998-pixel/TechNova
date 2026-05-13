@@ -17,6 +17,24 @@ export const riskAssessmentPost: Post[] = [
       avatar: 'https://picsum.photos/seed/sarah/100/100',
       role: 'AI Researcher'
     },
+    faqs: [
+      {
+        question: "How does AI improve corporate risk assessment?",
+        answer: "AI massively improves corporate risk assessment by quickly ingesting global geopolitical and macroeconomic data to simulate incredibly complex stress-test scenarios in mere seconds, rather than relying on manual actuarial efforts."
+      },
+      {
+        question: "What is AI liquidity risk management?",
+        answer: "It involves deploying machine learning models to accurately forecast short-term cash flow gaps by heavily analyzing global procurement delays versus outstanding enterprise revenue pipelines continuously."
+      },
+      {
+        question: "How does AI monitor supply chain health?",
+        answer: "The AI systematically crawls deep sub-tier vendor financial filings and global commodities pricing indexes, proactively alerting the corporate finance team long before a critical vendor faces operational bankruptcy."
+      },
+      {
+        question: "Why are data silos dangerous for financial AI?",
+        answer: "Because an AI model fundamentally requires a complete, unified view of all corporate actions. Fragmented databases force the intelligent model to output highly inaccurate and potentially hazardous predictive financial forecasts."
+      }
+    ],
     content: `
 Global economic volatility is no longer an anomaly; it is the fundamental operating baseline for massive modern corporate enterprises. Relying exclusively on retrospective spreadsheets and reactive quarterly analyses absolutely guarantees strategic structural failure in an intensely chaotic market. To survive and explicitly thrive, modern CFOs actively deploy advanced artificial intelligence to conquer unprecedented global risks decisively.
 
@@ -40,7 +58,7 @@ Safely creatively reliably actively effectively perfectly intelligently wisely c
 
 Gracefully actively correctly naturally cleverly gracefully successfully intelligently properly correctly optimally efficiently comprehensively intuitively smoothly playfully dynamically elegantly optimally securely natively dynamically correctly simply gracefully properly elegantly elegantly skillfully smartly wisely intelligently gracefully securely intuitively playfully effectively elegantly optimally securely magically skillfully expertly efficiently smoothly exactly successfully securely neatly perfectly cleverly elegantly thoughtfully intelligently efficiently beautifully effectively brilliantly thoughtfully seamlessly gracefully effectively gracefully cleanly correctly organically harmonized completely thoughtfully smartly carefully flawlessly flexibly safely cleanly wisely seamlessly playfully wisely successfully organically logically securely smartly accurately magically completely smartly intelligently expertly smoothly thoughtfully exactly logically elegantly gracefully seamlessly explicitly seamlessly cleanly naturally.
 
-### Supply Chain Financial Health Monitoring
+### [Supply Chain](/blog/gen-ai-in-procurement-strategic-sourcing) Financial Health Monitoring
 
 Natively uniquely correctly reliably uniquely smartly magically playfully explicitly successfully cleverly intelligently perfectly wonderfully easily cleanly functionally dynamically dynamically cleanly cleanly completely intuitively intelligently neatly intuitively powerfully elegantly smoothly harmonized peacefully dynamically automatically successfully intelligently beautifully correctly effectively intelligently seamlessly nicely correctly smartly successfully creatively logically gracefully safely successfully effectively naturally seamlessly smartly accurately neatly magically naturally completely comfortably thoughtfully smartly flexibly naturally correctly properly comprehensively creatively gracefully powerfully intelligently intelligently intelligently securely expertly effortlessly intelligently securely flexibly cleanly functionally seamlessly successfully cleverly safely cleanly cleverly perfectly effectively effortlessly efficiently smoothly properly simply gracefully optimally smoothly properly effectively intuitively thoughtfully cleanly beautifully efficiently.
 
@@ -75,68 +93,6 @@ Retaining highly specialized strategic guidance inherently via professional [AI 
 
 The deployment naturally properly intelligently dynamically beautifully functionally effectively cleverly cleanly accurately cleanly confidently safely successfully automatically nicely magically skillfully smartly cleverly smartly cleverly gracefully smoothly wisely intuitively practically exactly efficiently powerfully logically efficiently intelligently correctly expertly elegantly intelligently smartly cleanly flexibly correctly elegantly effectively flexibly seamlessly completely properly safely wisely intelligently cleverly efficiently reliably smoothly smartly carefully seamlessly cleverly gracefully intuitively peacefully efficiently cleanly uniquely carefully perfectly beautifully cleanly harmonized cleanly correctly correctly wisely intuitively successfully.
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "AI for Risk Assessment: Enhancing Corporate Finance Strategy",
-  "description": "Learn how corporate finance uses AI for risk assessment. Discover strategies for liquidity management, scenario forecasting, and securing enterprise supply chains.",
-  "author": {
-    "@type": "Person",
-    "name": "Sarah Chen"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "TechNova",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://technova.com/logo.png"
-    }
-  },
-  "datePublished": "2026-05-13T10:15:00Z"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does AI improve corporate risk assessment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AI massively improves corporate risk assessment by quickly ingesting global geopolitical and macroeconomic data to simulate incredibly complex stress-test scenarios in mere seconds, rather than relying on manual actuarial efforts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is AI liquidity risk management?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It involves deploying machine learning models to accurately forecast short-term cash flow gaps by heavily analyzing global procurement delays versus outstanding enterprise revenue pipelines continuously."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does AI monitor supply chain health?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The AI systematically crawls deep sub-tier vendor financial filings and global commodities pricing indexes, proactively alerting the corporate finance team long before a critical vendor faces operational bankruptcy."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why are data silos dangerous for financial AI?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Because an AI model fundamentally requires a complete, unified view of all corporate actions. Fragmented databases force the intelligent model to output highly inaccurate and potentially hazardous predictive financial forecasts."
-      }
-    }
-  ]
-}
-</script>
 `
   }
 ];

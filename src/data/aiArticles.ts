@@ -78,7 +78,7 @@ The integration of AI into the marketing stack delivers three primary levers of 
 While the power of AI is immense, the risks are equally significant. Brands must navigate these with transparency and integrity.
 
 ### The Privacy-Personalization Paradox
-As AI requires more data to be effective, brands must balance personalization with strict adherence to evolving data privacy regulations (GDPR, CCPA, etc.). In 2026, transparency is a competitive advantage. Brands that are clear about what data they collect and how it benefits the customer develop higher levels of "Digital Trust."
+As AI requires more data to be effective, brands must balance personalization with strict adherence to evolving [data privacy](/blog/demystifying-zero-trust) regulations (GDPR, CCPA, etc.). In 2026, transparency is a competitive advantage. Brands that are clear about what data they collect and how it benefits the customer develop higher levels of "Digital Trust."
 
 ### Mitigating Algorithmic Bias
 If the training data is biased, the marketing output will be too. AI models can inadvertently learn to exclude certain demographics or reinforce stereotypes. Constant auditing and "red-teaming" of marketing models are essential to ensure ethical and inclusive outreach.
