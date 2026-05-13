@@ -9,7 +9,7 @@ import { calculateReadingTime } from '../lib/utils';
 import { Input } from '../components/ui/input';
 import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateBreadcrumbSchema, BASE_URL } from '../lib/seo';
+import { generateBreadcrumbSchema, generateBlogIndexGraphSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import Fuse from 'fuse.js';
 import Highlighter from 'react-highlight-words';
@@ -83,20 +83,7 @@ export default function Blog() {
     setSearchParams(params, { replace: true });
   };
 
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: '/' },
-    { name: 'Blog', item: '/blog' }
-  ]);
-
-  const blogListSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    'itemListElement': paginatedPosts.map((post, index) => ({
-      '@type': 'ListItem',
-      'position': index + 1,
-      'url': `${BASE_URL}/blog/${post.slug}`
-    }))
-  };
+  const blogIndexSchema = generateBlogIndexGraphSchema(paginatedPosts, safeCurrentPage, selectedCategory);
 
   return (
     <>
@@ -104,7 +91,7 @@ export default function Blog() {
         title="TechNova Blog | AI & Software Engineering Articles"
         description="Read our latest articles on Artificial Intelligence, Web Development, and Cybersecurity. Actionable tutorials and insights for tech professionals."
         keywords={['tech blog', 'tech tutorials', 'software development', 'programming articles']}
-        schema={[breadcrumbSchema, blogListSchema]}
+        schema={blogIndexSchema}
         url={`${BASE_URL}/blog`}
       />
 
@@ -219,56 +206,93 @@ export default function Blog() {
             </div>
 
             {totalPages > 1 && (
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious 
-                      href={getPageUrl(Math.max(1, safeCurrentPage - 1))}
-                      onClick={(e) => { e.preventDefault(); updateParams({ page: Math.max(1, safeCurrentPage - 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className={safeCurrentPage === 1 ? 'pointer-events-none opacity-50' : ''}
-                    />
-                  </PaginationItem>
-                  
-                  {Array.from({ length: totalPages }).map((_, i) => {
-                    const pageNum = i + 1;
-                    if (
-                      pageNum === 1 || 
-                      pageNum === totalPages || 
-                      (pageNum >= safeCurrentPage - 1 && pageNum <= safeCurrentPage + 1)
-                    ) {
-                      return (
-                        <PaginationItem key={pageNum}>
-                          <PaginationLink 
-                            href={getPageUrl(pageNum)}
-                            isActive={safeCurrentPage === pageNum}
-                            onClick={(e) => { e.preventDefault(); updateParams({ page: pageNum.toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                          >
-                            {pageNum}
-                          </PaginationLink>
-                        </PaginationItem>
-                      );
-                    } else if (
-                      pageNum === safeCurrentPage - 2 || 
-                      pageNum === safeCurrentPage + 2
-                    ) {
-                      return (
-                        <PaginationItem key={pageNum}>
-                          <PaginationEllipsis />
-                        </PaginationItem>
-                      );
-                    }
-                    return null;
-                  })}
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border pt-8 mt-12 mb-8">
+                <div className="text-sm text-muted-foreground whitespace-nowrap">
+                  Showing <span className="font-medium text-foreground">{((safeCurrentPage - 1) * POSTS_PER_PAGE) + 1}</span> to <span className="font-medium text-foreground">{Math.min(safeCurrentPage * POSTS_PER_PAGE, filteredPosts.length)}</span> of <span className="font-medium text-foreground">{filteredPosts.length}</span> results
+                </div>
 
-                  <PaginationItem>
-                    <PaginationNext 
-                      href={getPageUrl(Math.min(totalPages, safeCurrentPage + 1))}
-                      onClick={(e) => { e.preventDefault(); updateParams({ page: Math.min(totalPages, safeCurrentPage + 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className={safeCurrentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+                <Pagination className="mx-0 w-auto">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious 
+                        href={getPageUrl(Math.max(1, safeCurrentPage - 1))}
+                        onClick={(e) => { e.preventDefault(); updateParams({ page: Math.max(1, safeCurrentPage - 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className={safeCurrentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                      />
+                    </PaginationItem>
+                    
+                    {Array.from({ length: totalPages }).map((_, i) => {
+                      const pageNum = i + 1;
+                      if (
+                        pageNum === 1 || 
+                        pageNum === totalPages || 
+                        (pageNum >= safeCurrentPage - 1 && pageNum <= safeCurrentPage + 1)
+                      ) {
+                        return (
+                          <PaginationItem key={pageNum}>
+                            <PaginationLink 
+                              href={getPageUrl(pageNum)}
+                              isActive={safeCurrentPage === pageNum}
+                              onClick={(e) => { e.preventDefault(); updateParams({ page: pageNum.toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                            >
+                              {pageNum}
+                            </PaginationLink>
+                          </PaginationItem>
+                        );
+                      } else if (
+                        pageNum === safeCurrentPage - 2 || 
+                        pageNum === safeCurrentPage + 2
+                      ) {
+                        return (
+                          <PaginationItem key={pageNum}>
+                            <PaginationEllipsis />
+                          </PaginationItem>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    <PaginationItem>
+                      <PaginationNext 
+                        href={getPageUrl(Math.min(totalPages, safeCurrentPage + 1))}
+                        onClick={(e) => { e.preventDefault(); updateParams({ page: Math.min(totalPages, safeCurrentPage + 1).toString() }); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className={safeCurrentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+                
+                <div className="flex items-center gap-2 text-sm text-muted-foreground whitespace-nowrap">
+                   <label htmlFor="jump-to-page">Go to page:</label>
+                   <Input 
+                     id="jump-to-page"
+                     key={safeCurrentPage}
+                     type="number" 
+                     min={1} 
+                     max={totalPages} 
+                     className="w-16 h-8 text-center bg-card border-border px-1"
+                     defaultValue={safeCurrentPage}
+                     onKeyDown={(e) => {
+                       if (e.key === 'Enter') {
+                         const val = parseInt(e.currentTarget.value, 10);
+                         if (!isNaN(val) && val >= 1 && val <= totalPages) {
+                            updateParams({ page: val.toString() });
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                         }
+                       }
+                     }}
+                     onBlur={(e) => {
+                       const val = parseInt(e.target.value, 10);
+                       if (!isNaN(val) && val >= 1 && val <= totalPages && val !== safeCurrentPage) {
+                          updateParams({ page: val.toString() });
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                       } else {
+                          e.target.value = safeCurrentPage.toString();
+                       }
+                     }}
+                   />
+                </div>
+              </div>
             )}
           </div>
         ) : (

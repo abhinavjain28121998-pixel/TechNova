@@ -37,7 +37,6 @@ import {
   X, 
   Settings, 
   FileText, 
-  Eye, 
   ArrowLeft,
   LayoutDashboard,
   CheckCircle2,
@@ -54,6 +53,7 @@ import {
   Image as ImageIcon,
   Files
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { SEO } from '../components/SEO';
 import ReactMarkdown from 'react-markdown';
 
@@ -64,13 +64,50 @@ interface PostRecord extends StaticPost {
   status?: 'draft' | 'published';
 }
 
+function AnimatedTask({ task, defaultCompleted = false }: { task: string, defaultCompleted?: boolean }) {
+  const [completed, setCompleted] = useState(defaultCompleted);
+
+  return (
+    <div 
+      className={`flex items-center gap-3 p-3 border rounded-sm mb-2 cursor-pointer transition-all duration-200 ${completed ? 'bg-[#f0f0f1] border-[#c3c4c7] text-[#8c8f94]' : 'bg-white border-[#c3c4c7] text-[#3c434a] hover:border-[#2271b1]'}`}
+      onClick={() => setCompleted(!completed)}
+    >
+      <div className={`relative flex items-center justify-center w-5 h-5 flex-shrink-0 rounded-sm border transition-colors duration-300 ${completed ? 'bg-[#00a32a] border-[#00a32a]' : 'border-[#8c8f94]'}`}>
+        <AnimatePresence>
+          {completed && (
+             <motion.svg
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0, transition: { duration: 0.15 } }}
+               className="absolute inset-0 w-full h-full text-white p-[2px]"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor"
+               strokeWidth={3.5}
+             >
+               <motion.path
+                 initial={{ pathLength: 0 }}
+                 animate={{ pathLength: 1 }}
+                 transition={{ duration: 0.4, ease: 'easeOut', delay: 0.05 }}
+                 strokeLinecap="round"
+                 strokeLinejoin="round"
+                 d="M5 13l4 4L19 7"
+               />
+             </motion.svg>
+          )}
+        </AnimatePresence>
+      </div>
+      <span className={completed ? 'line-through opacity-70 transition-all duration-300' : 'transition-all duration-300'}>{task}</span>
+    </div>
+  );
+}
+
 export default function Admin() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState<PostRecord[]>([]);
   const [editingPost, setEditingPost] = useState<Partial<PostRecord> | null>(null);
   const [activeTab, setActiveTab] = useState('list');
-  const [editTab, setEditTab] = useState('content');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -269,7 +306,6 @@ export default function Admin() {
   const startEdit = (post: Partial<PostRecord>) => {
     setEditingPost(post);
     setActiveTab('edit');
-    setEditTab('content');
   };
 
   if (loading) return (
@@ -395,7 +431,7 @@ export default function Admin() {
               size="sm" 
               variant="outline" 
               className="h-8 md:border-white/20 md:text-white md:bg-white/5 md:hover:bg-white/10 border-[#2271b1] text-[#2271b1] hover:bg-[#135e96] hover:text-white"
-              onClick={() => { setEditingPost({}); setActiveTab('edit'); setEditTab('content'); }}
+              onClick={() => { setEditingPost({}); setActiveTab('edit'); }}
             >
               <Plus className="w-4 h-4 mr-1 md:text-white" /> New Post
             </Button>
@@ -418,6 +454,19 @@ export default function Admin() {
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1200px] mx-auto">
             <TabsContent value="list" className="mt-0">
               <div className="space-y-6">
+                
+                {/* Quick Tasks Section */}
+                <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm p-4 mb-6">
+                  <h2 className="text-lg font-normal text-[#1d2327] mb-4 flex items-center gap-2">
+                   <Clock className="w-5 h-5 text-gray-500" /> Administrative Tasks
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-x-4">
+                    <AnimatedTask task="Review drafted AI transformation posts" />
+                    <AnimatedTask task="Sync generic static posts to Firestore" />
+                    <AnimatedTask task="Update author bios for newly published posts" />
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <h1 className="text-2xl font-normal text-[#1d2327]">Posts</h1>
                   <div className="flex gap-2">
@@ -551,35 +600,38 @@ export default function Admin() {
                   </div>
 
                   <div className="bg-white border border-[#c3c4c7] shadow-sm rounded-sm">
-                    <div className="bg-[#f0f0f1] border-b border-[#c3c4c7] p-2 flex gap-1 items-center">
-                       <Button variant="ghost" size="sm" className={`h-8 ${editTab === 'content' ? 'bg-white border border-[#c3c4c7] border-b-transparent shadow-none text-black relative top-[1px]' : 'hover:bg-[#c3c4c7] text-[#2c3338]'}`} onClick={() => setEditTab('content')}><Edit2 className="w-4 h-4 mr-1"/> Write</Button>
-                       <Button variant="ghost" size="sm" className={`h-8 ${editTab === 'preview' ? 'bg-white border border-[#c3c4c7] border-b-transparent shadow-none text-black relative top-[1px]' : 'hover:bg-[#c3c4c7] text-[#2c3338]'}`} onClick={() => setEditTab('preview')}><Eye className="w-4 h-4 mr-1"/> Preview</Button>
+                    <div className="bg-[#f0f0f1] border-b border-[#c3c4c7] p-2 flex gap-1 items-center font-medium text-[#1d2327]">
+                       <Edit2 className="w-4 h-4 mr-1"/> Editor & Preview
                     </div>
 
-                    {editTab === 'content' && (
-                      <textarea 
-                        className="w-full min-h-[500px] border-none p-4 font-mono text-[13px] text-[#2c3338] focus:outline-none resize-y"
-                        placeholder="Start typing or insert Markdown..."
-                        value={editingPost?.content || ''} 
-                        onChange={e => setEditingPost({ ...editingPost, content: e.target.value })}
-                      />
-                    )}
-
-                    {editTab === 'preview' && (
-                      <div className="w-full min-h-[500px] p-6 max-w-none prose prose-slate">
-                        {editingPost?.content ? (
-                          <ReactMarkdown
-                            components={{
-                              a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
-                            }}
-                          >
-                            {editingPost.content}
-                          </ReactMarkdown>
-                        ) : (
-                          <p className="text-gray-400 italic">Preview will appear here...</p>
-                        )}
+                    <div className="flex border-t border-[#c3c4c7] min-h-[500px]">
+                      {/* Editor Pane */}
+                      <div className="w-1/2 border-r border-[#c3c4c7]">
+                        <textarea 
+                          className="w-full h-full min-h-[500px] border-none p-4 font-mono text-[13px] text-[#2c3338] focus:outline-none resize-none"
+                          placeholder="Start typing or insert Markdown..."
+                          value={editingPost?.content || ''} 
+                          onChange={e => setEditingPost({ ...editingPost, content: e.target.value })}
+                        />
                       </div>
-                    )}
+                      
+                      {/* Preview Pane */}
+                      <div className="w-1/2 overflow-y-auto max-h-[700px] bg-slate-50">
+                        <div className="p-6 max-w-none prose prose-slate prose-sm sm:prose-base">
+                          {editingPost?.content ? (
+                            <ReactMarkdown
+                              components={{
+                                a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
+                              }}
+                            >
+                              {editingPost.content}
+                            </ReactMarkdown>
+                          ) : (
+                            <p className="text-gray-400 italic">Preview will appear here as you type...</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
                   {/* Excerpt panel */}
@@ -634,7 +686,6 @@ export default function Admin() {
                     <div className="p-3 space-y-3 border-b border-[#c3c4c7]">
                       <div className="flex justify-between items-center text-sm">
                         <Button variant="outline" size="sm" className="h-8 border-[#2271b1] text-[#2271b1]" onClick={() => setEditingPost({...editingPost, status: 'draft'})}>Save Draft</Button>
-                        <Button variant="outline" size="sm" className="h-8 border-[#8c8f94]" onClick={() => setEditTab('preview')}>Preview</Button>
                       </div>
                       
                       <div className="text-[13px] text-[#2c3338] space-y-2 pt-2">

@@ -7,6 +7,10 @@ import { newSeoArticles } from './newSeoArticles';
 import { hackettArticles } from './hackettArticles';
 import { newHackettArticles } from './newHackettArticles';
 import { eeatArticles } from './eeatArticles';
+import { fraudDetectionPost } from './fraudDetectionPost';
+import { creditScoringPost } from './creditScoringPost';
+import { algoTradingPost } from './algoTradingPost';
+import { riskAssessmentPost } from './riskAssessmentPost';
 
 const authors = {
   alex: {
@@ -48,7 +52,7 @@ export const CATEGORIES = [
   'Software',
 ];
 
-export const POSTS: Post[] = [
+export const _POSTS: Post[] = [
   {
     id: 'agentic-ai-enterprise-transformation',
     slug: 'agentic-ai-enterprise-transformation',
@@ -2060,4 +2064,20 @@ Procurement strongly definitively clearly acts profoundly significantly heavily 
       }
     ]
   }
+];
+
+export const POSTS = [
+  ..._POSTS,
+  ...eeatPosts,
+  ...transformationPosts,
+  ...moreTransformationPosts,
+  ...aiArticles,
+  ...newSeoArticles,
+  ...hackettArticles,
+  ...newHackettArticles,
+  ...eeatArticles,
+  ...fraudDetectionPost,
+  ...creditScoringPost,
+  ...algoTradingPost,
+  ...riskAssessmentPost,
 ];

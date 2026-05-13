@@ -127,6 +127,66 @@ export function generateCollectionPageSchema(name: string, description: string, 
   };
 }
 
+export function generateBlogIndexGraphSchema(posts: any[], page: number, category?: string | null) {
+  const url = `${BASE_URL}/blog${category ? `?category=${category}` : ''}${page > 1 ? (category ? '&' : '?') + `page=${page}` : ''}`;
+  const name = category ? `${category} Articles | TechNova Blog` : 'Our Blog | TechNova';
+  const description = 'Deep dives, tutorials, and insights into the ever-evolving world of technology.';
+
+  const graph: any[] = [];
+
+  graph.push(generateOrganizationSchema());
+  graph.push(generateWebSiteSchema());
+
+  graph.push({
+    '@type': 'CollectionPage',
+    '@id': `${url}/#webpage`,
+    url: url,
+    name: name,
+    description: description,
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`
+    },
+    breadcrumb: {
+      '@id': `${url}/#breadcrumb`
+    }
+  });
+
+  graph.push(generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Blog', item: '/blog' },
+    ...(category ? [{ name: category, item: `/blog?category=${category}` }] : [])
+  ], `${url}/#breadcrumb`));
+
+  graph.push({
+    '@type': 'ItemList',
+    '@id': `${url}/#itemlist`,
+    mainEntityOfPage: {
+      '@id': `${url}/#webpage`
+    },
+    itemListElement: posts.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'BlogPosting',
+        url: `${BASE_URL}/blog/${post.slug}`,
+        name: post.title,
+        description: post.metaDescription || post.excerpt,
+        datePublished: post.date,
+        image: post.coverImage,
+        author: {
+          '@type': 'Person',
+          name: post.author?.name || 'TechNova Team'
+        }
+      }
+    }))
+  });
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph
+  };
+}
+
 export function generateArticleSchema(post: any) {
   // Keeping this for backward compatibility if needed, but generateBlogPostGraphSchema is preferred
   const postUrl = `${BASE_URL}/blog/${post.slug}`;
@@ -158,6 +218,19 @@ export function generateBlogPostGraphSchema(post: any) {
   
   const graph: any[] = [];
 
+  // Determine article type based on tags or title
+  const tagsStr = (post.tags || []).join(' ').toLowerCase();
+  const titleStr = post.title.toLowerCase();
+  
+  let articleType = 'Article';
+  if (tagsStr.includes('tech') || tagsStr.includes('software') || tagsStr.includes('developer') || tagsStr.includes('ai') || titleStr.includes('ai')) {
+    articleType = 'TechArticle';
+  } else if (tagsStr.includes('tutorial') || titleStr.includes('how to')) {
+    articleType = 'HowTo';
+  } else if (tagsStr.includes('comparison') || titleStr.includes('vs') || titleStr.includes('review')) {
+    articleType = 'ReviewNewsArticle'; // Fallback to Article if this isn't exactly mapping, or just use TechArticle
+  }
+
   // 1. Organization
   graph.push(generateOrganizationSchema());
 
@@ -167,15 +240,15 @@ export function generateBlogPostGraphSchema(post: any) {
   // 3. WebPage (container for the article)
   graph.push({
     '@type': 'WebPage',
-    '@id': postUrl,
+    '@id': `${postUrl}/#webpage`,
     url: postUrl,
     name: post.title,
     isPartOf: {
       '@id': `${BASE_URL}/#website`
     },
-    primaryImageOfPage: {
+    primaryImageOfPage: post.coverImage ? {
       '@id': `${postUrl}#primaryimage`
-    },
+    } : undefined,
     breadcrumb: {
       '@id': `${postUrl}#breadcrumb`
     },
@@ -202,12 +275,12 @@ export function generateBlogPostGraphSchema(post: any) {
     });
   }
 
-  // 5. Article / BlogPosting Schema
+  // 5. Article / BlogPosting / TechArticle Schema
   graph.push({
-    '@type': 'BlogPosting',
+    '@type': ['BlogPosting', articleType],
     '@id': `${postUrl}#article`,
     isPartOf: {
-      '@id': postUrl
+      '@id': `${postUrl}/#webpage`
     },
     author: {
       '@type': 'Person',
@@ -221,18 +294,19 @@ export function generateBlogPostGraphSchema(post: any) {
     datePublished: post.date,
     dateModified: post.date,
     mainEntityOfPage: {
-      '@id': postUrl
+      '@id': `${postUrl}/#webpage`
     },
     wordCount: post.content ? post.content.split(/\s+/).length : undefined,
     publisher: {
       '@id': `${BASE_URL}/#organization`
     },
-    image: {
+    image: post.coverImage ? {
       '@id': `${postUrl}#primaryimage`
-    },
+    } : undefined,
     keywords: post.tags ? post.tags.join(', ') : undefined,
     articleSection: post.category,
     description: post.metaDescription || post.excerpt,
+    articleBody: post.content ? post.content.substring(0, 500) + '...' : undefined,
     about: [
       {
         '@type': 'Thing',
@@ -247,14 +321,36 @@ export function generateBlogPostGraphSchema(post: any) {
     { name: 'Home', item: '/' },
     { name: 'Blog', item: '/blog' },
     { name: post.title, item: `/blog/${post.slug}` }
-  ]));
+  ], `${postUrl}#breadcrumb`));
 
-  // 7. FAQPage Schema
-  if (post.faqs && post.faqs.length > 0) {
+  // 7. FAQPage Schema (Auto-extract from content if not explicitly in post.faqs)
+  let faqs = post.faqs || [];
+  if (faqs.length === 0 && post.content) {
+     // rudimentary extraction of FAQ JSON-LD from the content HTML/markdown if embedded
+     try {
+       const jsonLdMatch = post.content.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g);
+       if (jsonLdMatch) {
+         jsonLdMatch.forEach((script: string) => {
+           const jsonStr = script.replace(/<script type="application\/ld\+json">|<\/script>/g, '');
+           const parsed = JSON.parse(jsonStr);
+           if (parsed['@type'] === 'FAQPage' && parsed.mainEntity) {
+              faqs = [...faqs, ...parsed.mainEntity.map((q: any) => ({
+                 question: q.name,
+                 answer: q.acceptedAnswer?.text
+              }))];
+           }
+         });
+       }
+     } catch (e) {
+       // Ignore parsing errors
+     }
+  }
+
+  if (faqs && faqs.length > 0) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${postUrl}#faq`,
-      mainEntity: post.faqs.map((faq: { question: string; answer: string }) => ({
+      mainEntity: faqs.map((faq: { question: string; answer: string }) => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: {
