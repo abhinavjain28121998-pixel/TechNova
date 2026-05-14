@@ -7,6 +7,7 @@ import { newSeoArticles } from './newSeoArticles';
 import { hackettArticles } from './hackettArticles';
 import { newHackettArticles } from './newHackettArticles';
 import { eeatArticles } from './eeatArticles';
+import { hrArticles } from './hrArticles';
 import { fraudDetectionPost } from './fraudDetectionPost';
 import { creditScoringPost } from './creditScoringPost';
 import { algoTradingPost } from './algoTradingPost';
@@ -92,29 +93,6 @@ To successfully move from static chatbots to autonomous workflows, technology le
 *   **Continuous Monitoring:** Deploy anomaly detection systems that monitor the agents themselves. Track the frequency of their API calls, task completion rates, and escalation triggers to continuously refine their underlying prompt architecture.
 ## Conclusion
 Agentic AI marks the maturation of enterprise artificial intelligence from a passive advisor to an active digital workforce. By combining goal-oriented reasoning models with technologies like Retrieval-Augmented Generation and Multimodal AI, organizations can achieve unprecedented operational velocity. The enterprises that will lead the next decade are those that begin establishing the governance, data structures, and human-in-the-loop protocols required to scale these autonomous systems safely and effectively today.
-
-***
-
-### Suggested Internal Links
-*   **Source Page:** Agentic AI Guide
-*   **Target Page:** \`/blog/demystifying-zero-trust\`
-*   **Anchor Text:** "Zero Trust architectures"
-*   **Placement:** Under 'Challenges and considerations' > API Security.
-*   **Reason:** Demonstrates cybersecurity expertise linking autonomous agents to required security paradigms.
-
-*   **Source Page:** Agentic AI Guide
-*   **Target Page:** \`/blog/mastering-ai-implementation-practical-enterprise-guide\`
-*   **Anchor Text:** "AI Implementation"
-*   **Placement:** Conclusion or Best Practices.
-*   **Reason:** Provides the strategic "next step" for organizations looking to apply these frameworks.
-
-*   **Source Page:** Agentic AI Guide
-*   **Target Page:** \`/blog/gen-ai-in-supply-chain-next-gen-logistics\`
-*   **Anchor Text:** "Supply chain resilience"
-*   **Placement:** Under 'How it works in real-world scenarios' > Supply Chain Resilience.
-*   **Reason:** Connects the broad concept of agentic forecasting directly to an existing robust industry deep-dive.
-
-***
 `,
     coverImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200',
     date: new Date().toISOString(),
@@ -2080,4 +2058,5 @@ export const POSTS = [
   ...creditScoringPost,
   ...algoTradingPost,
   ...riskAssessmentPost,
+  ...hrArticles,
 ];
