@@ -8,6 +8,11 @@ import { hackettArticles } from './hackettArticles';
 import { newHackettArticles } from './newHackettArticles';
 import { eeatArticles } from './eeatArticles';
 import { hrArticles } from './hrArticles';
+import { itHelpdeskPost } from './itHelpdeskPost';
+import { itChatbotPost } from './itChatbotPost';
+import { itTicketPost } from './itTicketPost';
+import { itIncidentPost } from './itIncidentPost';
+
 import { fraudDetectionPost } from './fraudDetectionPost';
 import { creditScoringPost } from './creditScoringPost';
 import { algoTradingPost } from './algoTradingPost';
@@ -2059,4 +2064,9 @@ export const POSTS = [
   ...algoTradingPost,
   ...riskAssessmentPost,
   ...hrArticles,
+  ...itHelpdeskPost,
+  ...itChatbotPost,
+  ...itTicketPost,
+  ...itIncidentPost,
+
 ];

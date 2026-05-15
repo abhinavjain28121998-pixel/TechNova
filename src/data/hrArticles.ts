@@ -152,6 +152,10 @@ By intelligently analyzing the specific attributes, career paths, and daily beha
 
 Enterprise organizations frequently lose exceptional talent simply because employees cannot successfully locate relevant internal advancement opportunities. AI actively scans the entire internal workforce continuously, instantly matching existing employees explicitly with newly opened roles, highly specific short-term projects, or perfectly aligned mentorship programs. This creates a deeply liquid internal talent market that actively resists stagnation.
 
+### AI Image Generation for Candidate Profiles
+
+An innovative approach to internal mobility and diverse candidate representation involves using AI image generation to create unique, unbiased candidate profile avatars. Instead of relying on traditional photographs that may trigger unconscious biases, deep AI models can generate professional, synthetic representations of candidates or generalized avatars that obscure demographics while maintaining a polished professional identity. For example, systems might use playful but professional placeholder avatars when displaying anonymized talent pipelines. Examples include generating abstract professional portraits or stylized role-based icons using image generation tools.
+
 ### Attrition Risk Matching
 
 Advanced algorithms do not just match candidates for initial hiring; they model the likely tenure of the match. By comparing a candidate's historical job-hopping behavior and combining it with the specific management style of their proposed new boss, the AI can estimate a "retention risk coefficient," helping leadership decide if the candidate is worth the onboarding investment.
