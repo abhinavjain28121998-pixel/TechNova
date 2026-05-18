@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import { generateOrganizationSchema, generateWebSiteSchema } from '../lib/seo';
 
 interface SEOProps {
@@ -26,12 +27,12 @@ export function SEO({
   keywords,
   noindex = false
 }: SEOProps) {
+  const location = useLocation();
   const siteName = 'TechNova Blog';
   const fullTitle = title.includes('TechNova') ? title : `${title} | ${siteName}`;
   const fullDescription = description;
-  const currentUrl = typeof window !== 'undefined' 
-    ? 'https://tech-nova-iota.vercel.app' + window.location.pathname
-    : 'https://tech-nova-iota.vercel.app';
+  
+  const currentUrl = `https://tech-nova-iota.vercel.app${location.pathname}`;
   let rawUrl = url || currentUrl;
   if (rawUrl && rawUrl.length > 1 && rawUrl.endsWith('/')) {
     rawUrl = rawUrl.slice(0, -1);

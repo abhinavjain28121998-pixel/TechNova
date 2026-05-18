@@ -183,7 +183,7 @@ export default function Home() {
                       </p>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} width={32} height={32} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" loading="lazy" />
+                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} width={32} height={32} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                           <span className="font-medium text-foreground">{post.author?.name || 'TechNova Team'}</span>
                         </div>
                         <span className="hidden sm:inline">•</span>

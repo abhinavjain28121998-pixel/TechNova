@@ -101,9 +101,12 @@ export default function Categories() {
                 <img 
                   src={post.coverImage} 
                   alt={post.title} 
+                  width={800}
+                  height={450}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   referrerPolicy="no-referrer"
                   loading="lazy"
+                  decoding="async"
                 />
               </Link>
               <CardHeader className="p-6 pb-0 flex-grow" as="header">
