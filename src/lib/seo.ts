@@ -177,7 +177,7 @@ export function generateBlogIndexGraphSchema(posts: any[], page: number, categor
         image: post.coverImage,
         author: {
           '@type': 'Person',
-          name: post.author?.name || 'TechNova Team'
+          name: 'TechNova Team'
         }
       }
     }))
@@ -199,7 +199,7 @@ export function generateArticleSchema(post: any) {
     description: post.metaDescription || post.excerpt,
     author: {
       '@type': 'Person',
-      name: post.author?.name || 'TechNova Team'
+      name: 'TechNova Team'
     },
     datePublished: post.date,
     dateModified: post.date,
@@ -216,7 +216,8 @@ export function generateArticleSchema(post: any) {
 
 export function generateBlogPostGraphSchema(post: any) {
   const postUrl = `${BASE_URL}/blog/${post.slug}`;
-  const authorName = post.author?.name || 'TechNova Team';
+  // Force author to be TechNova Team
+  const authorName = 'TechNova Team';
   
   const graph: any[] = [];
 

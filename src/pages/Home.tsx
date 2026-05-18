@@ -11,6 +11,7 @@ import { generateWebPageSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -183,8 +184,8 @@ export default function Home() {
                       </p>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <img src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} width={32} height={32} alt={post.author?.name || 'Author'} className="w-8 h-8 rounded-full bg-slate-800" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
-                          <span className="font-medium text-foreground">{post.author?.name || 'TechNova Team'}</span>
+                          <img src={teamAvatar} width={32} height={32} alt="TechNova Team" className="w-8 h-8 rounded-full object-cover shadow-sm ring-1 ring-border" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+                          <span className="font-medium text-foreground">TechNova Team</span>
                         </div>
                         <span className="hidden sm:inline">•</span>
                         <div className="flex items-center gap-1">

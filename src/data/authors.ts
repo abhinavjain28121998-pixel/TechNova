@@ -26,18 +26,18 @@ export interface Post {
 
 export const authors = {
   alex: {
-    name: 'Alex Rivera',
-    avatar: 'https://picsum.photos/seed/alex/100/100',
-    role: 'Senior Tech Editor',
+    name: 'TechNova Team',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova+Team',
+    role: 'TechNova Team',
   },
   sarah: {
-    name: 'Sarah Chen',
-    avatar: 'https://picsum.photos/seed/sarah/100/100',
-    role: 'AI Researcher',
+    name: 'TechNova Team',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova+Team',
+    role: 'TechNova Team',
   },
   marcus: {
-    name: 'Marcus Johnson',
-    avatar: 'https://picsum.photos/seed/marcus/100/100',
-    role: 'Security Analyst',
+    name: 'TechNova Team',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TechNova+Team',
+    role: 'TechNova Team',
   },
 };

@@ -26,6 +26,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 import { PostComments } from '../components/PostComments';
 import regeneratedImage from '../assets/images/regenerated_image_1778073976543.png';
 
+import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
+
 const AIImage = ({ src, alt, context, ...props }: any) => {
   const [altText, setAltText] = useState(alt || '');
   const [isLoading, setIsLoading] = useState(false);
@@ -345,16 +347,16 @@ export default function Post() {
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
             <div className="flex items-center gap-3">
               <img 
-                src={post.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.name || 'User'}`} 
-                alt={post.author?.name || 'Author'} 
+                src={teamAvatar} 
+                alt="TechNova Team" 
                 width={48}
                 height={48}
-                className="w-12 h-12 rounded-full bg-slate-800" 
+                className="w-12 h-12 rounded-full object-cover shadow-sm ring-1 ring-border" 
                 referrerPolicy="no-referrer" 
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <div className="font-semibold text-foreground">{post.author?.name || 'TechNova Team'}</div>
+                  <div className="font-semibold text-foreground">TechNova Team</div>
                   {post.isExpertVerified && (
                     <Badge variant="secondary" className="h-5 px-1.5 py-0 text-[10px] bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
                       <Check className="w-3 h-3" />
@@ -362,7 +364,6 @@ export default function Post() {
                     </Badge>
                   )}
                 </div>
-                <div className="text-sm">{post.author?.role || 'Guest Writer'}</div>
               </div>
             </div>
             

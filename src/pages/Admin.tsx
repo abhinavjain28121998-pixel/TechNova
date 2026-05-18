@@ -533,7 +533,7 @@ export default function Admin() {
                                 <span className="cursor-pointer hover:text-black" onClick={() => window.open(`/blog/${post.slug}`, '_blank')}>View</span>
                               </div>
                             </td>
-                            <td className="p-2 text-[#2271b1] hover:underline cursor-pointer">{post.author?.name || 'Admin'}</td>
+                            <td className="p-2 text-[#2271b1] hover:underline cursor-pointer">TechNova Team</td>
                             <td className="p-2 text-[#2271b1] hover:underline cursor-pointer">{post.category || 'Uncategorized'}</td>
                             <td className="p-2 text-[#2c3338] truncate max-w-[150px]">{post.tags?.join(', ') || '—'}</td>
                             <td className="p-2 text-[#2c3338]">
