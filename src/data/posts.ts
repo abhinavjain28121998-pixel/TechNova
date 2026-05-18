@@ -18,6 +18,11 @@ import { creditScoringPost } from './creditScoringPost';
 import { algoTradingPost } from './algoTradingPost';
 import { riskAssessmentPost } from './riskAssessmentPost';
 
+import { payrollProcessingPost } from './payrollProcessingPost';
+import { payrollErrorDetectionPost } from './payrollErrorDetectionPost';
+import { payrollSalaryCalculationPost } from './payrollSalaryCalculationPost';
+import { payrollTaxCompliancePost } from './payrollTaxCompliancePost';
+
 const authors = {
   alex: {
     name: 'Alex Rivera',
@@ -2068,5 +2073,9 @@ export const POSTS = [
   ...itChatbotPost,
   ...itTicketPost,
   ...itIncidentPost,
+  ...payrollProcessingPost,
+  ...payrollErrorDetectionPost,
+  ...payrollSalaryCalculationPost,
+  ...payrollTaxCompliancePost,
 
 ];

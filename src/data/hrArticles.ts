@@ -32,7 +32,7 @@ export const hrArticles: Post[] = [
       },
       {
         question: "Why should companies avoid legacy ATS keyword scanners?",
-        answer: "Legacy Applicant Tracking Systems (ATS) often reject highly qualified candidates simply because they missed a specific keyword, leading to a shallow talent pool. AI understands variations and semantics."
+        answer: "Legacy Applicant Tracking Systems (ATS) often reject highly qualified candidates simply because they missed a specific keyword, leading to a shallow talent pool. Modern AI understands deep semantic variations; it recognizes that terms like 'client relations', 'customer success', and 'account management' all indicate similar competencies, ensuring top talent isn't discarded due to rigid formatting or specific phrasing."
       }
     ],
     content: `
