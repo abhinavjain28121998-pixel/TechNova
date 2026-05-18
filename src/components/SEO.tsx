@@ -102,7 +102,7 @@ export function SEO({
       {/* Schema.org JSON-LD */}
       {jsonLdContent && (Array.isArray(jsonLdContent) ? jsonLdContent.length > 0 : true) && (
         <script id="schema-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(
-          Array.isArray(jsonLdContent) ? { "@context": "https://schema.org", "@graph": jsonLdContent } : jsonLdContent
+          Array.isArray(jsonLdContent) ? { "@context": "https://schema.org", "@graph": jsonLdContent } : ('@context' in jsonLdContent ? jsonLdContent : { "@context": "https://schema.org", ...jsonLdContent })
         ) }} />
       )}
     </Helmet>

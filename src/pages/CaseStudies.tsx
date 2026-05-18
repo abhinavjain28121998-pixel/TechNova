@@ -143,12 +143,10 @@ export default function CaseStudies() {
     description: study.context.replace(/<[^>]+>/g, ''),
     articleSection: study.industry,
     author: {
-      '@type': 'Organization',
-      name: 'TechNova Blog',
+      '@id': `${BASE_URL}/#organization`,
     },
     publisher: {
-      '@type': 'Organization',
-      name: 'TechNova Blog',
+      '@id': `${BASE_URL}/#organization`,
     },
     about: {
       '@type': 'Organization',

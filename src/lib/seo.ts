@@ -19,6 +19,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${BASE_URL}/#organization`,
     name: 'TechNova Blog',
+    description: 'Expert insights into Artificial Intelligence, software architecture, and enterprise technology.',
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -71,6 +72,7 @@ export function generateWebPageSchema(options: { url: string; name: string; desc
     url: options.url,
     name: options.name,
     description: options.description,
+    inLanguage: 'en-US',
     isPartOf: {
       '@id': `${BASE_URL}/#website`
     }
@@ -227,8 +229,8 @@ export function generateBlogPostGraphSchema(post: any) {
     articleType = 'TechArticle';
   } else if (tagsStr.includes('tutorial') || titleStr.includes('how to')) {
     articleType = 'HowTo';
-  } else if (tagsStr.includes('comparison') || titleStr.includes('vs') || titleStr.includes('review')) {
-    articleType = 'ReviewNewsArticle'; // Fallback to Article if this isn't exactly mapping, or just use TechArticle
+  } else if (tagsStr.includes('news')) {
+    articleType = 'NewsArticle';
   }
 
   // 1. Organization
@@ -283,10 +285,10 @@ export function generateBlogPostGraphSchema(post: any) {
       '@id': `${postUrl}/#webpage`
     },
     author: {
-      '@type': 'Person',
-      '@id': `${BASE_URL}/author/${authorName.toLowerCase().replace(/\s+/g, '-')}#person`,
+      '@type': authorName.includes('Team') ? 'Organization' : 'Person',
+      '@id': `${BASE_URL}/author/${authorName.toLowerCase().replace(/\s+/g, '-')}#author`,
       name: authorName,
-      url: `${BASE_URL}/about`,
+      url: BASE_URL,
       jobTitle: post.author?.role || 'Tech Researcher',
       image: post.author?.avatar || undefined
     },
