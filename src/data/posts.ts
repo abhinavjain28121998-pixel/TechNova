@@ -22,6 +22,7 @@ import { payrollProcessingPost } from './payrollProcessingPost';
 import { payrollErrorDetectionPost } from './payrollErrorDetectionPost';
 import { payrollSalaryCalculationPost } from './payrollSalaryCalculationPost';
 import { payrollTaxCompliancePost } from './payrollTaxCompliancePost';
+import { procurementAIArticles } from './procurementAIArticles';
 
 const authors = {
   alex: {
@@ -2077,5 +2078,5 @@ export const POSTS = [
   ...payrollErrorDetectionPost,
   ...payrollSalaryCalculationPost,
   ...payrollTaxCompliancePost,
-
+  ...procurementAIArticles,
 ];

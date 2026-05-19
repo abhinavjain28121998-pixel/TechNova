@@ -52,7 +52,7 @@ To effectively combat this noise, integrating sophisticated [Gen AI in IT](https
 
 Following a severe outage, human engineers traditionally spend weeks writing exhaustive post-mortem documentation detailing the failure. AI dramatically accelerates this process deeply by acting as a master correlation engine. When a database failure triggers thousands of redundant application timeout alerts, network dropped-packet warnings, and storage I/O bottlenecks across completely isolated observability platforms, the AI does not treat these as thousands of individual problems. It mathematically correlates the timestamped anomalies across these disparate silos, filtering out the "symptom" alerts to isolate the single master node failure that initiated the entire cascade. This actively points to the specific root cause and instantly generates the foundational RCA documentation.
 
-#### AI-Powered RCA Techniques
+#### AI-powered RCA techniques
 
 To achieve this level of precision, AIOps platforms leverage several advanced RCA techniques:
 *   **Event Correlation:** Intelligently grouping related alerts and system logs from disparate infrastructure silos into a single, cohesive timeline to expose the true failure cascade.
