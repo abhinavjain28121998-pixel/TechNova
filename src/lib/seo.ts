@@ -198,9 +198,11 @@ export function generateArticleSchema(post: any) {
     headline: post.title,
     description: post.metaDescription || post.excerpt,
     author: {
-      '@type': 'Person',
-      name: 'TechNova Team'
+      '@type': (post.author?.name || '').includes('Team') ? 'Organization' : 'Person',
+      name: post.author?.name || 'TechNova Team',
+      jobTitle: post.author?.role || undefined
     },
+    articleSection: post.category,
     datePublished: post.date,
     dateModified: post.date,
     image: post.coverImage,
@@ -216,8 +218,7 @@ export function generateArticleSchema(post: any) {
 
 export function generateBlogPostGraphSchema(post: any) {
   const postUrl = `${BASE_URL}/blog/${post.slug}`;
-  // Force author to be TechNova Team
-  const authorName = 'TechNova Team';
+  const authorName = post.author?.name || 'TechNova Team';
   
   const graph: any[] = [];
 

@@ -23,6 +23,7 @@ import { payrollErrorDetectionPost } from './payrollErrorDetectionPost';
 import { payrollSalaryCalculationPost } from './payrollSalaryCalculationPost';
 import { payrollTaxCompliancePost } from './payrollTaxCompliancePost';
 import { procurementAIArticles } from './procurementAIArticles';
+import { supplyChainAIArticles } from './supplyChainAIArticles';
 
 const authors = {
   alex: {
@@ -2055,7 +2056,7 @@ Procurement strongly definitively clearly acts profoundly significantly heavily 
   }
 ];
 
-export const POSTS = [
+const RAW_POSTS: Post[] = [
   ..._POSTS,
   ...eeatPosts,
   ...transformationPosts,
@@ -2079,4 +2080,17 @@ export const POSTS = [
   ...payrollSalaryCalculationPost,
   ...payrollTaxCompliancePost,
   ...procurementAIArticles,
+  ...supplyChainAIArticles,
 ];
+
+function extractExcerpt(content: string): string {
+  if (!content) return '';
+  const blocks = content.trim().split(/\n\s*\n/);
+  const paragraphs = blocks.filter(b => b.trim() !== '' && !b.trim().startsWith('#') && !b.trim().startsWith('***') && !b.trim().startsWith('`') && !b.trim().startsWith('<'));
+  return paragraphs.slice(0, 2).join(' ').replace(/\s+/g, ' ').trim();
+}
+
+export const POSTS: Post[] = RAW_POSTS.map(post => ({
+  ...post,
+  excerpt: extractExcerpt(post.content) || post.excerpt
+}));
