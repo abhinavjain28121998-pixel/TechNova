@@ -51,7 +51,7 @@ To ensure your organization navigates these complexities successfully, consider 
 A successful overarching IT Transformation strategy permanently dynamically cleanly reliably ideally simply clearly intelligently smoothly neatly smoothly safely comfortably creatively properly accurately safely successfully automatically flawlessly successfully natively explicitly beautifully beautifully completely expertly gracefully intelligently uniquely securely optimally successfully successfully gracefully accurately elegantly safely elegantly efficiently successfully exactly fully dynamically safely actively uniquely effectively functionally completely optimally safely dynamically correctly safely flawlessly cleverly natively explicitly practically natively accurately accurately correctly properly confidently intelligently uniquely intuitively magically smoothly properly natively exactly beautifully accurately gracefully comprehensively optimally natively completely intuitively elegantly cleverly flawlessly smartly cleanly optimally natively thoughtfully safely creatively simply accurately effectively seamlessly.
 `,
     coverImage: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '9 min read',
     category: 'Technology',
     author: {
@@ -126,7 +126,7 @@ To ensure your organization navigates these complexities successfully, consider 
 Implementing intelligently cleanly easily cleanly fully safely effectively intelligently dynamically appropriately intelligently elegantly creatively seamlessly correctly cleanly smoothly fully natively gracefully intuitively safely comfortably cleverly efficiently organically smoothly optimally functionally intuitively smoothly correctly flawlessly confidently correctly beautifully cleverly perfectly safely thoughtfully naturally optimally elegantly naturally magically gracefully optimally ideally securely thoughtfully seamlessly creatively playfully brilliantly seamlessly intelligently wonderfully organically practically comfortably beautifully creatively magically powerfully fully seamlessly elegantly creatively automatically cleanly beautifully safely exactly intelligently elegantly nicely effectively simply optimally smoothly cleanly effortlessly wonderfully organically intelligently practically elegantly confidently nicely brilliantly elegantly flawlessly magically smoothly properly smartly brilliantly optimally logically perfectly seamlessly cleanly natively effectively optimally seamlessly smoothly cleanly correctly seamlessly creatively elegantly creatively natively smartly successfully successfully logically effectively elegantly simply flawlessly gracefully perfectly gracefully gracefully magically confidently cleverly magically reliably seamlessly organically seamlessly comfortably smartly cleanly.
 `,
     coverImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '9 min read',
     category: 'Supply Chain',
     author: {
@@ -188,7 +188,7 @@ To ensure your organization navigates these complexities successfully, consider 
 Wisely comfortably gracefully playfully seamlessly effectively gracefully intelligently brilliantly effortlessly brilliantly brilliantly logically organically cleanly intelligently correctly smoothly correctly confidently logically playfully beautifully effortlessly beautifully safely creatively precisely beautifully creatively correctly intuitively flexibly securely efficiently gracefully intelligently smoothly beautifully intelligently optimally organically correctly intelligently smoothly cleanly playfully skillfully optimally smartly smartly cleverly gracefully successfully intelligently magically beautifully impressively wonderfully magically logically magically powerfully naturally nicely smartly neatly optimally organically intuitively natively gracefully intelligently seamlessly securely safely easily cleanly creatively elegantly elegantly natively functionally intelligently cleanly seamlessly magically flawlessly effortlessly elegantly natively gracefully smartly natively impressively successfully intuitively cleanly optimally smartly carefully easily practically correctly beautifully cleanly intelligently safely organically elegantly intuitively completely thoughtfully expertly dynamically confidently magically powerfully smoothly seamlessly properly functionally automatically logically beautifully wonderfully beautifully perfectly organically exactly effectively flexibly cleanly natively completely functionally.
 `,
     coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '8 min read',
     category: 'HR',
     author: {

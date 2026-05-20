@@ -395,7 +395,7 @@ export default function Post() {
               context={post.content}
               width={1200}
               height={675}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
               referrerPolicy="no-referrer"
               fetchPriority="high"
             />

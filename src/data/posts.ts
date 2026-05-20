@@ -107,7 +107,7 @@ To successfully move from static chatbots to autonomous workflows, technology le
 Agentic AI marks the maturation of enterprise artificial intelligence from a passive advisor to an active digital workforce. By combining goal-oriented reasoning models with technologies like Retrieval-Augmented Generation and Multimodal AI, organizations can achieve unprecedented operational velocity. The enterprises that will lead the next decade are those that begin establishing the governance, data structures, and human-in-the-loop protocols required to scale these autonomous systems safely and effectively today.
 `,
     coverImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '9 min read',
     category: 'AI',
     author: {
@@ -209,7 +209,7 @@ The structural transition toward [Global Business Services](/blog/expert-guide-g
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
     coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '12 min read',
     category: 'GBS',
     author: {
@@ -469,7 +469,7 @@ The shift toward Payroll [Applied Intelligence](/blog/applied-intelligence-progr
 
 `,
     coverImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '12 min read',
     category: 'Payroll',
     author: {
@@ -575,7 +575,7 @@ The acceleration of Enterprise Gen AI [Applied Intelligence](/blog/applied-intel
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
     coverImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '12 min read',
     category: 'AI',
     author: {
@@ -679,7 +679,7 @@ To ensure your organization navigates these complexities successfully, consider 
 The strategic commercial transition toward Finance [Applied Intelligence](/blog/applied-intelligence-programs) fundamentally alters the DNA of global corporate finance. By decisively moving beyond superficial automated processes to embrace deeply integrated, securely governed cognitive workflows, forward-thinking enterprise CFOs can unlock unprecedented fiscal agility and massive operational efficiency. The future of the modern finance function undoubtedly belongs to those proactive organizations that systematically operationalize these advanced intelligence frameworks, effectively engineering a landscape of predictive, data-backed strategic dominance.
 `,
     coverImage: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '11 min read',
     category: 'Finance',
     author: {
@@ -773,7 +773,7 @@ The era of experimental AI has concluded; we have entered the era of operational
 ***
 `,
     coverImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200',
-    date: new Date().toISOString(),
+    date: '2026-05-20',
     readingTime: '8 min read',
     category: 'AI',
     author: {
