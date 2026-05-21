@@ -21,12 +21,45 @@ export default function Blog() {
   const selectedCategory = searchParams.get('category') || null;
   const currentPageParams = searchParams.get('page');
   const currentPage = currentPageParams ? parseInt(currentPageParams, 10) : 1;
+  const [semanticResults, setSemanticResults] = useState<{id: string, score: number}[] | null>(null);
+  const [isSearching, setIsSearching] = useState(false);
   
   const { posts: fbPosts, loading } = usePosts();
   
   const POSTS_PER_PAGE = 10;
 
   const posts = fbPosts.filter(p => !p.status || p.status === 'published');
+
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSemanticResults(null);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const res = await fetch('/api/semantic-search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ q: searchQuery })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setSemanticResults(data.results || []);
+        } else {
+          setSemanticResults(null);
+        }
+      } catch (e) {
+        console.error('Semantic search failed', e);
+        setSemanticResults(null);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 500); // debounce 500ms
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   const filteredPosts = useMemo(() => {
     let result = posts;
@@ -36,18 +69,31 @@ export default function Blog() {
       result = result.filter(post => post.category === selectedCategory);
     }
 
-    // Then fuzzy search if there's a query
+    // Apply semantic search results if available
     if (searchQuery.trim()) {
-      const fuse = new Fuse(result, {
-        keys: ['title', 'excerpt'],
-        threshold: 0.4,
-        includeMatches: true,
-      });
-      result = fuse.search(searchQuery).map(res => res.item);
+      if (semanticResults !== null) {
+        // Semantic search results exist
+        const resultIds = semanticResults.map(r => r.id);
+        result = result.filter(post => resultIds.includes(post.id));
+        // Sort by semantic score
+        result.sort((a, b) => {
+          const scoreA = semanticResults.find(r => r.id === a.id)?.score || 0;
+          const scoreB = semanticResults.find(r => r.id === b.id)?.score || 0;
+          return scoreB - scoreA;
+        });
+      } else {
+        // Fallback to fuzzy search while loading or on error
+        const fuse = new Fuse(result, {
+          keys: ['title', 'excerpt'],
+          threshold: 0.4,
+          includeMatches: true,
+        });
+        result = fuse.search(searchQuery).map(res => res.item);
+      }
     }
 
     return result;
-  }, [posts, searchQuery, selectedCategory]);
+  }, [posts, searchQuery, selectedCategory, semanticResults]);
 
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const safeCurrentPage = Math.max(1, Math.min(currentPage, totalPages));
@@ -103,10 +149,14 @@ export default function Blog() {
           </p>
           
           <div className="relative max-w-xl mx-auto">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
+            {isSearching ? (
+              <Loader2 className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5 animate-spin" />
+            ) : (
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
+            )}
             <Input 
               type="text" 
-              placeholder="Search articles..." 
+              placeholder="Search semantically via AI..." 
               className="pl-10 h-12 bg-card border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
               value={searchQuery}
               onChange={(e) => updateParams({ q: e.target.value || null })}

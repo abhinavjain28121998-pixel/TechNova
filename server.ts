@@ -5,9 +5,32 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { GoogleGenAI } from '@google/genai';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Global embeddings cache
+let postEmbeddings = {};
+try {
+  const embeddingsPath = path.resolve(__dirname, 'src/data/embeddings.json');
+  if (fs.existsSync(embeddingsPath)) {
+    postEmbeddings = JSON.parse(fs.readFileSync(embeddingsPath, 'utf8'));
+  }
+} catch (e) {
+  console.error("Failed to load embeddings", e);
+}
+
+// Cosine similarity helpers
+function dotProduct(a: number[], b: number[]) {
+  return a.reduce((sum, val, i) => sum + val * b[i], 0);
+}
+function magnitude(a: number[]) {
+  return Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+}
+function cosineSimilarity(a: number[], b: number[]) {
+  return dotProduct(a, b) / (magnitude(a) * magnitude(b));
+}
 
 async function startServer() {
   const app = express();
@@ -19,6 +42,49 @@ async function startServer() {
   // API routes FIRST
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
+  });
+
+  app.post('/api/semantic-search', async (req, res) => {
+    try {
+      const { q } = req.body;
+      if (!q || typeof q !== 'string') {
+        return res.json({ results: [] });
+      }
+
+      if (!process.env.GEMINI_API_KEY) {
+        return res.status(500).json({ error: 'GEMINI_API_KEY is not set' });
+      }
+
+      const ai = new GoogleGenAI({ 
+        apiKey: process.env.GEMINI_API_KEY,
+        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
+      });
+
+      const response = await ai.models.embedContent({
+        model: 'gemini-embedding-2-preview',
+        contents: q,
+      });
+
+      const queryEmbedding = response.embeddings?.[0]?.values;
+      if (!queryEmbedding) {
+        return res.status(500).json({ error: 'Failed to generate query embedding' });
+      }
+
+      const results = Object.keys(postEmbeddings).map(postId => {
+        const postEmb = postEmbeddings[postId];
+        const score = cosineSimilarity(queryEmbedding, postEmb);
+        return { id: postId, score };
+      });
+
+      // Filter out low scores and sort
+      results.sort((a, b) => b.score - a.score);
+      const topResults = results.slice(0, 20);
+
+      res.json({ results: topResults });
+    } catch (e) {
+      console.error("Semantic search error:", e);
+      res.status(500).json({ error: 'Internal server error' });
+    }
   });
 
   // Load Firebase Config conditionally
