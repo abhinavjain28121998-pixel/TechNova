@@ -54,7 +54,7 @@ The future of wealth management belongs to organizations that successfully harmo
 
 
 `,
-    coverImage: '/ai_financial_assistants_1779382537186.png',
+    coverImage: '/ai_financial_assistants_1779382537186.jpg',
     date: '2026-05-21T17:00:00Z',
     readingTime: '7 min read',
     category: 'Finance AI',
@@ -125,7 +125,7 @@ Automated financial reporting fundamentally revolutionizes enterprise velocity. 
 
 
 `,
-    coverImage: '/ai_automated_reporting_1779382558531.png',
+    coverImage: '/ai_automated_reporting_1779382558531.jpg',
     date: '2026-05-21T17:05:00Z',
     readingTime: '8 min read',
     category: 'Finance AI',
@@ -196,7 +196,7 @@ Intelligent fraud detection fundamentally secures the foundation of the modern d
 
 
 `,
-    coverImage: '/ai_fraud_detection_1779382582452.png',
+    coverImage: '/ai_fraud_detection_1779382582452.jpg',
     date: '2026-05-21T17:10:00Z',
     readingTime: '6 min read',
     category: 'Finance AI',
@@ -267,7 +267,7 @@ Total institutional risk analysis is no longer merely a defensive compliance nec
 
 
 `,
-    coverImage: '/ai_risk_analysis_1779382604501.png',
+    coverImage: '/ai_risk_analysis_1779382604501.jpg',
     date: '2026-05-21T17:15:00Z',
     readingTime: '8 min read',
     category: 'Finance AI',

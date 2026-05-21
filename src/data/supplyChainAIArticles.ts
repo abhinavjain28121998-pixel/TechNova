@@ -54,7 +54,7 @@ Retail forecasting models require deep, industry-specific tuning. A generic algo
 
 Precision demand forecasting is the ultimate competitive advantage in modern retail. Relying on historical spreadsheets is no longer sufficient to navigate today's rapid consumer shifts. By deeply integrating generative AI and predictive analytics into the merchandising workflow, retailers can accurately align their inventory with true market demand, driving profound profitability and unmatched customer satisfaction.
 `,
-    coverImage: '/ai_demand_forecasting_1779266005212.png',
+    coverImage: '/ai_demand_forecasting_1779266005212.jpg',
     date: '2026-05-20',
     readingTime: '6 min read',
     category: 'Supply Chain AI',
@@ -121,7 +121,7 @@ The stakes in healthcare are too immense for experimental guesswork. Deploying a
 
 Dynamic inventory optimization powered by AI is redefining healthcare logistics. By replacing static spreadsheets with deeply predictive, real-time intelligence, medical networks can entirely eliminate the devastating consequences of stockouts while drastically reducing operational waste. In an era of intense financial pressure, AI provides the precise operational resilience required to prioritize patient outcomes above all else.
 `,
-    coverImage: '/ai_healthcare_inventory_1779266030479.png',
+    coverImage: '/ai_healthcare_inventory_1779266030479.jpg',
     date: '2026-05-20',
     readingTime: '7 min read',
     category: 'Supply Chain AI',
@@ -188,7 +188,7 @@ The mathematical complexity of balancing an automotive or heavy industrial produ
 
 Automated supply chain planning is the definitive nervous system of Industry 4.0. The sheer magnitude of global volatility means human planners can no longer manually calculate optimal responses to daily disruptions. By deeply empowering supply networks with AI, manufacturers can achieve unprecedented resilience, ensuring that their production lines never stop moving regardless of the chaos in the external global market.
 `,
-    coverImage: '/ai_planning_automation_1779266049442.png',
+    coverImage: '/ai_planning_automation_1779266049442.jpg',
     date: '2026-05-20',
     readingTime: '8 min read',
     category: 'Supply Chain AI',
@@ -255,7 +255,7 @@ Orchestrating physical hardware with software algorithms requires deeply special
 
 The future of global logistics entirely depends on the relentless pursuit of warehouse automation. Human labor alone cannot scale to meet the exponentially rising demands of global e-commerce. By deeply embedding sophisticated artificial intelligence as the core operating system of the fulfillment center, organizations unlock remarkable speed, profound accuracy, and the robust agility required to dominate modern commerce.
 `,
-    coverImage: '/ai_supply_chain_cover_1779265981067.png',
+    coverImage: '/ai_supply_chain_cover_1779265981067.jpg',
     date: '2026-05-20',
     readingTime: '6 min read',
     category: 'Supply Chain AI',
