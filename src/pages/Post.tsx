@@ -103,8 +103,16 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
   }, [src, alt, context]);
 
   return (
-    <span className={`relative block overflow-hidden ${props.className || ''}`}>
-      <img src={src} alt={altText} title={altText} loading="lazy" decoding="async" {...props} />
+    <span className={`relative block w-full overflow-hidden rounded-xl ${props.className || ''}`}>
+      <img 
+        src={src} 
+        alt={altText} 
+        title={altText} 
+        loading="lazy" 
+        decoding="async" 
+        className="block w-full h-full object-cover aspect-video" 
+        {...props} 
+      />
       {isLoading && (
         <span className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20">
           <Loader2 className="w-3 h-3 animate-spin" />
@@ -155,8 +163,39 @@ export default function Post() {
     return () => unsubscribe();
   }, []);
 
-  // Keep # if any, but we will render it as h2
-  const cleanContent = fbPost?.content || '';
+  let rawContent = fbPost?.content || '';
+  const inlineSchemas: any[] = [];
+  
+  const parseAndPushSchema = (jsonString: string) => {
+    try {
+      const parsed = JSON.parse(jsonString.trim());
+      if (parsed['@context']) delete parsed['@context'];
+      if (parsed['@graph'] && Array.isArray(parsed['@graph'])) {
+        inlineSchemas.push(...parsed['@graph']);
+      } else {
+        inlineSchemas.push(parsed);
+      }
+    } catch(e) {
+      console.error("Failed to parse inline JSON-LD", e);
+    }
+  };
+
+  // Remove markdown codeblock wrappers if any
+  rawContent = rawContent.replace(/```(?:html)?\s*(<script\b[^>]*?type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>)\s*```/gi, (match, p1, jsonString) => {
+    parseAndPushSchema(jsonString);
+    return '';
+  });
+
+  // Then grab any remaining script tags (raw html embedded in markdown)
+  rawContent = rawContent.replace(/<script\b[^>]*?type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi, (match, jsonString) => {
+    parseAndPushSchema(jsonString);
+    return '';
+  });
+  
+  // Remove any remaining stray section headings related to schemas
+  rawContent = rawContent.replace(/### Article and FAQ Schema\s*\(?JSON-LD\)?\s*/gmi, '');
+
+  const cleanContent = rawContent;
 
   const toc = useMemo(() => {
     if (!cleanContent) return [];
@@ -294,6 +333,10 @@ export default function Post() {
   };
 
   const postGraphSchema = generateBlogPostGraphSchema(post);
+  
+  if (postGraphSchema && postGraphSchema['@graph'] && Array.isArray(postGraphSchema['@graph'])) {
+    postGraphSchema['@graph'].push(...inlineSchemas);
+  }
 
   const seoDescription = post.metaDescription || post.excerpt || '';
 

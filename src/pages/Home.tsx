@@ -168,7 +168,7 @@ export default function Home() {
                         alt={post.title}
                         width={1200}
                         height={800}
-                        className="object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105 bg-muted"
+                        className="block aspect-[3/2] object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105 bg-muted"
                         referrerPolicy="no-referrer"
                         loading={index === 0 ? "eager" : "lazy"}
                         fetchPriority={index === 0 ? "high" : "auto"}
@@ -246,7 +246,7 @@ export default function Home() {
                           alt={post.title} 
                           width={800}
                           height={450}
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
+                          className="block aspect-video w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
                           referrerPolicy="no-referrer"
                           loading="lazy"
                         />

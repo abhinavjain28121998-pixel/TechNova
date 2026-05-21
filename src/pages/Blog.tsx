@@ -157,7 +157,7 @@ export default function Blog() {
                     alt={post.title} 
                     width={800}
                     height={450}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="block aspect-[16/10] w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
