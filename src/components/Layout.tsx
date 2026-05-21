@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Menu, Search, X, Github, Twitter, Linkedin } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,14 +51,16 @@ export function Layout() {
             </nav>
 
             {/* Actions */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-2">
+              <ThemeToggle />
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search className="h-5 w-5" />
               </Button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="flex md:hidden items-center gap-4">
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
               <Button variant="ghost" size="icon" aria-label="Search">
                 <Search className="h-5 w-5" />
               </Button>

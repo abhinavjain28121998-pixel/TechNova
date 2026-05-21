@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
+import { ThemeProvider } from './components/ThemeProvider';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import Post from './pages/Post';
@@ -16,24 +17,26 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="blog/:slug" element={<Post />} />
-            <Route path="categories" element={<Categories />} />
-            <Route path="case-studies" element={<CaseStudies />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="privacy" element={<PrivacyPolicy />} />
-            <Route path="terms" element={<TermsOfService />} />
-            <Route path="admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </HelmetProvider>
+    <ThemeProvider defaultTheme="dark">
+      <HelmetProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:slug" element={<Post />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="case-studies" element={<CaseStudies />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="privacy" element={<PrivacyPolicy />} />
+              <Route path="terms" element={<TermsOfService />} />
+              <Route path="admin" element={<Admin />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </HelmetProvider>
+    </ThemeProvider>
   );
 }

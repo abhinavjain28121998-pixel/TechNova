@@ -485,7 +485,7 @@ export default function Post() {
             )}
           </div>
 
-          <div className={`prose prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
+          <div className={`prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
             <div>
               <ReactMarkdown 
                 rehypePlugins={[rehypeSlug]}
