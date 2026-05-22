@@ -25,6 +25,8 @@ import { payrollTaxCompliancePost } from './payrollTaxCompliancePost';
 import { procurementAIArticles } from './procurementAIArticles';
 import { supplyChainAIArticles } from './supplyChainAIArticles';
 import { financeAIArticles } from './financeAIArticles';
+import { industryArticlesPart1 } from './industryArticlesPart1';
+import { industryArticlesPart2 } from './industryArticlesPart2';
 
 const authors = {
   alex: {
@@ -2083,6 +2085,8 @@ const RAW_POSTS: Post[] = [
   ...procurementAIArticles,
   ...supplyChainAIArticles,
   ...financeAIArticles,
+  ...industryArticlesPart1,
+  ...industryArticlesPart2,
 ];
 
 function extractExcerpt(content: string): string {

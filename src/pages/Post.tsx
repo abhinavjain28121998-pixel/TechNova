@@ -598,7 +598,7 @@ export default function Post() {
 
           {/* Table of Contents - Sidebar on Desktop / Top block on Mobile */}
           <aside className="w-full lg:w-72 shrink-0 lg:order-2 order-1">
-            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm">
+            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm max-h-[calc(100vh-8rem)] overflow-y-auto">
               <h3 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
                 Table of Contents
               </h3>
