@@ -1,32 +1,32 @@
 import { Post } from './authors';
 
 const authorAlex = {
-  name: 'Alex Rivera',
-  avatar: 'https://picsum.photos/seed/alex/100/100',
-  role: 'Senior Tech Editor',
+ name: 'Alex Rivera',
+ avatar: 'https://picsum.photos/seed/alex/100/100',
+ role: 'Senior Tech Editor',
 };
 
 const authorSarah = {
-  name: 'Sarah Chen',
-  avatar: 'https://picsum.photos/seed/sarah/100/100',
-  role: 'AI Researcher',
+ name: 'Sarah Chen',
+ avatar: 'https://picsum.photos/seed/sarah/100/100',
+ role: 'AI Researcher',
 };
 
 export const eeatPosts: Post[] = [
-  {
-    id: 'business-benchmarking-ai-strategy',
-    slug: 'business-benchmarking-ai-transformation-strategy',
-    title: 'How Business Benchmarking Drives AI Transformation Strategy',
-    excerpt: 'Learn why guessing fails in AI adoption and how a formalized comparative approach helps enterprises achieve maximum ROI and operational scale.',
-    metaDescription: 'Discover how integrating formalized Business Benchmarking into your AI strategy ensures risk mitigation, competitive parity, and significantly higher ROI.',
-    category: 'AI',
-    author: authorAlex,
-    date: '2026-05-04',
-    readingTime: '8 min read',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Business Benchmarking', 'AI Strategy', 'Enterprise Architecture', 'Enterprise AI'],
-    status: 'published',
-    content: `
+ {
+ id: 'business-benchmarking-ai-strategy',
+ slug: 'business-benchmarking-ai-transformation-strategy',
+ title: 'How Business Benchmarking Drives AI Transformation Strategy',
+ excerpt: 'Learn why guessing fails in AI adoption and how a formalized comparative approach helps enterprises achieve maximum ROI and operational scale.',
+ metaDescription: 'Discover how integrating formalized Business Benchmarking into your AI strategy ensures risk mitigation, competitive parity, and significantly higher ROI.',
+ category: 'AI',
+ author: authorAlex,
+ date: '2026-05-04',
+ readingTime: '8 min read',
+ coverImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop',
+ tags: ['Business Benchmarking', 'AI Strategy', 'Enterprise Architecture', 'Enterprise AI'],
+ status: 'published',
+ content: `
 In today's hyper-competitive digital landscape, integrating Artificial Intelligence (AI) across organizational workflows isn't merely a technological upgrade—it's a critical strategic necessity. However, blind adoption frequently leads to bloated IT budgets, misaligned objectives, and fragmented, siloed data architectures. True enterprise leaders leverage deep, comprehensive analytical comparisons before approving massive [scaling operations](/blog/applied-intelligence-programs). This is exactly where the strategic power of formal [Business Benchmarking](https://www.thehackettgroup.com/business-benchmarking/) comes into play, offering a mathematically rigorous framework to evaluate internal capabilities against those of top-tier industry competitors.
 
 Instead of adopting AI purely for the sake of modernization, forward-thinking organizations utilize benchmarking to construct a precise, data-backed roadmap. By evaluating core metrics, resource allocations, and operational velocity, companies can quickly identify their most pressing vulnerabilities and transform them into primary use cases for intelligent automation. For advanced tactical guidance, exploring comprehensive [AI Implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) frameworks ensures these automated use cases are deployed securely.
@@ -76,48 +76,46 @@ To maximize the efficacy of your comparative analysis [strategy](/blog/ai-risk-a
 2. **Focus on Peer-Relevant Metrics:** Comparing a mid-cap regional bank against a global tech conglomerate yields useless distortions. Ensure your benchmarking cohorts are structurally and financially relevant.
 3. **Iterative Refinement:** Business benchmarking isn't a singular, annual event. It must be continuous, real-time, and iteratively updated as global software standards evolve.
 
-
-
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI [implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 
 ## Conclusion
 
 The successful, hyper-scalable integration of artificial intelligence is fundamentally impossible without an uncompromising commitment to comparative analysis. By leveraging a formal [Business Benchmarking](https://www.thehackettgroup.com/business-benchmarking/) methodology, modern enterprises transcend intuition. They secure the empirical data necessary to optimize their infrastructure, sharply reduce [implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) risk, and aggressively accelerate their technological dominance within the global marketplace.
 
-    `,
-    faqs: [
-      {
-        question: "What is business benchmarking in the context of AI?",
-        answer: "Business benchmarking involves comparing your company's operational metrics, AI maturity, and efficiency against top-tier competitors to identify precise areas where automation and artificial intelligence can provide the highest ROI."
-      },
-      {
-        question: "Why is business benchmarking critical for digital strategy?",
-        answer: "It eliminates guesswork. By relying on comparative, data-backed metrics, organizations can safely allocate capital toward proven use cases, directly lowering the financial risk of AI adoption."
-      },
-      {
-        question: "How do you select the right metrics for benchmarking?",
-        answer: "Metrics should be directly tied to business outcomes such as cost-per-transaction, error resolution rates, cycle times, and operational efficiency, ensuring that technical metrics align with overarching financial goals."
-      },
-      {
-        question: "Can business benchmarking prevent failed AI projects?",
-        answer: "Yes. By highlighting foundational gaps in data governance or process maturity before new technology is purchased, benchmarking stops companies from deploying advanced AI on top of broken operational processes."
-      }
-    ]
-  },
-  {
-    id: 'data-analytics-foundation-ai',
-    slug: 'data-analytics-foundation-for-artificial-intelligence',
-    title: 'Why Data & Analytics is the True Foundation of Artificial Intelligence',
-    excerpt: 'Without high-quality Data & Analytics, AI models fail. Explore how enterprise data governance powers the future of predictive automation.',
-    metaDescription: 'Discover how robust Data & Analytics frameworks are essential for scaling enterprise architecture and powering successful Artificial Intelligence models.',
-    category: 'AI',
-    author: authorSarah,
-    date: '2026-05-04',
-    readingTime: '8 min read',
-    coverImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Data & Analytics', 'Data Governance', 'Machine Learning', 'Big Data'],
-    status: 'published',
-    content: `
+ `,
+ faqs: [
+ {
+ question: "What is business benchmarking in the context of AI?",
+ answer: "Business benchmarking involves comparing your company's operational metrics, AI maturity, and efficiency against top-tier competitors to identify precise areas where automation and artificial intelligence can provide the highest ROI."
+ },
+ {
+ question: "Why is business benchmarking critical for digital strategy?",
+ answer: "It eliminates guesswork. By relying on comparative, data-backed metrics, organizations can safely allocate capital toward proven use cases, directly lowering the financial risk of AI adoption."
+ },
+ {
+ question: "How do you select the right metrics for benchmarking?",
+ answer: "Metrics should be directly tied to business outcomes such as cost-per-transaction, error resolution rates, cycle times, and operational efficiency, ensuring that technical metrics align with overarching financial goals."
+ },
+ {
+ question: "Can business benchmarking prevent failed AI projects?",
+ answer: "Yes. By highlighting foundational gaps in data governance or process maturity before new technology is purchased, benchmarking stops companies from deploying advanced AI on top of broken operational processes."
+ }
+ ]
+ },
+ {
+ id: 'data-analytics-foundation-ai',
+ slug: 'data-analytics-foundation-for-artificial-intelligence',
+ title: 'Why Data & Analytics is the True Foundation of Artificial Intelligence',
+ excerpt: 'Without high-quality Data & Analytics, AI models fail. Explore how enterprise data governance powers the future of predictive automation.',
+ metaDescription: 'Discover how robust Data & Analytics frameworks are essential for scaling enterprise architecture and powering successful Artificial Intelligence models.',
+ category: 'AI',
+ author: authorSarah,
+ date: '2026-05-04',
+ readingTime: '8 min read',
+ coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+ tags: ['Data & Analytics', 'Data Governance', 'Machine Learning', 'Big Data'],
+ status: 'published',
+ content: `
 Artificial Intelligence frequently captures the executive imagination with promises of autonomous workflows, highly personalized customer experiences, and zero-latency operational efficiency. However, the sophisticated algorithms powering these innovations are entirely dependent on their underlying informational substrate. A highly rigorous, deeply governed approach to [Data & Analytics](https://www.thehackettgroup.com/data-analytics/) is the absolute, uncompromising prerequisite for any [enterprise](/blog/ai-spend-analysis-enterprise-it) seeking to deploy viable, production-scale AI models.
 
 When an organization attempts to scale generative intelligence without first securing its data infrastructure, it risks generating rapid, automated hallucinations. The fundamental intelligence of the [enterprise](/blog/optimizing-workforce-with-human-resources-solution-intelligence) is only as accurate, secure, and insightful as the data streams that continually feed it.
@@ -161,48 +159,46 @@ In highly regulated sectors such as banking and insurance, Data & Analytics is u
 
 Finally, technology alone cannot solve deeply ingrained cultural resistance. In order to become truly data-driven, an [enterprise](/blog/ai-spend-analysis-enterprise-it) must foster an environment where empirical evidence systematically overriding human intuition is not only accepted but aggressively celebrated. Dashboards and algorithmic predictions must be accessible to all management tiers, effectively democratizing analytical insight across the entire corporate structure.
 
-
-
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI [implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 
 ## Conclusion
 
 The hard truth of [enterprise architecture](/blog/agentic-ai-enterprise-transformation) is immutable: there is no effective Artificial Intelligence without exceptional [Data & Analytics](https://www.thehackettgroup.com/data-analytics/). By prioritizing data governance, predictive modeling, and absolute data quality, organizations lay the only foundation capable of supporting scalable, secure, and highly autonomous cognitive systems. For the modern enterprise, investing deeply in precise data architecture is no longer optional—it is the definitive baseline for future operational survival.
 
-    `,
-    faqs: [
-      {
-        question: "Why is Data & Analytics essential for AI implementation?",
-        answer: "AI models rely entirely on accurate, well-structured data to recognize patterns and make predictions. Without a strong Data & Analytics foundation, AI systems will produce inaccurate, hallucinatory, or biased outcomes."
-      },
-      {
-        question: "What is the difference between raw data storage and Data & Analytics?",
-        answer: "Raw storage is simply accumulating information. Data & Analytics involves structuring, cleaning, analyzing, and applying mathematical models to that information to extract actionable business intelligence."
-      },
-      {
-        question: "How does Data & Analytics improve predictive modeling?",
-        answer: "It provides the structured historical baselines and highly accurate data pipelines that advanced machine learning models need to forecast future trends, mitigate risks, and optimize operations."
-      },
-      {
-        question: "What role does data governance play in this ecosystem?",
-        answer: "Data governance ensures the accuracy, security, and integrity of data streams. It establishes a single source of truth, heavily reducing the legal and operational risks associated with training autonomous models."
-      }
-    ]
-  },
-  {
-    id: 'redefining-digital-transformation-ai',
-    slug: 'redefining-digital-transformation-in-the-ai-era',
-    title: 'Redefining Digital Transformation for the Enterprise AI Era',
-    excerpt: 'Digital Transformation is no longer just about digitizing paper. It is about fundamentally re-engineering the enterprise for artificial intelligence and autonomous scale.',
-    metaDescription: 'Explore the modern definition of Digital Transformation. Learn how integrating AI, autonomous systems, and process re-engineering drives ultimate enterprise value.',
-    category: 'AI',
-    author: authorAlex,
-    date: '2026-05-04',
-    readingTime: '9 min read',
-    coverImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Digital Transformation', 'Enterprise IT', 'Automation', 'Change Management'],
-    status: 'published',
-    content: `
+ `,
+ faqs: [
+ {
+ question: "Why is Data & Analytics essential for AI implementation?",
+ answer: "AI models rely entirely on accurate, well-structured data to recognize patterns and make predictions. Without a strong Data & Analytics foundation, AI systems will produce inaccurate, hallucinatory, or biased outcomes."
+ },
+ {
+ question: "What is the difference between raw data storage and Data & Analytics?",
+ answer: "Raw storage is simply accumulating information. Data & Analytics involves structuring, cleaning, analyzing, and applying mathematical models to that information to extract actionable business intelligence."
+ },
+ {
+ question: "How does Data & Analytics improve predictive modeling?",
+ answer: "It provides the structured historical baselines and highly accurate data pipelines that advanced machine learning models need to forecast future trends, mitigate risks, and optimize operations."
+ },
+ {
+ question: "What role does data governance play in this ecosystem?",
+ answer: "Data governance ensures the accuracy, security, and integrity of data streams. It establishes a single source of truth, heavily reducing the legal and operational risks associated with training autonomous models."
+ }
+ ]
+ },
+ {
+ id: 'redefining-digital-transformation-ai',
+ slug: 'redefining-digital-transformation-in-the-ai-era',
+ title: 'Redefining Digital Transformation for the Enterprise AI Era',
+ excerpt: 'Digital Transformation is no longer just about digitizing paper. It is about fundamentally re-engineering the enterprise for artificial intelligence and autonomous scale.',
+ metaDescription: 'Explore the modern definition of Digital Transformation. Learn how integrating AI, autonomous systems, and process re-engineering drives ultimate enterprise value.',
+ category: 'AI',
+ author: authorAlex,
+ date: '2026-05-04',
+ readingTime: '9 min read',
+ coverImage: 'https://images.unsplash.com/photo-1511216335778-4cb8f49fa2a5?q=80&w=1200&auto=format&fit=crop',
+ tags: ['Digital Transformation', 'Enterprise IT', 'Automation', 'Change Management'],
+ status: 'published',
+ content: `
 For over a decade, executives have heavily utilized the terminology of transformation to justify large-scale technology deployments. Yet, many of these initiatives resulted in nothing more than "putting lipstick on a pig"—digitizing deeply broken, highly inefficient manual processes. In the modern era of generative artificial intelligence and autonomous workflows, true [[Digital Transformation](/blog/enterprise-gen-ai-applied-intelligence-strategic-guide)](https://www.thehackettgroup.com/digital-transformation/) represents a far more profound, structural re-engineering of the global enterprise.
 
 Today, [enterprise](/blog/gen-ai-consulting-enterprise-transformation) leaders are systematically dismantling legacy workflows and reconstructing them entirely around highly scalable algorithmic systems. It is not about replacing paper with PDFs; it is about building an organizational architecture that is predictive, autonomous, and incredibly highly resistant to macro-economic friction.
@@ -246,48 +242,46 @@ Technological debt is an aggressive anchor on innovation. Decades of customized,
 
 Looking forward, the definition of the enterprise itself is shifting. We are rapidly moving toward the concept of the "Autonomous Enterprise"—an organization where routine decision-making is entirely relegated to deeply vetted, highly governed algorithms. Humans will remain fully "in the loop" strictly for high-level strategic pivots, intensely complex empathetic customer resolutions, and highly creative product innovation.
 
-
-
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI [implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 
 ## Conclusion
 
 The aggressive integration of AI and smart [automation](/blog/gen-ai-in-payroll-future-of-compensation) is heavily forcing organizations to look profoundly inward. A successful [Digital Transformation](https://www.thehackettgroup.com/digital-transformation/) requires infinitely more than purchasing modern software licenses; it requires courageous executive leadership to aggressively shatter operational silos, heavily upskill human capital, and re-engineer core workflows from the ground up to support massive intelligent scalability. Enterprises that effectively master this total transformation will dictate the future; those that simply digitize will be replaced entirely.
 
-    `,
-    faqs: [
-      {
-        question: "What is Digital Transformation in the age of AI?",
-        answer: "Digital Transformation in the AI era means completely restructuring business processes to natively support artificial intelligence, automation, and predictive algorithms, moving far beyond simply digitizing paper documents."
-      },
-      {
-        question: "Why do Digital Transformation projects fail?",
-        answer: "Projects frequently fail due to massive cultural resistance, highly fragmented legacy infrastructure, and attempting to apply modern technology to fundamentally broken, deeply inefficient manual processes without re-engineering them first."
-      },
-      {
-        question: "How do you measure the ROI of a Transformation initiative?",
-        answer: "ROI is measured through mathematically precise reductions in cycle times, significantly lower operational error rates, highly accelerated time-to-market, and massive improvements in both customer satisfaction metrics and employee productivity."
-      },
-      {
-        question: "What is the difference between digitization and transformation?",
-        answer: "Digitization is simply converting analog information to digital forms (like scanning a document). Transformation involves completely redesigning the business model and entire workflow to eliminate friction using modern technology."
-      }
-    ]
-  },
-  {
-    id: 'solution-intelligence-advanced-enterprise',
-    slug: 'solution-intelligence-the-pinnacle-of-enterprise-automation',
-    title: 'Solution Intelligence: The Pinnacle of Enterprise Automation',
-    excerpt: 'Move beyond basic analytics into the era of Solution Intelligence, where complex algorithms autonomously solve enterprise problems in real-time.',
-    metaDescription: 'Learn exactly how Solution Intelligence leverages autonomous decision engines and contextual awareness to solve highly complex enterprise problems automatically.',
-    category: 'AI',
-    author: authorSarah,
-    date: '2026-05-04',
-    readingTime: '7 min read',
-    coverImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Solution Intelligence', 'Automation', 'Enterprise AI', 'Decision Engines'],
-    status: 'published',
-    content: `
+ `,
+ faqs: [
+ {
+ question: "What is Digital Transformation in the age of AI?",
+ answer: "Digital Transformation in the AI era means completely restructuring business processes to natively support artificial intelligence, automation, and predictive algorithms, moving far beyond simply digitizing paper documents."
+ },
+ {
+ question: "Why do Digital Transformation projects fail?",
+ answer: "Projects frequently fail due to massive cultural resistance, highly fragmented legacy infrastructure, and attempting to apply modern technology to fundamentally broken, deeply inefficient manual processes without re-engineering them first."
+ },
+ {
+ question: "How do you measure the ROI of a Transformation initiative?",
+ answer: "ROI is measured through mathematically precise reductions in cycle times, significantly lower operational error rates, highly accelerated time-to-market, and massive improvements in both customer satisfaction metrics and employee productivity."
+ },
+ {
+ question: "What is the difference between digitization and transformation?",
+ answer: "Digitization is simply converting analog information to digital forms (like scanning a document). Transformation involves completely redesigning the business model and entire workflow to eliminate friction using modern technology."
+ }
+ ]
+ },
+ {
+ id: 'solution-intelligence-advanced-enterprise',
+ slug: 'solution-intelligence-the-pinnacle-of-enterprise-automation',
+ title: 'Solution Intelligence: The Pinnacle of Enterprise Automation',
+ excerpt: 'Move beyond basic analytics into the era of Solution Intelligence, where complex algorithms autonomously solve enterprise problems in real-time.',
+ metaDescription: 'Learn exactly how Solution Intelligence leverages autonomous decision engines and contextual awareness to solve highly complex enterprise problems automatically.',
+ category: 'AI',
+ author: authorSarah,
+ date: '2026-05-04',
+ readingTime: '7 min read',
+ coverImage: 'https://images.unsplash.com/photo-1531297122-e12836be60b7?q=80&w=1200&auto=format&fit=crop',
+ tags: ['Solution Intelligence', 'Automation', 'Enterprise AI', 'Decision Engines'],
+ status: 'published',
+ content: `
 For years, the technology sector has been obsessed with extracting insights from data. We built massive dashboards, compiled incredibly intensive analytical reports, and essentially mandated that human executives interpret these exact insights to solve highly pressing business problems. However, the [enterprise](/blog/gen-ai-consulting-enterprise-transformation) paradigm is actively shifting away from exclusively relying on passive insights. The modern enterprise explicitly demands comprehensive, highly automated resolution frameworks. This evolution is perfectly encapsulated by the strategic adoption of [Solution Intelligence](https://www.thehackettgroup.com/solution-intelligence/).
 
 Instead of an algorithm simply stating, "There is an active [supply chain](/blog/gen-ai-in-procurement-strategic-sourcing) bottleneck in Sector 4," an incredibly mature ecosystem immediately routes inventory, seamlessly re-negotiates transit contracts using autonomous agents, and heavily optimizes global pricing models to explicitly cover the transit variance—all without requiring manual human intervention.
@@ -331,31 +325,29 @@ Within intense, high-output industrial manufacturing, intelligent solutions comp
 
 Deploying this absolute level of comprehensive automation heavily requires a precise organizational mandate. It strictly mandates entirely flawless data architecture, extremely tight cloud integration, and intensely rigorous [cybersecurity](/blog/gen-ai-in-it-future-of-tech-ops) guardrails to prevent devastating autonomous errors. 
 
-
-
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI [implementation](/blog/mastering-ai-implementation-practical-enterprise-guide) services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 
 ## Conclusion
 
 The future of hyper-competitive global commerce entirely belongs to enterprises that actively transition from generating passive digital insights to deploying incredibly secure, active [Solution Intelligence](https://www.thehackettgroup.com/solution-intelligence/). By aggressively combining contextual machine learning with strictly governed autonomous execution engines, organizations can seamlessly resolve highly complex operational friction in real time, locking in a massive competitive edge that reactive, heavily manual organizations simply cannot mathematically overcome. Achieving this requires meticulous planning, often guided by elite [Gen AI Consulting](/blog/gen-ai-consulting-enterprise-transformation).
-    `,
-    faqs: [
-      {
-        question: "What exactly is Solution Intelligence?",
-        answer: "Solution Intelligence is the integration of contextual business data, machine learning, and autonomous decision engines to completely resolve complex enterprise problems end-to-end without requiring manual human intervention."
-      },
-      {
-        question: "How is Solution Intelligence different from traditional analytics?",
-        answer: "Traditional analytics merely provides insights or alerts about a problem, explicitly relying on humans to fix it. Solution Intelligence deeply understands the problem and autonomously executes the precise required actions to resolve it."
-      },
-      {
-        question: "Is Solution Intelligence a threat to human jobs?",
-        answer: "No, it acts as a massive capability multiplier. By autonomously handling high-volume, highly repetitive operational friction, it violently frees human capital to focus completely on creative strategy, intense relationship management, and complex innovation."
-      },
-      {
-        question: "What infrastructure is required to support this?",
-        answer: "Implementing Solution Intelligence strongly requires highly un-siloed data architectures, incredibly robust cloud capabilities, secure APIs, and intense cybersecurity frameworks to rigorously govern automated decision-making."
-      }
-    ]
-  }
+ `,
+ faqs: [
+ {
+ question: "What exactly is Solution Intelligence?",
+ answer: "Solution Intelligence is the integration of contextual business data, machine learning, and autonomous decision engines to completely resolve complex enterprise problems end-to-end without requiring manual human intervention."
+ },
+ {
+ question: "How is Solution Intelligence different from traditional analytics?",
+ answer: "Traditional analytics merely provides insights or alerts about a problem, explicitly relying on humans to fix it. Solution Intelligence deeply understands the problem and autonomously executes the precise required actions to resolve it."
+ },
+ {
+ question: "Is Solution Intelligence a threat to human jobs?",
+ answer: "No, it acts as a massive capability multiplier. By autonomously handling high-volume, highly repetitive operational friction, it violently frees human capital to focus completely on creative strategy, intense relationship management, and complex innovation."
+ },
+ {
+ question: "What infrastructure is required to support this?",
+ answer: "Implementing Solution Intelligence strongly requires highly un-siloed data architectures, incredibly robust cloud capabilities, secure APIs, and intense cybersecurity frameworks to rigorously govern automated decision-making."
+ }
+ ]
+ }
 ];

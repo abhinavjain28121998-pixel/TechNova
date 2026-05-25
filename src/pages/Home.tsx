@@ -164,7 +164,7 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
                     <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
                       <img 
-                        src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`} 
+                        src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
                         alt={post.title}
                         width={1200}
                         height={800}
@@ -242,7 +242,7 @@ export default function Home() {
                     <Card as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
                       <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden" aria-label={`Read article: ${post.title}`}>
                         <img 
-                          src={post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
+                          src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
                           alt={post.title} 
                           width={800}
                           height={450}

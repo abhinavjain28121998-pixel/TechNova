@@ -39,7 +39,7 @@ export function SEO({
   }
   const canonicalUrl = rawUrl;
   // Fallback image using images.unsplash.com as source.unsplash is deprecated
-  const defaultImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop';
+  const defaultImage = title ? 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop' : 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop';
   const socialImage = image || defaultImage;
 
   // Combine provided schemas with base site schemas

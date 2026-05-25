@@ -5,8 +5,8 @@ import { articleSupport } from './articleSupport';
 import { articleDueDiligence } from './articleDueDiligence';
 
 export const newSeoArticles: Post[] = [
-  articleMarketing,
-  articleSales,
-  articleSupport,
-  articleDueDiligence
+ articleMarketing,
+ articleSales,
+ articleSupport,
+ articleDueDiligence
 ];

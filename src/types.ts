@@ -8,12 +8,12 @@ export interface Post {
   id: string;
   slug: string;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   metaDescription?: string;
   content: string;
-  coverImage: string;
+  coverImage?: string;
   date: string;
-  readingTime: string;
+  readingTime?: string;
   category: string;
   author: Author;
   featured?: boolean;

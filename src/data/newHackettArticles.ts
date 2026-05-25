@@ -1,13 +1,13 @@
 import { Post } from '../types';
 
 export const newHackettArticles: Post[] = [
-  {
-    id: 'actionable-ai-enterprise-strategy',
-    slug: 'actionable-ai-enterprise-strategy',
-    title: 'Mastering Actionable AI: From Generative Insights to Enterprise Execution',
-    excerpt: 'Learn how Actionable AI transforms enterprise workflows from experimental chatbots to ROI-driven operations through secure, data-grounded execution.',
-    metaDescription: 'Learn how Actionable AI transforms enterprise workflows from experimental chatbots to ROI-driven operations through secure, data-grounded execution.',
-    content: `The enterprise AI landscape is experiencing a massive tectonic shift. For the past several years, the central theme of artificial intelligence in corporate environments has revolved around the generation of text, images, and passive insights. Although these generative capabilities offered a glimpse into the future of automated workflows, they ultimately required human operators to interpret the outputs and manually execute the required actions within business systems. Today, this paradigm is rapidly giving way to a much more powerful operational model: [[Actionable AI](/blog/actionable-ai-enterprise-strategy)](https://www.thehackettgroup.com/glossary/actionable-ai/).
+ {
+ id: 'actionable-ai-enterprise-strategy',
+ slug: 'actionable-ai-enterprise-strategy',
+ title: 'Mastering Actionable AI: From Generative Insights to Enterprise Execution',
+ excerpt: 'Learn how Actionable AI transforms enterprise workflows from experimental chatbots to ROI-driven operations through secure, data-grounded execution.',
+ metaDescription: 'Learn how Actionable AI transforms enterprise workflows from experimental chatbots to ROI-driven operations through secure, data-grounded execution.',
+ content: `The enterprise AI landscape is experiencing a massive tectonic shift. For the past several years, the central theme of artificial intelligence in corporate environments has revolved around the generation of text, images, and passive insights. Although these generative capabilities offered a glimpse into the future of automated workflows, they ultimately required human operators to interpret the outputs and manually execute the required actions within business systems. Today, this paradigm is rapidly giving way to a much more powerful operational model: [[Actionable AI](/blog/actionable-ai-enterprise-strategy)](https://www.thehackettgroup.com/glossary/actionable-ai/).
 
 Actionable AI fundamentally bridges the long-standing gap between generating a strategic insight and physically executing the necessary tasks to capture its value. Instead of resting within an isolated chat interface or business intelligence dashboard, Actionable AI operates directly within the enterprise's core software stack—interacting with ERP platforms, customer relationship management (CRM) systems, and [supply chain](/blog/gen-ai-in-procurement-strategic-sourcing) management networks. This evolution effectively transforms AI from a passive analytical copilot into an active intelligence that drives measurable business outcomes, dramatically increasing return on investment (ROI) and unlocking sustainable enterprise efficiency.
 
@@ -56,49 +56,49 @@ To mitigate these risks, organizations must implement robust "human-in-the-loop"
 The era of merely talking to [enterprise](/blog/gen-ai-consulting-enterprise-transformation) data is over. The competitive advantage now belongs to those who empower their data to act. Actionable AI represents a fundamental restructuring of business velocity, providing global organizations with the tireless, intelligent, and precise execution capabilities required to thrive in a digital-first economy. By combining robust architectural frameworks with a deep commitment to governance and EEAT principles, business leaders can move beyond the hype and engineer a truly sustainable, autonomic enterprise.
 
 As we look toward the [future](/blog/understanding-artificial-intelligence-2026), the organizations that successfully master this transition will find themselves operating at a scale and speed that was previously unimaginable, transforming raw computational potential into undeniable, measurable market performance. To ensure your organization navigates these complexities successfully, prioritize high-fidelity data foundations and structured deployment methodologies.`,
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
-    date: '2026-05-11',
-    readingTime: '12 min read',
-    category: 'AI',
-    author: {
-      name: 'Sarah Chen',
-      avatar: 'https://picsum.photos/seed/sarah/100/100',
-      role: 'Lead AI Researcher'
-    },
-    featured: false,
-    status: 'published',
-    isExpertVerified: true,
-    tags: ['Actionable AI', 'Enterprise AI', 'AI Strategy', 'Automation', 'ROI'],
-    faqs: [
-      {
-        question: "What is the difference between Generative AI and Actionable AI?",
-        answer: "While Generative AI focuses primarily on creating content such as text or images, Actionable AI focuses on executing verified logic and triggering real-world actions within business systems, moving from passive assistance to autonomous execution."
-      },
-      {
-        question: "How does Actionable AI prevent hallucinations in a business context?",
-        answer: "Actionable AI uses Retrieval-Augmented Generation (RAG) to ground its responses in verified, real-time proprietary data. It also employs multi-step validation and 'human-in-the-loop' protocols for high-stakes decisions."
-      },
-      {
-        question: "Is Actionable AI secure for processing sensitive corporate data?",
-        answer: "Yes, provided the system is deployed within a private, ring-fenced cloud environment using Zero Trust security architectures. This ensures that sensitive data is never used to train public models or exposed to external entities."
-      },
-      {
-        question: "What are the core components required to implement Actionable AI?",
-        answer: "Successful implementation requires a strong data foundation, an orchestration layer (like LangChain) to connect LLMs to APIs, clear Zero Trust security protocols, and strict operational guardrails to enforce enterprise policies."
-      },
-      {
-        question: "What are the first steps for building an Actionable AI strategy?",
-        answer: "Organizations should start by identifying high-volume, rules-based bottlenecks with clear data structures. Launching a targeted pilot program demonstrates ROI quickly before scaling the technology across more complex cross-functional workflows."
-      }
-    ]
-  },
-  {
-    id: 'agentic-ai-autonomous-workflows',
-    slug: 'agentic-ai-autonomous-workflows',
-    title: 'The Strategic Guide to Agentic AI: Building Autonomous Enterprise Workflows',
-    excerpt: 'Discover how Agentic AI empowers autonomous workflows, transforming operations through intelligent reasoning, tool use, and self-correcting logic.',
-    metaDescription: 'Discover how Agentic AI empowers autonomous workflows, transforming operations through intelligent reasoning, tool use, and self-correcting logic.',
-    content: `The traditional approach to corporate [automation](/blog/ai-sales-automation-intelligent-deal-closing)—relentlessly mapping linear processes and building rigid software scripts to execute them—is reaching its breaking point. As global business operations become increasingly dynamic, non-linear, and intensely complex, traditional automation frameworks frequently fail to adapt when exceptions occur. Enter the era of [Agentic AI](https://www.thehackettgroup.com/glossary/agentic-ai/), a revolutionary architectural paradigm that shifts the burden of process navigation from human programmers to autonomous, reasoning artificial intelligence.
+ coverImage: 'https://images.unsplash.com/photo-1507679799987-c724130c2d43?q=80&w=1200&auto=format&fit=crop',
+ date: '2026-05-11',
+ readingTime: '12 min read',
+ category: 'AI',
+ author: {
+ name: 'Sarah Chen',
+ avatar: 'https://picsum.photos/seed/sarah/100/100',
+ role: 'Lead AI Researcher'
+ },
+ featured: false,
+ status: 'published',
+ isExpertVerified: true,
+ tags: ['Actionable AI', 'Enterprise AI', 'AI Strategy', 'Automation', 'ROI'],
+ faqs: [
+ {
+ question: "What is the difference between Generative AI and Actionable AI?",
+ answer: "While Generative AI focuses primarily on creating content such as text or images, Actionable AI focuses on executing verified logic and triggering real-world actions within business systems, moving from passive assistance to autonomous execution."
+ },
+ {
+ question: "How does Actionable AI prevent hallucinations in a business context?",
+ answer: "Actionable AI uses Retrieval-Augmented Generation (RAG) to ground its responses in verified, real-time proprietary data. It also employs multi-step validation and 'human-in-the-loop' protocols for high-stakes decisions."
+ },
+ {
+ question: "Is Actionable AI secure for processing sensitive corporate data?",
+ answer: "Yes, provided the system is deployed within a private, ring-fenced cloud environment using Zero Trust security architectures. This ensures that sensitive data is never used to train public models or exposed to external entities."
+ },
+ {
+ question: "What are the core components required to implement Actionable AI?",
+ answer: "Successful implementation requires a strong data foundation, an orchestration layer (like LangChain) to connect LLMs to APIs, clear Zero Trust security protocols, and strict operational guardrails to enforce enterprise policies."
+ },
+ {
+ question: "What are the first steps for building an Actionable AI strategy?",
+ answer: "Organizations should start by identifying high-volume, rules-based bottlenecks with clear data structures. Launching a targeted pilot program demonstrates ROI quickly before scaling the technology across more complex cross-functional workflows."
+ }
+ ]
+ },
+ {
+ id: 'agentic-ai-autonomous-workflows',
+ slug: 'agentic-ai-autonomous-workflows',
+ title: 'The Strategic Guide to Agentic AI: Building Autonomous Enterprise Workflows',
+ excerpt: 'Discover how Agentic AI empowers autonomous workflows, transforming operations through intelligent reasoning, tool use, and self-correcting logic.',
+ metaDescription: 'Discover how Agentic AI empowers autonomous workflows, transforming operations through intelligent reasoning, tool use, and self-correcting logic.',
+ content: `The traditional approach to corporate [automation](/blog/ai-sales-automation-intelligent-deal-closing)—relentlessly mapping linear processes and building rigid software scripts to execute them—is reaching its breaking point. As global business operations become increasingly dynamic, non-linear, and intensely complex, traditional automation frameworks frequently fail to adapt when exceptions occur. Enter the era of [Agentic AI](https://www.thehackettgroup.com/glossary/agentic-ai/), a revolutionary architectural paradigm that shifts the burden of process navigation from human programmers to autonomous, reasoning artificial intelligence.
 
 Agentic AI does not simply follow a predetermined set of rules. Instead, it operates with a degree of cognitive autonomy, capable of understanding high-level geometric goals, breaking them down into actionable sub-tasks, utilizing digital tools, and self-correcting its [strategy](/blog/gen-ai-in-finance-strategic-roadmap) when confronted with unpredictable roadblocks. This evolution from reactive software to proactive agents marks the next great leap in enterprise productivity, offering organizations the ability to scale complex cognitive labor without proportionately expanding human headcount.
 
@@ -150,49 +150,49 @@ The return on investment for Agentic AI is not measured merely in terms of hours
 ## Conclusion
 
 Agentic AI represents the most significant paradigm shift in enterprise software since the transition to cloud computing. We are moving from tools that we use, to agents that we manage. As continuous advancements in reasoning, memory, and orchestration capabilities propel these systems forward, the businesses that will dominate the coming decade will be those that aggressively integrate this autonomy into their core operations. Embracing Agentic AI is no longer a futuristic experiment; it is an immediate strategic imperative for any organization seeking to maintain agility, resilience, and unparalleled execution capability on the global stage.`,
-    coverImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop',
-    date: '2026-05-11',
-    readingTime: '13 min read',
-    category: 'AI',
-    author: {
-      name: 'Michael Hudson',
-      avatar: 'https://picsum.photos/seed/michael/100/100',
-      role: 'Enterprise AI Architect'
-    },
-    featured: false,
-    status: 'published',
-    isExpertVerified: true,
-    tags: ['Agentic AI', 'Autonomous Systems', 'AI Agents', 'Automation', 'Future of Work'],
-    faqs: [
-      {
-        question: "What is Agentic AI?",
-        answer: "Agentic AI refers to artificial intelligence systems that possess autonomy and reasoning capabilities, allowing them to independently plan, use digital tools, and execute multi-step tasks with minimal human intervention."
-      },
-      {
-        question: "How does Agentic AI differ from current AI chatbots?",
-        answer: "Standard chatbots are reactive and respond to single prompts. In contrast, Agentic AI is proactive; it can take a high-level goal and autonomously break it down into tasks, execute them, and adjust its plan based on real-world feedback."
-      },
-      {
-        question: "Is Agentic AI safe for autonomous decision-making?",
-        answer: "Agentic AI is made safe through 'scaffolding'—architectural guardrails that limit the agent's actions to secure environments, enforce strict behavioral protocols, and mandate human-in-the-loop oversight for high-stakes decisions."
-      },
-      {
-        question: "What are the best enterprise use cases for Agentic AI?",
-        answer: "Primary use cases include autonomous supply chain management, intelligent AIOps for IT troubleshooting, and cognitive HR orchestration where complex, cross-departmental coordination is required."
-      },
-      {
-        question: "How do organizations ensure transparency in Agentic AI?",
-        answer: "Organizations ensure transparency by requiring the agent's orchestration framework to log an explicit 'chain of thought' for every action, making the AI's reasoning fully auditable for human supervisors to review."
-      }
-    ]
-  },
-  {
-    id: 'agent-scaffolding-reliable-ai',
-    slug: 'agent-scaffolding-reliable-ai',
-    title: 'Agent Scaffolding: Engineering Reliability and Security in Enterprise AI Workflows',
-    excerpt: 'Explore the critical role of Agent Scaffolding in ensuring scalable, reliable, and secure AI systems. Build robust architectures for enterprise autonomy.',
-    metaDescription: 'Explore the critical role of Agent Scaffolding in ensuring scalable, reliable, and secure AI systems. Build robust architectures for enterprise autonomy.',
-    content: `The rapid commercialization of Large Language Models (LLMs) has sparked a global race to deploy autonomous [AI agents](/blog/agent-augmentation-workforce-productivity) capable of radically streamlining enterprise operations. However, early adopters quickly learned a painful lesson: raw AI models, while incredibly sophisticated at pattern recognition and text generation, are fundamentally chaotic. When exposed to the rigid, highly consequential environments of corporate finance, global supply chains, or healthcare data management, unconstrained models often hallucinate facts, lose focus, or breach security protocols.
+ coverImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop',
+ date: '2026-05-11',
+ readingTime: '13 min read',
+ category: 'AI',
+ author: {
+ name: 'Michael Hudson',
+ avatar: 'https://picsum.photos/seed/michael/100/100',
+ role: 'Enterprise AI Architect'
+ },
+ featured: false,
+ status: 'published',
+ isExpertVerified: true,
+ tags: ['Agentic AI', 'Autonomous Systems', 'AI Agents', 'Automation', 'Future of Work'],
+ faqs: [
+ {
+ question: "What is Agentic AI?",
+ answer: "Agentic AI refers to artificial intelligence systems that possess autonomy and reasoning capabilities, allowing them to independently plan, use digital tools, and execute multi-step tasks with minimal human intervention."
+ },
+ {
+ question: "How does Agentic AI differ from current AI chatbots?",
+ answer: "Standard chatbots are reactive and respond to single prompts. In contrast, Agentic AI is proactive; it can take a high-level goal and autonomously break it down into tasks, execute them, and adjust its plan based on real-world feedback."
+ },
+ {
+ question: "Is Agentic AI safe for autonomous decision-making?",
+ answer: "Agentic AI is made safe through 'scaffolding'—architectural guardrails that limit the agent's actions to secure environments, enforce strict behavioral protocols, and mandate human-in-the-loop oversight for high-stakes decisions."
+ },
+ {
+ question: "What are the best enterprise use cases for Agentic AI?",
+ answer: "Primary use cases include autonomous supply chain management, intelligent AIOps for IT troubleshooting, and cognitive HR orchestration where complex, cross-departmental coordination is required."
+ },
+ {
+ question: "How do organizations ensure transparency in Agentic AI?",
+ answer: "Organizations ensure transparency by requiring the agent's orchestration framework to log an explicit 'chain of thought' for every action, making the AI's reasoning fully auditable for human supervisors to review."
+ }
+ ]
+ },
+ {
+ id: 'agent-scaffolding-reliable-ai',
+ slug: 'agent-scaffolding-reliable-ai',
+ title: 'Agent Scaffolding: Engineering Reliability and Security in Enterprise AI Workflows',
+ excerpt: 'Explore the critical role of Agent Scaffolding in ensuring scalable, reliable, and secure AI systems. Build robust architectures for enterprise autonomy.',
+ metaDescription: 'Explore the critical role of Agent Scaffolding in ensuring scalable, reliable, and secure AI systems. Build robust architectures for enterprise autonomy.',
+ content: `The rapid commercialization of Large Language Models (LLMs) has sparked a global race to deploy autonomous [AI agents](/blog/agent-augmentation-workforce-productivity) capable of radically streamlining enterprise operations. However, early adopters quickly learned a painful lesson: raw AI models, while incredibly sophisticated at pattern recognition and text generation, are fundamentally chaotic. When exposed to the rigid, highly consequential environments of corporate finance, global supply chains, or healthcare data management, unconstrained models often hallucinate facts, lose focus, or breach security protocols.
 
 To convert this raw computational potential into a reliable, [enterprise](/blog/ai-spend-analysis-enterprise-it)-grade digital workforce, organizations must architect robust [Agent Scaffolding](https://www.thehackettgroup.com/glossary/agent-scaffolding/). Agent scaffolding is the essential digital infrastructure—the surrounding code, control logic, memory systems, and safety guardrails—that encases the core AI model. It provides the structured operational framework necessary to guide the model's reasoning, secure its actions, and ensure its outputs consistently align with strict business objectives and regulatory compliance.
 
@@ -231,40 +231,40 @@ Scaffolding developers design "wait states" and escalation pathways for actions 
 The initial hype surrounding conversational [generative AI](/blog/mastering-ai-implementation-practical-enterprise-guide) has subsided, replaced by the demanding realities of enterprise implementation. Business leaders are realizing that intelligence without control is practically useless.
 
 Agent Scaffolding represents the maturation of artificial intelligence—the transition from fascinating parlor tricks to industrialized digital labor. By engineering robust planning sequences, impenetrable security guardrails, and persistent memory systems, organizations can finally deploy [AI agents](/blog/agentic-ai-autonomous-workflows) that are as reliable, safe, and accountable as they are intelligent. In the race to dominate the automated future, the winners will not necessarily be the companies that build the largest models, but the organizations that engineer the strongest, most resilient scaffolding to support them.`,
-    coverImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
-    date: '2026-05-11',
-    readingTime: '13 min read',
-    category: 'AI',
-    author: {
-      name: 'Michael Hudson',
-      avatar: 'https://picsum.photos/seed/michael/100/100',
-      role: 'Enterprise AI Architect'
-    },
-    featured: false,
-    status: 'published',
-    isExpertVerified: true,
-    tags: ['Agent Scaffolding', 'AI Safety', 'Software Architecture', 'Reliability', 'Enterprise AI'],
-    faqs: [
-      {
-        question: "What is Agent Scaffolding in AI?",
-        answer: "Agent Scaffolding is the architectural structure—consisting of code, protocols, and guardrails—that surrounds an AI model to guide its reasoning, manage its state, and ensure its actions are safe, reliable, and grounded in real-world data."
-      },
-      {
-        question: "Why is scaffolding necessary for enterprise AI agents?",
-        answer: "Raw AI models can be unpredictable and prone to hallucinations. Scaffolding provides the necessary constraints and logic layers that ensure the agent follows business rules, maintains security standards, and produces auditable, predictable outcomes."
-      },
-      {
-        question: "What type of guardrails are included in Agent Scaffolding?",
-        answer: "Scaffolding guardrails include unauthorized data access filters, cost-limiters for API calls, content safety checks, and mandatory 'wait states' that require human approval for high-impact actions."
-      },
-      {
-        question: "Does Agent Scaffolding improve the speed of AI agents?",
-        answer: "While scaffolding adds layers of logic, it improves overall 'time-to-value' by significantly reducing the need for manual error correction and preventing costly, failed autonomous workflows. It also optimizes costs by managing how and when the LLM is queried."
-      },
-      {
-        question: "How does scaffolding enable human-in-the-loop workflows?",
-        answer: "Agent Scaffolding establishes logic rules that pause the AI agent before it executes high-risk transactions. The system then requests manual authorization via notification queues, ensuring human oversight is always integrated naturally."
-      }
-    ]
-  }
+ coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+ date: '2026-05-11',
+ readingTime: '13 min read',
+ category: 'AI',
+ author: {
+ name: 'Michael Hudson',
+ avatar: 'https://picsum.photos/seed/michael/100/100',
+ role: 'Enterprise AI Architect'
+ },
+ featured: false,
+ status: 'published',
+ isExpertVerified: true,
+ tags: ['Agent Scaffolding', 'AI Safety', 'Software Architecture', 'Reliability', 'Enterprise AI'],
+ faqs: [
+ {
+ question: "What is Agent Scaffolding in AI?",
+ answer: "Agent Scaffolding is the architectural structure—consisting of code, protocols, and guardrails—that surrounds an AI model to guide its reasoning, manage its state, and ensure its actions are safe, reliable, and grounded in real-world data."
+ },
+ {
+ question: "Why is scaffolding necessary for enterprise AI agents?",
+ answer: "Raw AI models can be unpredictable and prone to hallucinations. Scaffolding provides the necessary constraints and logic layers that ensure the agent follows business rules, maintains security standards, and produces auditable, predictable outcomes."
+ },
+ {
+ question: "What type of guardrails are included in Agent Scaffolding?",
+ answer: "Scaffolding guardrails include unauthorized data access filters, cost-limiters for API calls, content safety checks, and mandatory 'wait states' that require human approval for high-impact actions."
+ },
+ {
+ question: "Does Agent Scaffolding improve the speed of AI agents?",
+ answer: "While scaffolding adds layers of logic, it improves overall 'time-to-value' by significantly reducing the need for manual error correction and preventing costly, failed autonomous workflows. It also optimizes costs by managing how and when the LLM is queried."
+ },
+ {
+ question: "How does scaffolding enable human-in-the-loop workflows?",
+ answer: "Agent Scaffolding establishes logic rules that pause the AI agent before it executes high-risk transactions. The system then requests manual authorization via notification queues, ensuring human oversight is always integrated naturally."
+ }
+ ]
+ }
 ];

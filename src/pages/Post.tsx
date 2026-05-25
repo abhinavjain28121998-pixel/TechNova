@@ -24,7 +24,6 @@ import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
-import regeneratedImage from '../assets/images/regenerated_image_1778073976543.png';
 
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
@@ -433,7 +432,7 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <AIImage 
-              src={post.slug === 'how-ai-agents-are-reshaping-modern-enterprise-workflows' ? regeneratedImage : (post.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop`)} 
+              src={(post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop')} 
               alt={post.title} 
               context={post.content}
               width={1200}
@@ -566,7 +565,7 @@ export default function Post() {
                       <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>
                         <div className="aspect-video overflow-hidden">
                           <img 
-                            src={related.coverImage || `https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop`} 
+                            src={related.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
                             alt={related.title} 
                             width={800}
                             height={450}
