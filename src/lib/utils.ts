@@ -11,3 +11,24 @@ export function calculateReadingTime(text: string | undefined): string {
   const minutes = Math.max(1, Math.ceil(wordCount / 200));
   return `${minutes} min read`;
 }
+
+export function getOptimizedImageUrl(url: string | undefined, width: number = 800): string {
+  const fallback = 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=' + width + '&auto=format&fit=crop';
+  if (!url) return fallback;
+  
+  if (url.includes('images.unsplash.com')) {
+    try {
+      const urlObj = new URL(url);
+      urlObj.searchParams.set('w', width.toString());
+      urlObj.searchParams.set('q', '75');
+      urlObj.searchParams.set('auto', 'format');
+      if (!urlObj.searchParams.has('fit')) {
+        urlObj.searchParams.set('fit', 'crop');
+      }
+      return urlObj.toString();
+    } catch (e) {
+      return url;
+    }
+  }
+  return url;
+}

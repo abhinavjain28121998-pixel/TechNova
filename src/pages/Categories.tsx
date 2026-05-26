@@ -1,10 +1,10 @@
 import { SEO } from '../components/SEO';
-import { CATEGORIES } from '../data/posts';
+import { CATEGORIES } from '../data/categories';
 import { usePosts } from '../hooks/usePosts';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Badge } from '../components/ui/badge';
 import { Card, CardHeader, CardFooter } from '../components/ui/card';
-import { calculateReadingTime } from '../lib/utils';
+import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, BASE_URL } from '../lib/seo';
@@ -99,10 +99,10 @@ export default function Categories() {
             <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
               <Link to={`/blog/${post.slug}`} className="block aspect-[16/9] overflow-hidden" aria-label={`Read article: ${post.title}`}>
                 <img 
-                  src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop' } 
+                  src={getOptimizedImageUrl(post.coverImage, 600)} 
                   alt={post.title} 
-                  width={800}
-                  height={450}
+                  width={600}
+                  height={338}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   referrerPolicy="no-referrer"
                   loading="lazy"

@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { GoogleGenAI } from '@google/genai';
+import compression from 'compression';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,9 +33,32 @@ function cosineSimilarity(a: number[], b: number[]) {
   return dotProduct(a, b) / (magnitude(a) * magnitude(b));
 }
 
+function getOptimizedImageUrl(url: string | undefined, width: number = 800): string {
+  const fallback = 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=' + width + '&auto=format&fit=crop';
+  if (!url) return fallback;
+  if (url.includes('images.unsplash.com')) {
+    try {
+      const urlObj = new URL(url);
+      urlObj.searchParams.set('w', width.toString());
+      urlObj.searchParams.set('q', '75');
+      urlObj.searchParams.set('auto', 'format');
+      if (!urlObj.searchParams.has('fit')) {
+        urlObj.searchParams.set('fit', 'crop');
+      }
+      return urlObj.toString();
+    } catch (e) {
+      return url;
+    }
+  }
+  return url;
+}
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Enable Gzip/Brotli compression for all Express payloads
+  app.use(compression());
 
   // Add middleware to parse JSON
   app.use(express.json());
@@ -84,6 +108,56 @@ async function startServer() {
     } catch (e) {
       console.error("Semantic search error:", e);
       res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+  app.post('/api/generate-alt', async (req, res) => {
+    try {
+      const { src, context } = req.body;
+      if (!src) {
+        return res.status(400).json({ error: 'src parameter is required' });
+      }
+
+      if (!process.env.GEMINI_API_KEY) {
+        return res.status(500).json({ error: 'GEMINI_API_KEY is not set' });
+      }
+
+      const ai = new GoogleGenAI({ 
+        apiKey: process.env.GEMINI_API_KEY,
+        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
+      });
+
+      const imageResp = await fetch(src);
+      if (!imageResp.ok) {
+        throw new Error(`HTTP error! status: ${imageResp.status}`);
+      }
+      const arrayBuffer = await imageResp.arrayBuffer();
+      const base64 = Buffer.from(arrayBuffer).toString('base64');
+      const mimeType = imageResp.headers.get('content-type') || 'image/jpeg';
+
+      const prompt = `Provide a concise, descriptive alt text for this image to be used by screen readers in a blog post.
+      Article context: ${context?.substring(0, 300) || 'General technology article'}.
+      Respond ONLY with the alt text, no quotes or explanations.`;
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.5-flash',
+        contents: {
+          parts: [
+            { text: prompt },
+            {
+              inlineData: {
+                data: base64,
+                mimeType: mimeType
+              }
+            }
+          ]
+        }
+      });
+
+      res.json({ text: response.text?.trim() || '' });
+    } catch (e) {
+      console.error("Alt text generation error:", e);
+      res.status(500).json({ error: 'Failed to generate alt text' });
     }
   });
 
@@ -256,7 +330,9 @@ ${postsList.filter((p: any) => !p.status || p.status === 'published').map((post:
               template = template.replace('</head>', `<meta name="description" content="${description}" data-rh="true" />\n</head>`);
             }
 
+            const preloadImg = getOptimizedImageUrl(postData.coverImage, 800);
             const ogTags = `
+              <link rel="preload" as="image" href="${preloadImg}" fetchpriority="high" />
               <meta property="og:title" content="${title}" data-rh="true" />
               <meta property="og:description" content="${description}" data-rh="true" />
               <meta property="og:image" content="${image}" data-rh="true" />
@@ -305,7 +381,29 @@ ${postsList.filter((p: any) => !p.status || p.status === 'published').map((post:
         } else {
           // All other pages (Home, About, Contact)
           jsonLdScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(genericSchemas)}\n</script>\n`;
-          template = template.replace('</head>', `${jsonLdScript}\n</head>`);
+          if (cleanPath === '/') {
+            let postsList: any[] = [];
+            if (db) {
+              try {
+                const postsRef = collection(db, 'posts');
+                const snap = await getDocs(postsRef);
+                postsList = snap.docs.map(d => d.data());
+              } catch (e) {}
+            }
+            if (postsList.length === 0) {
+              const { POSTS } = await import('./src/data/posts.ts');
+              postsList = POSTS;
+            }
+            const posts = postsList.filter((p: any) => p.status === 'published' || !p.status);
+            const featuredPosts = posts.filter((post: any) => post.featured);
+            const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
+            const firstPost = carouselPosts[0];
+            const firstImg = firstPost ? firstPost.coverImage : '';
+            const preloadImg = getOptimizedImageUrl(firstImg, 800);
+            template = template.replace('</head>', `<link rel="preload" as="image" href="${preloadImg}" fetchpriority="high" />\n${jsonLdScript}\n</head>`);
+          } else {
+            template = template.replace('</head>', `${jsonLdScript}\n</head>`);
+          }
         }
       } catch (e) {
         console.error("Error generating schema:", e);

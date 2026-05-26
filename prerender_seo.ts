@@ -39,7 +39,27 @@ if (fs.existsSync(firebaseConfigPath)) {
   }
 }
 
-async function createPreRenderedPage(outputFilePath, title, description, urlStr, image, ogType = 'website', jsonLd: any = null) {
+function getOptimizedImageUrl(url: string | undefined, width: number = 800): string {
+  const fallback = 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=' + width + '&auto=format&fit=crop';
+  if (!url) return fallback;
+  if (url.includes('images.unsplash.com')) {
+    try {
+      const urlObj = new URL(url);
+      urlObj.searchParams.set('w', width.toString());
+      urlObj.searchParams.set('q', '75');
+      urlObj.searchParams.set('auto', 'format');
+      if (!urlObj.searchParams.has('fit')) {
+        urlObj.searchParams.set('fit', 'crop');
+      }
+      return urlObj.toString();
+    } catch (e) {
+      return url;
+    }
+  }
+  return url;
+}
+
+async function createPreRenderedPage(outputFilePath, title, description, urlStr, image, ogType = 'website', jsonLd: any = null, preloadImg = '') {
   try {
     let html = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 
@@ -64,9 +84,10 @@ async function createPreRenderedPage(outputFilePath, title, description, urlStr,
 
     // append canonical and schemas
     const schemaScript = jsonLd ? `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify(jsonLd)}\n</script>\n` : '';
+    const preloadTag = preloadImg ? `<link rel="preload" as="image" href="${preloadImg}" fetchpriority="high" />\n` : '';
 
     const ogTags = `
-      <link rel="canonical" href="${canonicalUrl}" data-rh="true" />
+      ${preloadTag}<link rel="canonical" href="${canonicalUrl}" data-rh="true" />
       <meta property="og:title" content="${title}" data-rh="true" />
       <meta property="og:description" content="${description}" data-rh="true" />
       <meta property="og:image" content="${image}" data-rh="true" />
@@ -123,6 +144,7 @@ async function run() {
     const url = `${BASE_URL}/blog/${post.slug}`;
     
     const postSchema = generateBlogPostGraphSchema(post);
+    const preloadImgUrl = getOptimizedImageUrl(post.coverImage || defaultImage, 800);
 
     await createPreRenderedPage(
       path.join(distBlogDir, `${post.slug}.html`),
@@ -131,7 +153,8 @@ async function run() {
       url,
       image,
       'article',
-      postSchema
+      postSchema,
+      preloadImgUrl
     );
   }
 
@@ -167,6 +190,12 @@ async function run() {
   );
 
   // 4. Output Home
+  const posts = postsList.filter((p: any) => p.status === 'published' || !p.status);
+  const featuredPosts = posts.filter((post: any) => post.featured);
+  const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
+  const firstPost = carouselPosts[0];
+  const homePreloadImg = getOptimizedImageUrl(firstPost ? firstPost.coverImage : defaultImage, 800);
+
   await createPreRenderedPage(
     path.join(distDir, 'index.html'), // update root index
     `${siteName} | Decoding the Future of AI & Technology`,
@@ -174,7 +203,8 @@ async function run() {
     `${BASE_URL}/`,
     defaultImage,
     'website',
-    { '@context': 'https://schema.org', '@graph': genericSchemas }
+    { '@context': 'https://schema.org', '@graph': genericSchemas },
+    homePreloadImg
   );
 
   console.log(`Pre-rendering complete. Total posts: ${postsList.length}`);

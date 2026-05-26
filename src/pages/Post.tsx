@@ -1,10 +1,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { POSTS as STATIC_POSTS } from '../data/posts';
 import { Post as StaticPost } from '../types';
 import { Badge } from '../components/ui/badge';
-import { calculateReadingTime } from '../lib/utils';
+import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { Calendar, Clock, ChevronLeft, ChevronRight, Twitter, Linkedin, Link as LinkIcon, Loader2, Type, Minus, Plus, AlignLeft, Check, Edit2 } from 'lucide-react';
@@ -17,7 +16,6 @@ import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
-import { GoogleGenAI } from "@google/genai";
 import { generateBlogPostGraphSchema, BASE_URL } from '../lib/seo';
 import { usePost } from '../hooks/usePost';
 import { usePosts } from '../hooks/usePosts';
@@ -46,50 +44,17 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
 
       try {
         setIsLoading(true);
-        const apiKey = process.env.GEMINI_API_KEY;
-        if (!apiKey) {
-          console.warn("GEMINI_API_KEY not found in environment");
-          return;
-        }
-
-        const ai = new GoogleGenAI({ apiKey });
-        
-        // Fetch image as blob for analysis
-        const imageResp = await fetch(src);
-        if (!imageResp.ok) throw new Error(`HTTP error! status: ${imageResp.status}`);
-        const blob = await imageResp.blob();
-        
-        const base64 = await new Promise<string>((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const res = reader.result as string;
-            resolve(res.split(',')[1]);
-          };
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
+        const resp = await fetch('/api/generate-alt', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ src, context }),
         });
-
-        const prompt = `Provide a concise, descriptive alt text for this image to be used by screen readers in a blog post.
-        Article context: ${context?.substring(0, 300) || 'General technology article'}.
-        Respond ONLY with the alt text, no quotes or explanations.`;
-
-        const response = await ai.models.generateContent({
-          model: 'gemini-3-flash-preview',
-          contents: {
-            parts: [
-              { text: prompt },
-              {
-                inlineData: {
-                  data: base64,
-                  mimeType: blob.type
-                }
-              }
-            ]
-          }
-        });
-
-        if (response.text) {
-          setAltText(response.text.trim());
+        if (!resp.ok) throw new Error(`HTTP error! status: ${resp.status}`);
+        const data = await resp.json();
+        if (data.text) {
+          setAltText(data.text);
         }
       } catch (err) {
         console.error("AI Alt Text Generation failed:", err);
@@ -104,7 +69,7 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
   return (
     <span className={`relative block w-full overflow-hidden rounded-xl ${props.className || ''}`}>
       <img 
-        src={src} 
+        src={getOptimizedImageUrl(src, 800)} 
         alt={altText} 
         title={altText} 
         loading="lazy" 
@@ -432,11 +397,11 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <AIImage 
-              src={(post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop')} 
+              src={(post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=800&auto=format&fit=crop')} 
               alt={post.title} 
               context={post.content}
-              width={1200}
-              height={675}
+              width={800}
+              height={450}
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
               referrerPolicy="no-referrer"
               fetchPriority="high"
@@ -565,10 +530,10 @@ export default function Post() {
                       <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>
                         <div className="aspect-video overflow-hidden">
                           <img 
-                            src={related.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
+                            src={getOptimizedImageUrl(related.coverImage, 600)} 
                             alt={related.title} 
-                            width={800}
-                            height={450}
+                            width={600}
+                            height={338}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                             loading="lazy"

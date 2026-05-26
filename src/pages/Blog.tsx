@@ -1,11 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { SEO } from '../components/SEO';
-import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
+import { CATEGORIES } from '../data/categories';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from '../components/ui/pagination';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { calculateReadingTime } from '../lib/utils';
+import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Input } from '../components/ui/input';
 import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
@@ -203,10 +203,10 @@ export default function Blog() {
               <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
                 <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden" aria-label={`Read article: ${post.title}`}>
                   <img 
-                    src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
+                    src={getOptimizedImageUrl(post.coverImage, 600)} 
                     alt={post.title} 
-                    width={800}
-                    height={450}
+                    width={600}
+                    height={375}
                     className="block aspect-[16/10] w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
                     loading="lazy"

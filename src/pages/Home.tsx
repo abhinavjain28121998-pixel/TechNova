@@ -1,9 +1,9 @@
 import { SEO } from '../components/SEO';
-import { POSTS as STATIC_POSTS, CATEGORIES } from '../data/posts';
+import { CATEGORIES } from '../data/categories';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { calculateReadingTime } from '../lib/utils';
+import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
@@ -25,6 +25,16 @@ export default function Home() {
   const trendingPosts = posts.filter(post => post.trending).slice(0, 4);
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (carouselPosts.length <= 1) return;
@@ -43,11 +53,6 @@ export default function Home() {
   // Text content moves slower
   const yText = useTransform(smoothScrollY, [0, 1000], [0, 80]);
   const opacityText = useTransform(smoothScrollY, [0, 600], [1, 0]);
-  
-  // Graphics move faster with varying speeds for depth
-  const yHeroGraphic1 = useTransform(smoothScrollY, [0, 1000], [0, -200]);
-  const yHeroGraphic2 = useTransform(smoothScrollY, [0, 1000], [0, -350]);
-  const yHeroGraphic3 = useTransform(smoothScrollY, [0, 1000], [0, -120]);
 
   const homeSchema = generateWebPageSchema({
     url: BASE_URL,
@@ -81,7 +86,7 @@ export default function Home() {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
             {/* Text Content */}
-            <motion.div style={{ y: yText, opacity: opacityText }}>
+            <motion.div style={{ y: isMobile ? 0 : yText, opacity: isMobile ? 1 : opacityText }}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -95,9 +100,9 @@ export default function Home() {
               </motion.div>
 
               <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1] pb-2"
               >
                 Build the Future of <br className="hidden md:block" />
@@ -105,9 +110,9 @@ export default function Home() {
               </motion.h1>
 
               <motion.p 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto"
               >
                 Master modern engineering. Skip the noise and get in-depth tutorials, architectural deep-dives, and strategic tech insights to build better products.
@@ -153,21 +158,27 @@ export default function Home() {
           )}
         </div>
         
-        <div className="relative overflow-hidden rounded-2xl border border-border shadow-sm">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out h-full"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {carouselPosts.map((post, index) => (
+        <div className="relative overflow-hidden rounded-2xl border border-border shadow-sm min-h-[400px] bg-card">
+          {loading && posts.length === 0 ? (
+            <div className="flex h-full w-full items-center justify-center min-h-[400px]">
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+            </div>
+          ) : (
+            <>
+              <div 
+                className="flex transition-transform duration-500 ease-in-out h-full"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {carouselPosts.map((post, index) => (
               <div key={post.id} className="w-full flex-shrink-0">
                 <Link to={`/blog/${post.slug}`} className="group block h-full">
                   <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
                     <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
                       <img 
-                        src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
+                        src={getOptimizedImageUrl(post.coverImage, 800)} 
                         alt={post.title}
-                        width={1200}
-                        height={800}
+                        width={800}
+                        height={533}
                         className="block aspect-[3/2] object-cover w-full h-full min-h-[300px] transition-transform duration-700 group-hover:scale-105 bg-muted"
                         referrerPolicy="no-referrer"
                         loading={index === 0 ? "eager" : "lazy"}
@@ -213,6 +224,8 @@ export default function Home() {
               ))}
             </div>
           )}
+            </>
+          )}
         </div>
       </section>
 
@@ -242,10 +255,10 @@ export default function Home() {
                     <Card as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
                       <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden" aria-label={`Read article: ${post.title}`}>
                         <img 
-                          src={post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop'} 
+                          src={getOptimizedImageUrl(post.coverImage, 600)} 
                           alt={post.title} 
-                          width={800}
-                          height={450}
+                          width={600}
+                          height={338}
                           className="block aspect-video w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
                           referrerPolicy="no-referrer"
                           loading="lazy"

@@ -31,7 +31,7 @@ export function Layout() {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center gap-2">
-                <img src="/logo.svg" alt="TechNova Logo" className="h-10 w-auto" />
+                <img src="/logo.svg" alt="TechNova Logo" width={150} height={40} className="h-10 w-auto" />
               </Link>
             </div>
 
@@ -114,7 +114,7 @@ export function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="col-span-1 md:col-span-1">
               <Link to="/" className="flex items-center gap-2 mb-4">
-                <img src="/logo.svg" alt="TechNova Logo" className="h-8 w-auto" />
+                <img src="/logo.svg" alt="TechNova Logo" width={120} height={32} className="h-8 w-auto" />
               </Link>
               <p className="text-sm text-muted-foreground mb-4">
                 Build the Future of Software & AI. Master modern engineering with in-depth tutorials, architectural deep-dives, and strategic tech insights.
