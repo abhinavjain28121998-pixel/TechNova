@@ -210,6 +210,10 @@ async function run() {
   );
 
   console.log(`Pre-rendering complete. Total posts: ${postsList.length}`);
+  process.exit(0);
 }
 
-run().catch(console.error);
+run().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

@@ -88,6 +88,10 @@ async function generateSitemapAndRSS() {
   fs.writeFileSync('./public/sitemap.xml', xml);
   fs.writeFileSync('./public/rss.xml', rss);
   console.log("Sitemap and RSS generated successfully with " + Array.from(allPosts.values()).filter(d => d.status !== 'draft').length + " posts.");
+  process.exit(0);
 }
 
-generateSitemapAndRSS().catch(console.error);
+generateSitemapAndRSS().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
