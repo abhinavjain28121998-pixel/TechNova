@@ -28,7 +28,7 @@ export function SEO({
   noindex = false
 }: SEOProps) {
   const location = useLocation();
-  const siteName = 'TechNova Blog';
+  const siteName = 'TechNova';
   const fullTitle = title.includes('TechNova') ? title : `${title} | ${siteName}`;
   const fullDescription = description;
   
@@ -70,6 +70,7 @@ export function SEO({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={fullDescription} />
+      <meta name="application-name" content="TechNova" />
       {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       {noindex ? (

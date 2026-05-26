@@ -1,6 +1,8 @@
 {
-  "name": "TechNova Blog",
+  "name": "TechNova",
   "description": "A modern, SEO-friendly technology blog featuring the latest in AI, Web Development, and Cybersecurity.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

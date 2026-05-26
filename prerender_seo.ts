@@ -93,6 +93,8 @@ async function createPreRenderedPage(outputFilePath, title, description, urlStr,
       <meta property="og:image" content="${image}" data-rh="true" />
       <meta property="og:type" content="${ogType}" data-rh="true" />
       <meta property="og:url" content="${canonicalUrl}" data-rh="true" />
+      <meta property="og:site_name" content="TechNova" data-rh="true" />
+      <meta name="application-name" content="TechNova" data-rh="true" />
       <meta name="twitter:card" content="summary_large_image" data-rh="true" />
       <meta name="twitter:title" content="${title}" data-rh="true" />
       <meta name="twitter:description" content="${description}" data-rh="true" />

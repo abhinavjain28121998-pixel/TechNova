@@ -337,6 +337,8 @@ ${postsList.filter((p: any) => !p.status || p.status === 'published').map((post:
               <meta property="og:description" content="${description}" data-rh="true" />
               <meta property="og:image" content="${image}" data-rh="true" />
               <meta property="og:type" content="article" data-rh="true" />
+              <meta property="og:site_name" content="TechNova" data-rh="true" />
+              <meta name="application-name" content="TechNova" data-rh="true" />
               <meta name="twitter:card" content="summary_large_image" data-rh="true" />
               <meta name="twitter:title" content="${title}" data-rh="true" />
               <meta name="twitter:description" content="${description}" data-rh="true" />

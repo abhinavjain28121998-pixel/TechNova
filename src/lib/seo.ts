@@ -18,7 +18,8 @@ export function generateOrganizationSchema() {
   return {
     '@type': 'Organization',
     '@id': `${BASE_URL}/#organization`,
-    name: 'TechNova Blog',
+    name: 'TechNova',
+    alternateName: 'TechNova Blog',
     description: 'Expert insights into Artificial Intelligence, software architecture, and enterprise technology.',
     url: BASE_URL,
     logo: {
@@ -45,7 +46,8 @@ export function generateWebSiteSchema(keywords?: string[]) {
     '@type': 'WebSite',
     '@id': `${BASE_URL}/#website`,
     url: BASE_URL,
-    name: 'TechNova Blog',
+    name: 'TechNova',
+    alternateName: ['TechNova Blog', 'Tech Nova', 'Technova'],
     description: 'Expert insights into AI, software architecture, and enterprise technology.',
     publisher: {
       '@id': `${BASE_URL}/#organization`
