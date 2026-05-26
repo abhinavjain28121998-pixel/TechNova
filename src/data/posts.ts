@@ -1,3 +1,8 @@
+import { aiUseCaseAML } from './aiUseCaseAML';
+import { aiUseCaseMarket } from './aiUseCaseMarket';
+import { aiUseCaseForecasting } from './aiUseCaseForecasting';
+import { aiUseCaseExpense } from './aiUseCaseExpense';
+
 import { Post, Author } from '../types';
 import { eeatPosts } from './eeatPosts';
 import { transformationPosts } from './transformationPosts';
@@ -2018,6 +2023,10 @@ Procurement strongly definitively clearly acts as completely exactly the central
 ];
 
 const RAW_POSTS: Post[] = [
+...aiUseCaseAML,
+...aiUseCaseMarket,
+...aiUseCaseForecasting,
+...aiUseCaseExpense,
 ..._POSTS,
 ...eeatPosts,
 ...transformationPosts,
