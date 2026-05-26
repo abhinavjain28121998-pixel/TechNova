@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart, Coffee, Music, ShoppingCart, Truck } from 'lucide-react';
+import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart, Coffee, Music, ShoppingCart, Truck, Store, Landmark, Cpu, Globe } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { BASE_URL } from '../lib/seo';
 import { Button, buttonVariants } from '../components/ui/button';
@@ -9,129 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
 import { Link } from 'react-router-dom';
 
-const caseStudies = [
-  {
-    company: "Klarna",
-    industry: "Fintech & E-commerce",
-    icon: <BarChart3 className="w-8 h-8 text-primary" />,
-    context: "A global payments network managing <strong class='text-primary font-bold'>millions</strong> of e-commerce transactions and customer support queries across multiple time zones.",
-    problem: "Scaling customer service operations efficiently during rapid growth. Adding <strong class='text-destructive font-bold'>thousands</strong> of human agents would exponentially increase overhead, yet maintaining high customer satisfaction (CSAT) remained paramount.",
-    solution: "Klarna deployed a highly capable OpenAI-powered assistant natively within their app. This system was uniquely integrated with their transactional backend, allowing it to actively process refunds, manage cancellations, and resolve disputes instead of just providing generic FAQs.",
-    results: [
-      "Handled <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>2.3 million</strong> conversations in its first month.",
-      "Delivered the equivalent work of <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>700 full-time</strong> human agents.",
-      "Achieved a <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>25%</strong> drop in repeat inquiries.",
-      "Estimated <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>$40 million USD</strong> improvement in bottom-line profit over 2024."
-    ],
-    analysis: "Klarna succeeded by transitioning from conversational AI to 'agentic' AI. By connecting the LLM directly to core operational APIs, the tool resolves user problems instantly without requiring human escalation for routine tasks.",
-    takeaway: "Transformational AI doesn't just answer questions—it executes functional tasks by integrating deeply with internal systems."
-  },
-  {
-    company: "Morgan Stanley",
-    industry: "Wealth Management & Finance",
-    icon: <Building2 className="w-8 h-8 text-emerald-500" />,
-    context: "A premier global financial services firm where advisors rely on a vast trove of internal investment strategies, market research, and procedural documentation.",
-    problem: "The sheer volume of unstructured internal data—spanning over <strong class='text-destructive font-bold'>100,000 documents</strong>—led to significant inefficiencies. Advisors spent hours searching for specific insights, slowing down client responsiveness during critical market shifts.",
-    solution: "Partnered closely with OpenAI to build an internal generative AI assistant using Retrieval-Augmented Generation (RAG). The LLM was strictly confined to synthesizing and retrieving information exclusively from Morgan Stanley's verified, proprietary intellectual property.",
-    results: [
-      "Instant synthesis of <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>100,000+</strong> verified research documents.",
-      "Massive reduction in time-to-insight for financial advisors.",
-      "Maintained <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>zero-hallucination</strong> compliance by isolating the model's knowledge base."
-    ],
-    analysis: "By restricting the AI's generation capabilities solely to verified internal data (RAG), Morgan Stanley resolved the enterprise sector's biggest fear: AI hallucinations. This maintains strict regulatory compliance while radically accelerating data retrieval.",
-    takeaway: "For enterprise AI deployment, robust data governance and strict system boundaries are more critical than general-purpose model intelligence."
-  },
-  {
-    company: "Netflix",
-    industry: "Streaming Media & Entertainment",
-    icon: <Target className="w-8 h-8 text-rose-500" />,
-    context: "A global streaming platform scaling past <strong class='text-primary font-bold'>260 million subscribers</strong> with an overwhelmingly vast content library.",
-    problem: "To prevent 'decision fatigue', where users who spend more than <strong class='text-destructive font-bold'>90 seconds</strong> attempting to find content typically abandon the platform and eventually churn.",
-    solution: "An advanced, multi-layered machine learning recommendation engine. Beyond simply suggesting titles, the AI dynamically generates and tests individualized artwork/thumbnails for titles, adapting the visual presentation based on a user’s inferred psychological engagement profile and past viewing habits.",
-    results: [
-      "AI-driven recommendations estimate over <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>$1 billion per year</strong> in retained revenue by significantly reducing subscriber churn.",
-      "Maintains the industry's lowest churn rate through hyper-personalized user interfaces.",
-      "Over <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>80%</strong> of watched content stems directly from algorithmic recommendations."
-    ],
-    analysis: "Netflix realizes that user preferences dictate not only *what* they watch, but *how* it should be presented. Adapting the UI layer (the thumbnail graphics) dynamically provides the highest engagement yields.",
-    takeaway: "Real personalization extends beyond predictive product recommendations—it dynamically modifies the user interface and presentation format."
-  },
-  {
-    company: "The Hackett Group®",
-    industry: "Management Consulting",
-    icon: <LineChart className="w-8 h-8 text-amber-500" />,
-    context: "A leading global strategic advisory and operations improvement consulting firm relying on vast amounts of proprietary benchmarking data.",
-    problem: "Analyzing complex organizational performance metrics across <strong class='text-destructive font-bold'>thousands</strong> of datasets to generate actionable benchmarking insights was highly manual, delaying critical strategic advice.",
-    solution: "The Hackett Group integrated an advanced generative AI platform directly into their proprietary benchmarking database. This AI acts as an expert analyst, rapidly synthesizing data and generating comparative narratives.",
-    results: [
-      "Accelerated the production of benchmarking reports by <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>over 40%</strong>.",
-      "Empowered consultants to query complex datasets using natural language, uncovering deeper insights.",
-      "Maintained strict data confidentiality while <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>increasing throughput</strong> of advisory services."
-    ],
-    analysis: "By empowering their consultants with an AI tool trained specifically on their world-class benchmarking taxonomy, The Hackett Group eliminated the data-gathering bottleneck. The AI handles the synthesis, allowing consultants to focus purely on strategic interpretation.",
-    takeaway: "In knowledge-intensive industries, AI is most effective when it amplifies the capabilities of human experts, freeing them from data processing to focus on high-value strategic advisory."
-  },
-  {
-    company: "Starbucks",
-    industry: "Retail & Food Beverage",
-    icon: <Coffee className="w-8 h-8 text-orange-500" />,
-    context: "A global coffeehouse chain serving <strong class='text-primary font-bold'>millions</strong> of customers daily across thousands of physical retail locations.",
-    problem: "Balancing highly personalized customer experiences with the intense operational demands of peak-hour store traffic and inventory management.",
-    solution: "Starbucks launched Deep Brew, an overarching AI platform connecting the Starbucks Rewards app with in-store operations. It leverages purchasing data, localized weather, and time-of-day to provide hyper-personalized recommendations while predicting inventory needs and automating preventative maintenance for espresso machines.",
-    results: [
-      "Driven an astronomical percentage of total revenue through the <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>Rewards App</strong> ecosystem.",
-      "Significantly reduced <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>machine downtime</strong> via IoT predictive maintenance.",
-      "Maximized upsells through context-aware <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>dynamic recommendations</strong>."
-    ],
-    analysis: "Deep Brew succeeds because it serves both the customer and the barista. It enhances the frontend digital experience while simultaneously optimizing backend store operations.",
-    takeaway: "True digital transformation connects customer-facing personalization with back-office operational automation."
-  },
-  {
-    company: "Spotify",
-    industry: "Audio Streaming",
-    icon: <Music className="w-8 h-8 text-green-500" />,
-    context: "A dominant music streaming platform fighting for user retention in a highly commoditized market with almost identical content libraries to competitors.",
-    problem: "When users have access to almost every song ever recorded, discovery becomes overwhelming. <strong class='text-destructive font-bold'>Choice paralysis</strong> threatened to lower engagement and increase subscriber churn.",
-    solution: "Spotify deployed an aggressively intelligent curation engine, famously utilized in 'Discover Weekly.' The AI combines collaborative filtering (finding similar users) with Natural Language Processing (reading music blogs) to autonomously curate highly specific, hyper-personalized playlists for every single user globally.",
-    results: [
-      "Discover Weekly drove <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>billions</strong> of track streams within its first year.",
-      "Created an incredibly strong <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>competitive moat</strong> based on algorithmic understanding.",
-      "Increased average daily listening times by consistently surfacing <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>high-affinity</strong> content."
-    ],
-    analysis: "Spotify fundamentally shifted from being a massive repository of music to an active, intelligent curator. They realized their actual product was discovery, not just access.",
-    takeaway: "In heavily commoditized markets, advanced AI-driven personalization is the ultimate differentiator."
-  },
-  {
-    company: "Amazon",
-    industry: "E-commerce & Logistics",
-    icon: <ShoppingCart className="w-8 h-8 text-amber-500" />,
-    context: "The world's largest online retailer managing an incomprehensibly vast global supply chain that processes <strong class='text-primary font-bold'>billions</strong> of packages annually.",
-    problem: "Meeting the increasingly intense consumer expectation for <strong class='text-destructive font-bold'>next-day or same-day</strong> delivery without completely destroying profit margins through exorbitant localized warehousing and shipping costs.",
-    solution: "Amazon deployed 'Anticipatory Shipping' algorithms alongside autonomous Kiva warehouse robots. The AI analyzes granular search and purchase history to predict what a region will buy, shipping items to localized fulfillment centers before the customer even clicks purchase.",
-    results: [
-      "Drastically reduced <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>delivery times</strong> across massive geographic areas.",
-      "Lowered <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>warehousing overhead</strong> through dynamic, predictive inventory placement.",
-      "Enabled the massive scale of the <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>Amazon Prime</strong> next-day delivery standard."
-    ],
-    analysis: "Amazon uses machine learning to bend supply chain logistics. By forecasting demand with hyper-accuracy, they eliminate the traditional reactive lag in retail fulfillment.",
-    takeaway: "Predictive AI can completely rewrite the physical limitations of legacy supply chains."
-  },
-  {
-    company: "Maersk",
-    industry: "Global Shipping",
-    icon: <Truck className="w-8 h-8 text-sky-500" />,
-    context: "An international maritime shipping giant responsible for transporting nearly <strong class='text-primary font-bold'>20% of the world's</strong> food, materials, and consumer goods.",
-    problem: "Global maritime shipping is incredibly volatile. Unexpected weather anomalies, port congestions, or geopolitical events frequently create <strong class='text-destructive font-bold'>cascading delays</strong> that disrupt the entire planetary supply chain.",
-    solution: "Maersk developed intelligent digital twins of their active shipping network. By ingesting massive continuous data streams—including live weather, port capacity, and vessel telemetrics—the AI can simulate millions of routing variables instantly to autonomously predict shortages and optimize cargo rerouting before a crisis hits.",
-    results: [
-      "Saved <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>tens of millions</strong> in annual fuel costs via algorithmic routing.",
-      "Dramatically reduced the impact of <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>port congestion</strong> delays.",
-      "Provided critical <strong class='text-primary bg-primary/10 px-1 rounded font-bold'>real-time visibility</strong> to global enterprise clients."
-    ],
-    analysis: "Maersk shifted from reacting to maritime disruptions to predicting them. Digital twins allowed them to safely stress-test supply chain scenarios in a virtual environment before executing massive physical fleet changes.",
-    takeaway: "Digital twins combined with predictive ML offer unparalleled risk mitigation for complex, heavy-asset industries."
-  }
-];
+import { caseStudies } from '../data/caseStudiesData';
 
 export default function CaseStudies() {
   const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
@@ -272,17 +150,17 @@ export default function CaseStudies() {
               <div className="space-y-10">
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Layers className="w-5 h-5 text-muted-foreground" /> Context & Background</h3>
-                  <p className="text-muted-foreground leading-relaxed md:text-lg" dangerouslySetInnerHTML={{ __html: selectedStudy.context }} />
+                  <div className="text-muted-foreground space-y-4 leading-relaxed md:text-lg" dangerouslySetInnerHTML={{ __html: selectedStudy.context }} />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-destructive/5 rounded-xl border border-destructive/10 p-6 md:p-8">
                     <h3 className="font-semibold text-destructive mb-3 text-lg">The Challenge</h3>
-                    <p className="text-sm md:text-base text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.problem }} />
+                    <div className="text-sm md:text-base space-y-4 text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.problem }} />
                   </div>
                   <div className="bg-primary/5 rounded-xl border border-primary/10 p-6 md:p-8">
                     <h3 className="font-semibold text-primary mb-3 text-lg">The Strategy</h3>
-                    <p className="text-sm md:text-base text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.solution }} />
+                    <div className="text-sm md:text-base space-y-4 text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.solution }} />
                   </div>
                 </div>
 
