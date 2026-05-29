@@ -31,6 +31,7 @@ import { procurementAIArticles } from './procurementAIArticles';
 import { supplyChainAIArticles } from './supplyChainAIArticles';
 import { financeAIArticles } from './financeAIArticles';
 import { financeUseCasesPosts } from './financeUseCasesPosts';
+import { fourNewUseCases } from './fourNewUseCases';
 
 const authors = {
  alex: {
@@ -2053,6 +2054,7 @@ const RAW_POSTS: Post[] = [
 ...supplyChainAIArticles,
 ...financeAIArticles,
 ...financeUseCasesPosts,
+...fourNewUseCases,
 ];
 
 function extractExcerpt(content: string): string {
