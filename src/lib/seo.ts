@@ -14,6 +14,21 @@ export function generateBreadcrumbSchema(items: { name: string; item: string }[]
   };
 }
 
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  };
+}
+
 export function generateOrganizationSchema() {
   return {
     '@type': 'Organization',
@@ -25,10 +40,24 @@ export function generateOrganizationSchema() {
     logo: {
       '@type': 'ImageObject',
       '@id': `${BASE_URL}/#logo`,
-      url: `${BASE_URL}/logo.svg`,
+      url: `${BASE_URL}/tech-nova-enterprise-software-ai-blog-logo.svg`,
       width: 600,
       height: 60,
       caption: 'TechNova Blog Logo'
+    },
+    foundingDate: '2023-01-01',
+    founders: [
+        {
+            '@type': 'Person',
+            name: 'TechNova Team'
+        }
+    ],
+    knowsAbout: ['Artificial Intelligence', 'Software Architecture', 'Web Development', 'Cybersecurity', 'Machine Learning'],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hello@tech-nova-iota.vercel.app',
+      url: `${BASE_URL}/contact`
     },
     image: {
       '@id': `${BASE_URL}/#logo`

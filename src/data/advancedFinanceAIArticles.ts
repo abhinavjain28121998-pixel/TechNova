@@ -120,7 +120,7 @@ The adoption of Generative AI for mergers and acquisitions analysis is permanent
     category: 'Investment Banking',
     date: '2026-06-01',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/ma_ai_infographic.png',
     tags: ['Generative AI', 'Mergers and Acquisitions', 'M&A', 'Finance', 'Due Diligence'],
     featured: false,
     faqs: [
@@ -254,7 +254,7 @@ Automating financial statement analysis using Generative AI is shifting the fina
     category: 'Corporate Finance',
     date: '2026-06-01',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/financial_statement_ai.png',
     tags: ['Generative AI', 'Financial Statement Analysis', 'Corporate Finance', 'Automation', 'Accounting'],
     featured: false,
     faqs: [
@@ -388,7 +388,7 @@ Intelligent cash flow forecasting powered by Generative AI is effectively neutra
     category: 'Corporate Finance',
     date: '2026-06-01',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/cash_flow_forecasting_ai.png',
     tags: ['Generative AI', 'Cash Flow Forecasting', 'Corporate Finance', 'Treasury', 'Liquidity'],
     featured: false,
     faqs: [
@@ -522,7 +522,7 @@ The deployment of Generative AI throughout trade finance automation is clearing 
     category: 'FinTech',
     date: '2026-06-01',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/trade_finance_ai.png',
     tags: ['Generative AI', 'Trade Finance', 'Supply Chain', 'Global Banking', 'Automation'],
     featured: false,
     faqs: [

@@ -1,5 +1,5 @@
 import { SEO } from '../components/SEO';
-import { generateBreadcrumbSchema, generateAboutPageSchema, BASE_URL } from '../lib/seo';
+import { generateBreadcrumbSchema, generateAboutPageSchema, BASE_URL, generateFAQSchema } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Code, Shield, Bot, Newspaper, Zap, Users, Target, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
@@ -11,6 +11,27 @@ export default function About() {
   ]);
 
   const aboutSchema = generateAboutPageSchema();
+  
+  const faqs = [
+    {
+      question: "Who founded TechNova?",
+      answer: "TechNova was founded by a collective group of senior technical architectures, AI researchers, and software engineers who saw a market need for deeply vetted, practitioner-led engineering tutorials that go beyond basic documentation."
+    },
+    {
+      question: "How does TechNova ensure content accuracy and trustworthiness?",
+      answer: "We ensure accuracy through a strict editorial process. Every tutorial, insight, and code snippet published on TechNova undergoes rigorous technical verification by peer developers to ensure it meets enterprise engineering standards."
+    },
+    {
+      question: "What is TechNova's core mission?",
+      answer: "TechNova's primary mission is to decode complex technological advancements, from Artificial Intelligence to scalable backend architecture, and present them in clear, highly actionable guides that working professionals can implement immediately."
+    },
+    {
+      question: "Is TechNova a good resource for beginner developers?",
+      answer: "While we cater primarily to senior and mid-level software engineers seeking advanced architectural insights, beginners can greatly benefit from our comprehensive, step-by-step tutorials on modern web development and AI fundamentals."
+    }
+  ];
+
+  const faqSchema = generateFAQSchema(faqs);
   
   const coreValues = [
     {
@@ -60,7 +81,7 @@ export default function About() {
         description="Discover the story behind TechNova Blog. We are a team of industry practitioners delivering deep research, tutorials, and practical insights into AI and software engineering."
         url={`${BASE_URL}/about`}
         keywords={['about us', 'TechNova Blog', 'technology blog', 'tech news', 'tech writers']}
-        schema={[breadcrumbSchema, aboutSchema]}
+        schema={[breadcrumbSchema, aboutSchema, faqSchema]}
       />
       
       {/* Hero Section */}
@@ -169,6 +190,39 @@ export default function About() {
                     <p className="text-muted-foreground">{topic.description}</p>
                   </CardContent>
                 </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AEO FAQ Section for About Page */}
+      <section className="py-24 bg-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Common Questions About TechNova</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn more about who we are, what we do, and how we operate.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card border border-border p-8 rounded-2xl shadow-sm"
+              >
+                <h3 className="text-xl font-bold text-foreground mb-4">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

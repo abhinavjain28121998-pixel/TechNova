@@ -441,7 +441,7 @@ export default function Admin() {
             <Bell className="w-5 h-5 cursor-pointer hover:text-primary hidden sm:block md:hover:text-[#72aee6]" />
             <div className="flex items-center gap-2 cursor-pointer md:hover:bg-white/5 hover:bg-gray-100 p-1 px-2 rounded group">
               <span className="text-sm hidden sm:block group-hover:text-primary md:group-hover:text-[#72aee6]">Howdy, {user.displayName || 'Admin'}</span>
-              <img src={user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=admin`} alt="User" className="w-8 h-8 rounded-full border md:border-white/20 border-gray-200" referrerPolicy="no-referrer" />
+              <img src={user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=admin`} alt={`${user.displayName || 'Admin'} user profile avatar`} className="w-8 h-8 rounded-full border md:border-white/20 border-gray-200" referrerPolicy="no-referrer" />
             </div>
             <Button variant="ghost" size="icon" onClick={logout} title="Sign Out" className="md:hover:bg-white/5 md:text-white text-slate-500">
               <LogOut className="w-5 h-5" />
@@ -794,7 +794,7 @@ export default function Admin() {
                     <div className="p-3">
                       {editingPost?.coverImage ? (
                         <div className="space-y-3">
-                          <img src={editingPost.coverImage} className="w-full h-auto border border-[#c3c4c7]" alt="Featured" />
+                          <img src={editingPost.coverImage} className="w-full h-auto border border-[#c3c4c7]" alt="Article featured cover image preview" />
                           <div className="space-y-2">
                             <Input 
                               placeholder="Image URL" 

@@ -7,7 +7,7 @@ import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Button, buttonVariants } from '../components/ui/button';
 import { ArrowRight, Calendar, Clock, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
-import { generateWebPageSchema, BASE_URL } from '../lib/seo';
+import { generateWebPageSchema, BASE_URL, generateFAQSchema } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
@@ -60,13 +60,34 @@ export default function Home() {
     description: 'Explore expert insights, technical tutorials, and strategic deep-dives into Artificial Intelligence, software architecture, and the future of enterprise tech at TechNova.'
   });
 
+  const faqs = [
+    {
+      question: "What is TechNova Blog?",
+      answer: "TechNova Blog is a premier technology publication focused on providing software developers, engineers, and tech leaders with deep insights, tutorials, and strategic analyses of Artificial Intelligence, web development, and software architecture."
+    },
+    {
+      question: "What topics does TechNova cover?",
+      answer: "We cover a wide range of highly technical topics including Generative AI implementation, scalable backend software architecture, modern frontend frameworks like React and Vite, cybersecurity best practices, and enterprise technology trends."
+    },
+    {
+      question: "Who writes for TechNova?",
+      answer: "Our articles are researched and written by industry practitioners including senior software developers, AI researchers, and technical architects who bring real-world engineering experience to every guide."
+    },
+    {
+      question: "How often is new content published?",
+      answer: "We publish new, deeply researched technical articles and tutorials multiple times a week to ensure you stay ahead of the curve in the rapidly evolving software and AI industries."
+    }
+  ];
+
+  const faqSchema = generateFAQSchema(faqs);
+
   return (
     <>
       <SEO 
         title="TechNova Blog | Build the Future of Software & AI"
         description="Explore expert insights, technical tutorials, and strategic deep-dives into Artificial Intelligence, software architecture, and the future of enterprise tech at TechNova."
         keywords={['technology blog', 'AI tutorials', 'web development', 'cybersecurity', 'tech news', 'software engineering']}
-        schema={[homeSchema]}
+        schema={[homeSchema, faqSchema]}
         url={BASE_URL}
       />
 
@@ -363,6 +384,28 @@ export default function Home() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Answer Engine Optimization (AEO) FAQ Section */}
+      <section className="py-16 bg-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-card border border-border p-6 rounded-xl shadow-sm">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">{faq.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
     </>
