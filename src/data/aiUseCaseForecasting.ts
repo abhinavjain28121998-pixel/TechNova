@@ -3,7 +3,7 @@ import { Post, Author } from '../types';
 const defaultAuthor: Author = {
   name: 'Marcus Vance',
   role: 'Chief Financial Technology Officer',
-  avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=faces&auto=format&q=80',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Expert',
   bio: 'Pioneer in integrating predictive algorithms and Generative AI within corporate FP&A environments to drive agile financial forecasting.'
 };
 
@@ -63,7 +63,7 @@ The era of the static spreadsheet is ending. Generative AI represents the ultima
     category: 'Finance',
     date: '2026-05-26',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/ai_neural_network_finance.png',
     tags: ['Generative AI', 'Forecasting', 'FP&A', 'Finance', 'Predictive Modeling'],
     featured: false,
     faqs: [

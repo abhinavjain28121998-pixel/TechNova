@@ -10,7 +10,7 @@ export const fraudDetectionPost: Post[] = [
  category: 'Finance',
  tags: ['AI', 'Fraud Detection', 'Banking', 'Cybersecurity', 'Finance'],
  date: '2026-05-13T10:00:00Z',
- coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/ai_neural_network_finance.png',
  readingTime: '5 min read',
  author: {
  name: 'Marcus Johnson',

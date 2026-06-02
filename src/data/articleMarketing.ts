@@ -60,7 +60,7 @@ This is precisely why intelligent enterprise leaders strategically engage [Gen A
 
 The deployment of sophisticated artificial intelligence within the domain of enterprise marketing is no longer an optional innovation; it is a fundamental baseline for sustained competency in an increasingly volatile digital economy. The organizations that successfully transition to an AI-augmented operational baseline will benefit from unparalleled scalability, deep hyper-personalization, and optimal capital allocation. Those that mistakenly treat generative AI as a temporary algorithmic novelty will rapidly find themselves structurally outmaneuvered by more agile, data-driven competitors.
 `,
- coverImage: 'https://images.unsplash.com/photo-1451187580459-434902bd0c0e?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  date: "2026-05-08T17:00:00Z",
  readingTime: "8 min read",
  category: "Marketing",

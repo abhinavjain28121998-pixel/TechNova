@@ -10,7 +10,7 @@ export const payrollSalaryCalculationPost: Post[] = [
  category: 'Compensation Intelligence',
  tags: ['AI', 'Salary Automation', 'Compensation', 'Global Payroll', 'Machine Learning'],
  date: '2026-05-22T10:15:00Z',
- coverImage: 'https://images.unsplash.com/photo-1517048676732-5acca8433ec1?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Michael Chang',

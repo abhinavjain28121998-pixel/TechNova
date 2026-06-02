@@ -3,7 +3,7 @@ import { Post, Author } from '../types';
 const defaultAuthor: Author = {
   name: 'Alex Rivera',
   role: 'AI Financial Systems Architect',
-  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces&auto=format&q=80',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Expert',
   bio: 'Expert in deploying Generative AI models within heavily regulated financial environments, focusing on risk mitigation and fraud prevention.'
 };
 
@@ -63,7 +63,7 @@ The deployment of Generative AI within AML compliance is not about replacing inv
     category: 'Cybersecurity',
     date: '2026-05-26',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/document_summarization_ai.png',
     tags: ['Generative AI', 'AML', 'Finance', 'Compliance', 'Risk Management'],
     featured: false,
     faqs: [

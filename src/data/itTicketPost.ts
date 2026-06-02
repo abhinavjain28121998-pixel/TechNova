@@ -10,7 +10,7 @@ export const itTicketPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'Service Management', 'Machine Learning', 'Ticket Triage', 'ITSM'],
  date: '2026-05-15T11:30:00Z',
- coverImage: 'https://images.unsplash.com/photo-1553729459-efe14d8bd8dc?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/ai_neural_network_finance.png',
  readingTime: '6 min read',
  author: {
  name: 'David Chen',

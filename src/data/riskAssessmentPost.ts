@@ -10,7 +10,7 @@ export const riskAssessmentPost: Post[] = [
  category: 'Finance',
  tags: ['AI', 'Risk Assessment', 'Corporate Finance', 'Strategy', 'Finance'],
  date: '2026-05-13T10:15:00Z',
- coverImage: 'https://images.unsplash.com/photo-1553729459-efe14d8bd8dc?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/ai_neural_network_finance.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Chen',

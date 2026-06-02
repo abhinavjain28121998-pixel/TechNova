@@ -10,7 +10,7 @@ export const payrollTaxCompliancePost: Post[] = [
  category: 'Legal & Compliance',
  tags: ['AI', 'Tax Compliance', 'Regulatory Intelligence', 'Global Payroll', 'Machine Learning'],
  date: '2026-05-23T14:45:00Z',
- coverImage: 'https://images.unsplash.com/photo-1504868584819-ef4859aeb4ba?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/ai_neural_network_finance.png',
  readingTime: '6 min read',
  author: {
  name: 'Elena Rostova',

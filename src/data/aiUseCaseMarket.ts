@@ -3,7 +3,7 @@ import { Post, Author } from '../types';
 const defaultAuthor: Author = {
   name: 'Sophia Chen',
   role: 'Quantitative Strategy Director',
-  avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces&auto=format&q=80',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Expert',
   bio: 'Specialist in bridging large language models with macroeconomic data architecture to drive institutional investment strategy.'
 };
 
@@ -63,7 +63,7 @@ The evolution of market intelligence is moving rapidly from manual data aggregat
     category: 'AI',
     date: '2026-05-26',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/cyber_finance_dashboard.png',
     tags: ['Generative AI', 'Market Insights', 'Financial Research', 'Investments', 'Data Analytics'],
     featured: false,
     faqs: [

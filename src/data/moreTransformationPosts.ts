@@ -48,7 +48,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 A successful overarching [IT Transformation](/blog/expert-guide-it-transformation) strategy.
 `,
- coverImage: 'https://images.unsplash.com/photo-1451187580459-434902bd0c0e?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/cyber_finance_dashboard.png',
  date: '2026-05-20',
  readingTime: '9 min read',
  category: 'Technology',
@@ -121,7 +121,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 Implementing.
 `,
- coverImage: 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  date: '2026-05-20',
  readingTime: '9 min read',
  category: 'Supply Chain',
@@ -183,7 +183,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 .
 `,
- coverImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  date: '2026-05-20',
  readingTime: '8 min read',
  category: 'HR',

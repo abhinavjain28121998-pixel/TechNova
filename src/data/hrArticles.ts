@@ -10,7 +10,7 @@ export const hrArticles: Post[] = [
  category: 'HR',
  tags: ['AI', 'Resume Screening', 'Talent Acquisition', 'HR Tech', 'Recruitment'],
  date: '2026-05-14T09:00:00Z',
- coverImage: 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Samantha Lewis',
@@ -106,7 +106,7 @@ Elevating [talent acquisition](/blog/ai-resume-screening-talent-acquisition) req
  category: 'HR',
  tags: ['AI', 'Candidate Matching', 'Recruitment Strategy', 'Predictive Analytics'],
  date: '2026-05-14T09:10:00Z',
- coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Samantha Lewis',
@@ -206,7 +206,7 @@ Transforming recruitment strategy through AI candidate matching allows organizat
  category: 'HR',
  tags: ['AI', 'Sentiment Analysis', 'Employee Engagement', 'HR Strategy'],
  date: '2026-05-14T09:20:00Z',
- coverImage: 'https://images.unsplash.com/photo-1517048676732-5acca8433ec1?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/ai_neural_network_finance.png',
  readingTime: '6 min read',
  author: {
  name: 'Samantha Lewis',
@@ -301,7 +301,7 @@ Decoding workforce engagement explicitly through highly advanced AI sentiment an
  category: 'HR',
  tags: ['AI', 'Workforce Planning', 'HR Strategy', 'Predictive Analytics'],
  date: '2026-05-14T09:30:00Z',
- coverImage: 'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/cyber_finance_dashboard.png',
  readingTime: '6 min read',
  author: {
  name: 'Samantha Lewis',

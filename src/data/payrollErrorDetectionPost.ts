@@ -10,7 +10,7 @@ export const payrollErrorDetectionPost: Post[] = [
  category: 'Risk Management',
  tags: ['AI', 'Error Detection', 'Payroll Compliance', 'Machine Learning', 'Audit'],
  date: '2026-05-21T08:30:00Z',
- coverImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Rahman',

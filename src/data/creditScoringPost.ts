@@ -10,7 +10,7 @@ export const creditScoringPost: Post[] = [
  category: 'Finance',
  tags: ['AI', 'Credit Scoring', 'Fintech', 'Lending', 'Finance'],
  date: '2026-05-13T10:05:00Z',
- coverImage: 'https://images.unsplash.com/photo-1451187580459-434902bd0c0e?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Chen',

@@ -38,8 +38,8 @@ export function SEO({
     rawUrl = rawUrl.slice(0, -1);
   }
   const canonicalUrl = rawUrl;
-  // Fallback image using images.unsplash.com as source.unsplash is deprecated
-  const defaultImage = title ? 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop' : 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop';
+  // Fallback image
+  const defaultImage = title ? '/tech_dashboard_ai.png' : '/tech_dashboard_ai.png';
   const socialImage = image || defaultImage;
 
   // Combine provided schemas with base site schemas

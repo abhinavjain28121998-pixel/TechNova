@@ -397,7 +397,7 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <AIImage 
-              src={(post.coverImage || 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=800&auto=format&fit=crop')} 
+              src={(post.coverImage || '/tech_dashboard_ai.png')} 
               alt={post.title} 
               context={post.content}
               width={800}

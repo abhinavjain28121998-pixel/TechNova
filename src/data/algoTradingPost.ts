@@ -10,7 +10,7 @@ export const algoTradingPost: Post[] = [
  category: 'Finance',
  tags: ['AI', 'Algorithmic Trading', 'Capital Markets', 'Investment Banking', 'Finance'],
  date: '2026-05-13T10:10:00Z',
- coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  readingTime: '5 min read',
  author: {
  name: 'Alex Rivera',

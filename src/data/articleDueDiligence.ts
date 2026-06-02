@@ -60,7 +60,7 @@ Seeking rigorous structural [Gen AI Consulting](https://www.thehackettgroup.com/
 
 The aggressive deployment of sophisticated deep generative artificial intelligence precisely across the due diligence execution spectrum definitively redefines absolute structural [risk assessment](/blog/ai-risk-assessment-corporate-finance) methodologies forever. Organizations aggressively utilizing advanced semantic analyses permanently unlock massive distinct advantages regarding intense deal velocity and absolutely profound complex extreme risk mitigation. By perfectly transitioning away from strictly manual heavy evaluations, enterprise M&A completely pivots toward highly data-driven, flawlessly confident execution.
 `,
- coverImage: 'https://images.unsplash.com/photo-1451187580459-434902bd0c0e?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  date: "2026-05-08T17:15:00Z",
  readingTime: "8 min read",
  category: "Due Diligence",

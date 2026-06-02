@@ -3,7 +3,7 @@ import { Post, Author } from '../types';
 const defaultAuthor: Author = {
   name: 'Elena Rostova',
   role: 'AI Procurement & Expense Solutions Lead',
-  avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=faces&auto=format&q=80',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Expert',
   bio: 'Expert in streamlining corporate expense workflows and procurement automation through sophisticated Generative AI integration.'
 };
 
@@ -63,7 +63,7 @@ Intelligent expense management powered by Generative AI is not merely an increme
     category: 'Finance',
     date: '2026-05-26',
     author: defaultAuthor,
-    coverImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop&auto=format&q=80',
+    coverImage: '/tech_dashboard_ai.png',
     tags: ['Generative AI', 'Expense Management', 'Automation', 'Finance', 'Operations'],
     featured: false,
     faqs: [

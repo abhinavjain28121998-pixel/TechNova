@@ -60,7 +60,7 @@ Obtaining specialized [Gen AI [Consulting](/blog/gen-ai-consulting-enterprise-tr
 
 The profound integration of generative artificial intelligence into the enterprise support stack fundamentally and permanently alters the operational economics of customer management. Modern organizations possess the immediate technological ability to deliver frictionless, highly autonomous, globally infinite service at a mere fraction of previous historical cost limits. Embracing this deep technological transformation empowers modern companies to successfully convert previous support frustrations into massive competitive retention advantages.
 `,
- coverImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/cyber_finance_dashboard.png',
  date: "2026-05-08T17:10:00Z",
  readingTime: "8 min read",
  category: "Customer Support",

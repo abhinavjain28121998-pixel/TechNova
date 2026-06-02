@@ -54,7 +54,7 @@ The leap from theory to practice requires profound expertise in both data scienc
 
 The future of manufacturing resilience lies in how rapidly and accurately you can source the right partners. Generative AI fundamentally revolutionizes supplier discovery and evaluation, offering unprecedented speed, global reach, and deep analytical rigor. By adopting a pragmatic, expert-guided implementation [strategy](/blog/ai-risk-assessment-corporate-finance), organizations can transform their supply chains into a decisive competitive advantage.
 `,
- coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/cyber_finance_dashboard.png',
  date: '2026-05-18',
  readingTime: '6 min read',
  category: 'Procurement',
@@ -123,7 +123,7 @@ Financial vendor risk is not a problem solved by generic software. It demands hi
 
 Vendor risk in financial services is too complex, fast-moving, and critical to manage manually. AI-driven vendor risk assessment offers the only realistic path to continuous, comprehensive security and compliance. By integrating sophisticated [Gen AI](/blog/transforming-enterprise-revenue-sales-gen-ai) tools with expert oversight, financial institutions can protect their data, reputation, and bottom line in an increasingly perilous threat landscape.
 `,
- coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  date: '2026-05-18',
  readingTime: '7 min read',
  category: 'Procurement',
@@ -190,7 +190,7 @@ Integrating cognitive automation into a high-stakes logistics pipeline is an ent
 
 Automated purchase order processing via AI is not merely an efficiency play; it is a scalability imperative. [Logistics](/blog/gen-ai-in-supply-chain-next-gen-logistics) firms burdened by legacy paperwork simply cannot compete with highly responsive, automated rivals. By intelligently applying generative models to inbound documentation, organizations unlock unprecedented speed, profound accuracy, and significant margin expansion.
 `,
- coverImage: 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  date: '2026-05-18',
  readingTime: '6 min read',
  category: 'Procurement',
@@ -257,7 +257,7 @@ The taxonomy of [enterprise](/blog/gen-ai-consulting-enterprise-transformation) 
 
 Mastering spend analysis is the bedrock of world-class procurement. Without authoritative visibility, [strategic sourcing](/blog/optimizing-supply-chains-with-procurement-solution-intelligence) is impossible. Generative AI provides the ultimate analytical lens, cutting through organizational noise to reveal massive consolidation opportunities. Enterprises that deeply integrate these AI capabilities rapidly dominate their operational costs and secure profound competitive resilience.
 `,
- coverImage: 'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  date: '2026-05-18',
  readingTime: '8 min read',
  category: 'Procurement',

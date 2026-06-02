@@ -13,7 +13,7 @@ export function calculateReadingTime(text: string | undefined): string {
 }
 
 export function getOptimizedImageUrl(url: string | undefined, width: number = 800): string {
-  const fallback = 'https://images.unsplash.com/photo-1504384308090-c894fd10fdd2?q=75&w=' + width + '&auto=format&fit=crop';
+  const fallback = '/tech_dashboard_ai.png';
   if (!url) return fallback;
   
   if (url.includes('images.unsplash.com')) {

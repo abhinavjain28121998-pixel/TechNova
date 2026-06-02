@@ -10,7 +10,7 @@ export const itIncidentPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'Incident Management', 'DevOps', 'Root Cause Analysis', 'Enterprise IT'],
  date: '2026-05-15T11:45:00Z',
- coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Rahman',

@@ -23,7 +23,7 @@ export const eeatPosts: Post[] = [
  author: authorAlex,
  date: '2026-05-04',
  readingTime: '8 min read',
- coverImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/cyber_finance_dashboard.png',
  tags: ['Business Benchmarking', 'AI Strategy', 'Enterprise Architecture', 'Enterprise AI'],
  status: 'published',
  content: `
@@ -112,7 +112,7 @@ The successful, hyper-scalable integration of artificial intelligence is fundame
  author: authorSarah,
  date: '2026-05-04',
  readingTime: '8 min read',
- coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/invoice_processing_ai.png',
  tags: ['Data & Analytics', 'Data Governance', 'Machine Learning', 'Big Data'],
  status: 'published',
  content: `
@@ -195,7 +195,7 @@ The hard truth of [enterprise architecture](/blog/agentic-ai-enterprise-transfor
  author: authorAlex,
  date: '2026-05-04',
  readingTime: '9 min read',
- coverImage: 'https://images.unsplash.com/photo-1511216335778-4cb8f49fa2a5?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  tags: ['Digital Transformation', 'Enterprise IT', 'Automation', 'Change Management'],
  status: 'published',
  content: `
@@ -278,7 +278,7 @@ The aggressive integration of AI and smart [automation](/blog/gen-ai-in-payroll-
  author: authorSarah,
  date: '2026-05-04',
  readingTime: '7 min read',
- coverImage: 'https://images.unsplash.com/photo-1531297122-e12836be60b7?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/tech_dashboard_ai.png',
  tags: ['Solution Intelligence', 'Automation', 'Enterprise AI', 'Decision Engines'],
  status: 'published',
  content: `

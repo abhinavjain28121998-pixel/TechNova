@@ -10,7 +10,7 @@ export const itHelpdeskPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'IT Support', 'Helpdesk Automation', 'Enterprise IT'],
  date: '2026-05-15T11:00:00Z',
- coverImage: 'https://images.unsplash.com/photo-1531297122-e12836be60b7?q=80&w=1200&auto=format&fit=crop',
+ coverImage: '/document_summarization_ai.png',
  readingTime: '6 min read',
  author: {
  name: 'James Carter',
