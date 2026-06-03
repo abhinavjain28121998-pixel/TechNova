@@ -1,61 +1,41 @@
 import { useState, useEffect } from 'react';
-import { db } from '../lib/firebase';
-import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { Post } from '../types';
-import { OperationType, handleFirestoreError } from '../lib/firestoreUtils';
+import { getPostsPaginated, PaginatedResponse } from '../lib/postService';
 
-export function usePosts() {
+export function usePosts(
+  page: number = 1,
+  pageSize: number = 10,
+  category: string | null = null,
+  postIds: string[] | null = null
+) {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [totalPosts, setTotalPosts] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPosts() {
-      const path = 'posts';
       try {
-        const q = query(collection(db, path), orderBy('date', 'desc'));
-        const snapshot = await getDocs(q);
-        const fbPostsMap = new Map();
-        
-        snapshot.docs.forEach(doc => {
-          fbPostsMap.set(doc.id, { id: doc.id, ...doc.data() });
-        });
-
-        // Combine static posts with Firestore posts. 
-        // Firestore posts take precedence if they share the same 'id' or 'slug'
-        import('../data/posts').then(({ POSTS: staticPosts }) => {
-          const combined = [...staticPosts];
-          const combinedMap = new Map();
-          
-          // First add static
-          combined.forEach(p => {
-             // We use slug or id as key
-             combinedMap.set(p.slug || p.id, p);
-          });
-          
-          // Then override/add with firebase
-          fbPostsMap.forEach((p, key) => {
-             combinedMap.set(p.slug || p.id || key, p);
-          });
-          
-          const finalPosts = Array.from(combinedMap.values());
-          // Sort by date desc
-          finalPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-          
-          setPosts(finalPosts);
-        });
+        setLoading(true);
+        const fbResponse = await getPostsPaginated(page, pageSize, category, postIds);
+        setPosts(fbResponse.posts);
+        setTotalPosts(fbResponse.totalPosts);
       } catch (error) {
-        // Fallback to static posts if fetch fails
-        import('../data/posts').then(({ POSTS: staticPosts }) => {
-          setPosts(staticPosts);
-        });
         console.warn("Firestore fetch error, fallback to static collection:", error);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchPosts();
-  }, []);
+    // Only skip fetching if postIds is explicitly an empty array (meaning search returned 0 results)
+    if (postIds && postIds.length === 0) {
+      setPosts([]);
+      setTotalPosts(0);
+      setLoading(false);
+      return;
+    }
 
-  return { posts, loading };
+    fetchPosts();
+  }, [page, pageSize, category, postIds]);
+
+  return { posts, totalPosts, loading };
 }

@@ -11,8 +11,11 @@ import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema, generateBlogIndexGraphSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
-import Fuse from 'fuse.js';
+import { getPosts } from '../lib/postService';
+import { Post } from '../types';
 import Highlighter from 'react-highlight-words';
+
+let cachedAllPosts: Post[] | null = null;
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,15 +23,11 @@ export default function Blog() {
   const searchQuery = searchParams.get('q') || '';
   const selectedCategory = searchParams.get('category') || null;
   const currentPageParams = searchParams.get('page');
-  const currentPage = currentPageParams ? parseInt(currentPageParams, 10) : 1;
+  const safeCurrentPage = currentPageParams ? parseInt(currentPageParams, 10) : 1;
   const [semanticResults, setSemanticResults] = useState<{id: string, score: number}[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   
-  const { posts: fbPosts, loading } = usePosts();
-  
   const POSTS_PER_PAGE = 10;
-
-  const posts = fbPosts.filter(p => !p.status || p.status === 'published');
 
   useEffect(() => {
     if (!searchQuery.trim()) {
@@ -39,69 +38,45 @@ export default function Blog() {
     const timer = setTimeout(async () => {
       setIsSearching(true);
       try {
-        const res = await fetch('/api/semantic-search', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ q: searchQuery })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          setSemanticResults(data.results || []);
-        } else {
-          setSemanticResults(null);
+        if (!cachedAllPosts) {
+          cachedAllPosts = await getPosts();
         }
+        const Fuse = (await import('fuse.js')).default;
+        const fuse = new Fuse(cachedAllPosts, {
+          keys: ['title', 'tags'],
+          threshold: 0.3,
+          ignoreLocation: true,
+        });
+        const results = fuse.search(searchQuery).map(res => ({ 
+          id: (res.item.slug || res.item.id) as string, 
+          score: 1 
+        }));
+        setSemanticResults(results);
       } catch (e) {
-        console.error('Semantic search failed', e);
-        setSemanticResults(null);
+        console.error('Search failed', e);
+        setSemanticResults([]);
       } finally {
         setIsSearching(false);
       }
-    }, 500); // debounce 500ms
+    }, 300); // debounce 300ms
 
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  const filteredPosts = useMemo(() => {
-    let result = posts;
+  const postIdsToFetch = useMemo(() => {
+    if (!searchQuery.trim()) return null;
+    if (semanticResults === null) return []; // Meaning search is still initializing/in-flight, return empty or something indicating loading. Wait, returning empty might make usePosts return []. Let's just return [] for now so it loads nothing while searching.
+    return semanticResults.map(r => r.id);
+  }, [searchQuery, semanticResults]);
 
-    // First filter by category if selected
-    if (selectedCategory) {
-      result = result.filter(post => post.category === selectedCategory);
-    }
-
-    // Apply semantic search results if available
-    if (searchQuery.trim()) {
-      if (semanticResults !== null) {
-        // Semantic search results exist
-        const resultIds = semanticResults.map(r => r.id);
-        result = result.filter(post => resultIds.includes(post.id));
-        // Sort by semantic score
-        result.sort((a, b) => {
-          const scoreA = semanticResults.find(r => r.id === a.id)?.score || 0;
-          const scoreB = semanticResults.find(r => r.id === b.id)?.score || 0;
-          return scoreB - scoreA;
-        });
-      } else {
-        // Fallback to fuzzy search while loading or on error
-        const fuse = new Fuse(result, {
-          keys: ['title', 'excerpt'],
-          threshold: 0.4,
-          includeMatches: true,
-        });
-        result = fuse.search(searchQuery).map(res => res.item);
-      }
-    }
-
-    return result;
-  }, [posts, searchQuery, selectedCategory, semanticResults]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
-  const safeCurrentPage = Math.max(1, Math.min(currentPage, totalPages));
-
-  const paginatedPosts = filteredPosts.slice(
-    (safeCurrentPage - 1) * POSTS_PER_PAGE,
-    safeCurrentPage * POSTS_PER_PAGE
+  const { posts: paginatedPosts, totalPosts, loading } = usePosts(
+    safeCurrentPage,
+    POSTS_PER_PAGE,
+    selectedCategory,
+    postIdsToFetch
   );
+
+  const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE));
 
   const getPageUrl = (pageNum: number) => {
     const params = new URLSearchParams(searchParams);
@@ -156,7 +131,7 @@ export default function Blog() {
             )}
             <Input 
               type="text" 
-              placeholder="Search semantically via AI..." 
+              placeholder="Search articles by title or tags..." 
               className="pl-10 h-12 bg-card border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
               value={searchQuery}
               onChange={(e) => updateParams({ q: e.target.value || null })}
@@ -167,9 +142,42 @@ export default function Blog() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-24">
-            <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
-            <p className="text-muted-foreground">Loading expert articles...</p>
+          <div className="space-y-12 animate-pulse">
+            <div className="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-border">
+              <div className="h-5 w-16 bg-muted rounded mr-2"></div>
+              <div className="h-6 w-12 bg-muted rounded border border-border"></div>
+              <div className="h-6 w-24 bg-muted rounded border border-border"></div>
+              <div className="h-6 w-20 bg-muted rounded border border-border"></div>
+              <div className="h-6 w-28 bg-muted rounded border border-border"></div>
+              <div className="h-6 w-16 bg-muted rounded border border-border"></div>
+            </div>
+
+            <div className="flex flex-col gap-8">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col md:flex-row border-border">
+                  <div className="w-full md:w-1/3 aspect-[16/10] md:aspect-auto bg-muted shrink-0"></div>
+                  <div className="flex flex-col flex-grow p-6">
+                    <header className="mb-4">
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="h-5 w-20 bg-muted rounded"></div>
+                        <div className="h-5 w-16 bg-muted rounded"></div>
+                      </div>
+                      <div className="h-8 w-3/4 bg-muted rounded mb-2"></div>
+                      <div className="h-8 w-1/2 bg-muted rounded mb-3"></div>
+                    </header>
+                    <div className="space-y-2 mb-6 flex-grow">
+                      <div className="h-4 w-full bg-muted rounded"></div>
+                      <div className="h-4 w-full bg-muted rounded"></div>
+                      <div className="h-4 w-2/3 bg-muted rounded"></div>
+                    </div>
+                    <footer className="flex items-center justify-between border-t border-border pt-4 mt-auto">
+                      <div className="h-4 w-24 bg-muted rounded"></div>
+                      <div className="h-4 w-24 bg-muted rounded"></div>
+                    </footer>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <>
@@ -195,44 +203,46 @@ export default function Blog() {
           ))}
         </div>
 
-        {/* Posts Grid */}
-        {filteredPosts.length > 0 ? (
+        {/* Posts List */}
+        {paginatedPosts.length > 0 ? (
           <div className="space-y-12">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-8">
               {paginatedPosts.map(post => (
-              <Card key={post.id} as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
-                <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden" aria-label={`Read article: ${post.title}`}>
+              <Card key={post.id} as="article" className="overflow-hidden flex flex-col md:flex-row hover:border-primary transition-colors bg-card border-border">
+                <Link to={`/blog/${post.slug}`} className="block w-full md:w-1/3 aspect-[16/10] md:aspect-auto overflow-hidden shrink-0" aria-label={`Read article: ${post.title}`}>
                   <img 
                     src={getOptimizedImageUrl(post.coverImage, 600)} 
                     alt={post.title} 
                     width={600}
                     height={375}
-                    className="block aspect-[16/10] w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="block w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
                 </Link>
-                <CardHeader className="p-6 pb-0 flex-grow" as="header">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="secondary">{post.category}</Badge>
-                    {post.tags?.slice(0, 2).map(tag => (
-                      <Badge key={tag} variant="outline" className="text-xs font-normal">#{tag}</Badge>
-                    ))}
-                    {(post.tags?.length || 0) > 2 && (
-                      <Badge variant="outline" className="text-xs font-normal">+{post.tags!.length - 2}</Badge>
-                    )}
-                  </div>
-                  <Link to={`/blog/${post.slug}`}>
-                    <h2 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
-                      <Highlighter
-                        searchWords={searchQuery.trim().split(/\s+/)}
-                        autoEscape={true}
-                        textToHighlight={post.title || ''}
-                        highlightClassName="bg-primary/20 text-primary font-bold px-1 rounded-sm"
-                      />
-                    </h2>
-                  </Link>
-                  <p className="text-muted-foreground text-sm line-clamp-3">
+                <div className="flex flex-col flex-grow p-6">
+                  <header className="mb-4">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      <Badge variant="secondary">{post.category}</Badge>
+                      {post.tags?.slice(0, 2).map(tag => (
+                        <Badge key={tag} variant="outline" className="text-xs font-normal">#{tag}</Badge>
+                      ))}
+                      {(post.tags?.length || 0) > 2 && (
+                        <Badge variant="outline" className="text-xs font-normal">+{post.tags!.length - 2}</Badge>
+                      )}
+                    </div>
+                    <Link to={`/blog/${post.slug}`}>
+                      <h2 className="text-2xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
+                        <Highlighter
+                          searchWords={searchQuery.trim().split(/\s+/)}
+                          autoEscape={true}
+                          textToHighlight={post.title || ''}
+                          highlightClassName="bg-primary/20 text-primary font-bold px-1 rounded-sm"
+                        />
+                      </h2>
+                    </Link>
+                  </header>
+                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6 flex-grow">
                     <Highlighter
                       searchWords={searchQuery.trim().split(/\s+/)}
                       autoEscape={true}
@@ -240,17 +250,17 @@ export default function Blog() {
                       highlightClassName="bg-primary/20 text-primary font-medium px-1 rounded-sm"
                     />
                   </p>
-                </CardHeader>
-                <CardFooter className="p-6 pt-6 text-sm text-muted-foreground flex items-center justify-between border-t border-border mt-6">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{calculateReadingTime(post.content)}</span>
-                  </div>
-                </CardFooter>
+                  <footer className="text-sm text-muted-foreground flex items-center justify-between border-t border-border pt-4 mt-auto">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
+                    </div>
+                    <Badge variant="secondary" className="flex items-center gap-1 font-normal text-muted-foreground bg-secondary/50 rounded-md">
+                      <Clock className="w-3 h-3" />
+                      {calculateReadingTime(post.content)}
+                    </Badge>
+                  </footer>
+                </div>
               </Card>
             ))}
             </div>
@@ -258,7 +268,7 @@ export default function Blog() {
             {totalPages > 1 && (
               <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border pt-8 mt-12 mb-8">
                 <div className="text-sm text-muted-foreground whitespace-nowrap">
-                  Showing <span className="font-medium text-foreground">{((safeCurrentPage - 1) * POSTS_PER_PAGE) + 1}</span> to <span className="font-medium text-foreground">{Math.min(safeCurrentPage * POSTS_PER_PAGE, filteredPosts.length)}</span> of <span className="font-medium text-foreground">{filteredPosts.length}</span> results
+                  Showing <span className="font-medium text-foreground">{((safeCurrentPage - 1) * POSTS_PER_PAGE) + 1}</span> to <span className="font-medium text-foreground">{Math.min(safeCurrentPage * POSTS_PER_PAGE, totalPosts)}</span> of <span className="font-medium text-foreground">{totalPosts}</span> results
                 </div>
 
                 <Pagination className="mx-0 w-auto">

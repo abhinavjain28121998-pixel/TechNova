@@ -122,10 +122,10 @@ export default function Categories() {
                   <Calendar className="w-4 h-4" />
                   <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{calculateReadingTime(post.content)}</span>
-                </div>
+                <Badge variant="secondary" className="flex items-center gap-1 font-normal text-muted-foreground bg-secondary/50 rounded-md">
+                  <Clock className="w-3 h-3" />
+                  {calculateReadingTime(post.content)}
+                </Badge>
               </CardFooter>
             </Card>
           ))}
