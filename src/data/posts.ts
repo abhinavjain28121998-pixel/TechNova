@@ -13,6 +13,7 @@ import { hackettArticles } from './hackettArticles';
 import { newHackettArticles } from './newHackettArticles';
 import { eeatArticles } from './eeatArticles';
 import { hrArticles } from './hrArticles';
+import { newHrArticles } from './newHrArticles';
 import { itHelpdeskPost } from './itHelpdeskPost';
 import { itChatbotPost } from './itChatbotPost';
 import { itTicketPost } from './itTicketPost';
@@ -2026,6 +2027,7 @@ Procurement strongly definitively clearly acts as completely exactly the central
 ];
 
 const RAW_POSTS: Post[] = [
+...newHrArticles,
 ...aiUseCaseAML,
 ...aiUseCaseMarket,
 ...aiUseCaseForecasting,
