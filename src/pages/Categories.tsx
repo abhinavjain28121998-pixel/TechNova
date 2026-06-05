@@ -8,6 +8,7 @@ import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Calendar, Clock, Loader2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, BASE_URL } from '../lib/seo';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export default function Categories() {
   const [searchParams] = useSearchParams();
@@ -56,6 +57,19 @@ export default function Categories() {
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">
+        <div className="mb-6">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              ...(displayCategory 
+                ? [
+                    { label: 'Categories', href: '/categories' },
+                    { label: displayCategory }
+                  ] 
+                : [{ label: 'Categories' }])
+            ]}
+          />
+        </div>
         <h1 className="text-4xl font-bold text-foreground mb-8">Categories</h1>
         
         <div className="flex flex-wrap gap-3 mb-12">
@@ -107,6 +121,12 @@ export default function Categories() {
                   referrerPolicy="no-referrer"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+                      img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+                    }
+                  }}
                 />
               </Link>
               <CardHeader className="p-6 pb-0 flex-grow" as="header">

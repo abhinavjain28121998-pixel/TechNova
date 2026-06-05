@@ -204,6 +204,12 @@ export default function Home() {
                         referrerPolicy="no-referrer"
                         loading={index === 0 ? "eager" : "lazy"}
                         fetchPriority={index === 0 ? "high" : "auto"}
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+                            img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+                          }
+                        }}
                       />
                     </div>
                     <div className="p-8 md:p-12">
@@ -283,6 +289,12 @@ export default function Home() {
                           className="block aspect-video w-full h-full object-cover transition-transform duration-700 hover:scale-110 bg-muted"
                           referrerPolicy="no-referrer"
                           loading="lazy"
+                          onError={(e) => {
+                            const img = e.currentTarget;
+                            if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+                              img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+                            }
+                          }}
                         />
                       </Link>
                       <CardHeader className="p-5 pb-0 flex-grow" as="header">

@@ -8,7 +8,7 @@ export const article2 = {
   category: 'HR Intelligence',
   tags: ['Generative AI', 'Resume Screening', 'HR', 'Talent Evaluation'],
   status: 'published',
-  coverImage: '/tech_dashboard_ai.png',
+  coverImage: '/banners/generative-ai-resume-screening.png',
   content: `
 When organizations advertise highly sought-after positions, they are frequently inundated with thousands of applications in a matter of days. For human recruiters, parsing through massive volumes of resumes to identify a short list of viable candidates is a grueling, exhausting process. Manual screening is inherently flawed; cognitive fatigue significantly impacts reviewing accuracy, extending the time-to-hire and frequently resulting in top-tier candidates slipping through the cracks. Today, utilizing [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) to autonomously analyze, interpret, and rank application materials has become essential. Generative AI for resume screening and ranking replaces error-prone human initial reviews with a highly scalable, intellectually rigorous framework that evaluates applicant credentials comprehensively, fairly, and instantaneously.
 

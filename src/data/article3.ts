@@ -8,7 +8,7 @@ export const article3 = {
   category: 'HR Intelligence',
   tags: ['Generative AI', 'Job Descriptions', 'HR', 'Talent Acquisition'],
   status: 'published',
-  coverImage: '/tech_dashboard_ai.png',
+  coverImage: '/banners/generative-ai-job-description.png',
   content: `
 Writing compelling, perfectly optimized job descriptions is historically a surprisingly tedious and complex task. Hiring managers frequently struggle to articulate the exact technical requirements of a role, often repurposing decade-old templates riddled with outdated corporate jargon and aggressive, masculine-coded language that unconsciously alienates diverse candidates. These poorly constructed descriptions directly suppress application rates and confuse the overall recruitment strategy. Today, by deploying [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), organizations can fundamentally eliminate this friction. Gen AI for job description generation empowers recruiters and hiring managers to instantly command dynamic, highly optimized, inclusive job postings that perfectly capture positional requirements while maximizing market appeal.
 

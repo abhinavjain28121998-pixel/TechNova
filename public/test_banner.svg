@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+    <defs>
+      <linearGradient id="grad42" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#000000" />
+        <stop offset="50%" stop-color="#434343" />
+        <stop offset="100%" stop-color="#434343" />
+      </linearGradient>
+      <pattern id="grid42" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grad42)" />
+    <rect width="100%" height="100%" fill="url(#grid42)" />
+    
+    <circle cx="114" cy="306" r="300" fill="rgba(255,255,255,0.02)" />
+    <circle cx="186" cy="402" r="386" fill="rgba(255,255,255,0.03)" />
+    
+    <text x="800" y="450" font-family="'Inter', sans-serif" font-size="64" font-weight="bold" fill="#ffffff" text-anchor="middle" alignment-baseline="middle">
+      AI in Finance Procurement
+    </text>
+  </svg>

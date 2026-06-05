@@ -117,7 +117,7 @@ Revenue leakage is no longer an unavoidable cost of doing business; it is a high
 }
 </script>
 `,
-    coverImage: '/tech_dashboard_ai.png',
+    coverImage: '/banners/the-future-of-ai-in-marketing-hyper-personalized-customer-journeys.png',
     date: '2026-06-02T05:00:00Z',
     author: defaultAuthor,
     category: 'Finance',
@@ -234,7 +234,7 @@ Generative AI is not merely upgrading procurement-to-pay software; it is providi
 }
 </script>
 `,
-    coverImage: '/ai_neural_network_finance.png',
+    coverImage: '/banners/ai-for-credit-scoring-unlocking-inclusive-lending-in-fintech.png',
     date: '2026-06-02T05:00:00Z',
     author: defaultAuthor,
     category: 'Procurement',
@@ -351,7 +351,7 @@ The era of endlessly searching through deeply unorganized corporate folders is o
 }
 </script>
 `,
-    coverImage: '/cyber_finance_dashboard.png',
+    coverImage: '/banners/ai-for-algorithmic-trading-precision-execution-in-capital-markets.png',
     date: '2026-06-02T05:00:00Z',
     author: defaultAuthor,
     category: 'Technology',
@@ -468,7 +468,7 @@ Generative AI is profoundly shifting executive corporate governance away from ad
 }
 </script>
 `,
-    coverImage: '/document_summarization_ai.png',
+    coverImage: '/banners/ai-for-fraud-detection-in-retail-banking-securing-financial-transactions.png',
     date: '2026-06-02T05:00:00Z',
     author: defaultAuthor,
     category: 'Finance',

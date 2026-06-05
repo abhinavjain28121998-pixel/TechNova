@@ -32,14 +32,14 @@ export function SEO({
   const fullTitle = title.includes('TechNova') ? title : `${title} | ${siteName}`;
   const fullDescription = description;
   
-  const currentUrl = `https://tech-nova-iota.vercel.app${location.pathname}`;
+  const currentUrl = `${(import.meta as any).env.VITE_SITE_URL || 'https://tech-nova-iota.vercel.app'}${location.pathname}`;
   let rawUrl = url || currentUrl;
   if (rawUrl && rawUrl.length > 1 && rawUrl.endsWith('/')) {
     rawUrl = rawUrl.slice(0, -1);
   }
   const canonicalUrl = rawUrl;
   // Fallback image
-  const defaultImage = title ? '/tech_dashboard_ai.png' : '/tech_dashboard_ai.png';
+  const defaultImage = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
   const socialImage = image || defaultImage;
 
   // Combine provided schemas with base site schemas

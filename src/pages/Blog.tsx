@@ -218,6 +218,12 @@ export default function Blog() {
                     className="block w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
                     loading="lazy"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+                        img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+                      }
+                    }}
                   />
                 </Link>
                 <div className="flex flex-col flex-grow p-6">

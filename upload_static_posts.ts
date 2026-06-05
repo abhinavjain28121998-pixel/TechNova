@@ -17,7 +17,7 @@ async function upload() {
     const data = JSON.parse(JSON.stringify(post));
     
     console.log("Uploading " + post.slug);
-    await setDoc(doc(db, 'posts', data.id), data, { merge: true });
+    await setDoc(doc(db, 'posts', data.slug), data, { merge: true });
   }
   console.log("Done uploading");
   process.exit(0);

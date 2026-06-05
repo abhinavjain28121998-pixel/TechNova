@@ -13,7 +13,7 @@ export function calculateReadingTime(text: string | undefined): string {
 }
 
 export function getOptimizedImageUrl(url: string | undefined, width: number = 800): string {
-  const fallback = '/tech_dashboard_ai.png';
+  const fallback = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
   if (!url) return fallback;
   
   if (url.includes('images.unsplash.com')) {

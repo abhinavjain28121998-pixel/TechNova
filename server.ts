@@ -210,7 +210,8 @@ async function startServer() {
         postsList = POSTS;
       }
 
-      const baseUrl = 'https://tech-nova-iota.vercel.app';
+      const publishedPosts = postsList.filter((p: any) => !p.status || p.status === 'published');
+      const baseUrl = process.env.VITE_SITE_URL || 'https://tech-nova-iota.vercel.app';
       
       const staticPages = [
         '',
@@ -223,6 +224,8 @@ async function startServer() {
         '/privacy-policy',
         '/terms-of-service'
       ];
+      
+      const uniqueCategories = Array.from(new Set(publishedPosts.map(p => p.category).filter(Boolean)));
 
       res.setHeader('Content-Type', 'application/xml');
       res.setHeader('Cache-Control', 'public, max-age=3600');
@@ -234,7 +237,12 @@ ${staticPages.map(page => `  <url>
     <changefreq>${page === '/blog' || page === '' ? 'daily' : 'weekly'}</changefreq>
     <priority>${page === '' ? '1.0' : '0.8'}</priority>
   </url>`).join('\n')}
-${postsList.filter((p: any) => !p.status || p.status === 'published').map((post: any) => `  <url>
+${uniqueCategories.map(category => `  <url>
+    <loc>${baseUrl}/category/${encodeURIComponent(category?.toLowerCase() || '')}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`).join('\n')}
+${publishedPosts.map((post: any) => `  <url>
     <loc>${baseUrl}/blog/${post.slug}</loc>
     <lastmod>${new Date(post.date || Date.now()).toISOString()}</lastmod>
     <changefreq>monthly</changefreq>

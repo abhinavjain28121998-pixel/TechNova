@@ -22,6 +22,7 @@ import { usePosts } from '../hooks/usePosts';
 import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
@@ -75,6 +76,12 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
         loading="lazy" 
         decoding="async" 
         className="block w-full h-full object-cover aspect-video" 
+        onError={(e) => {
+          const img = e.currentTarget;
+          if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+            img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+          }
+        }}
         {...props} 
       />
       {isLoading && (
@@ -322,13 +329,14 @@ export default function Post() {
         {/* Post Header */}
         {/* Breadcrumbs */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-8 -mb-4">
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-foreground font-medium truncate max-w-[150px] sm:max-w-none" aria-current="page">{post.title}</span>
-          </nav>
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              ...(post.category ? [{ label: post.category, href: `/categories?c=${encodeURIComponent(post.category)}` }] : []),
+              { label: post.title }
+            ]} 
+          />
         </div>
 
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 max-w-4xl">
@@ -397,7 +405,7 @@ export default function Post() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
           <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
             <AIImage 
-              src={(post.coverImage || '/tech_dashboard_ai.png')} 
+              src={(post.coverImage || '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png')} 
               alt={post.title} 
               context={post.content}
               width={800}
@@ -537,6 +545,12 @@ export default function Post() {
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                             loading="lazy"
+                            onError={(e) => {
+                              const img = e.currentTarget;
+                              if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+                                img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+                              }
+                            }}
                           />
                         </div>
                         <div className="p-6">

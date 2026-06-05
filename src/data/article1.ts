@@ -8,7 +8,7 @@ export const article1 = {
   category: 'HR Intelligence',
   tags: ['Generative AI', 'Candidate Sourcing', 'HR', 'Talent Acquisition'],
   status: 'published',
-  coverImage: '/tech_dashboard_ai.png',
+  coverImage: '/banners/generative-ai-candidate-sourcing.png',
   content: `
 In the fiercely competitive modern business landscape, finding the right talent remains one of the most critical challenges for any organization. Traditional recruitment models often rely on manual searches, basic keyword matching, and rigid Boolean logic that frequently misses highly qualified individuals who do not perfectly match a specific query. These outdated methods consume countless hours and yield limited results, particularly when sourcing elusive passive candidates. The introduction of advanced artificial intelligence models has fundamentally disrupted this paradigm. By leveraging deep natural language understanding and autonomous data synthesis, the integration of [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) allows talent teams to proactively source, evaluate, and attract top-tier professionals with unprecedented precision and velocity. As organizations pivot toward more intelligent operations, automated candidate sourcing has emerged as the defining competitive advantage in the war for talent.
 

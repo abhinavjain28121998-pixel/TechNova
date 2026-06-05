@@ -1,3 +1,4 @@
+import { allHrRecruitmentArticles } from './hrRecruitmentArticlesAll';
 import { aiUseCaseAML } from './aiUseCaseAML';
 import { aiUseCaseMarket } from './aiUseCaseMarket';
 import { aiUseCaseForecasting } from './aiUseCaseForecasting';
@@ -117,7 +118,7 @@ To successfully move from static chatbots to autonomous workflows, technology le
 ## Conclusion
 Agentic AI marks the maturation of enterprise artificial intelligence from a passive advisor to an active digital workforce. By combining goal-oriented reasoning models with technologies like Retrieval-Augmented Generation and Multimodal AI, organizations can achieve unprecedented operational velocity. The enterprises that will lead the next decade are those that begin establishing the governance, data structures, and human-in-the-loop protocols required to scale these autonomous systems safely and effectively today.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/enterprise-workflow-transformation-the-complete-guide-to-agentic-ai.png',
  date: '2026-05-20',
  readingTime: '9 min read',
  category: 'AI',
@@ -215,7 +216,7 @@ The structural transition toward [Global Business Services](/blog/expert-guide-g
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/the-strategic-blueprint-for-global-business-services-applied-intelligence-in-2026.png',
  date: '2026-05-20',
  readingTime: '12 min read',
  category: 'GBS',
@@ -301,7 +302,7 @@ The paradigm shift toward [Human Resources](/blog/expert-guide-hr-transformation
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/the-leader-s-guide-to-human-resources-applied-intelligence-in-2026.png',
  date: '2026-05-11',
  readingTime: '12 min read',
  category: 'HR',
@@ -387,7 +388,7 @@ The shift toward Procurement [Applied Intelligence](/blog/applied-intelligence-p
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/executing-global-sourcing-with-procurement-applied-intelligence-in-2026.png',
  date: '2026-05-11',
  readingTime: '12 min read',
  category: 'Procurement',
@@ -463,7 +464,7 @@ To ensure your organization navigates these complexities successfully, consider 
 The shift toward Payroll [Applied Intelligence](/blog/applied-intelligence-programs) ends reactive global compensation methods, resolving friction and setting a new standard for compliance.
 
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/modernizing-enterprise-compensation-via-payroll-applied-intelligence-in-2026.png',
  date: '2026-05-20',
  readingTime: '12 min read',
  category: 'Payroll',
@@ -568,7 +569,7 @@ The acceleration of Enterprise Gen AI [Applied Intelligence](/blog/applied-intel
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/the-strategic-guide-to-enterprise-gen-ai-applied-intelligence-in-2026.png',
  date: '2026-05-20',
  readingTime: '12 min read',
  category: 'AI',
@@ -670,7 +671,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The strategic commercial transition toward Finance [Applied Intelligence](/blog/applied-intelligence-programs) fundamentally alters the DNA of global corporate finance. By decisively moving beyond superficial automated processes to embrace deeply integrated, securely governed cognitive workflows, forward-thinking enterprise CFOs can unlock unprecedented fiscal agility and massive operational efficiency. The future of the modern finance function undoubtedly belongs to those proactive organizations that systematically operationalize these advanced intelligence frameworks, effectively engineering a landscape of predictive, data-backed strategic dominance.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/the-strategic-guide-to-finance-applied-intelligence-in-2026.png',
  date: '2026-05-20',
  readingTime: '11 min read',
  category: 'Finance',
@@ -762,7 +763,7 @@ The era of experimental AI has concluded; we have entered the era of operational
 
 ***
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/scaling-operations-the-complete-guide-to-applied-intelligence-programs.png',
  date: '2026-05-20',
  readingTime: '8 min read',
  category: 'AI',
@@ -839,7 +840,7 @@ The responsibility rests on us. We must question our biases, secure our data str
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png',
  date: '2026-04-19T10:00:00Z',
  readingTime: '12 min read',
  category: 'AI',
@@ -898,7 +899,7 @@ As we look ahead, the next decade promises breakthroughs that blur the lines bet
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/security-first-web-development-a-senior-engineer-s-manual.png',
  date: '2026-04-18T14:30:00Z',
  readingTime: '13 min read',
  category: 'Web Development',
@@ -951,7 +952,7 @@ The next decade promises breakthroughs that blur lines between computation and b
 
 To ensure your organization navigates these complexities successfully, consider leveraging expert [AI implementation services](https://www.thehackettgroup.com/ai-implementation-services/) to seamlessly integrate these transformative technologies into your core business framework.
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/zero-trust-architectures-an-analyst-s-field-manual.png',
  date: '2026-04-15T09:15:00Z',
  readingTime: '14 min read',
  category: 'Cybersecurity',
@@ -1041,7 +1042,7 @@ The integration of **Gen AI in Finance** is an inevitable evolution for any inst
 2. **Focus on Explainability:** Ensure your AI models are not "black boxes," especially for regulatory reporting and internal board reviews.
 3. **Invest in Cross-Functional Upskilling:** Technical literacy is no longer an IT requirement; it is a core requirement for every finance professional in your organization.
  `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/unlocking-strategic-value-with-gen-ai-in-finance-a-2026-roadmap.png',
  date: '2026-04-22T09:00:00Z',
  readingTime: '12 min read',
  category: 'Finance',
@@ -1131,7 +1132,7 @@ The promise of **Gen AI in GBS** is the creation of a truly agile, intelligent, 
 * **Promote Cross-Functional Tech Literacy:** The successful GBS leader of 2026 must be as comfortable with LLM architecture as they are with an ERP migration.
 * **Design for Flexibility:** The generative AI landscape is evolving monthly. Your GBS process architecture must be modular enough to swap out underlying models as technology advances.
  `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/transforming-global-business-services-with-gen-ai-a-2026-perspective.png',
  date: '2026-04-21T10:00:00Z',
  readingTime: '11 min read',
  category: 'Shared Services',
@@ -1221,7 +1222,7 @@ The integration of **Gen AI in HR** is not about replacing the "Human" in [Human
 * **Prioritize Continuous Ethical AI Training:** Ensure your entire HR team understands the ethical and privacy implications of automated human-capital decision-making.
 * **Focus on the Adaptive Journey:** AI implementation in HR is a continuous cycle of learning, feedback, and refinement. Stay agile and employee-focused.
  `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/the-future-of-human-resources-leading-the-gen-ai-revolution.png',
  date: '2026-04-20T11:00:00Z',
  readingTime: '13 min read',
  category: '[Human Resources](/blog/expert-guide-hr-transformation)',
@@ -1295,7 +1296,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The technological trajectory is entirely clear: the IT landscape is accelerating towards autonomic, self-healing systems guided by generative AI. As IT leaders strive for unmatched resilience and operational agility, adopting these generative solutions will no longer merely be a competitive advantage, but a foundational necessity. By strategically implementing AI tools today, organizations effectively future-proof their entire digital operations for the decade to come.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/future-of-tech-ops-revolutionizing-systems-with-gen-ai-in-it.png',
  date: '2026-04-20T09:00:00Z',
  readingTime: '8 min read',
  category: 'AI',
@@ -1369,7 +1370,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The era of payroll as a purely transactional back-office function has ended. By fully embracing the capabilities of generative AI, organizations can ensure unmatched regulatory compliance, eliminate costly processing errors, and provide employees with total transparency into their compensation. Preparing for this intelligent future today ensures a resilient, agile organizational foundation tomorrow.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/the-future-of-compensation-optimizing-workflows-with-gen-ai-in-payroll.png',
  date: '2026-04-21T10:00:00Z',
  readingTime: '9 min read',
  category: 'Software',
@@ -1443,7 +1444,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 Generative intelligence is definitively reshaping procurement into an agile, highly analytical, and strategic organizational pillar. By empowering teams with unparalleled insights into contracts, spend patterns, and supplier behaviors, AI enables procurement professionals to shift their focus from tactical purchasing to cultivating dynamic, resilient, and highly profitable partnerships. The future of strategic sourcing is here, and it is comprehensively driven by AI.
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/strategic-sourcing-evolution-leveraging-gen-ai-in-procurement.png',
  date: '2026-04-22T08:30:00Z',
  readingTime: '8 min read',
  category: 'Software',
@@ -1517,7 +1518,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The integration of generative AI is marking the definitive end of the reactive supply chain era. By empowering organizations with profound foresight, automated responsiveness, and total network visibility, AI enables leaders to build logistics networks that don't just withstand global shocks, but adapt and thrive within them. The future of the global supply chain is intelligent, resilient, and fundamentally driven by generative AI.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/next-gen-logistics-mastering-agility-with-gen-ai-in-supply-chain-operations.png',
  date: '2026-04-23T11:00:00Z',
  readingTime: '10 min read',
  category: 'Software',
@@ -1592,7 +1593,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 Navigating the incredibly complex transition into the AI-native business landscape is not a journey an enterprise should undertake blindly. Effective, specialized consulting acts as a strategic compass, aggressively mitigating risk while illuminating the most efficient path toward cognitive automation. By prioritizing clean data, stringent ethical oversight, and a comprehensive organizational change management strategy, enterprises can unlock the unparalleled transformative power of generative intelligence.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/the-strategic-value-of-gen-ai-consulting-in-enterprise-transformation.png',
  date: '2026-04-26T09:00:00Z',
  readingTime: '9 min read',
  category: 'AI',
@@ -1659,7 +1660,7 @@ For AI to automatically complete a task seamlessly—like processing a complex m
 
 Transformational AI isn't simply bought off the shelf; it is meticulously and comprehensively architected. Executing a highly successful AI Implementation requires an incredibly rigorous alignment of cloud infrastructure, aggressive data governance, and intelligent software engineering. By treating AI integration as a profound, enterprise-wide architectural shift rather than just another minor software deployment, organizations can finally realize the tremendous competitive advantage promised by the generative revolution.
 `,
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/mastering-ai-implementation-a-practical-guide-for-modern-enterprises.png',
  date: '2026-04-25T14:00:00Z',
  readingTime: '10 min read',
  category: 'Software',
@@ -1729,7 +1730,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The future of strategic consulting and organizational benchmarking belongs fundamentally to systems that actively converse, instantly synthesize, and profoundly advise. By bridging immense proprietary datasets with rapid conversational AI, enterprise leaders can permanently bypass the exhausting, manual data-synthesis phase. They can dynamically step directly into an extremely high-velocity mode of strategic organizational execution.
 `,
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/askhackett-revolutionizing-enterprise-benchmarking-with-conversational-ai.png',
  date: '2026-04-24T10:00:00Z',
  readingTime: '8 min read',
  category: 'Software',
@@ -1797,7 +1798,7 @@ To ensure your organization navigates these complexities successfully, consider 
 
 The immense, transformative era of generative AI heavily punishes incredibly overly eager, remarkably unprepared adopters. However, for those large organizations truly willing to step back, strictly evaluate their immense digital landscape objectively, and comprehensively plot their intelligent integration roadmap using highly advanced diagnostic tools, the massive rewards are structurally unprecedented. By establishing a radically profound, remarkably clear baseline of actual operational readiness, a highly successful, exceptionally secure global AI journey is practically guaranteed.
 `,
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/navigating-ai-readiness-mapping-your-strategy-with-hackett-ai-xplr.png',
  date: '2026-04-27T08:00:00Z',
  readingTime: '7 min read',
  category: 'Strategy',
@@ -1832,7 +1833,7 @@ The immense, transformative era of generative AI heavily punishes incredibly ove
  title: 'Optimizing the Workforce with Human Resources Solution Intelligence',
  excerpt: 'Discover how Human Resources Solution Intelligence is transforming talent management, from strategic employee engagement to data-driven retention in the modern enterprise.',
  metaDescription: 'Explore the definitive guide on optimizing your workforce using Human Resources Solution Intelligence. Enhance talent retention, engagement, and operational scale.',
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/optimizing-the-workforce-with-human-resources-solution-intelligence.png',
  date: '2026-05-06T08:00:00Z',
  readingTime: '8 min read',
  category: 'Future of Work',
@@ -1898,7 +1899,7 @@ The definitive future of human resources is unequivocally intelligent, deeply in
  title: 'Driving Corporate Growth Through Finance Solution Intelligence',
  excerpt: 'Explore how Finance Solution Intelligence empowers CFOs to transition from traditional accounting to predictive financial stewardship and enterprise growth.',
  metaDescription: 'Learn how Finance Solution Intelligence is dramatically redefining corporate finance, empowering modern CFOs with deep predictive insights and strategic agility.',
- coverImage: '/cyber_finance_dashboard.png',
+ coverImage: '/banners/driving-corporate-growth-through-finance-solution-intelligence.png',
  date: '2026-05-06T09:00:00Z',
  readingTime: '9 min read',
  category: 'Finance',
@@ -1964,7 +1965,7 @@ The future of corporate finance is unequivocally proactive, exceptionally automa
  title: 'Transforming Global Sourcing via Procurement Solution Intelligence',
  excerpt: 'Learn how Procurement Solution Intelligence enables Chief Procurement Officers to heavily mitigate global supply chain risks and fiercely optimize enterprise spending.',
  metaDescription: 'Discover the immense strategic value of Procurement Solution Intelligence. Mitigate massive supply chain risks, fiercely optimize spend, and drive enterprise resilience.',
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/transforming-global-sourcing-via-procurement-solution-intelligence.png',
  date: '2026-05-06T10:00:00Z',
  readingTime: '8 min read',
  category: 'Supply Chain',
@@ -2026,7 +2027,8 @@ Procurement strongly definitively clearly acts as completely exactly the central
  }
 ];
 
-const RAW_POSTS: Post[] = [
+const RAW_POSTS: any[] = [
+...allHrRecruitmentArticles,
 ...newHrArticles,
 ...aiUseCaseAML,
 ...aiUseCaseMarket,
@@ -2070,7 +2072,100 @@ function extractExcerpt(content: string): string {
  return paragraphs.slice(0, 2).join(' ').replace(/\s+/g, ' ').trim();
 }
 
-export const POSTS: Post[] = RAW_POSTS.map(post => ({
-...post,
- excerpt: extractExcerpt(post.content) || post.excerpt
-}));
+const UNSPLASH_MAPPING: Record<string, string> = {
+  'gen-ai-anti-money-laundering-monitoring': '1526304640581-d334cdbbf45e',
+  'gen-ai-for-advanced-market-insights': '1590283603385-17ffb3a7f29f',
+  'gen-ai-predictive-financial-forecasting': '1450133064473-71024230f91b',
+  'gen-ai-for-intelligent-expense-management': '1554224155-6b898a486b24',
+  'ai-marketing-personalized-customer-journeys-2026': '1511556532299-8f662fc26c06',
+  'ai-sales-automation-intelligent-deal-closing': '1521791136064-7986c2920216',
+  'ai-customer-support-autonomous-agents-cx-transformation': '1519389950473-47ba0277781c',
+  'mastering-ai-powered-due-diligence-mergers-acquisitions-risk': '1447069387593-a5de0862481e',
+  'expert-guide-digital-transformation': '1451187580459-43490279c0fa',
+  'expert-guide-finance-transformation': '1551836022-d5d88e9218df',
+  'expert-guide-gbs-transformation': '1522071820081-009f0129c71c',
+  'expert-guide-hr-transformation': '1507679799987-c73779587ccf',
+  'expert-guide-it-transformation': '1544197150-b99a580bb7a8',
+  'expert-guide-sourcing-procurement-transformation': '1578575437130-527eed3abbec',
+  'expert-guide-workforce-payroll-transformation': '1554224155-8d04cb21cd6c',
+  'business-benchmarking-ai-transformation-strategy': '1460925895917-afdab827c52f',
+  'data-analytics-foundation-for-artificial-intelligence': '1504868584819-f8e8b4b6d7e3',
+  'redefining-digital-transformation-in-the-ai-era': '1531297484001-80022131f5a1',
+  'solution-intelligence-the-pinnacle-of-enterprise-automation': '1485827404703-89b55fcc595e',
+  'ai-in-marketing-enterprise-strategy': '1542744173-8e0ee26bf15a',
+  'transforming-enterprise-revenue-sales-gen-ai': '1507537297725-24a1c029d3ca',
+  'scaling-frictionless-customer-support-gen-ai': '1552581230-c19edab6d57a',
+  'mastering-gen-ai-powered-due-diligence-workflows': '1454165804606-c3d57bc86b40',
+  'solutionmap-procurement-technology-selection': '1543269865-cbf427effbad',
+  'techmatch-vendor-selection-strategy': '1586281380349-632531db7ed4',
+  'actionable-ai-enterprise-strategy': '1618005182384-a83a8bd57fbe',
+  'agentic-ai-autonomous-workflows': '1485827404703-89b55fcc595e',
+  'agent-scaffolding-reliable-ai': '1600132806370-bf17e65e942f',
+  'advanced-rag-enterprise-ai': '1451187580459-43490279c0fa',
+  'adaptive-ai-business-intelligence': '1518186285589-2f7649de83e0',
+  'agent-augmentation-workforce-productivity': '1519389950473-47ba0277781c',
+  'human-resources-applied-intelligence': '1521737604893-6a6c423cf6c4',
+  'ai-fraud-detection-retail-banking': '1563013544-824ae1d704d3',
+  'ai-credit-scoring-inclusive-lending': '1560518883-ce09059eeffa',
+  'ai-algorithmic-trading-capital-markets': '1590283603385-17ffb3a7f29f',
+  'ai-risk-assessment-corporate-finance': '1504868584819-f8e8b4b6d7e3',
+  'ai-resume-screening-talent-acquisition': '1586528116311-ad8dd3c8310d',
+  'ai-candidate-matching-recruitment': '1573496359142-b8d87734a5a2',
+  'ai-employee-sentiment-analysis': '1600880292203-757bb62b4baf',
+  'ai-strategic-workforce-planning': '1531538606174-0f90ff5dce83',
+  'ai-it-helpdesk-automation': '1534536281715-e28d76689b4d',
+  'ai-powered-it-chatbots': '1516321318423-f06f85e504b3',
+  'ai-automated-ticket-classification': '1586281380349-632531db7ed4',
+  'ai-incident-management-automation': '1550751827-4bd374c3f58b',
+  'ai-automated-payroll-processing': '1554224155-8d04cb21cd6c',
+  'ai-payroll-error-detection': '1504868584819-f8e8b4b6d7e3',
+  'ai-salary-calculation-automation': '1454165804606-c3d57bc86b40',
+  'ai-tax-calculation-compliance': '1450133064473-71024230f91b',
+  'ai-supplier-discovery-evaluation-manufacturing': '1581091226825-a6a2a5aee158',
+  'ai-vendor-risk-assessment-financial-services': '1550751827-4bd374c3f58b',
+  'ai-automated-purchase-order-processing-logistics': '1586528116311-ad8dd3c8310d',
+  'ai-spend-analysis-enterprise-it': '1460925895917-afdab827c52f',
+  'ai-demand-forecasting-retail-fashion': '1441986300917-64674bd600d8',
+  'ai-inventory-optimization-healthcare-pharma': '1530026405186-ed1ea400c3af',
+  'ai-supply-chain-planning-automation-manufacturing': '1578575437130-527eed3abbec',
+  'ai-warehouse-automation-freight-ecommerce': '1586528116311-ad8dd3c8310d',
+  'gen-ai-financial-document-summarization': '1454165804606-c3d57bc86b40',
+  'gen-ai-automated-invoice-processing': '1554224155-8d04cb21cd6c',
+  'gen-ai-revenue-leakage-detection': '1554224155-6b898a486b24',
+  'gen-ai-procurement-to-pay-automation': '1454165804606-c3d57bc86b40',
+  'gen-ai-internal-knowledge-management': '1451187580459-43490279c0fa',
+  'gen-ai-board-investor-report-generation': '1557200134-90327ee9fafa'
+};
+
+const uniqueIds = new Set();
+const DEDUPED_RAW_POSTS: Post[] = [];
+for (const p of RAW_POSTS) {
+  if (!uniqueIds.has(p.id)) {
+    uniqueIds.add(p.id);
+    DEDUPED_RAW_POSTS.push(p);
+  }
+}
+
+export const POSTS: Post[] = DEDUPED_RAW_POSTS.map(post => {
+  let coverImage = post.coverImage;
+  if (UNSPLASH_MAPPING[post.slug]) {
+    coverImage = `https://images.unsplash.com/photo-${UNSPLASH_MAPPING[post.slug]}`;
+  }
+  
+  let authorObj = post.author;
+  if (typeof authorObj === 'string') {
+    authorObj = {
+      name: authorObj || 'Alex Rivera',
+      role: 'AI Analyst',
+      avatar: 'https://picsum.photos/seed/alex/100/100',
+      bio: 'Expert in deploying Generative AI models within heavily regulated environments.'
+    };
+  }
+
+  return {
+    ...post,
+    coverImage,
+    author: authorObj,
+    excerpt: extractExcerpt(post.content) || post.excerpt
+  };
+});

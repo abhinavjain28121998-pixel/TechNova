@@ -2,6 +2,7 @@ export interface Author {
   name: string;
   avatar: string;
   role: string;
+  bio?: string;
 }
 
 export interface Post {
