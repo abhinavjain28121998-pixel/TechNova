@@ -9,6 +9,28 @@ export const article1 = {
   tags: ['Generative AI', 'Candidate Sourcing', 'HR', 'Talent Acquisition'],
   status: 'published',
   coverImage: '/banners/generative-ai-candidate-sourcing.png',
+  faqs: [
+    {
+      question: "How does Generative AI improve candidate sourcing?",
+      answer: "Generative AI improves candidate sourcing by automating the discovery of talent across multiple platforms. It uses semantic understanding to match candidates based on contextual skills and career progression rather than rely strictly on rigid keyword matches."
+    },
+    {
+      question: "Will AI directly replace human recruiters?",
+      answer: "No. Generative AI is designed to augment human recruiters by eliminating manual profile scraping and pipeline generation. This frees recruiters to focus on strategic relationship building, sophisticated interviewing, and final decision-making."
+    },
+    {
+      question: "How does AI help in sourcing passive candidates?",
+      answer: "AI actively monitors public professional platforms, GitHub repositories, portfolios, and proprietary databases to identify professionals who are not actively applying but whose career trajectory indicates they might be highly receptive to new opportunities."
+    },
+    {
+      question: "What are the ethical risks of using AI in recruitment?",
+      answer: "The primary ethical risks involve algorithmic bias—if trained on biased historical data, the AI may unfairly favor or filter specific demographics. Data privacy violations are also a risk if candidate information is aggressively scraped without consent."
+    },
+    {
+      question: "Can AI improve diversity in candidate sourcing?",
+      answer: "Yes. When properly configured and monitored, AI can actively blind demographic markers during the initial discovery phase and intentionally broaden its search parameters to include diverse educational institutions or non-traditional professional backgrounds, thereby enriching the diversity of the talent pool."
+    }
+  ],
   content: `
 In the fiercely competitive modern business landscape, finding the right talent remains one of the most critical challenges for any organization. Traditional recruitment models often rely on manual searches, basic keyword matching, and rigid Boolean logic that frequently misses highly qualified individuals who do not perfectly match a specific query. These outdated methods consume countless hours and yield limited results, particularly when sourcing elusive passive candidates. The introduction of advanced artificial intelligence models has fundamentally disrupted this paradigm. By leveraging deep natural language understanding and autonomous data synthesis, the integration of [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) allows talent teams to proactively source, evaluate, and attract top-tier professionals with unprecedented precision and velocity. As organizations pivot toward more intelligent operations, automated candidate sourcing has emerged as the defining competitive advantage in the war for talent.
 
@@ -57,84 +79,5 @@ Attempting to build or integrate enterprise-grade generative AI sourcing archite
 ## Conclusion
 
 Generative AI for candidate sourcing represents a monumental shift in how organizations discover, evaluate, and attract world-class talent. By automating the most labor-intensive aspects of market mapping and applying deep semantic intelligence to profile evaluation, recruitment teams can operate with unprecedented speed and precision. While profound challenges regarding data ethics and algorithmic bias remain, thoughtful, human-supervised implementation directly transforms talent acquisition from a reactive operational function into a powerful engine for sustained competitive advantage.
-
-## Frequently Asked Questions (FAQs)
-
-**1. How does Generative AI improve candidate sourcing?**
-Generative AI improves candidate sourcing by automating the discovery of talent across multiple platforms. It uses semantic understanding to match candidates based on contextual skills and career progression rather than rely strictly on rigid keyword matches.
-
-**2. Will AI directly replace human recruiters?**
-No. Generative AI is designed to augment human recruiters by eliminating manual profile scraping and pipeline generation. This frees recruiters to focus on strategic relationship building, sophisticated interviewing, and final decision-making.
-
-**3. How does AI help in sourcing passive candidates?**
-AI actively monitors public professional platforms, GitHub repositories, portfolios, and proprietary databases to identify professionals who are not actively applying but whose career trajectory indicates they might be highly receptive to new opportunities.
-
-**4. What are the ethical risks of using AI in recruitment?**
-The primary ethical risks involve algorithmic bias—if trained on biased historical data, the AI may unfairly favor or filter specific demographics. Data privacy violations are also a risk if candidate information is aggressively scraped without consent.
-
-**5. Can AI improve diversity in candidate sourcing?**
-Yes. When properly configured and monitored, AI can actively blind demographic markers during the initial discovery phase and intentionally broaden its search parameters to include diverse educational institutions or non-traditional professional backgrounds, thereby enriching the diversity of the talent pool.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does Generative AI improve candidate sourcing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generative AI improves candidate sourcing by automating the discovery of talent across multiple platforms. It uses semantic understanding to match candidates based on contextual skills and career progression rather than rely strictly on rigid keyword matches."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will AI directly replace human recruiters?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Generative AI is designed to augment human recruiters by eliminating manual profile scraping and pipeline generation. This frees recruiters to focus on strategic relationship building, sophisticated interviewing, and final decision-making."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does AI help in sourcing passive candidates?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AI actively monitors public professional platforms, GitHub repositories, portfolios, and proprietary databases to identify professionals who are not actively applying but whose career trajectory indicates they might be highly receptive to new opportunities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the ethical risks of using AI in recruitment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The primary ethical risks involve algorithmic bias—if trained on biased historical data, the AI may unfairly favor or filter specific demographics. Data privacy violations are also a risk if candidate information is aggressively scraped without consent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can AI improve diversity in candidate sourcing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. When properly configured and monitored, AI can actively blind demographic markers during the initial discovery phase and intentionally broaden its search parameters to include diverse educational institutions or non-traditional professional backgrounds, thereby enriching the diversity of the talent pool."
-      }
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How Generative AI for Candidate Sourcing Transforms Talent Acquisition Strategies",
-  "description": "Learn how generative AI for candidate sourcing empowers recruiters to uncover hidden talent pools, automate outreach, and radically accelerate hiring timelines.",
-  "author": {
-    "@type": "Organization",
-    "name": "Expert AI Analyst"
-  }
-}
-</script>
 `
 };

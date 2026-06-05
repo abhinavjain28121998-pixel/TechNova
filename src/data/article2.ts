@@ -9,6 +9,28 @@ export const article2 = {
   tags: ['Generative AI', 'Resume Screening', 'HR', 'Talent Evaluation'],
   status: 'published',
   coverImage: '/banners/generative-ai-resume-screening.png',
+  faqs: [
+    {
+      question: "How does AI differ from traditional Applicant Tracking Systems (ATS)?",
+      answer: "Traditional ATS platforms rely on rigid keyword matching, frequently eliminating qualified candidates who use different synonyms to describe their skills. Generative AI fundamentally understands semantic context, evaluating experience and capabilities comprehensively across different industry dialects."
+    },
+    {
+      question: "Is generative AI for screening fair?",
+      answer: "AI can be fairer than a human screener if deliberately engineered to ignore demographic markers and prevent fatigue. However, if trained on biased historical hiring data, the AI will internalize and execute those biases at a massive scale. Robust oversight is required."
+    },
+    {
+      question: "Will AI automatically reject all unqualified resumes?",
+      answer: "While highly effective, AI should not act as a unilateral black-box gatekeeper. Best practices dictate that AI assigns fit scores and contextual rankings, empowering human recruiters to review those scores and make the final rejection or advancement decisions."
+    },
+    {
+      question: "Can candidates trick AI screening models?",
+      answer: "As generative AI becomes more prevalent, some candidates attempt to \"keyword stuff\" or use AI to heavily optimize their resumes. Advanced corporate screening models are continually evolving to detect over-optimization, focusing on verifiable career trajectories and dense contextual project descriptions."
+    },
+    {
+      question: "How does AI screening improve the candidate experience?",
+      answer: "Because the initial evaluation occurs almost instantaneously, companies can provide immediate, automated responses to candidates regarding their application status, effectively destroying the notoriously frustrating \"resume black hole.\""
+    }
+  ],
   content: `
 When organizations advertise highly sought-after positions, they are frequently inundated with thousands of applications in a matter of days. For human recruiters, parsing through massive volumes of resumes to identify a short list of viable candidates is a grueling, exhausting process. Manual screening is inherently flawed; cognitive fatigue significantly impacts reviewing accuracy, extending the time-to-hire and frequently resulting in top-tier candidates slipping through the cracks. Today, utilizing [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) to autonomously analyze, interpret, and rank application materials has become essential. Generative AI for resume screening and ranking replaces error-prone human initial reviews with a highly scalable, intellectually rigorous framework that evaluates applicant credentials comprehensively, fairly, and instantaneously.
 
@@ -57,84 +79,5 @@ Configuring screening algorithms that are both functionally aggressive and ethic
 ## Conclusion
 
 Generative AI for resume screening and ranking solves the pervasive administrative bottleneck that chronically plagues enterprise talent acquisition. By injecting deep semantic comprehension into the initial review stage, organizations can evaluate gargantuan volumes of applications instantly, standardizing quality and eradicating human fatigue. Though immense care must be taken to continuously monitor and neutralize algorithmic bias, supervised generative screening allows human recruiters to finally abandon the slush pile and dedicate their entire operational bandwidth to engaging, interviewing, and closing premier talent.
-
-## Frequently Asked Questions (FAQs)
-
-**1. How does AI differ from traditional Applicant Tracking Systems (ATS)?**
-Traditional ATS platforms rely on rigid keyword matching, frequently eliminating qualified candidates who use different synonyms to describe their skills. Generative AI fundamentally understands semantic context, evaluating experience and capabilities comprehensively across different industry dialects.
-
-**2. Is generative AI for screening fair?**
-AI can be fairer than a human screener if deliberately engineered to ignore demographic markers and prevent fatigue. However, if trained on biased historical hiring data, the AI will internalize and execute those biases at a massive scale. Robust oversight is required.
-
-**3. Will AI automatically reject all unqualified resumes?**
-While highly effective, AI should not act as a unilateral black-box gatekeeper. Best practices dictate that AI assigns fit scores and contextual rankings, empowering human recruiters to review those scores and make the final rejection or advancement decisions.
-
-**4. Can candidates trick AI screening models?**
-As generative AI becomes more prevalent, some candidates attempt to "keyword stuff" or use AI to heavily optimize their resumes. Advanced corporate screening models are continually evolving to detect over-optimization, focusing on verifiable career trajectories and dense contextual project descriptions.
-
-**5. How does AI screening improve the candidate experience?**
-Because the initial evaluation occurs almost instantaneously, companies can provide immediate, automated responses to candidates regarding their application status, effectively destroying the notoriously frustrating "resume black hole."
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does AI differ from traditional Applicant Tracking Systems (ATS)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Traditional ATS platforms rely on rigid keyword matching, frequently eliminating qualified candidates who use different synonyms to describe their skills. Generative AI fundamentally understands semantic context, evaluating experience and capabilities comprehensively across different industry dialects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is generative AI for screening fair?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AI can be fairer than a human screener if deliberately engineered to ignore demographic markers and prevent fatigue. However, if trained on biased historical hiring data, the AI will internalize and execute those biases at a massive scale. Robust oversight is required."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will AI automatically reject all unqualified resumes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While highly effective, AI should not act as a unilateral black-box gatekeeper. Best practices dictate that AI assigns fit scores and contextual rankings, empowering human recruiters to review those scores and make the final rejection or advancement decisions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can candidates trick AI screening models?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "As generative AI becomes more prevalent, some candidates attempt to 'keyword stuff' or use AI to heavily optimize their resumes. Advanced corporate screening models are continually evolving to detect over-optimization, focusing on verifiable career trajectories and dense contextual project descriptions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does AI screening improve the candidate experience?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Because the initial evaluation occurs almost instantaneously, companies can provide immediate, automated responses to candidates regarding their application status, effectively destroying the notoriously frustrating 'resume black hole.'"
-      }
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How Generative AI for Resume Screening Radically Upgrades Hiring Consistency",
-  "description": "Discover how generative AI for resume screening and ranking eliminates human fatigue, standardizes evaluations, and accelerates initial applicant processing.",
-  "author": {
-    "@type": "Organization",
-    "name": "Expert AI Analyst"
-  }
-}
-</script>
 `
 };

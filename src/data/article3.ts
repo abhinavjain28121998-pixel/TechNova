@@ -9,6 +9,28 @@ export const article3 = {
   tags: ['Generative AI', 'Job Descriptions', 'HR', 'Talent Acquisition'],
   status: 'published',
   coverImage: '/banners/generative-ai-job-description.png',
+  faqs: [
+    {
+      question: "How does Gen AI improve the job description writing process?",
+      answer: "Gen AI eliminates the 'blank page' problem by taking basic bullet points and instantaneously drafting a highly polished, comprehensively formatted description, saving hiring managers and recruiters hours of manual administrative writing."
+    },
+    {
+      question: "Can AI make job descriptions more inclusive?",
+      answer: "Yes. Advanced generative models contain deep semantic guardrails that can detect and automatically revise aggressive, biased, or highly gender-coded language, fundamentally broadening the appeal of the posting to diverse applicant demographics."
+    },
+    {
+      question: "Will AI-generated descriptions sound robotic?",
+      answer: "If poorly prompted, they can. However, when the AI is specifically trained or fine-tuned on a company’s unique brand voice and stylistic preferences, the outputs sound entirely natural, highly professional, and perfectly aligned with corporate marketing standards."
+    },
+    {
+      question: "Can AI generate requirements for highly technical or obscure roles?",
+      answer: "Absolutely. Because AI models are trained on gigantic datasets representing global technical standards, they can accurately outline complex engineering, medical, or specialized financial requirements, frequently reminding human managers of critical competencies they may have forgotten to include."
+    },
+    {
+      question: "Do human recruiters still need to review the AI generation?",
+      answer: "Always. Generative AI occasionally hallucinates or inaccurately scopes the seniority of technical requirements. A human hiring manager or recruiter must always review and approve the final text to ensure the listed responsibilities align exactly with the ultimate business objective."
+    }
+  ],
   content: `
 Writing compelling, perfectly optimized job descriptions is historically a surprisingly tedious and complex task. Hiring managers frequently struggle to articulate the exact technical requirements of a role, often repurposing decade-old templates riddled with outdated corporate jargon and aggressive, masculine-coded language that unconsciously alienates diverse candidates. These poorly constructed descriptions directly suppress application rates and confuse the overall recruitment strategy. Today, by deploying [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), organizations can fundamentally eliminate this friction. Gen AI for job description generation empowers recruiters and hiring managers to instantly command dynamic, highly optimized, inclusive job postings that perfectly capture positional requirements while maximizing market appeal.
 
@@ -57,84 +79,5 @@ Setting up a scalable, secure ecosystem where your recruitment team can generate
 ## Conclusion
 
 Gen AI for job description generation permanently eradicates one of the most frustrating, time-consuming administrative bottlenecks in the recruitment lifecycle. By instantly generating highly articulate, inclusive, and SEO-optimized role requirements, talent acquisition teams radically reduce their time-to-market. When thoughtfully supervised by human hiring managers, applying AI intelligence to job articulation ensures that organizations project a cohesive, professional, and vastly more welcoming brand to the broader talent market.
-
-## Frequently Asked Questions (FAQs)
-
-**1. How does Gen AI improve the job description writing process?**
-Gen AI eliminates the "blank page" problem by taking basic bullet points and instantaneously drafting a highly polished, comprehensively formatted description, saving hiring managers and recruiters hours of manual administrative writing.
-
-**2. Can AI make job descriptions more inclusive?**
-Yes. Advanced generative models contain deep semantic guardrails that can detect and automatically revise aggressive, biased, or highly gender-coded language, fundamentally broadening the appeal of the posting to diverse applicant demographics.
-
-**3. Will AI-generated descriptions sound robotic?**
-If poorly prompted, they can. However, when the AI is specifically trained or fine-tuned on a company’s unique brand voice and stylistic preferences, the outputs sound entirely natural, highly professional, and perfectly aligned with corporate marketing standards.
-
-**4. Can AI generate requirements for highly technical or obscure roles?**
-Absolutely. Because AI models are trained on gigantic datasets representing global technical standards, they can accurately outline complex engineering, medical, or specialized financial requirements, frequently reminding human managers of critical competencies they may have forgotten to include.
-
-**5. Do human recruiters still need to review the AI generation?**
-Always. Generative AI occasionally hallucinates or inaccurately scopes the seniority of technical requirements. A human hiring manager or recruiter must always review and approve the final text to ensure the listed responsibilities align exactly with the ultimate business objective.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does Gen AI improve the job description writing process?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Gen AI eliminates the 'blank page' problem by taking basic bullet points and instantaneously drafting a highly polished, comprehensively formatted description, saving hiring managers and recruiters hours of manual administrative writing."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can AI make job descriptions more inclusive?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Advanced generative models contain deep semantic guardrails that can detect and automatically revise aggressive, biased, or highly gender-coded language, fundamentally broadening the appeal of the posting to diverse applicant demographics."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will AI-generated descriptions sound robotic?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If poorly prompted, they can. However, when the AI is specifically trained or fine-tuned on a company’s unique brand voice and stylistic preferences, the outputs sound entirely natural, highly professional, and perfectly aligned with corporate marketing standards."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can AI generate requirements for highly technical or obscure roles?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. Because AI models are trained on gigantic datasets representing global technical standards, they can accurately outline complex engineering, medical, or specialized financial requirements, frequently reminding human managers of critical competencies they may have forgotten to include."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do human recruiters still need to review the AI generation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Always. Generative AI occasionally hallucinates or inaccurately scopes the seniority of technical requirements. A human hiring manager or recruiter must always review and approve the final text to ensure the listed responsibilities align exactly with the ultimate business objective."
-      }
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Optimize Hiring Clarity with Gen AI for Job Description Generation",
-  "description": "Learn how Gen AI for job description generation allows organizations to instantly create accurate, compelling, and inclusive role requirements that attract elite talent.",
-  "author": {
-    "@type": "Organization",
-    "name": "Expert AI Analyst"
-  }
-}
-</script>
 `
 };
