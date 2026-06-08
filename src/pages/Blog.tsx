@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
 import { SEO } from '../components/SEO';
-import { CATEGORIES } from '../data/categories';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from '../components/ui/pagination';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
@@ -181,28 +180,6 @@ export default function Blog() {
           </div>
         ) : (
           <>
-            {/* Category Filter */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-border">
-          <span className="text-sm font-medium text-muted-foreground mr-2">Filter by:</span>
-          <Badge 
-            variant={selectedCategory === null ? 'default' : 'outline'}
-            className="cursor-pointer hover:bg-secondary hover:text-foreground transition-colors"
-            onClick={() => updateParams({ category: null })}
-          >
-            All
-          </Badge>
-          {CATEGORIES.map(category => (
-            <Badge 
-              key={category}
-              variant={selectedCategory === category ? 'default' : 'outline'}
-              className="cursor-pointer hover:bg-secondary hover:text-foreground transition-colors"
-              onClick={() => updateParams({ category })}
-            >
-              {category}
-            </Badge>
-          ))}
-        </div>
-
         {/* Posts List */}
         {paginatedPosts.length > 0 ? (
           <div className="space-y-12">

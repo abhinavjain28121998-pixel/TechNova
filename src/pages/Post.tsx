@@ -333,7 +333,6 @@ export default function Post() {
             items={[
               { label: 'Home', href: '/' },
               { label: 'Blog', href: '/blog' },
-              ...(post.category ? [{ label: post.category, href: `/categories?c=${encodeURIComponent(post.category)}` }] : []),
               { label: post.title }
             ]} 
           />

@@ -1,0 +1,614 @@
+Fetching all posts from Firestore...
+Found 121 total posts.
+
+[2026-06-13T09:00:00Z] ID: generative-ai-employee-self-service-assistants
+  Title: Empower the Workforce with Generative AI for Employee Self-Service Assistants
+  Status: published
+  Cover Image: /banners/the-future-of-human-resources-leading-the-gen-ai-revolution.png
+--------------------------------------------------
+[2026-06-12T09:00:00Z] ID: gen-ai-hr-policy-handbook-generation
+  Title: Streamlining Compliance with Gen AI for HR Policy and Handbook Generation
+  Status: published
+  Cover Image: /banners/optimizing-the-workforce-with-human-resources-solution-intelligence.png
+--------------------------------------------------
+[2026-06-11T10:00:00Z] ID: generative-ai-personalized-onboarding-guides
+  Title: Transform New Hire Journeys via Generative AI for Personalized Onboarding Guides
+  Status: published
+  Cover Image: /banners/the-future-of-human-resources-leading-the-gen-ai-revolution.png
+--------------------------------------------------
+[2026-06-10T09:00:00Z] ID: generative-ai-employee-onboarding-automation
+  Title: Accelerate Talent Integration with Generative AI for Employee Onboarding Automation
+  Status: published
+  Cover Image: /banners/optimizing-the-workforce-with-human-resources-solution-intelligence.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: gen-ai-candidate-assessment-matching
+  Title: How Generative AI Transforms Candidate Assessment and Matching
+  Status: published
+  Cover Image: /banners/gen-ai-candidate-assessment-matching.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-candidate-sourcing
+  Title: How Generative AI for Candidate Sourcing Transforms Talent Acquisition Strategies
+  Status: published
+  Cover Image: /banners/generative-ai-candidate-sourcing.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-interview-assistants
+  Title: How Generative AI Interview Assistants Are Transforming Modern Recruitment
+  Status: published
+  Cover Image: /banners/generative-ai-interview-assistants.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-job-description
+  Title: Optimize Hiring Clarity with Gen AI for Job Description Generation
+  Status: published
+  Cover Image: /banners/generative-ai-job-description.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-personalized-outreach
+  Title: Maximize Response Rates with Generative AI for Personalized Recruitment Outreach
+  Status: published
+  Cover Image: /banners/generative-ai-personalized-outreach.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-recruitment-chatbot-support
+  Title: Scaling Talent Acquisition with Generative AI Recruitment Chatbots
+  Status: published
+  Cover Image: /banners/generative-ai-recruitment-chatbot-support.png
+--------------------------------------------------
+[2026-06-08T06:07:32.436Z] ID: generative-ai-resume-screening
+  Title: How Generative AI for Resume Screening Radically Upgrades Hiring Consistency
+  Status: published
+  Cover Image: /banners/generative-ai-resume-screening.png
+--------------------------------------------------
+[2026-06-08T06:07:32.435Z] ID: generative-ai-interview-question-generation
+  Title: How Generative AI Is Transforming Interview Question Generation
+  Status: published
+  Cover Image: /banners/generative-ai-interview-question-generation.png
+--------------------------------------------------
+[2026-06-02T05:00:00Z] ID: gen-ai-board-investor-report-generation
+  Title: Streamlining Strategy: Generative AI for Board and Investor Report Generation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1557200134-90327ee9fafa
+--------------------------------------------------
+[2026-06-02T05:00:00Z] ID: gen-ai-internal-knowledge-management
+  Title: Unlocking Enterprise Value: Gen AI for Internal Knowledge Management
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1451187580459-43490279c0fa
+--------------------------------------------------
+[2026-06-02T05:00:00Z] ID: gen-ai-procurement-to-pay-automation
+  Title: Optimizing Spend: Generative AI for Procurement-to-Pay Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
+--------------------------------------------------
+[2026-06-02T05:00:00Z] ID: gen-ai-revenue-leakage-detection
+  Title: Generative AI for Revenue Leakage Detection: A Financial Game-Changer
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-6b898a486b24
+--------------------------------------------------
+[2026-06-01] ID: gen-ai-financial-statement-analysis
+  Title: Automating Financial Statement Analysis Using Advanced Generative AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1460925895917-afdab827c52f
+--------------------------------------------------
+[2026-06-01] ID: gen-ai-intelligent-cash-flow-forecasting
+  Title: Intelligent Cash Flow Forecasting Powered by Generative AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-8d04cb21cd6c
+--------------------------------------------------
+[2026-06-01] ID: gen-ai-mergers-acquisitions-analysis
+  Title: Accelerating Mergers and Acquisitions Analysis With Generative AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1600880292203-757bb62b4baf
+--------------------------------------------------
+[2026-06-01] ID: gen-ai-trade-finance-automation
+  Title: Transforming Global Trade Finance Automation Through Generative AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1551288049-bebda4e38f71
+--------------------------------------------------
+[2026-05-29] ID: gen-ai-automated-invoice-processing
+  Title: How Generative AI is Transforming Automated Invoice Processing
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-8d04cb21cd6c
+--------------------------------------------------
+[2026-05-29] ID: gen-ai-contract-analysis-generation
+  Title: Generative AI for Contract Analysis and Generation: A Legal Revolution
+  Status: published
+  Cover Image: /contract_analysis_ai.png
+--------------------------------------------------
+[2026-05-29] ID: gen-ai-portfolio-optimization
+  Title: Maximizing Yield: Generative AI for Advanced Portfolio Optimization
+  Status: published
+  Cover Image: /portfolio_optimization_ai.png
+--------------------------------------------------
+[2026-05-29] ID: gen-ai-real-time-transaction-monitoring
+  Title: Securing the Grid: Generative AI for Real-Time Transaction Monitoring
+  Status: published
+  Cover Image: /transaction_monitoring_ai.png
+--------------------------------------------------
+[2026-05-26] ID: gen-ai-anti-money-laundering-monitoring
+  Title: How Generative AI is Revolutionizing Anti-Money Laundering (AML) Monitoring
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1526304640581-d334cdbbf45e
+--------------------------------------------------
+[2026-05-26] ID: gen-ai-for-advanced-market-insights
+  Title: Unlocking Deep Market Insights with Generative AI Technologies
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f
+--------------------------------------------------
+[2026-05-26] ID: gen-ai-for-intelligent-expense-management
+  Title: Streamlining Corporate Operations with Intelligent Expense Management AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-6b898a486b24
+--------------------------------------------------
+[2026-05-26] ID: gen-ai-predictive-financial-forecasting
+  Title: Transforming FP&A with Generative AI for Predictive Financial Forecasting
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1450133064473-71024230f91b
+--------------------------------------------------
+[2026-05-25T10:30:00Z] ID: gen-ai-kyc-automation
+  Title: Enhancing Security with Generative AI for KYC Automation
+  Status: published
+  Cover Image: /kyc_automation_ai.png
+--------------------------------------------------
+[2026-05-25T10:00:00Z] ID: gen-ai-regulatory-compliance-automation
+  Title: Navigating Risk with Gen AI for Regulatory Compliance Automation
+  Status: published
+  Cover Image: /regulatory_compliance_ai.png
+--------------------------------------------------
+[2026-05-25T09:30:00Z] ID: gen-ai-financial-document-summarization
+  Title: Streamlining Analysis with Generative AI for Financial Document Summarization
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
+--------------------------------------------------
+[2026-05-25T09:00:00Z] ID: gen-ai-credit-risk-assessment-2026
+  Title: Transforming Lending with Generative AI for Credit Risk Assessment
+  Status: published
+  Cover Image: /credit_risk_ai.png
+--------------------------------------------------
+[2026-05-23T14:45:00Z] ID: ai-tax-calculation-compliance
+  Title: Mitigating Global Risks via AI Tax Calculation and Compliance
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1450133064473-71024230f91b
+--------------------------------------------------
+[2026-05-22T10:15:00Z] ID: ai-salary-calculation-automation
+  Title: Redefining Compensation Strategy Using AI Salary Calculation Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
+--------------------------------------------------
+[2026-05-21T17:15:00Z] ID: generative-ai-risk-analysis-institutional
+  Title: Navigating Institutional Uncertainty: Generative AI for Risk Analysis
+  Status: published
+  Cover Image: /risk_analysis_ai.png
+--------------------------------------------------
+[2026-05-21T17:10:00Z] ID: ai-fraud-detection-digital-payments-ecommerce
+  Title: Securing Digital Payments: Gen AI for Intelligent Fraud Detection
+  Status: published
+  Cover Image: /fraud_detection_ai.png
+--------------------------------------------------
+[2026-05-21T17:05:00Z] ID: ai-automated-financial-reporting-corporate
+  Title: Transforming Corporate Finance: The Future of Automated Financial Reporting
+  Status: published
+  Cover Image: /automated_reporting_ai.png
+--------------------------------------------------
+[2026-05-21T17:00:00Z] ID: ai-financial-assistants-wealth-management
+  Title: Revolutionizing Wealth Management: The Rise of AI-Powered Financial Assistants
+  Status: published
+  Cover Image: /wealth_management_ai.png
+--------------------------------------------------
+[2026-05-21T08:30:00Z] ID: ai-payroll-error-detection
+  Title: Ensuring Compliance and Accuracy Through AI Payroll Error Detection
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3
+--------------------------------------------------
+[2026-05-20T09:00:00Z] ID: ai-automated-payroll-processing
+  Title: Transforming Human Resources with AI Automated Payroll Processing
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-8d04cb21cd6c
+--------------------------------------------------
+[2026-05-20] ID: agentic-ai-enterprise-transformation
+  Title: Enterprise Workflow Transformation: The Complete Guide to Agentic AI
+  Status: published
+  Cover Image: /banners/enterprise-workflow-transformation-the-complete-guide-to-agentic-ai.png
+--------------------------------------------------
+[2026-05-20] ID: ai-demand-forecasting-retail-fashion
+  Title: Transforming Retail Merchandising: AI for Precision Demand Forecasting
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1441986300917-64674bd600d8
+--------------------------------------------------
+[2026-05-20] ID: ai-inventory-optimization-healthcare-pharma
+  Title: Securing Healthcare Supply Chains: AI for Dynamic Inventory Optimization
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1530026405186-ed1ea400c3af
+--------------------------------------------------
+[2026-05-20] ID: ai-supply-chain-planning-automation-manufacturing
+  Title: Architecting Industrial Resilience: AI for Supply Chain Planning Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1578575437130-527eed3abbec
+--------------------------------------------------
+[2026-05-20] ID: ai-warehouse-automation-freight-ecommerce
+  Title: Scaling E-Commerce Operations: Deep AI for Robotic Warehouse Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d
+--------------------------------------------------
+[2026-05-20] ID: applied-intelligence-programs
+  Title: Scaling Operations: The Complete Guide to Applied Intelligence Programs
+  Status: published
+  Cover Image: /banners/scaling-operations-the-complete-guide-to-applied-intelligence-programs.png
+--------------------------------------------------
+[2026-05-20] ID: enterprise-gen-ai-applied-intelligence-strategic-guide
+  Title: The Strategic Guide to Enterprise Gen AI Applied Intelligence in 2026
+  Status: published
+  Cover Image: /banners/the-strategic-guide-to-enterprise-gen-ai-applied-intelligence-in-2026.png
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-digital-transformation
+  Title: The Blueprint for Enterprise Digital Transformation in 2026
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1451187580459-43490279c0fa
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-finance-transformation
+  Title: The Executive Playbook for Finance Transformation in 2026
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1551836022-d5d88e9218df
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-gbs-transformation
+  Title: Executing Global Business Services Transformation in the Modern Enterprise
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1522071820081-009f0129c71c
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-hr-transformation
+  Title: Navigating Human Resources Transformation for the Modern Workforce
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1507679799987-c73779587ccf
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-it-transformation
+  Title: The Definitive Guide to Enterprise IT Transformation in 2026
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1544197150-b99a580bb7a8
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-sourcing-procurement-transformation
+  Title: Mastering Sourcing & Procurement Transformation in the AI Era
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1578575437130-527eed3abbec
+--------------------------------------------------
+[2026-05-20] ID: expert-guide-workforce-payroll-transformation
+  Title: The Strategic Value of Modern Workforce & Payroll Transformation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1554224155-8d04cb21cd6c
+--------------------------------------------------
+[2026-05-20] ID: finance-applied-intelligence-strategic-guide
+  Title: The Strategic Guide to Finance Applied Intelligence in 2026
+  Status: published
+  Cover Image: /banners/the-strategic-guide-to-finance-applied-intelligence-in-2026.png
+--------------------------------------------------
+[2026-05-20] ID: global-business-services-applied-intelligence
+  Title: The Strategic Blueprint for Global Business Services Applied Intelligence in 2026
+  Status: published
+  Cover Image: /banners/the-strategic-blueprint-for-global-business-services-applied-intelligence-in-2026.png
+--------------------------------------------------
+[2026-05-20] ID: payroll-applied-intelligence
+  Title: Modernizing Enterprise Compensation via Payroll Applied Intelligence in 2026
+  Status: published
+  Cover Image: /banners/modernizing-enterprise-compensation-via-payroll-applied-intelligence-in-2026.png
+--------------------------------------------------
+[2026-05-18] ID: ai-automated-purchase-order-processing-logistics
+  Title: Scaling Logistics: AI for Automated Purchase Order Processing
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d
+--------------------------------------------------
+[2026-05-18] ID: ai-spend-analysis-enterprise-it
+  Title: Mastering Enterprise IT Spend Analysis with Generative AI
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1460925895917-afdab827c52f
+--------------------------------------------------
+[2026-05-18] ID: ai-supplier-discovery-evaluation-manufacturing
+  Title: Precision Manufacturing: AI for Supplier Discovery and Evaluation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1581091226825-a6a2a5aee158
+--------------------------------------------------
+[2026-05-18] ID: ai-vendor-risk-assessment-financial-services
+  Title: Securing Financial Services: Deep AI for Vendor Risk Assessment
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1550751827-4bd374c3f58b
+--------------------------------------------------
+[2026-05-15T11:45:00Z] ID: ai-incident-management-automation
+  Title: Accelerating Resolution with AI Incident Management Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1550751827-4bd374c3f58b
+--------------------------------------------------
+[2026-05-15T11:30:00Z] ID: ai-automated-ticket-classification
+  Title: Streamlining Operations Using AI Automated Ticket Classification
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1586281380349-632531db7ed4
+--------------------------------------------------
+[2026-05-15T11:15:00Z] ID: ai-powered-it-chatbots
+  Title: Enterprise Efficiency: Deploying AI-Powered Chatbots in IT
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1516321318423-f06f85e504b3
+--------------------------------------------------
+[2026-05-15T11:00:00Z] ID: ai-it-helpdesk-automation
+  Title: Revolutionizing IT Support with AI Helpdesk Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1534536281715-e28d76689b4d
+--------------------------------------------------
+[2026-05-14T09:30:00Z] ID: ai-strategic-workforce-planning
+  Title: Strategic Agility: The Future of AI in Workforce Planning
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1531538606174-0f90ff5dce83
+--------------------------------------------------
+[2026-05-14T09:20:00Z] ID: ai-employee-sentiment-analysis
+  Title: Decoding Workforce Engagement through AI Sentiment Analysis
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1600880292203-757bb62b4baf
+--------------------------------------------------
+[2026-05-14T09:10:00Z] ID: ai-candidate-matching-recruitment
+  Title: Transforming Recruitment Strategy with AI Candidate Matching
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2
+--------------------------------------------------
+[2026-05-14T09:00:00Z] ID: ai-resume-screening-talent-acquisition
+  Title: Elevating Talent Acquisition with AI-Powered Resume Screening
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d
+--------------------------------------------------
+[2026-05-13T10:15:00Z] ID: ai-risk-assessment-corporate-finance
+  Title: AI for Risk Assessment: Enhancing Corporate Finance Strategy
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3
+--------------------------------------------------
+[2026-05-13T10:10:00Z] ID: ai-algorithmic-trading-capital-markets
+  Title: AI for Algorithmic Trading: Precision Execution in Capital Markets
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f
+--------------------------------------------------
+[2026-05-13T10:05:00Z] ID: ai-credit-scoring-inclusive-lending
+  Title: AI for Credit Scoring: Unlocking Inclusive Lending in Fintech
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1560518883-ce09059eeffa
+--------------------------------------------------
+[2026-05-13T10:00:00Z] ID: ai-fraud-detection-retail-banking
+  Title: AI for Fraud Detection in Retail Banking: Securing Financial Transactions
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1563013544-824ae1d704d3
+--------------------------------------------------
+[2026-05-12] ID: adaptive-ai-business-intelligence
+  Title: Understanding Adaptive AI: The Next Evolution of Business Intelligence
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1518186285589-2f7649de83e0
+--------------------------------------------------
+[2026-05-12] ID: advanced-rag-enterprise-ai
+  Title: The Definitive Guide to Advanced RAG Agentic Workflows in the Enterprise
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1451187580459-43490279c0fa
+--------------------------------------------------
+[2026-05-12] ID: agent-augmentation-workforce-productivity
+  Title: Maximizing Workforce Potential Through AI Agent Augmentation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1519389950473-47ba0277781c
+--------------------------------------------------
+[2026-05-11] ID: actionable-ai-enterprise-strategy
+  Title: Mastering Actionable AI: From Generative Insights to Enterprise Execution
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe
+--------------------------------------------------
+[2026-05-11] ID: agent-scaffolding-reliable-ai
+  Title: Agent Scaffolding: Engineering Reliability and Security in Enterprise AI Workflows
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1600132806370-bf17e65e942f
+--------------------------------------------------
+[2026-05-11] ID: agentic-ai-autonomous-workflows
+  Title: The Strategic Guide to Agentic AI: Building Autonomous Enterprise Workflows
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1485827404703-89b55fcc595e
+--------------------------------------------------
+[2026-05-11] ID: human-resources-applied-intelligence
+  Title: The Leader’s Guide to Human Resources Applied Intelligence in 2026
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1521737604893-6a6c423cf6c4
+--------------------------------------------------
+[2026-05-11] ID: procurement-applied-intelligence
+  Title: Executing Global Sourcing with Procurement Applied Intelligence in 2026
+  Status: published
+  Cover Image: /banners/executing-global-sourcing-with-procurement-applied-intelligence-in-2026.png
+--------------------------------------------------
+[2026-05-08T17:15:00Z] ID: mastering-gen-ai-powered-due-diligence-workflows
+  Title: Accelerating Corporate M&A: Gen AI in Due Diligence and Risk Assessment
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
+--------------------------------------------------
+[2026-05-08T17:10:00Z] ID: scaling-frictionless-customer-support-gen-ai
+  Title: Transforming Client Retention: Gen AI in Customer Support Workflows
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1552581230-c19edab6d57a
+--------------------------------------------------
+[2026-05-08T17:05:00Z] ID: transforming-enterprise-revenue-sales-gen-ai
+  Title: Transforming Enterprise Revenue Operations with Gen AI in Sales
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1507537297725-24a1c029d3ca
+--------------------------------------------------
+[2026-05-08T17:00:00Z] ID: ai-in-marketing-enterprise-strategy
+  Title: How Gen AI in Marketing is Revolutionizing Enterprise Strategy
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1542744173-8e0ee26bf15a
+--------------------------------------------------
+[2026-05-08T12:00:00Z] ID: solutionmap-procurement-technology-selection
+  Title: Optimizing Procurement Technology Selection Through Data-Driven SolutionMap Analysis
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1543269865-cbf427effbad
+--------------------------------------------------
+[2026-05-08T12:00:00Z] ID: techmatch-vendor-selection-strategy
+  Title: Accelerating Digital Transformation Success With Strategic TechMatch Vendor Selection
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1586281380349-632531db7ed4
+--------------------------------------------------
+[2026-05-06T10:00:00Z] ID: optimizing-supply-chains-with-procurement-solution-intelligence
+  Title: Transforming Global Sourcing via Procurement Solution Intelligence
+  Status: published
+  Cover Image: /banners/transforming-global-sourcing-via-procurement-solution-intelligence.png
+--------------------------------------------------
+[2026-05-06T09:00:00Z] ID: navigating-growth-capital-finance-solution-intelligence
+  Title: Driving Corporate Growth Through Finance Solution Intelligence
+  Status: published
+  Cover Image: /banners/driving-corporate-growth-through-finance-solution-intelligence.png
+--------------------------------------------------
+[2026-05-06T08:00:00Z] ID: optimizing-workforce-with-human-resources-solution-intelligence
+  Title: Optimizing the Workforce with Human Resources Solution Intelligence
+  Status: published
+  Cover Image: /banners/optimizing-the-workforce-with-human-resources-solution-intelligence.png
+--------------------------------------------------
+[2026-05-04] ID: business-benchmarking-ai-transformation-strategy
+  Title: How Business Benchmarking Drives AI Transformation Strategy
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1460925895917-afdab827c52f
+--------------------------------------------------
+[2026-05-04] ID: data-analytics-foundation-for-artificial-intelligence
+  Title: Why Data & Analytics is the True Foundation of Artificial Intelligence
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3
+--------------------------------------------------
+[2026-05-04] ID: mastering-ai-powered-due-diligence-mergers-acquisitions-risk
+  Title: Mastering AI-Powered Due Diligence: Accelerating M&A and Risk Assessment
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1447069387593-a5de0862481e
+--------------------------------------------------
+[2026-05-04] ID: redefining-digital-transformation-in-the-ai-era
+  Title: Redefining Digital Transformation for the Enterprise AI Era
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1531297484001-80022131f5a1
+--------------------------------------------------
+[2026-05-04] ID: solution-intelligence-the-pinnacle-of-enterprise-automation
+  Title: Solution Intelligence: The Pinnacle of Enterprise Automation
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1485827404703-89b55fcc595e
+--------------------------------------------------
+[2026-05-03] ID: ai-customer-support-autonomous-agents-cx-transformation
+  Title: AI in Customer Support: The Rise of the Autonomous Support Agent
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1519389950473-47ba0277781c
+--------------------------------------------------
+[2026-05-02] ID: ai-sales-automation-intelligent-deal-closing
+  Title: AI in Sales: From Brute Force Outreach to Intelligent Deal Closing
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1521791136064-7986c2920216
+--------------------------------------------------
+[2026-05-01] ID: ai-marketing-personalized-customer-journeys-2026
+  Title: The Future of AI in Marketing: Hyper-Personalized Customer Journeys
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1511556532299-8f662fc26c06
+--------------------------------------------------
+[2026-04-27T08:00:00Z] ID: navigating-ai-readiness-with-hackett-ai-xplr
+  Title: Navigating AI Readiness: Mapping Your Strategy with Hackett AI XPLR™
+  Status: published
+  Cover Image: /banners/navigating-ai-readiness-mapping-your-strategy-with-hackett-ai-xplr.png
+--------------------------------------------------
+[2026-04-26T09:00:00Z] ID: gen-ai-consulting-enterprise-transformation
+  Title: The Strategic Value of Gen AI Consulting in Enterprise Transformation
+  Status: published
+  Cover Image: /banners/the-strategic-value-of-gen-ai-consulting-in-enterprise-transformation.png
+--------------------------------------------------
+[2026-04-25T14:00:00Z] ID: mastering-ai-implementation-practical-enterprise-guide
+  Title: Mastering AI Implementation: A Practical Guide for Modern Enterprises
+  Status: published
+  Cover Image: /banners/mastering-ai-implementation-a-practical-guide-for-modern-enterprises.png
+--------------------------------------------------
+[2026-04-24T10:00:00Z] ID: askhackett-revolutionizing-benchmarking-ai
+  Title: AskHackett™: Revolutionizing Enterprise Benchmarking with Conversational AI
+  Status: published
+  Cover Image: /banners/askhackett-revolutionizing-enterprise-benchmarking-with-conversational-ai.png
+--------------------------------------------------
+[2026-04-23T11:00:00Z] ID: gen-ai-in-supply-chain-next-gen-logistics
+  Title: Next-Gen Logistics: Mastering Agility with Gen AI in Supply Chain Operations
+  Status: published
+  Cover Image: /banners/next-gen-logistics-mastering-agility-with-gen-ai-in-supply-chain-operations.png
+--------------------------------------------------
+[2026-04-22T09:00:00Z] ID: gen-ai-in-finance-strategic-roadmap
+  Title: Unlocking Strategic Value with Gen AI in Finance: A 2026 Roadmap
+  Status: published
+  Cover Image: /banners/unlocking-strategic-value-with-gen-ai-in-finance-a-2026-roadmap.png
+--------------------------------------------------
+[2026-04-22T08:30:00Z] ID: gen-ai-in-procurement-strategic-sourcing
+  Title: Strategic Sourcing Evolution: Leveraging Gen AI in Procurement
+  Status: published
+  Cover Image: /banners/strategic-sourcing-evolution-leveraging-gen-ai-in-procurement.png
+--------------------------------------------------
+[2026-04-21T14:31:12.717Z] ID: how-ai-agents-are-reshaping-modern-enterprise-workflows
+  Title: How Enterprise AI Agents Are Reshaping Modern Workflows (2026 Guide)
+  Status: published
+  Cover Image: https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200
+--------------------------------------------------
+[2026-04-21T10:00:00Z] ID: gen-ai-in-gbs-future-of-shared-services
+  Title: Transforming Global Business Services with Gen AI: A 2026 Perspective
+  Status: published
+  Cover Image: /banners/transforming-global-business-services-with-gen-ai-a-2026-perspective.png
+--------------------------------------------------
+[2026-04-21T10:00:00Z] ID: gen-ai-in-payroll-future-of-compensation
+  Title: The Future of Compensation: Optimizing Workflows with Gen AI in Payroll
+  Status: published
+  Cover Image: /banners/the-future-of-compensation-optimizing-workflows-with-gen-ai-in-payroll.png
+--------------------------------------------------
+[2026-04-20T11:01:59.606Z] ID: advancing-global-business-services-generative-ai-capabilities
+  Title: Advancing Global Business Services with Generative AI Capabilities (2026)
+  Status: published
+  Cover Image: undefined
+--------------------------------------------------
+[2026-04-20T11:00:00Z] ID: gen-ai-in-hr-human-centric-automation
+  Title: The Future of Human Resources: Leading the Gen AI Revolution
+  Status: published
+  Cover Image: /banners/the-future-of-human-resources-leading-the-gen-ai-revolution.png
+--------------------------------------------------
+[2026-04-20T09:00:00Z] ID: gen-ai-in-it-future-of-tech-ops
+  Title: Future of Tech Ops: Revolutionizing Systems with Gen AI in IT
+  Status: published
+  Cover Image: /banners/future-of-tech-ops-revolutionizing-systems-with-gen-ai-in-it.png
+--------------------------------------------------
+[2026-04-19T10:00:00Z] ID: understanding-artificial-intelligence-2026
+  Title: Expert Outlook: Navigating Artificial Intelligence in 2026
+  Status: published
+  Cover Image: /banners/expert-outlook-navigating-artificial-intelligence-in-2026.png
+--------------------------------------------------
+[2026-04-18T14:30:00Z] ID: secure-web-development-practices
+  Title: Security-First Web Development: A Senior Engineer’s Manual
+  Status: published
+  Cover Image: /banners/security-first-web-development-a-senior-engineer-s-manual.png
+--------------------------------------------------
+[2026-04-16] ID: driving-procurement-excellence-ai
+  Title: Driving Procurement Excellence with AI Logistics Models
+  Status: published
+  Cover Image: https://picsum.photos/seed/procurement-ai/1200/600
+--------------------------------------------------
+[2026-04-15T09:15:00Z] ID: demystifying-zero-trust
+  Title: Zero Trust Architectures: An Analyst’s Field Manual
+  Status: published
+  Cover Image: /banners/zero-trust-architectures-an-analyst-s-field-manual.png
+--------------------------------------------------
+[2026-04-15] ID: future-of-ai-in-web-development
+  Title: The Future of AI in Web Development: Frontend Tools & Trends
+  Status: published
+  Cover Image: https://picsum.photos/seed/ai-web/1200/600
+--------------------------------------------------
+[2026-04-12] ID: zero-trust-architecture-explained
+  Title: Zero Trust Architecture Explained: Security Without Perimeters
+  Status: published
+  Cover Image: https://picsum.photos/seed/security/1200/600
+--------------------------------------------------
+[2026-04-10] ID: react-19-features-you-need-to-know
+  Title: React 19 Features You Need to Know: A Frontend Guide
+  Status: published
+  Cover Image: https://picsum.photos/seed/react19/1200/600
+--------------------------------------------------
+[2026-04-05] ID: top-gadgets-mwc-2026
+  Title: Top Gadgets MWC 2026: The Best Hardware and AI Spectacles
+  Status: published
+  Cover Image: https://picsum.photos/seed/gadgets/1200/600
+--------------------------------------------------
+[2026-04-02] ID: sustainable-software-engineering
+  Title: Sustainable Software Engineering: Building Green Tech Solutions
+  Status: published
+  Cover Image: https://picsum.photos/seed/green-tech/1200/600
+--------------------------------------------------
+[2026-03-28] ID: quantum-computing-breakthrough
+  Title: The Next Quantum Computing Breakthrough: Cryptography & Speed
+  Status: published
+  Cover Image: https://picsum.photos/seed/quantum/1200/600
+--------------------------------------------------
+
+Summary:
+Total: 121
+Published: 121
+Drafts: 0
+Missing Status: 0

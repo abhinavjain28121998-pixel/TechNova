@@ -1,0 +1,22 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="hsl(270, 80%, 20%)" />
+        <stop offset="100%" stop-color="hsl(200, 80%, 10%)" />
+      </linearGradient>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)" />
+      </pattern>
+    </defs>
+    <rect width="1200" height="600" fill="url(#grad)" />
+    <rect width="1200" height="600" fill="url(#grid)" />
+    
+    <!-- Abstract Shapes -->
+    <circle cx="1000" cy="100" r="300" fill="hsl(270, 70%, 50%)" opacity="0.1" filter="blur(40px)" />
+    <circle cx="200" cy="500" r="400" fill="hsl(200, 70%, 50%)" opacity="0.1" filter="blur(60px)" />
+    
+    <g transform="translate(100, 300)">
+      <text x="0" y="-40" font-family="Inter, sans-serif" font-weight="900" font-size="64" fill="#ffffff" letter-spacing="-1">Redefining Digital Transformation for th...</text>
+      <text x="0" y="40" font-family="Inter, sans-serif" font-weight="500" font-size="32" fill="rgba(255,255,255,0.7)">DIGITAL STRATEGY • ENTERPRISE AI</text>
+    </g>
+  </svg>

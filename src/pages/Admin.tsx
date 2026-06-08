@@ -241,7 +241,7 @@ export default function Admin() {
     fetchPosts();
   };
 
-  const savePost = async (e?: React.FormEvent) => {
+  const savePost = async (e?: React.FormEvent, statusOverride?: string) => {
     if (e) e.preventDefault();
     if (!editingPost) return;
 
@@ -250,7 +250,7 @@ export default function Admin() {
       const postData = {
         ...editingPost,
         date: editingPost.date || new Date().toISOString(),
-        status: editingPost.status || 'draft',
+        status: statusOverride || editingPost.status || 'draft',
         author: editingPost.author || {
           name: 'TechNova Team',
           avatar: 'https://picsum.photos/seed/technova/100/100',
@@ -685,7 +685,7 @@ export default function Admin() {
                     </div>
                     <div className="p-3 space-y-3 border-b border-[#c3c4c7]">
                       <div className="flex justify-between items-center text-sm">
-                        <Button variant="outline" size="sm" className="h-8 border-[#2271b1] text-[#2271b1]" onClick={() => setEditingPost({...editingPost, status: 'draft'})}>Save Draft</Button>
+                        <Button variant="outline" size="sm" className="h-8 border-[#2271b1] text-[#2271b1]" onClick={() => savePost(undefined, 'draft')}>Save Draft</Button>
                       </div>
                       
                       <div className="text-[13px] text-[#2c3338] space-y-2 pt-2">
@@ -712,7 +712,7 @@ export default function Admin() {
                       <button className="text-[#d63638] hover:text-[#d63638] p-0 h-auto text-[13px] underline bg-transparent" onClick={() => editingPost?.id && deletePostRecord(editingPost.id)}>Move to Trash</button>
                       <Button 
                         size="sm" 
-                        onClick={() => savePost()} 
+                        onClick={() => savePost(undefined, 'published')} 
                         className="bg-[#2271b1] hover:bg-[#135e96] text-white h-8 text-[13px] rounded-sm"
                       >
                         {editingPost?.status === 'published' ? 'Update' : 'Publish'}

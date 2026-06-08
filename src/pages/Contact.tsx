@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -5,6 +6,28 @@ import { generateBreadcrumbSchema, generateContactPageSchema, BASE_URL, generate
 import { Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Contact() {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      e.preventDefault();
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    if (message.length < 20) {
+      e.preventDefault();
+      setError('Message must be at least 20 characters long.');
+      return;
+    }
+
+    setError(null);
+  };
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: '/' },
     { name: 'Contact Us', item: '/contact' }
@@ -92,18 +115,20 @@ export default function Contact() {
 
           <div className="bg-card border border-border p-8 rounded-2xl shadow-sm h-fit">
             <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
-            <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
-              <input type="hidden" name="access_key" value="d5097f40-85ff-41f8-9552-2eea068cdfd6" />
+            
+            {error && (
+              <div className="mb-6 p-4 rounded-md bg-destructive/15 text-destructive text-sm font-medium">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+              <input type="hidden" name="access_key" value="30ec4e3e-2129-4165-9d55-f4e179e6d468" />
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
               
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="firstName" className="text-sm font-medium text-foreground">First Name</label>
-                  <Input id="firstName" name="First Name" placeholder="John" required className="bg-background border-border" />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="lastName" className="text-sm font-medium text-foreground">Last Name</label>
-                  <Input id="lastName" name="Last Name" placeholder="Doe" required className="bg-background border-border" />
-                </div>
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
+                <Input id="name" type="text" name="name" placeholder="John Doe" required className="bg-background border-border" />
               </div>
               
               <div className="space-y-2">
@@ -112,16 +137,12 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-foreground">Subject</label>
-                <Input id="subject" name="subject" placeholder="How can we help?" required className="bg-background border-border" />
-              </div>
-
-              <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
                 <textarea 
                   id="message" 
                   name="message"
                   rows={6}
+                  minLength={20}
                   className="flex w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 resize-y"
                   placeholder="Your message here..."
                   required
@@ -129,7 +150,7 @@ export default function Contact() {
               </div>
 
               <Button type="submit" size="lg" className="w-full">
-                Send Message
+                Submit
               </Button>
             </form>
           </div>

@@ -341,14 +341,7 @@ export function generateBlogPostGraphSchema(post: any) {
     keywords: post.tags ? post.tags.join(', ') : undefined,
     articleSection: post.category,
     description: post.metaDescription || post.excerpt,
-    articleBody: post.content ? post.content.substring(0, 500) + '...' : undefined,
-    about: [
-      {
-        '@type': 'Thing',
-        name: post.category,
-        '@id': `${BASE_URL}/categories?c=${encodeURIComponent(post.category)}`
-      }
-    ]
+    articleBody: post.content ? post.content.substring(0, 500) + '...' : undefined
   });
 
   // 6. BreadcrumbList Schema

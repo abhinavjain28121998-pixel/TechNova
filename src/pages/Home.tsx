@@ -1,5 +1,4 @@
 import { SEO } from '../components/SEO';
-import { CATEGORIES } from '../data/categories';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -22,7 +21,8 @@ export default function Home() {
   const featuredPosts = posts.filter(post => post.featured);
   const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
   const recentPosts = posts.filter(post => !carouselPosts.find(p => p.id === post.id)).slice(0, 3);
-  const trendingPosts = posts.filter(post => post.trending).slice(0, 4);
+  const trendingCandidates = posts.filter(post => post.trending);
+  const trendingPosts = trendingCandidates.length > 0 ? trendingCandidates.slice(0, 4) : posts.filter(post => !carouselPosts.find(p => p.id === post.id) && !recentPosts.find(p => p.id === post.id)).slice(0, 4);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -153,9 +153,6 @@ export default function Home() {
                     </span>
                     <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/25 to-transparent z-0" />
                   </div>
-                </Link>
-                <Link to="/categories" className={buttonVariants({ size: 'lg', variant: 'outline', className: 'w-full sm:w-auto hover:bg-primary/5 hover:text-primary border-primary/20 hover:border-primary/50 transition-all duration-300' })}>
-                  Browse Categories
                 </Link>
               </motion.div>
             </motion.div>
@@ -361,33 +358,6 @@ export default function Home() {
                           </h4>
                           <span className="text-xs text-muted-foreground">{format(parseISO(post.date), 'MMM d, yyyy')}</span>
                         </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Categories */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border">Popular Categories</h2>
-                <div className="flex flex-wrap gap-2">
-                  {CATEGORIES.map((category, idx) => (
-                    <motion.div
-                      key={category}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    >
-                      <Link to={`/categories?c=${encodeURIComponent(category)}`}>
-                        <Badge variant="outline" className="hover:bg-primary/20 hover:text-primary hover:border-primary/50 transition-all duration-300 text-sm py-1.5 px-3">
-                          {category}
-                        </Badge>
                       </Link>
                     </motion.div>
                   ))}

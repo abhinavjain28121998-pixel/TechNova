@@ -36,6 +36,10 @@ import { financeUseCasesPosts } from './financeUseCasesPosts';
 import { fourNewUseCases } from './fourNewUseCases';
 import { seoArticlesLatest } from './seoArticlesLatest';
 import { advancedFinanceAIArticles } from './advancedFinanceAIArticles';
+import { onboardingArticle1 } from './onboardingArticle1';
+import { onboardingArticle2 } from './onboardingArticle2';
+import { onboardingArticle3 } from './onboardingArticle3';
+import { onboardingArticle4 } from './onboardingArticle4';
 
 const authors = {
  alex: {
@@ -2028,6 +2032,10 @@ Procurement strongly definitively clearly acts as completely exactly the central
 ];
 
 const RAW_POSTS: any[] = [
+onboardingArticle1,
+onboardingArticle2,
+onboardingArticle3,
+onboardingArticle4,
 ...allHrRecruitmentArticles,
 ...newHrArticles,
 ...aiUseCaseAML,

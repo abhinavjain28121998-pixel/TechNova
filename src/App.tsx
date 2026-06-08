@@ -7,7 +7,6 @@ import { ThemeProvider } from './components/ThemeProvider';
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Post = lazy(() => import('./pages/Post'));
-const Categories = lazy(() => import('./pages/Categories'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
@@ -27,7 +26,6 @@ export default function App() {
                 <Route index element={<Home />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:slug" element={<Post />} />
-                <Route path="categories" element={<Categories />} />
                 <Route path="case-studies" element={<CaseStudies />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />

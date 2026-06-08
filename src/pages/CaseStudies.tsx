@@ -265,9 +265,6 @@ export default function CaseStudies() {
             <Link to="/blog" className={buttonVariants({ size: "lg", variant: "secondary", className: "font-semibold shadow-lg" })}>
               Explore More Insights <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
-            <Link to="/categories" className={buttonVariants({ size: "lg", variant: "outline", className: "bg-transparent border-primary-foreground/30 hover:bg-primary-foreground/10 text-primary-foreground" })}>
-              Browse Topics
-            </Link>
           </div>
         </div>
       </section>
