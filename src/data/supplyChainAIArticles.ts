@@ -7,7 +7,7 @@ export const supplyChainAIArticles: Post[] = [
  title: 'Transforming Retail Merchandising: AI for Precision Demand Forecasting',
  metaDescription: 'Discover how top retailers use AI for Demand forecasting to align inventory with consumer behavior. Leverage Gen AI in Supply Chain to transform merchandising.',
  content: `
-The retail landscape is notoriously volatile, driven by rapidly shifting consumer trends, viral social media moments, and unpredictable macroeconomic factors. Historically, merchandising teams relied on simplistic historical sales data and instinct to forecast seasonal demand. This reactive approach inevitably leads to massive overstock of outdated inventory or painful stockouts of trending items. Today, forward-thinking organizations are embracing artificial intelligence to fundamentally transform forecasting from a guessing game into a precise, predictive science.
+The retail landscape is notoriously volatile, driven by rapidly shifting consumer trends, viral social media moments, and unpredictable macroeconomic factors. Historically, [merchandising](/blog/ai-demand-forecasting-retail-fashion) teams relied on simplistic historical sales data and instinct to forecast seasonal demand. This reactive approach inevitably leads to massive overstock of outdated inventory or painful stockouts of trending items. Today, forward-thinking organizations are embracing artificial intelligence to fundamentally transform forecasting from a guessing game into a precise, predictive science.
 
 ## What AI Means in Retail Forecasting
 
@@ -99,7 +99,7 @@ By monitoring local public health data and seasonal admission trends, AI can pre
 
 ## Benefits for Businesses
 
-* **Eradication of Critical Stockouts:** Predictive modeling drastically reduces the risk of running out of essential, life-saving medications during critical moments.
+* **Eradication of Critical Stockouts:** [Predictive modeling](/blog/gen-ai-predictive-financial-forecasting) drastically reduces the risk of running out of essential, life-saving medications during critical moments.
 * **Massive Reduction in Spoilage:** Intelligent expiration routing saves [healthcare](/blog/ai-inventory-optimization-healthcare-pharma) networks millions of dollars annually by preventing pharmaceutical waste.
 * **Operational Efficiency:** Nurses and clinical staff spend significantly less time manually counting bedside inventory and more time focusing entirely on direct patient care.
 

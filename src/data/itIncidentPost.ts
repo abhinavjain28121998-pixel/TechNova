@@ -10,7 +10,7 @@ export const itIncidentPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'Incident Management', 'DevOps', 'Root Cause Analysis', 'Enterprise IT'],
  date: '2026-05-15T11:45:00Z',
- coverImage: '/tech_dashboard_ai.png',
+ coverImage: '/banners/accelerating-resolution-with-ai-incident-management-automation.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Rahman',
@@ -38,7 +38,7 @@ export const itIncidentPost: Post[] = [
  content: `
 When a massive technological infrastructure experiences a catastrophic failure, every passing second distinctly equals profound financial loss and severe reputational damage. Traditional major [incident management](/blog/ai-incident-management-automation) is inherently chaotic. Panicked engineers manually scour millions of disparate server logs, attempting to locate the specific microscopic configuration error that crashed the global payment gateway. 
 
-Relying exclusively on human cognitive capacity to accurately process massive data silos during a high-stress crisis is obsolete. The integration of algorithmic intelligence systematically transforms incident management from frantic manual troubleshooting into a highly orchestrated, rapid autonomous response.
+Relying exclusively on human cognitive capacity to accurately process massive data silos during a high-stress crisis is obsolete. The integration of algorithmic intelligence systematically transforms [incident management](/blog/ai-incident-management-automation) from frantic manual troubleshooting into a highly orchestrated, rapid autonomous response.
 
 ## What AI means in incident management automation
 

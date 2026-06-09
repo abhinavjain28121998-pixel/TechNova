@@ -216,16 +216,12 @@ async function startServer() {
       const staticPages = [
         '',
         '/about',
-        '/services',
         '/case-studies',
         '/blog',
         '/contact',
-        '/categories',
-        '/privacy-policy',
-        '/terms-of-service'
+        '/privacy',
+        '/terms'
       ];
-      
-      const uniqueCategories = Array.from(new Set(publishedPosts.map(p => p.category).filter(Boolean)));
 
       res.setHeader('Content-Type', 'application/xml');
       res.setHeader('Cache-Control', 'public, max-age=3600');
@@ -236,11 +232,6 @@ ${staticPages.map(page => `  <url>
     <loc>${baseUrl}${page}</loc>
     <changefreq>${page === '/blog' || page === '' ? 'daily' : 'weekly'}</changefreq>
     <priority>${page === '' ? '1.0' : '0.8'}</priority>
-  </url>`).join('\n')}
-${uniqueCategories.map(category => `  <url>
-    <loc>${baseUrl}/category/${encodeURIComponent(category?.toLowerCase() || '')}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>`).join('\n')}
 ${publishedPosts.map((post: any) => `  <url>
     <loc>${baseUrl}/blog/${post.slug}</loc>

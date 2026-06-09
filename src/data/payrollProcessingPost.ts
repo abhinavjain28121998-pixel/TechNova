@@ -10,7 +10,7 @@ export const payrollProcessingPost: Post[] = [
  category: 'HR Tech',
  tags: ['AI', 'Payroll', 'HR Automation', 'Machine Learning', 'Enterprise Strategy'],
  date: '2026-05-20T09:00:00Z',
- coverImage: '/document_summarization_ai.png',
+ coverImage: '/banners/optimizing-the-workforce-with-human-resources-solution-intelligence.png',
  readingTime: '6 min read',
  author: {
  name: 'David Chen',

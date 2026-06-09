@@ -10,7 +10,7 @@ export const itHelpdeskPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'IT Support', 'Helpdesk Automation', 'Enterprise IT'],
  date: '2026-05-15T11:00:00Z',
- coverImage: '/document_summarization_ai.png',
+ coverImage: '/banners/accelerating-resolution-with-ai-incident-management-automation.png',
  readingTime: '6 min read',
  author: {
  name: 'James Carter',

@@ -27,7 +27,7 @@ async function generateSitemapAndRSS() {
     <lastmod>${today}</lastmod>
   </url>
   <url>
-    <loc>${baseUrl}/categories</loc>
+    <loc>${baseUrl}/case-studies</loc>
     <lastmod>${today}</lastmod>
   </url>
   <url>
@@ -40,6 +40,10 @@ async function generateSitemapAndRSS() {
   </url>
   <url>
     <loc>${baseUrl}/privacy</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${baseUrl}/terms</loc>
     <lastmod>${today}</lastmod>
   </url>
 `;

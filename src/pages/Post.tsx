@@ -26,7 +26,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
-const AIImage = ({ src, alt, context, ...props }: any) => {
+const AIImage = ({ src, alt, context, className, ...props }: any) => {
   const [altText, setAltText] = useState(alt || '');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -68,14 +68,14 @@ const AIImage = ({ src, alt, context, ...props }: any) => {
   }, [src, alt, context]);
 
   return (
-    <span className={`relative block w-full overflow-hidden rounded-xl ${props.className || ''}`}>
+    <span className={`w-full h-full relative block overflow-hidden rounded-xl ${className || 'aspect-video'}`}>
       <img 
         src={getOptimizedImageUrl(src, 800)} 
         alt={altText} 
         title={altText} 
         loading="lazy" 
         decoding="async" 
-        className="block w-full h-full object-cover aspect-video" 
+        className="w-full h-full object-cover absolute inset-0 rounded-xl" 
         onError={(e) => {
           const img = e.currentTarget;
           if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
@@ -122,9 +122,37 @@ export default function Post() {
   const [showControls, setShowControls] = useState(false);
   const [activeId, setActiveId] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollY = window.scrollY;
+      
+      const totalScrollable = scrollHeight - clientHeight;
+      if (totalScrollable <= 0) {
+        setScrollPercent(0);
+        return;
+      }
+      
+      const percentage = (scrollY / totalScrollable) * 100;
+      setScrollPercent(Math.min(100, Math.max(0, percentage)));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => {
@@ -325,6 +353,14 @@ export default function Post() {
         schema={postGraphSchema}
       />
 
+      {/* Reading Progress Indicator */}
+      <div className="fixed top-16 left-0 w-full h-[3px] bg-muted/20 z-50 pointer-events-none">
+        <div 
+          className="h-full bg-primary shadow-[0_1px_6px_rgba(59,130,246,0.3)] transition-all duration-75 ease-out" 
+          style={{ width: `${scrollPercent}%` }}
+        />
+      </div>
+
       <article className="bg-background max-w-none">
         {/* Post Header */}
         {/* Breadcrumbs */}
@@ -402,14 +438,14 @@ export default function Post() {
 
         {/* Cover Image */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
-          <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
+          <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border relative">
             <AIImage 
               src={(post.coverImage || '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png')} 
               alt={post.title} 
               context={post.content}
               width={800}
               height={450}
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
               referrerPolicy="no-referrer"
               fetchPriority="high"
             />

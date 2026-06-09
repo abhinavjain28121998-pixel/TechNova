@@ -10,7 +10,7 @@ export const riskAssessmentPost: Post[] = [
  category: 'Finance',
  tags: ['AI', 'Risk Assessment', 'Corporate Finance', 'Strategy', 'Finance'],
  date: '2026-05-13T10:15:00Z',
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/ai-risk-assessment-corporate-finance.png',
  readingTime: '6 min read',
  author: {
  name: 'Sarah Chen',
@@ -48,7 +48,7 @@ Modern [Gen AI in [Finance](/blog/gen-ai-in-finance-strategic-roadmap)](https://
 
 ## Key Use Cases of AI in Risk Assessment
 
-Global business operations.
+Global business [operations](/blog/gen-ai-for-intelligent-expense-management).
 
 ### Liquidity Risk Management
 

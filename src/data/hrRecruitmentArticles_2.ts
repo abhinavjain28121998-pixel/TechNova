@@ -20,33 +20,33 @@ export const hrRecruitmentArticles_2: Post[] = [
   content: `
 For years, recruitment teams have fought a losing battle against rigid applicant tracking systems (ATS). Traditional recruiting software relies on simple keyword matching, meaning a highly qualified Software Engineer who writes "built distributed data pipelines" might be filtered out simply because their resume lacks the exact term "SQL developer." This creates a double-sided problem: stellar talent gets ignored, while hiring managers waste hours reviewing candidates who look good on paper but lack practical capability.
 
-Generative AI changes this dynamic. By shifting the hiring process from rigid keyword parsing to semantic understanding, generative models interpret the context, depth, and transferability of a candidate's experience. Rather than looking for exact string matches, these systems assess capabilities, intent, and potential. 
+[Generative AI](/blog/generative-ai-risk-analysis-institutional) changes this dynamic. By shifting the hiring process from rigid keyword parsing to semantic understanding, generative models interpret the context, depth, and transferability of a candidate's experience. Rather than looking for exact string matches, these systems assess capabilities, intent, and potential. 
 
 ---
 
 ## What Generative AI Means for Modern Recruitment
 
-In talent acquisition, generative technology acts as an intelligent layer built over traditional resume databases and job boards. Traditional AI uses predictive models to rank candidates based on historical patterns. Generative AI, however, excels at synthesizing unstructured data, generating interactive assessments, and understanding nuanced human language.
+In talent acquisition, generative technology acts as an intelligent layer built over traditional resume databases and job boards. Traditional AI uses predictive models to rank candidates based on historical patterns. [Generative AI](/blog/ai-automated-financial-reporting-corporate), however, excels at synthesizing unstructured data, generating interactive assessments, and understanding nuanced human language.
 
-Integrating [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) transitions hiring teams from reactive sorting to proactive talent matching. For example, instead of manually reviewing 500 applications for an operations manager role, recruiters can instruct a generative system to analyze resumes for "experience managing supply chain disruptions under tight margins." The AI does not just scan for those words; it reads the descriptions of past jobs, evaluates the complexity of the achievements described, and presents a curated list of candidates with explained reasoning.
+Integrating [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) transitions hiring teams from reactive sorting to proactive talent matching. For example, instead of manually reviewing 500 applications for an operations manager role, recruiters can instruct a generative system to analyze resumes for "experience managing supply chain disruptions under tight margins." The AI does not just scan for those words; it reads the descriptions of past jobs, evaluates the complexity of the achievements described, and presents a curated list of candidates with explained reasoning. The underlying principles here strongly parallel the advancements seen across [ai](/blog/ai-strategic-workforce-planning).
 
 ---
 
 ## Key Use Cases for Gen AI in Candidate Assessment
 
-Implementing generative models within your hiring pipeline streamlines candidate evaluation across several high-value areas.
+Implementing generative models within your hiring pipeline streamlines candidate evaluation across several high-value areas. Many leaders integrating these systems also explore synergies with [talent optimization](/blog/human-resources-applied-intelligence).
 
 ### 1. Multi-Dimensional Semantic Matching
 Unlike standard keyword filters, generative models perform deep semantic matching. They can map adjacent skills that are not explicitly linked in a standard database. For instance, if an LLM reads a profile of a candidate who specializes in PyTorch and Jax, it automatically understands that the candidate has strong deep learning capabilities, even if the phrase "deep learning specialist" is missing from their CV.
 
 ### 2. Contextual Resume Summarization
-Hiring managers often struggle to read dozens of resumes, each formatted differently. Generative AI can ingest diverse, unstructured CVs (PDFs, portfolio links, LinkedIn exports) and normalize them into a standard, objective briefing document. These summaries highlight exactly how a candidate’s specific achievements map to the target role's key performance indicators (KPIs), eliminating formatting bias.
+Hiring managers often struggle to read dozens of resumes, each formatted differently. [Generative AI](/blog/gen-ai-intelligent-cash-flow-forecasting) can ingest diverse, unstructured CVs (PDFs, portfolio links, LinkedIn exports) and normalize them into a standard, objective briefing document. These summaries highlight exactly how a candidate’s specific achievements map to the target role's key performance indicators (KPIs), eliminating formatting bias.
 
 ### 3. Dynamic, Role-Specific Assessments
 Instead of sending generic, easily-gameable coding tests or multiple-choice quizzes, recruiters can use generative models to create hyper-personalized assessment scenarios. For a senior product manager role, the AI can generate a case study based on the company’s real market challenges, evaluate the candidate's strategic response, and provide hiring managers with a detailed rubric breakdown of their strategic reasoning.
 
 ### 4. Conversational Screening Portals
-Generative AI-powered conversational agents can conduct initial, chat-based technical screenings. These systems do not follow rigid scripts. They dynamically ask follow-up questions based on the candidate's previous answers, probing deeper into their actual project contributions to verify technical claims before a human recruiter steps in.
+[Generative AI](/blog/gen-ai-for-intelligent-expense-management)-powered conversational agents can conduct initial, chat-based technical screenings. These systems do not follow rigid scripts. They dynamically ask follow-up questions based on the candidate's previous answers, probing deeper into their actual project contributions to verify technical claims before a human recruiter steps in.
 
 ---
 
@@ -69,7 +69,7 @@ Despite its capabilities, deploying generative AI in human resources comes with 
 Generative models are trained on historical data, which can reflect systemic biases. If an LLM is trained on a dataset where successful executives are historically male, it may inadvertently favor male candidates. Additionally, "hallucinations"—where an AI invents credentials or misinterprets a candidate's background—must be kept in check.
 
 ### Data Privacy and Security
-Recruitment involves highly sensitive Personal Identifiable Information (PII). Uploading resume data directly to public, open-source LLM APIs violates basic compliance frameworks like GDPR and CCPA. Organizations must use secure, sandboxed enterprise instances where data is encrypted and excluded from public model training.
+Recruitment involves highly sensitive Personal Identifiable Information (PII). Uploading resume data directly to public, open-source LLM APIs violates basic [compliance](/blog/gen-ai-hr-policy-handbook-generation) frameworks like GDPR and CCPA. Organizations must use secure, sandboxed enterprise instances where data is encrypted and excluded from public model training.
 
 ### Lack of Transparency (The "Black Box" Problem)
 Hiring teams must be able to justify why a candidate was rejected or selected. If an AI system acts as a black box, companies open themselves up to regulatory scrutiny and compliance issues. Every automated recommendation must be accompanied by clear, auditable explanation parameters.

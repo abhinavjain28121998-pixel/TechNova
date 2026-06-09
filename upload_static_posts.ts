@@ -1,12 +1,14 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { initializeFirestore, doc, setDoc, terminate } from 'firebase/firestore';
 import fs from 'fs';
 // We just read package.json or use tsx
 import { POSTS } from './src/data/posts.ts';
 
 const firebaseConfig = JSON.parse(fs.readFileSync('./firebase-applet-config.json', 'utf8'));
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+}, firebaseConfig.firestoreDatabaseId);
 
 async function upload() {
   for (const post of POSTS) {
@@ -19,8 +21,10 @@ async function upload() {
     console.log("Uploading " + post.slug);
     await setDoc(doc(db, 'posts', data.slug), data, { merge: true });
   }
-  console.log("Done uploading");
-  process.exit(0);
+  console.log("Terminating db connection with flush...");
+  await terminate(db);
+  console.log("Done uploading successfully!");
 }
 
 upload().catch(console.error);
+

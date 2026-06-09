@@ -84,7 +84,7 @@ In the hyper-regulated world of financial services, third-party [vendor risk](/b
 
 In financial vendor management, Artificial Intelligence functions as a tireless, continuous auditor. Instead of relying on manual attestations, [Gen AI in Sourcing and Procurement](https://www.thehackettgroup.com/gen-ai-in-procurement/) enables institutions to ingest massive legal contracts, [cybersecurity](/blog/ai-fraud-detection-retail-banking) ratings, and real-time market news. Expanding this framework often requires a foundational grasp of [digital transformation](/blog/ai-marketing-personalized-customer-journeys-2026).
 
-The AI synthesizes these diverse data streams into actionable, predictive risk scores. It reads the fine print of security protocols, monitors the dark web for vendor credential leaks, and evaluates geopolitical events that might impact a vendor’s ability to deliver.
+The AI synthesizes these diverse data streams into actionable, predictive risk scores. It reads the fine print of [security](/blog/secure-web-development-practices) protocols, monitors the dark web for vendor credential leaks, and evaluates geopolitical events that might impact a vendor’s ability to deliver.
 
 ## Key Use Cases
 

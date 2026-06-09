@@ -16,18 +16,18 @@ export const aiUseCaseExpense: Post[] = [
     content: `
 # Streamlining Corporate Operations with Intelligent Expense Management AI
 
-Expense management remains one of the most universally despised corporate processes. For employees, compiling disparate, crumpled receipts and mapping them to obscure corporate accounting codes is intensely frustrating. For finance and auditing teams, manually verifying thousands of minor transactions looking for accidental errors or intentional fraud is an agonizing, low-value drain on critical labor hours. By embedding [Generative AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations fundamentally rewrite this paradigm, transforming a reactive, administrative nightmare into an invisible, heavily automated, and meticulously accurate system.
+Expense management remains one of the most universally despised corporate processes. For employees, compiling disparate, crumpled receipts and mapping them to obscure corporate accounting codes is intensely frustrating. For finance and auditing teams, manually verifying thousands of minor transactions looking for accidental errors or intentional fraud is an agonizing, low-value drain on critical labor hours. By embedding [[Generative AI](/blog/gen-ai-portfolio-optimization) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations fundamentally rewrite this paradigm, transforming a reactive, administrative nightmare into an invisible, heavily automated, and meticulously accurate system.
 
 ## The Role of Generative AI in Expense Operations
 
-Traditional OCR (Optical Character Recognition) systems have existed for years; they can read the total amount on a digital receipt. However, traditional systems break down when context is required. Generative AI possesses the semantic understanding to deeply analyze the "story" behind an expense. It can extract the line items from a messy, handwritten restaurant receipt, read the context of the calendar invite matching the date, cross-reference the attendee list against the corporate client database, and automatically apply the correct departmental ledger categorization. 
+Traditional OCR (Optical Character Recognition) systems have existed for years; they can read the total amount on a digital receipt. However, traditional systems break down when context is required. [Generative AI](/blog/gen-ai-candidate-assessment-matching) possesses the semantic understanding to deeply analyze the "story" behind an expense. It can extract the line items from a messy, handwritten restaurant receipt, read the context of the calendar invite matching the date, cross-reference the attendee list against the corporate client database, and automatically apply the correct departmental ledger categorization. 
 
-Designing these systems to automatically flag policy violations without alienating employees requires precision. Partnering with an expert [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the AI's auditing mechanisms are aggressive enough to stop fraud, yet nuanced enough to correctly auto-approve legitimate edge cases.
+Designing these systems to automatically flag policy violations without alienating employees requires precision. Partnering with an expert [[Generative AI](/blog/gen-ai-anti-money-laundering-monitoring) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the AI's auditing mechanisms are aggressive enough to stop fraud, yet nuanced enough to correctly auto-approve legitimate edge cases.
 
 ## Key Executive Use Cases
 
 ### 1. Autonomous Receipt Parsing and Contextual Categorization
-Employees simply take a photo of an invoice. Generative AI extracts the vendor, date, taxes, and line items. More importantly, it understands context. It knows that "Adobe Creative Cloud" belongs to the Marketing software budget, while "AWS" sits under IT infrastructure, entirely removing the burden of manual General Ledger (GL) coding from the end user.
+Employees simply take a photo of an invoice. [Generative AI](/blog/ai-financial-assistants-wealth-management) extracts the vendor, date, taxes, and line items. More importantly, it understands context. It knows that "Adobe Creative Cloud" belongs to the Marketing software budget, while "AWS" sits under IT infrastructure, entirely removing the burden of manual General Ledger (GL) coding from the end user.
 
 ### 2. Conversational Policy Enforcement
 Rather than sending an expense report back with a harsh, unhelpful "REJECTED: Policy Violation," AI models act as conversational agents. When an employee tries to expense a hotel room that exceeds the regional corporate cap, a chatbot instantly pings them on Slack or Teams: "The hotel rate in London exceeds your $250 allowance by $40. Please provide a formal client-need justification, or route this to your manager for exception approval."
@@ -49,7 +49,7 @@ Duplicate invoices, out-of-policy spending, and blatant fraud quietly erode corp
 The most beautifully intelligent AI is useless if it cannot seamlessly push formatted data into the organization's core financial ERP (like Workday, SAP, or Oracle). The technical challenge is rarely the AI model itself; the challenge is building flawless, bi-directional API pipelines.
 
 ### Employee Resistance and "Big Brother" Concerns
-If AI audits every transaction intensely, employees may feel mistrusted. Change management is crucial. The transition must be framed around making the employee's life easier (no manual data entry, instant reimbursement) rather than strictly acting as a corporate surveillance tool.
+If AI audits every transaction intensely, employees may feel mistrusted. [Change management](/blog/redefining-digital-transformation-in-the-ai-era) is crucial. The transition must be framed around making the employee's life easier (no manual data entry, instant reimbursement) rather than strictly acting as a corporate surveillance tool.
 
 ## The Strategy for Effective Implementation
 

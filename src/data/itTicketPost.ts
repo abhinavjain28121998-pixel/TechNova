@@ -10,7 +10,7 @@ export const itTicketPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'Service Management', 'Machine Learning', 'Ticket Triage', 'ITSM'],
  date: '2026-05-15T11:30:00Z',
- coverImage: '/ai_neural_network_finance.png',
+ coverImage: '/banners/gen-ai-automated-invoice-processing.png',
  readingTime: '6 min read',
  author: {
  name: 'David Chen',
@@ -36,7 +36,7 @@ export const itTicketPost: Post[] = [
  }
  ],
  content: `
-In large corporate environments, the internal IT service desk functions as the central nervous system of daily operations. When this system relies upon manual dispatching—where a human coordinator physically reads every incoming request to determine its category and destination—massive functional bottlenecks are virtually guaranteed. A critical failure involving a core payment processing server should never wait in the same preliminary holding queue as a request for a new wireless mouse. 
+In large corporate environments, the internal IT service desk functions as the central nervous system of daily [operations](/blog/gen-ai-for-intelligent-expense-management). When this system relies upon manual dispatching—where a human coordinator physically reads every incoming request to determine its category and destination—massive functional bottlenecks are virtually guaranteed. A critical failure involving a core payment processing server should never wait in the same preliminary holding queue as a request for a new wireless mouse. 
 
 Automated ticket classification provides the necessary algorithmic intelligence to instantly categorize, prioritize, and route corporate operational friction without hesitation.
 
@@ -76,7 +76,7 @@ If the [sentiment analysis](/blog/ai-employee-sentiment-analysis) engines are im
 Safely orchestrating intelligent triage demands incredibly precise logistical orchestration perfectly structured for scale.
 
 1. **Prioritize Continuous Recalibration:** Establish dedicated engineering pipelines to continuously fine-tune the classification model, specifically injecting the latest product knowledge base articles and tracking ongoing shifts in internal departmental infrastructure.
-2. **Maintain Manual Override Capabilities:** While the autonomous algorithm handles the vast majority of dispatching accurately, ensure senior service management directors retain the ability to instantly bypass algorithmic logic during complex, deeply anomalous operational scenarios.
+2. **Maintain Manual Override Capabilities:** While the autonomous algorithm handles the vast majority of dispatching accurately, ensure senior [service management](/blog/ai-automated-ticket-classification) directors retain the ability to instantly bypass algorithmic logic during complex, deeply anomalous operational scenarios.
 
 ## Why expert AI implementation matters
 

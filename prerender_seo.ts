@@ -209,6 +209,108 @@ async function run() {
     homePreloadImg
   );
 
+  // 5. Output Static Pages
+  // About Page
+  const aboutSchema = generateAboutPageSchema();
+  const aboutBreadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'About', item: '/about' }
+  ], `${BASE_URL}/about/#breadcrumb`);
+  await createPreRenderedPage(
+    path.join(distDir, 'about.html'),
+    `About | Our Mission & Editorial Values | ${siteName}`,
+    'Discover the story behind TechNova. We are a team of tech industry practitioners delivering deep research, tutorials, and practical insights.',
+    `${BASE_URL}/about`,
+    defaultImage,
+    'website',
+    { '@context': 'https://schema.org', '@graph': [...genericSchemas, aboutBreadcrumb, aboutSchema] }
+  );
+
+  // Contact Page
+  const contactSchema = generateContactPageSchema();
+  const contactBreadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Contact', item: '/contact' }
+  ], `${BASE_URL}/contact/#breadcrumb`);
+  await createPreRenderedPage(
+    path.join(distDir, 'contact.html'),
+    `Contact TechNova | Feedback & Collaborations | ${siteName}`,
+    'Get in touch with the TechNova editorial and support team. We value your feedback, pitches, and tech enquiries.',
+    `${BASE_URL}/contact`,
+    defaultImage,
+    'website',
+    { '@context': 'https://schema.org', '@graph': [...genericSchemas, contactBreadcrumb, contactSchema] }
+  );
+
+  // Case Studies Page
+  const caseStudiesSchema = {
+    '@type': 'CollectionPage',
+    '@id': `${BASE_URL}/case-studies/#webpage`,
+    url: `${BASE_URL}/case-studies`,
+    name: `Case Studies & Deep-Dive Client Success Stories`,
+    description: 'Explore real-world technical and business case studies, showing applied AI, Cloud transformation, and structural software designs.',
+    isPartOf: { '@id': `${BASE_URL}/#website` }
+  };
+  const caseStudiesBreadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Case Studies', item: '/case-studies' }
+  ], `${BASE_URL}/case-studies/#breadcrumb`);
+  await createPreRenderedPage(
+    path.join(distDir, 'case-studies.html'),
+    `Case Studies & Applied Enterprise AI Projects | ${siteName}`,
+    'Dive deep into our real-world transformation case studies, depicting advanced AI architectures, enterprise procurement, and high-performance engineering.',
+    `${BASE_URL}/case-studies`,
+    defaultImage,
+    'website',
+    { '@context': 'https://schema.org', '@graph': [...genericSchemas, caseStudiesBreadcrumb, caseStudiesSchema] }
+  );
+
+  // Privacy Policy Page
+  const privacySchema = {
+    '@type': 'WebPage',
+    '@id': `${BASE_URL}/privacy/#webpage`,
+    url: `${BASE_URL}/privacy`,
+    name: 'Privacy Policy',
+    description: 'Read the privacy policy of TechNova Blog to understand how we protect visitor data.',
+    isPartOf: { '@id': `${BASE_URL}/#website` }
+  };
+  const privacyBreadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Privacy Policy', item: '/privacy' }
+  ], `${BASE_URL}/privacy/#breadcrumb`);
+  await createPreRenderedPage(
+    path.join(distDir, 'privacy.html'),
+    `Privacy Policy | Data Security & Compliance | ${siteName}`,
+    'Learn how TechNova handles, processes, and protects your user information. Read our full data privacy principles and browser cookie guidelines.',
+    `${BASE_URL}/privacy`,
+    defaultImage,
+    'website',
+    { '@context': 'https://schema.org', '@graph': [...genericSchemas, privacyBreadcrumb, privacySchema] }
+  );
+
+  // Terms of Service Page
+  const termsSchema = {
+    '@type': 'WebPage',
+    '@id': `${BASE_URL}/terms/#webpage`,
+    url: `${BASE_URL}/terms`,
+    name: 'Terms of Service',
+    description: 'Read the terms and conditions for using TechNova Blog.',
+    isPartOf: { '@id': `${BASE_URL}/#website` }
+  };
+  const termsBreadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', item: '/' },
+    { name: 'Terms of Service', item: '/terms' }
+  ], `${BASE_URL}/terms/#breadcrumb`);
+  await createPreRenderedPage(
+    path.join(distDir, 'terms.html'),
+    `Terms of Service & Usage Agreement | ${siteName}`,
+    'Review the terms of service, editorial policies, and usage agreement governing the content on the TechNova platform.',
+    `${BASE_URL}/terms`,
+    defaultImage,
+    'website',
+    { '@context': 'https://schema.org', '@graph': [...genericSchemas, termsBreadcrumb, termsSchema] }
+  );
+
   console.log(`Pre-rendering complete. Total posts: ${postsList.length}`);
   process.exit(0);
 }

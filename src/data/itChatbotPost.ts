@@ -10,7 +10,7 @@ export const itChatbotPost: Post[] = [
  category: 'IT Support',
  tags: ['AI', 'Chatbots', 'Conversational AI', 'Enterprise IT'],
  date: '2026-05-15T11:15:00Z',
- coverImage: '/invoice_processing_ai.png',
+ coverImage: '/banners/askhackett-revolutionizing-enterprise-benchmarking-with-conversational-ai.png',
  readingTime: '6 min read',
  author: {
  name: 'Elena Rostova',
