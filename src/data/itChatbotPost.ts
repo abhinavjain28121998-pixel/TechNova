@@ -44,7 +44,7 @@ Conversational interfaces powered by advanced artificial intelligence are fundam
 
 Early corporate chat interfaces were infamously rigid. They operated on strict "If This, Then That" logic branches. If an employee typed a query even slightly outside the pre-programmed conversational structure, the bot would repeatedly output generic failure messages, infuriating the global [workforce](/blog/optimizing-workforce-with-human-resources-solution-intelligence) and actually increasing helpdesk call volumes.
 
-The implementation of sophisticated [[Gen AI](/blog/applied-intelligence-programs) in IT](https://www.thehackettgroup.com/gen-ai-in-it/) completely eradicates this rigid paradigm. Utilizing powerful natural language processing (NLP), modern AI bots are capable of comprehending nuanced human frustrations, regional colloquialisms, and highly technical jargon seamlessly. They do not force the user into a strict diagnostic path; instead, they engage in fluid, multi-turn technical troubleshooting, asking clarifying diagnostic questions to dynamically isolate the root cause.
+The implementation of sophisticated [Gen AI in IT](https://www.thehackettgroup.com/gen-ai-in-it/) completely eradicates this rigid paradigm. Utilizing powerful natural language processing (NLP), modern AI bots are capable of comprehending nuanced human frustrations, regional colloquialisms, and highly technical jargon seamlessly. They do not force the user into a strict diagnostic path; instead, they engage in fluid, multi-turn technical troubleshooting, asking clarifying diagnostic questions to dynamically isolate the root cause.
 
 ## Key use cases
 

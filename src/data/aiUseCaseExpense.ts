@@ -16,13 +16,13 @@ export const aiUseCaseExpense: Post[] = [
     content: `
 # Streamlining Corporate Operations with Intelligent Expense Management AI
 
-Expense management remains one of the most universally despised corporate processes. For employees, compiling disparate, crumpled receipts and mapping them to obscure corporate accounting codes is intensely frustrating. For finance and auditing teams, manually verifying thousands of minor transactions looking for accidental errors or intentional fraud is an agonizing, low-value drain on critical labor hours. By embedding [[Generative AI](/blog/gen-ai-portfolio-optimization) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations fundamentally rewrite this paradigm, transforming a reactive, administrative nightmare into an invisible, heavily automated, and meticulously accurate system.
+Expense management remains one of the most universally despised corporate processes. For employees, compiling disparate, crumpled receipts and mapping them to obscure corporate accounting codes is intensely frustrating. For finance and auditing teams, manually verifying thousands of minor transactions looking for accidental errors or intentional fraud is an agonizing, low-value drain on critical labor hours. By embedding [Generative AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations fundamentally rewrite this paradigm, transforming a reactive, administrative nightmare into an invisible, heavily automated, and meticulously accurate system.
 
 ## The Role of Generative AI in Expense Operations
 
 Traditional OCR (Optical Character Recognition) systems have existed for years; they can read the total amount on a digital receipt. However, traditional systems break down when context is required. [Generative AI](/blog/gen-ai-candidate-assessment-matching) possesses the semantic understanding to deeply analyze the "story" behind an expense. It can extract the line items from a messy, handwritten restaurant receipt, read the context of the calendar invite matching the date, cross-reference the attendee list against the corporate client database, and automatically apply the correct departmental ledger categorization. 
 
-Designing these systems to automatically flag policy violations without alienating employees requires precision. Partnering with an expert [[Generative AI](/blog/gen-ai-anti-money-laundering-monitoring) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the AI's auditing mechanisms are aggressive enough to stop fraud, yet nuanced enough to correctly auto-approve legitimate edge cases.
+Designing these systems to automatically flag policy violations without alienating employees requires precision. Partnering with an expert [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the AI's auditing mechanisms are aggressive enough to stop fraud, yet nuanced enough to correctly auto-approve legitimate edge cases.
 
 ## Key Executive Use Cases
 

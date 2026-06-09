@@ -85,7 +85,7 @@ To successfully deploy adaptive learning paths, HR technology leaders should fol
 
 Designing an AI architecture capable of safely analyzing employee histories and dynamically assembling secure learning experiences is not a standard IT project. If not carefully engineered, organizations risk exposing proprietary training methodologies or violating candidate data privacy boundaries. 
 
-Engaging a specialized [[Generative AI](/blog/gen-ai-predictive-financial-forecasting) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) is critical for navigating this complexity. Elite consultants possess the expertise to build sophisticated Retrieval-Augmented Generation (RAG) pipelines that connect the AI directly to your verified Learning Management System (LMS) safely. By relying on expert implementation, enterprises guarantee that their AI acts as an infinitely scalable, highly secure corporate educator that flawlessly respects both privacy regulations and corporate data sovereignty.
+Engaging a specialized [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) is critical for navigating this complexity. Elite consultants possess the expertise to build sophisticated Retrieval-Augmented Generation (RAG) pipelines that connect the AI directly to your verified Learning Management System (LMS) safely. By relying on expert implementation, enterprises guarantee that their AI acts as an infinitely scalable, highly secure corporate educator that flawlessly respects both privacy regulations and corporate data sovereignty.
 
 ## Conclusion
 

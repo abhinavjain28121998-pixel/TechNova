@@ -192,7 +192,7 @@ Firms must implement strict Retrieval-Augmented Generation (RAG) architectures. 
 
 ## Why Expert AI Implementation Matters
 
-The integration of AI into corporate legal workflows requires absolute precision and ironclad data security. Engaging a dedicated [[Generative AI](/blog/gen-ai-predictive-financial-forecasting) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the deployment adheres to strict legal privilege requirements, local data residency laws, and robust ethical frameworks, mitigating the massive liability risks of amateur implementations.
+The integration of AI into corporate legal workflows requires absolute precision and ironclad data security. Engaging a dedicated [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the deployment adheres to strict legal privilege requirements, local data residency laws, and robust ethical frameworks, mitigating the massive liability risks of amateur implementations.
 
 ## Conclusion
 
@@ -418,7 +418,7 @@ Deploying AI in capital management is fraught with extreme regulatory scrutiny, 
     content: `
 # Securing the Grid: Generative AI for Real-Time Transaction Monitoring
 
-The digital payments ecosystem—encompassing massive credit networks, global remittance, and rapid peer-to-peer applications—moves trillions of dollars instantly across borders. This hyper-velocity environment is a prime target for sophisticated, organized financial crime. Legacy fraud detection systems, entirely reliant on static, backward-looking rules, are fundamentally incapable of stopping modern, dynamic fraud topologies. They block legitimate users while letting novel attacks slip through. By embedding [[Generative AI](/blog/generative-ai-candidate-sourcing) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), payment processors and FinTech networks can achieve hyper-intelligent, predictive, and real-time transaction monitoring that adapts as fast as the criminal element evolves.
+The digital payments ecosystem—encompassing massive credit networks, global remittance, and rapid peer-to-peer applications—moves trillions of dollars instantly across borders. This hyper-velocity environment is a prime target for sophisticated, organized financial crime. Legacy fraud detection systems, entirely reliant on static, backward-looking rules, are fundamentally incapable of stopping modern, dynamic fraud topologies. They block legitimate users while letting novel attacks slip through. By embedding [Generative AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), payment processors and FinTech networks can achieve hyper-intelligent, predictive, and real-time transaction monitoring that adapts as fast as the criminal element evolves.
 
 ## What AI Means in the Payments and FinTech Industry
 
@@ -460,7 +460,7 @@ Deployments require a hybrid approach. The core, millisecond-decision engine is 
 
 ## Why Expert AI Implementation Matters
 
-The stakes in global payment infrastructure are existential. Implementing real-time predictive models on systems moving billions of dollars requires flawless execution, rigorous back-testing, and strict data siloing. Retaining a specialized [[Generative AI](/blog/gen-ai-candidate-assessment-matching) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures the infrastructure can scale securely to meet the extreme demands of the global financial grid while remaining compliant with international financial regulations.
+The stakes in global payment infrastructure are existential. Implementing real-time predictive models on systems moving billions of dollars requires flawless execution, rigorous back-testing, and strict data siloing. Retaining a specialized [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures the infrastructure can scale securely to meet the extreme demands of the global financial grid while remaining compliant with international financial regulations.
 
 ## Conclusion
 

@@ -32,7 +32,7 @@ Historically, recruitment chatbots operated on strict, pre-programmed decision t
 
 [Generative AI](/blog/generative-ai-employee-self-service-assistants) fundamentally changes this dynamic. Powered by Large Language Models (LLMs), generative chatbots understand nuance, intent, and colloquial language. They can parse complex questions and construct accurate, human-like answers dynamically. 
 
-The integration of [[Gen AI](/blog/payroll-applied-intelligence) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) represents a shift from administrative tracking to proactive relationship management. Instead of requiring candidates to search through lengthy FAQ pages or wait days for an email reply, a generative chatbot acts as an on-demand, virtual recruitment coordinator. It can instantly explain job requirements, discuss company culture, and walk applicants through the hiring pipeline. 
+The integration of [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) represents a shift from administrative tracking to proactive relationship management. Instead of requiring candidates to search through lengthy FAQ pages or wait days for an email reply, a generative chatbot acts as an on-demand, virtual recruitment coordinator. It can instantly explain job requirements, discuss company culture, and walk applicants through the hiring pipeline. 
 
 ---
 

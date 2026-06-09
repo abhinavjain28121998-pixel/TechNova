@@ -44,7 +44,7 @@ By evaluating a significantly broader spectrum of borrower data, artificial inte
 
 In the highly competitive [lending](/blog/gen-ai-credit-risk-assessment-2026) industry, artificial intelligence acts as an exceptionally advanced, completely objective risk actuary. Traditional scoring relies prominently on incredibly narrow metrics: historical loan repayment, overall credit utilization, and the absolute length of an individual's credit history. While deeply useful, these metrics completely fail to accurately evaluate individuals who operate primarily within a cash-based economy or who lack an extensive formal financial background.
 
-By utilizing sophisticated [[Gen AI](/blog/scaling-frictionless-customer-support-gen-ai) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), modern fintech ecosystems can instantly process millions of seemingly unrelated data points—such as utility payment consistency, mobile phone usage patterns, and property rental history—to generate a profoundly accurate, heavily nuanced risk profile.
+By utilizing sophisticated [Gen AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), modern fintech ecosystems can instantly process millions of seemingly unrelated data points—such as utility payment consistency, mobile phone usage patterns, and property rental history—to generate a profoundly accurate, heavily nuanced risk profile.
 
 ## Key Use Cases of AI in Credit Scoring
 

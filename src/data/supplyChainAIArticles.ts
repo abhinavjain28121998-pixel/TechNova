@@ -216,7 +216,7 @@ Rapid order fulfillment is the definitive battleground of modern [e-commerce](/b
 
 ## What AI Means in Warehouse Operations
 
-In the fulfillment center, AI is the central operating system that commands the physical environment. Utilizing targeted [[Gen AI](/blog/applied-intelligence-programs) in Supply Chain](https://www.thehackettgroup.com/gen-ai-in-supply-chain/) applications transforms a warehouse from a static storage facility into a highly dynamic, self-optimizing sorting engine. 
+In the fulfillment center, AI is the central operating system that commands the physical environment. Utilizing targeted [Gen AI in Supply Chain](https://www.thehackettgroup.com/gen-ai-in-supply-chain/) applications transforms a warehouse from a static storage facility into a highly dynamic, self-optimizing sorting engine. 
 
 Instead of fulfilling orders strictly in the sequence they were received, sophisticated [machine learning](/blog/data-analytics-foundation-for-artificial-intelligence) algorithms continuously analyze thousands of inbound orders simultaneously. The AI groups orders intelligently, calculates the absolute optimal routing paths for robotic pickers, and ensures that the facility operates incredibly smoothly even during the explosive volume spikes of holiday sales periods.
 

@@ -44,7 +44,7 @@ Enter the era of systemic [automation](/blog/gen-ai-in-payroll-future-of-compens
 
 Historically, the IT helpdesk operated strictly as a rigid, heavily reactive functional queue. Employees would manually submit a digital ticket, and a human operator would slowly read the description, diagnose the issue, and manually execute a fix.
 
-Integrating robust [[Gen AI](/blog/mastering-gen-ai-powered-due-diligence-workflows) in IT](https://www.thehackettgroup.com/gen-ai-in-it/) profoundly alters this fundamental operational paradigm. Instead of relying purely on manual human triage, modern intelligence models immediately ingest, parse, and analyze inbound requests. Artificial intelligence in this specific functional vertical natively acts as an infinitely scalable digital workforce capable of executing complex diagnostics quickly and securely. 
+Integrating robust [Gen AI in IT](https://www.thehackettgroup.com/gen-ai-in-it/) profoundly alters this fundamental operational paradigm. Instead of relying purely on manual human triage, modern intelligence models immediately ingest, parse, and analyze inbound requests. Artificial intelligence in this specific functional vertical natively acts as an infinitely scalable digital workforce capable of executing complex diagnostics quickly and securely. 
 
 ## Key use cases
 

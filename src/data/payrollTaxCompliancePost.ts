@@ -42,7 +42,7 @@ Navigating the labyrinth of global enterprise tax [compliance](/blog/ai-vendor-r
 
 Utilizing advanced AI in global tax compliance means replacing manual legal tracking with automated, natural language ingestion. Instead of analysts reading through thousands of pages of newly passed foreign tax legislation, sophisticated Natural Language Processing (NLP) models read the raw legal texts instantly. The AI translates complex legal syntax into direct mathematical rules, instantly updating the [enterprise](/blog/ai-spend-analysis-enterprise-it) compensation engine without human intervention. For organizations scaling these capabilities, aligning with [productivity](/blog/agent-augmentation-workforce-productivity) becomes highly critical.
 
-Integrating [[Gen AI](/blog/transforming-enterprise-revenue-sales-gen-ai) in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) creates a self-updating compliance ecosystem. When a specific European country alters its corporate health surcharge taxation band on a Tuesday, the AI ingests the legislative update, tests the new calculation logic in a sandbox environment, and deploys the updated tax formula globally by Wednesday.
+Integrating [Gen AI in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) creates a self-updating compliance ecosystem. When a specific European country alters its corporate health surcharge taxation band on a Tuesday, the AI ingests the legislative update, tests the new calculation logic in a sandbox environment, and deploys the updated tax formula globally by Wednesday.
 
 ## Key use cases
 

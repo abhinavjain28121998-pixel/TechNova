@@ -42,7 +42,7 @@ The fundamental mechanics of global compensation have become impossibly complex.
 
 In the highly challenging domain of gross-to-net derivation, deploying modern [machine learning](/blog/adaptive-ai-business-intelligence) means entirely abandoning deeply brittle "If-Then" logic architectures. A traditional enterprise system relies exactly on thousands of rigidly coded rules that instantly break when a single union contract updates. Conversely, an intelligent system profoundly understands the deep mathematical relationship between highly isolated variables inherently. For organizations scaling these capabilities, aligning with [ai](/blog/ai-powered-it-chatbots) becomes highly critical.
 
-Implementing [[Gen AI](/blog/transforming-enterprise-revenue-sales-gen-ai) in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) creates a powerful, self-healing mathematical engine capable of instantly digesting radically unstructured data—such as a complex, newly negotiated offshore contract—and instantly deriving the correct localized net payout automatically.
+Implementing [Gen AI in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) creates a powerful, self-healing mathematical engine capable of instantly digesting radically unstructured data—such as a complex, newly negotiated offshore contract—and instantly deriving the correct localized net payout automatically.
 
 ## Key use cases
 

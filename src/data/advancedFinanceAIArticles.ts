@@ -150,7 +150,7 @@ The adoption of Generative AI for mergers and acquisitions analysis is permanent
     content: `
 # Automating Financial Statement Analysis Using Advanced Generative AI
 
-Every financial quarter, corporate accounting and FP&A teams face the grueling task of creating, analyzing, and auditing comprehensive financial statements. Reading through thick balance sheets, income statements, and exhaustive footnotes to pull out meaningful variance explanations is highly manual, error-prone, and agonizingly slow. By adopting modern AI solutions, finance departments can shift from historical reporting to predictive advisory. The application of [[Gen AI](/blog/applied-intelligence-programs) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/) automates the extraction and contextualization of complex financial data, transforming dense numbers into deeply analytical, plain-English executive narratives with remarkable efficiency.
+Every financial quarter, corporate accounting and FP&A teams face the grueling task of creating, analyzing, and auditing comprehensive financial statements. Reading through thick balance sheets, income statements, and exhaustive footnotes to pull out meaningful variance explanations is highly manual, error-prone, and agonizingly slow. By adopting modern AI solutions, finance departments can shift from historical reporting to predictive advisory. The application of [Gen AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/) automates the extraction and contextualization of complex financial data, transforming dense numbers into deeply analytical, plain-English executive narratives with remarkable efficiency.
 
 ## What AI Means in the Accounting and Corporate Finance Industry
 
@@ -192,7 +192,7 @@ To effectively implement AI for financial analysis, companies must establish a u
 
 ## Why Expert AI Implementation Matters
 
-Deploying an AI engine to analyze a Fortune 500 company's balance sheet requires military-grade security, extreme precision, and profound technical architecture. Partnering with an expert [[Generative AI](/blog/gen-ai-portfolio-optimization) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the solution respects complex compliance thresholds, integrates flawlessly with legacy ERP systems, and strictly isolates proprietary financial data from external exposures.
+Deploying an AI engine to analyze a Fortune 500 company's balance sheet requires military-grade security, extreme precision, and profound technical architecture. Partnering with an expert [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that the solution respects complex compliance thresholds, integrates flawlessly with legacy ERP systems, and strictly isolates proprietary financial data from external exposures.
 
 ## Conclusion
 

@@ -126,7 +126,7 @@ Understanding the symbiotic relationship between data architecture and [machine 
 
 ### Moving Beyond Raw Data Storage
 
-For a decade, enterprises obsessed over accumulating data, building massive "data lakes" that quickly devolved into unmanageable "data swamps." Modern organizations are realizing that raw accumulation is entirely insufficient. To power deep learning networks, data must be intensely refined, meticulously structured, and logically interconnected. It is the sophisticated integration of [[Data & Analytics](/blog/data-analytics-foundation-for-artificial-intelligence)](https://www.thehackettgroup.com/data-analytics/) that transforms inert server logs and fragmented spreadsheets into the high-octane fuel required by cognitive applications.
+For a decade, enterprises obsessed over accumulating data, building massive "data lakes" that quickly devolved into unmanageable "data swamps." Modern organizations are realizing that raw accumulation is entirely insufficient. To power deep learning networks, data must be intensely refined, meticulously structured, and logically interconnected. It is the sophisticated integration of [Data & Analytics](https://www.thehackettgroup.com/data-analytics/) that transforms inert server logs and fragmented spreadsheets into the high-octane fuel required by cognitive applications.
 
 ## Core Pillars of Modern Data & Analytics Frameworks
 
@@ -199,7 +199,7 @@ The hard truth of [enterprise architecture](/blog/agentic-ai-enterprise-transfor
  tags: ['Digital Transformation', 'Enterprise IT', 'Automation', 'Change Management'],
  status: 'published',
  content: `
-For over a decade, executives have heavily utilized the terminology of transformation to justify large-scale technology deployments. Yet, many of these initiatives resulted in nothing more than "putting lipstick on a pig"—digitizing deeply broken, highly inefficient manual processes. In the modern era of generative artificial intelligence and autonomous workflows, true [[Digital Transformation](/blog/enterprise-gen-ai-applied-intelligence-strategic-guide)](https://www.thehackettgroup.com/digital-transformation/) represents a far more profound, structural re-engineering of the global enterprise.
+For over a decade, executives have heavily utilized the terminology of transformation to justify large-scale technology deployments. Yet, many of these initiatives resulted in nothing more than "putting lipstick on a pig"—digitizing deeply broken, highly inefficient manual processes. In the modern era of generative artificial intelligence and autonomous workflows, true [Digital Transformation](https://www.thehackettgroup.com/digital-transformation/) represents a far more profound, structural re-engineering of the global enterprise.
 
 Today, [enterprise](/blog/gen-ai-consulting-enterprise-transformation) leaders are systematically dismantling legacy workflows and reconstructing them entirely around highly scalable algorithmic systems. It is not about replacing paper with PDFs; it is about building an organizational architecture that is predictive, autonomous, and incredibly highly resistant to macro-economic friction.
 
@@ -209,7 +209,7 @@ The rapid introduction of advanced Small Language Models (SLMs) and complex [ent
 
 ### The Shift from Digitization to True Transformation
 
-Digitization is merely the act of formatting information into binary code. Real optimization demands transformation. True [[Digital Transformation](/blog/applied-intelligence-programs)](https://www.thehackettgroup.com/digital-transformation/) means fundamentally questioning the necessity of the process itself. If an enterprise requires eighty human accountants to reconcile international ledgers, digitization means giving them better spreadsheet software. Transformation, however, means deploying an AI-powered reconciliation engine that completely eliminates the necessity for human intervention in standard ledger alignment, radically shifting the accountants into high-value strategic forecasting roles instead.
+Digitization is merely the act of formatting information into binary code. Real optimization demands transformation. True [Digital Transformation](https://www.thehackettgroup.com/digital-transformation/) means fundamentally questioning the necessity of the process itself. If an enterprise requires eighty human accountants to reconcile international ledgers, digitization means giving them better spreadsheet software. Transformation, however, means deploying an AI-powered reconciliation engine that completely eliminates the necessity for human intervention in standard ledger alignment, radically shifting the accountants into high-value strategic forecasting roles instead.
 
 ## The Three Pillars of Successful Transformation
 

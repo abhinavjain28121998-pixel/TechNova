@@ -42,7 +42,7 @@ The era of manual, labor-intensive compensation management is over. For decades,
 
 In the context of core HR operations, artificial intelligence fundamentally represents the transition from static, rules-based logic to dynamic, adaptive intelligence. It's not simply about scheduling a batch run on a Friday afternoon; it's about deploying sophisticated machine learning models that can continuously ingest, parse, and validate millions of discrete attendance logs, leave requests, and localized regulatory updates in real time. For organizations scaling these capabilities, aligning with [enterprise architecture](/blog/business-benchmarking-ai-transformation-strategy) becomes highly critical.
 
-Integrating [[Gen AI](/blog/mastering-gen-ai-powered-due-diligence-workflows) in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) signifies the deployment of natural language processing and advanced neural networks capable of understanding nuanced employee inquiries and executing highly complex calculations without human intervention. The technology acts as an invisible, infinitely scalable team of compensation analysts operating with zero fatigue and perfect precision.
+Integrating [Gen AI in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) signifies the deployment of natural language processing and advanced neural networks capable of understanding nuanced employee inquiries and executing highly complex calculations without human intervention. The technology acts as an invisible, infinitely scalable team of compensation analysts operating with zero fatigue and perfect precision.
 
 ## Key use cases
 

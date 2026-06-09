@@ -83,7 +83,7 @@ To safely unlock the power of a generative self-service assistant, IT and HR lea
 
 ## Why Expert AI Implementation Matters
 
-Designing a unified, highly secure artificial intelligence assistant that interfaces securely with localized HR and IT systems is a massive architectural undertaking. Attempting to build this without deep AI expertise often yields a frustrating, insecure bot that employees refuse to use. Engaging a premier [[Generative AI](/blog/gen-ai-procurement-to-pay-automation) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures the necessary infrastructure is flawlessly executed. Expert consultants correctly implement the crucial guardrails, integrate complex RAG pipelines, and rigorously enforce role-based access controls, ensuring your organization receives an enterprise-grade assistant that is both infinitely capable and structurally impenetrable.
+Designing a unified, highly secure artificial intelligence assistant that interfaces securely with localized HR and IT systems is a massive architectural undertaking. Attempting to build this without deep AI expertise often yields a frustrating, insecure bot that employees refuse to use. Engaging a premier [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures the necessary infrastructure is flawlessly executed. Expert consultants correctly implement the crucial guardrails, integrate complex RAG pipelines, and rigorously enforce role-based access controls, ensuring your organization receives an enterprise-grade assistant that is both infinitely capable and structurally impenetrable.
 
 ## Conclusion
 

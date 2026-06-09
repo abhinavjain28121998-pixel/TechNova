@@ -44,7 +44,7 @@ Automated ticket classification provides the necessary algorithmic intelligence 
 
 Legacy [service management](/blog/ai-automated-ticket-classification) platforms frequently allowed employees to self-select their issue category from a massive, confusing dropdown menu. Frustrated users would routinely select the incorrect category or default immediately to categorizing their minor software annoyance as a "Critical System Outage" to get faster service, completely corrupting corporate triage protocols.
 
-By integrating powerful [[Gen AI](/blog/mastering-gen-ai-powered-due-diligence-workflows) in IT](https://www.thehackettgroup.com/gen-ai-in-it/), the responsibility of accurate technical classification shifts entirely from the stressed employee to the overarching intelligent network. Utilizing advanced natural language processing architectures, the system rapidly dissects the raw unstructured text submitted by the user. It recognizes the deeply specific technical context, assigns the correct service category intrinsically, and bypasses the human dispatch bottleneck entirely.
+By integrating powerful [Gen AI in IT](https://www.thehackettgroup.com/gen-ai-in-it/), the responsibility of accurate technical classification shifts entirely from the stressed employee to the overarching intelligent network. Utilizing advanced natural language processing architectures, the system rapidly dissects the raw unstructured text submitted by the user. It recognizes the deeply specific technical context, assigns the correct service category intrinsically, and bypasses the human dispatch bottleneck entirely.
 
 ## Key use cases
 

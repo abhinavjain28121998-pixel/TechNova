@@ -42,7 +42,7 @@ Even minor miscalculations in enterprise compensation generate massive, cascadin
 
 In the realm of financial accuracy, utilizing advanced artificial intelligence means deploying continuous, proactive anomaly detection. Modern algorithms do not wait for the end of the month to begin verifying data; instead, they operate as a constant background sentry. By understanding deep historical patterns regarding overtime trends, regional tax band fluctuations, and standardized bonus schedules, these neural networks immediately spot statistical outliers in milliseconds. Many leaders integrating these systems also explore synergies with [human resources applied intelligence](/blog/human-resources-applied-intelligence).
 
-Integrating [[Gen AI](/blog/applied-intelligence-programs) in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) fundamentally shifts the operational paradigm. It transforms static financial audits into dynamic, ongoing risk mitigation. The intelligent system effortlessly digests millions of raw ledger rows daily, highlighting potential structural errors logically before cash ever physically leaves the corporate treasury.
+Integrating [Gen AI in Payroll](https://www.thehackettgroup.com/gen-ai-in-payroll/) fundamentally shifts the operational paradigm. It transforms static financial audits into dynamic, ongoing risk mitigation. The intelligent system effortlessly digests millions of raw ledger rows daily, highlighting potential structural errors logically before cash ever physically leaves the corporate treasury.
 
 ## Key use cases
 

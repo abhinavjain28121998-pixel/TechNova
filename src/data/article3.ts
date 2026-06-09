@@ -32,7 +32,7 @@ export const article3 = {
     }
   ],
   content: `
-Writing compelling, perfectly optimized job descriptions is historically a surprisingly tedious and complex task. Hiring managers frequently struggle to articulate the exact technical requirements of a role, often repurposing decade-old templates riddled with outdated corporate jargon and aggressive, masculine-coded language that unconsciously alienates diverse candidates. These poorly constructed descriptions directly suppress application rates and confuse the overall recruitment strategy. Today, by deploying [[Gen AI](/blog/transforming-enterprise-revenue-sales-gen-ai) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), organizations can fundamentally eliminate this friction. Gen AI for job description generation empowers recruiters and hiring managers to instantly command dynamic, highly optimized, inclusive job postings that perfectly capture positional requirements while maximizing market appeal.
+Writing compelling, perfectly optimized job descriptions is historically a surprisingly tedious and complex task. Hiring managers frequently struggle to articulate the exact technical requirements of a role, often repurposing decade-old templates riddled with outdated corporate jargon and aggressive, masculine-coded language that unconsciously alienates diverse candidates. These poorly constructed descriptions directly suppress application rates and confuse the overall recruitment strategy. Today, by deploying [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), organizations can fundamentally eliminate this friction. Gen AI for job description generation empowers recruiters and hiring managers to instantly command dynamic, highly optimized, inclusive job postings that perfectly capture positional requirements while maximizing market appeal.
 
 ## What AI Means for Role Articulation
 
@@ -74,7 +74,7 @@ Crucially, it is imperative to establish a mandatory human-review phase. The hir
 
 ## Why Expert AI Implementation Matters
 
-Setting up a scalable, secure ecosystem where your recruitment team can generate, approve, and distribute automated job descriptions requires precision engineering. Partnering with a specialized [[Generative AI](/blog/generative-ai-recruitment-chatbot-support) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that your generative infrastructure is securely integrated natively within your existing Applicant Tracking System. Experts will securely fine-tune the Large Language Model specifically on your proprietary brand voice, historic top-performing postings, and strict corporate compliance guidelines, guaranteeing that out-of-the-box generations are safe, powerful, and ready for immediate deployment.
+Setting up a scalable, secure ecosystem where your recruitment team can generate, approve, and distribute automated job descriptions requires precision engineering. Partnering with a specialized [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) ensures that your generative infrastructure is securely integrated natively within your existing Applicant Tracking System. Experts will securely fine-tune the Large Language Model specifically on your proprietary brand voice, historic top-performing postings, and strict corporate compliance guidelines, guaranteeing that out-of-the-box generations are safe, powerful, and ready for immediate deployment.
 
 ## Conclusion
 

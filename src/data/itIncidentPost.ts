@@ -44,7 +44,7 @@ Relying exclusively on human cognitive capacity to accurately process massive da
 
 In legacy architectural frameworks, monitoring tools generate massive volumes of continuous operational alerts. When an outage happens, the human operational center is instantly flooded by thousands of redundant, useless warning notifications, effectively blinding the engineering team to the true structural problem.
 
-To effectively combat this noise, integrating sophisticated [[Gen AI](/blog/mastering-gen-ai-powered-due-diligence-workflows) in IT](https://www.thehackettgroup.com/gen-ai-in-it/) is structurally critical. Artificial Intelligence fundamentally acts as a massive data synthesis engine. Algorithms instantly ingest billions of discrete technical logs globally, drastically filter out the completely irrelevant noise, and actively correlate seemingly unrelated system errors to identify the absolute root cause of a failure. The AI constructs a complete timeline of the collapse in milliseconds.
+To effectively combat this noise, integrating sophisticated [Gen AI in IT](https://www.thehackettgroup.com/gen-ai-in-it/) is structurally critical. Artificial Intelligence fundamentally acts as a massive data synthesis engine. Algorithms instantly ingest billions of discrete technical logs globally, drastically filter out the completely irrelevant noise, and actively correlate seemingly unrelated system errors to identify the absolute root cause of a failure. The AI constructs a complete timeline of the collapse in milliseconds.
 
 ## Key use cases
 

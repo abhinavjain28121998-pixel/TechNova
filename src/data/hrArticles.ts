@@ -42,7 +42,7 @@ The modern recruitment landscape is characterized by unprecedented volume and in
 
 For decades, the human resources industry relied heavily on basic Applicant Tracking Systems (ATS) that utilized rudimentary Boolean search logic and strict keyword matching. This deterministic pipeline was severely flawed: if an exceptional candidate used the phrase "data analysis" instead of the exact required keyword "data science," their resume was immediately discarded by the automated system without ever being reviewed by a human recruiter. Many leaders integrating these systems also explore synergies with [applied intelligence](/blog/applied-intelligence-programs).
 
-The integration of advanced [[Gen AI](/blog/scaling-frictionless-customer-support-gen-ai) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) fundamentally alters this dynamic. Modern artificial intelligence models do not merely scan for exact text matches; they natively comprehend the semantical, nuanced context of a candidate's career trajectory. These deep neural networks understand equivalent terminologies, evaluate career progression year-over-year, and infer foundational competencies directly from described achievements, effectively mirroring the analytical capabilities of a senior recruiter but executing at machine speed.
+The integration of advanced [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) fundamentally alters this dynamic. Modern artificial intelligence models do not merely scan for exact text matches; they natively comprehend the semantical, nuanced context of a candidate's career trajectory. These deep neural networks understand equivalent terminologies, evaluate career progression year-over-year, and infer foundational competencies directly from described achievements, effectively mirroring the analytical capabilities of a senior recruiter but executing at machine speed.
 
 ## Key Use Cases of AI in Initial Candidate Review
 
@@ -238,7 +238,7 @@ For generations, the cornerstone of understanding workforce morale was the massi
 
 Understanding organizational health in the modern corporate environment requires shifting natively from reactive annual surveys to continuous linguistic analysis. This approach perfectly complements broader initiatives in [enterprise it](/blog/redefining-digital-transformation-in-the-ai-era).
 
-By strategically deploying advanced [[Gen AI](/blog/procurement-applied-intelligence) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), modern enterprises can seamlessly analyze massive volumes of unstructured linguistic data—from daily pulse surveys and anonymized feedback channels to internal structural reviews. These powerful natural language processing (NLP) architectures deeply decode context, intelligently detect underlying frustration, and actively measure overarching team morale simultaneously in strict real-time, providing leadership with a highly accurate emotional dashboard of the entire enterprise.
+By strategically deploying advanced [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/), modern enterprises can seamlessly analyze massive volumes of unstructured linguistic data—from daily pulse surveys and anonymized feedback channels to internal structural reviews. These powerful natural language processing (NLP) architectures deeply decode context, intelligently detect underlying frustration, and actively measure overarching team morale simultaneously in strict real-time, providing leadership with a highly accurate emotional dashboard of the entire enterprise.
 
 ## Key Use Cases of AI in Cultural Analysis
 
@@ -333,7 +333,7 @@ Preparing for the distinct future of a global corporate [enterprise](/blog/gen-a
 
 Remaining distinctly competitive strongly demands shifting from reactive recruiting to intelligent, proactive, and predictive talent modeling. For organizations scaling these capabilities, aligning with [human resources applied intelligence](/blog/human-resources-applied-intelligence) becomes highly critical.
 
-By seamlessly integrating robust [[Gen AI](/blog/mastering-gen-ai-powered-due-diligence-workflows) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) properly, human resource departments transform into strategic pillars. Modern neural networks systematically ingest millions of disparate data points—ranging from global commodity price indexes and broad demographic census shifts to deeply granular internal performance metadata securely—simultaneously synthesizing them comprehensively. This provides a predictive analytical engine capable of forecasting workforce necessities decisively against a multitude of complex operational scenarios dynamically.
+By seamlessly integrating robust [Gen AI in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) properly, human resource departments transform into strategic pillars. Modern neural networks systematically ingest millions of disparate data points—ranging from global commodity price indexes and broad demographic census shifts to deeply granular internal performance metadata securely—simultaneously synthesizing them comprehensively. This provides a predictive analytical engine capable of forecasting workforce necessities decisively against a multitude of complex operational scenarios dynamically.
 
 ## Key Use Cases of AI in Capability Modeling
 

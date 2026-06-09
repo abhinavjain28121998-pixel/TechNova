@@ -16,13 +16,13 @@ export const aiUseCaseMarket: Post[] = [
     content: `
 # Unlocking Deep Market Insights with Generative AI Technologies
 
-In the relentless, high-stakes arena of institutional investing and corporate strategy, the competitive edge is no longer gained simply by acquiring data. We reside in an era of data saturation. The modern analyst spends more time aggregating data than actually generating alpha or strategic insight. Investment analysts, corporate development teams, and portfolio managers must synthesize earnings call transcripts, massive troves of industry news, obscure supply chain manifests, and global sentiment signals—all natively housed in unstructured formats. Embracing [[Generative AI](/blog/gen-ai-automated-invoice-processing) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/) is the decisive mechanism for automatically distilling this overwhelming noise into actionable, high-conviction market insights.
+In the relentless, high-stakes arena of institutional investing and corporate strategy, the competitive edge is no longer gained simply by acquiring data. We reside in an era of data saturation. The modern analyst spends more time aggregating data than actually generating alpha or strategic insight. Investment analysts, corporate development teams, and portfolio managers must synthesize earnings call transcripts, massive troves of industry news, obscure supply chain manifests, and global sentiment signals—all natively housed in unstructured formats. Embracing [Generative AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/) is the decisive mechanism for automatically distilling this overwhelming noise into actionable, high-conviction market insights.
 
 ## The Paradigm of AI in Market Intelligence
 
 Translating unstructured human language directly into structured trading signals or strategic intelligence is a monumental shift. Historically, natural language processing (NLP) was limited to basic [sentiment analysis](/blog/ai-employee-sentiment-analysis) (e.g., determining if a news headline was "positive" or "negative"). Today's Generative AI models understand deep semantic corporate language. They can detect the subtle hesitation in a CEO's voice during an earnings call proxy, cross-reference it against supply chain shortages mentioned in a competitor's 10-Q, and output a cohesive summary of sector-wide inventory risks. 
 
-Deploying this capability correctly at scale is highly complex, typically requiring the architecture and guidance of an elite [[Generative AI](/blog/ai-automated-financial-reporting-corporate) consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) to integrate external data hoses with internal proprietary research securely.
+Deploying this capability correctly at scale is highly complex, typically requiring the architecture and guidance of an elite [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) to integrate external data hoses with internal proprietary research securely.
 
 ## Key Market Insight Use Cases
 

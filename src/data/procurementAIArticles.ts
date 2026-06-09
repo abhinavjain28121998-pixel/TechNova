@@ -153,7 +153,7 @@ For global logistics and distribution companies, processing purchase orders (POs
 
 Artificial intelligence replaces brittle, template-based Optical Character Recognition (OCR) with dynamic cognitive understanding. Standard OCR fails the moment a vendor changes their invoice layout or sends a blurry PDF. For organizations scaling these capabilities, aligning with [ai](/blog/ai-credit-scoring-inclusive-lending) becomes highly critical.
 
-Utilizing [[Gen AI](/blog/payroll-applied-intelligence) in Sourcing and Procurement](https://www.thehackettgroup.com/gen-ai-in-procurement/) means the system "reads" documents the way a human does. It understands context. Even if a PO number is in a completely new location or format, the AI comprehends the document's intent and extracts the critical data flawlessly.
+Utilizing [Gen AI in Sourcing and Procurement](https://www.thehackettgroup.com/gen-ai-in-procurement/) means the system "reads" documents the way a human does. It understands context. Even if a PO number is in a completely new location or format, the AI comprehends the document's intent and extracts the critical data flawlessly.
 
 ## Key Use Cases
 
@@ -218,7 +218,7 @@ In massive [enterprise](/blog/gen-ai-consulting-enterprise-transformation) organ
 
 ## What AI Means in Enterprise Spend Analysis
 
-AI in this domain is a profound organizational engine. Instead of a financial analyst spending weeks mapping GL (General Ledger) codes and struggling to categorize vague invoice descriptions like "Cloud Svc," [[Gen AI](/blog/gen-ai-in-finance-strategic-roadmap) in Sourcing and Procurement](https://www.thehackettgroup.com/gen-ai-in-procurement/) natively understands context. This approach perfectly complements broader initiatives in [ai](/blog/ai-vendor-risk-assessment-financial-services).
+AI in this domain is a profound organizational engine. Instead of a financial analyst spending weeks mapping GL (General Ledger) codes and struggling to categorize vague invoice descriptions like "Cloud Svc," [Gen AI in Sourcing and Procurement](https://www.thehackettgroup.com/gen-ai-in-procurement/) natively understands context. This approach perfectly complements broader initiatives in [ai](/blog/ai-vendor-risk-assessment-financial-services).
 
 Generative models ingest disparate datasets—credit card statements, ERP exports, [procurement](/blog/procurement-applied-intelligence) card data, and contract databases—and harmonizes them. It groups identical spending happening across disconnected departments, instantly illuminating the true financial posture of the enterprise.
 

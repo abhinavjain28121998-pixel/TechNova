@@ -16,7 +16,7 @@ export const aiUseCaseForecasting: Post[] = [
     content: `
 # Transforming FP&A with Generative AI for Predictive Financial Forecasting
 
-Financial Planning and Analysis (FP&A) sits at the core of enterprise resilience. Unfortunately, the standard toolkit of the modern CFO remains stubbornly tethered to highly static spreadsheets. The traditional annual budgeting process is obsolete the moment it is finalized, acting as a historical snapshot rather than a forward-looking compass. Human analysts struggle to continuously recalibrate complex financial models when impacted by abrupt macroeconomic shifts, sudden supply chain disruptions, or fluctuating interest rates. By integrating [[Generative AI](/blog/generative-ai-employee-onboarding-automation) in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations transition from rigid, manual forecasting to radically dynamic, predictive scenario modeling.
+Financial Planning and Analysis (FP&A) sits at the core of enterprise resilience. Unfortunately, the standard toolkit of the modern CFO remains stubbornly tethered to highly static spreadsheets. The traditional annual budgeting process is obsolete the moment it is finalized, acting as a historical snapshot rather than a forward-looking compass. Human analysts struggle to continuously recalibrate complex financial models when impacted by abrupt macroeconomic shifts, sudden supply chain disruptions, or fluctuating interest rates. By integrating [Generative AI in Finance](https://www.thehackettgroup.com/gen-ai-in-finance/), organizations transition from rigid, manual forecasting to radically dynamic, predictive scenario modeling.
 
 ## What AI Truly Means for Financial Planning
 
