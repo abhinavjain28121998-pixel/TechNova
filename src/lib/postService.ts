@@ -1,12 +1,38 @@
-import { collection, getDocs, query, orderBy, limit, startAfter, getDoc, doc, where, documentId, getCountFromServer } from 'firebase/firestore';
-import { db } from './firebase';
-import { handleFirestoreError, OperationType } from './firestoreUtils';
 import { Post } from '../types';
 
 export interface PaginatedResponse {
   posts: Post[];
   totalPosts: number;
 }
+
+let cachedPosts: Post[] | null = null;
+
+const fetchAllPosts = async (): Promise<Post[]> => {
+  if (cachedPosts) return cachedPosts;
+  try {
+    const response = await fetch('/data/articles.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch articles');
+    }
+    const data: Post[] = await response.json();
+    
+    // Process and sort posts
+    cachedPosts = data
+      .filter(p => !p.status || p.status === 'published')
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .map(p => {
+        if (!p.coverImage || p.coverImage === 'undefined') {
+          p.coverImage = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+        }
+        return p;
+      });
+      
+    return cachedPosts;
+  } catch (error) {
+    console.error('Error fetching articles.json:', error);
+    return [];
+  }
+};
 
 export const getPostsPaginated = async (
   page: number,
@@ -15,7 +41,7 @@ export const getPostsPaginated = async (
   postIds: string[] | null = null
 ): Promise<PaginatedResponse> => {
   try {
-    const allPosts = await getPosts();
+    const allPosts = await fetchAllPosts();
     let filtered = allPosts;
 
     if (category) {
@@ -25,10 +51,14 @@ export const getPostsPaginated = async (
     if (postIds) {
       if (postIds.length === 0) return { posts: [], totalPosts: 0 };
       // Filter the posts that are present in the postIds array
-      filtered = filtered.filter(p => postIds.includes(p.id));
-      // Try to preserve search ranking order, but fallback implicitly
+      filtered = filtered.filter(p => postIds.includes(p.id || p.slug));
+      // Try to preserve search ranking order
       try {
-        filtered.sort((a, b) => postIds.indexOf(a.id) - postIds.indexOf(b.id));
+        filtered.sort((a, b) => {
+          const aId = a.id || a.slug;
+          const bId = b.id || b.slug;
+          return postIds.indexOf(aId) - postIds.indexOf(bId);
+        });
       } catch (e) {
         console.warn('Sorting by semantic rank failed', e);
       }
@@ -39,42 +69,22 @@ export const getPostsPaginated = async (
 
     return { posts, totalPosts };
   } catch (error) {
-    handleFirestoreError(error, OperationType.LIST, 'posts');
+    console.error('Error in getPostsPaginated:', error);
     return { posts: [], totalPosts: 0 };
   }
 };
 
 export const getPosts = async (): Promise<Post[]> => {
-  try {
-    const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
-    const querySnapshot = await getDocs(q);
-    const posts: Post[] = [];
-    querySnapshot.forEach((docSnap) => {
-      const data = docSnap.data();
-      // Ensure coverImage exists and has a fallback
-      if (!data.coverImage || data.coverImage === 'undefined') {
-        data.coverImage = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
-      }
-      posts.push({ id: docSnap.id, ...data } as Post);
-    });
-    // Filter out drafts on the client since firestore composite index is missing
-    return posts.filter(p => !p.status || p.status === 'published');
-  } catch (error) {
-    handleFirestoreError(error, OperationType.LIST, 'posts');
-    return [];
-  }
+  return await fetchAllPosts();
 };
 
 export const getPost = async (idOrSlug: string): Promise<Post | null> => {
   try {
-    const docRef = doc(db, 'posts', idOrSlug);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() } as Post;
-    }
-    return null;
+    const allPosts = await fetchAllPosts();
+    const post = allPosts.find(p => p.id === idOrSlug || p.slug === idOrSlug);
+    return post || null;
   } catch (error) {
-    handleFirestoreError(error, OperationType.GET, `posts/${idOrSlug}`);
+    console.error(`Error fetching post ${idOrSlug}:`, error);
     return null;
   }
 };

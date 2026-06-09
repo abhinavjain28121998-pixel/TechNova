@@ -16,11 +16,11 @@ export function usePosts(
     async function fetchPosts() {
       try {
         setLoading(true);
-        const fbResponse = await getPostsPaginated(page, pageSize, category, postIds);
-        setPosts(fbResponse.posts);
-        setTotalPosts(fbResponse.totalPosts);
+        const response = await getPostsPaginated(page, pageSize, category, postIds);
+        setPosts(response.posts);
+        setTotalPosts(response.totalPosts);
       } catch (error) {
-        console.warn("Firestore fetch error, fallback to static collection:", error);
+        console.error("Error fetching posts:", error);
       } finally {
         setLoading(false);
       }

@@ -18,7 +18,7 @@ export const hrRecruitmentArticles_2: Post[] = [
     role: 'HR Technology Analyst'
   },
   content: `
-For years, recruitment teams have fought a losing battle against rigid applicant tracking systems (ATS). Traditional recruiting software relies on simple keyword matching, meaning a highly qualified Software Engineer who writes "built distributed data pipelines" might be filtered out simply because their resume lacks the exact term "SQL developer." This creates a double-sided problem: stellar talent gets ignored, while hiring managers waste hours reviewing candidates who look good on paper but lack practical capability.
+For years, [recruitment](/blog/gen-ai-candidate-assessment-matching) teams have fought a losing battle against rigid applicant tracking systems (ATS). Traditional recruiting software relies on simple keyword matching, meaning a highly qualified Software Engineer who writes "built distributed data pipelines" might be filtered out simply because their resume lacks the exact term "SQL developer." This creates a double-sided problem: stellar talent gets ignored, while hiring managers waste hours reviewing candidates who look good on paper but lack practical capability.
 
 [Generative AI](/blog/generative-ai-risk-analysis-institutional) changes this dynamic. By shifting the hiring process from rigid keyword parsing to semantic understanding, generative models interpret the context, depth, and transferability of a candidate's experience. Rather than looking for exact string matches, these systems assess capabilities, intent, and potential. 
 
@@ -52,7 +52,7 @@ Instead of sending generic, easily-gameable coding tests or multiple-choice quiz
 
 ## Strategic Benefits for Businesses
 
-Adopting generative matching technologies delivers measurable bottom-line value to enterprise recruitment operations.
+Adopting generative matching technologies delivers measurable bottom-line value to [enterprise](/blog/ai-spend-analysis-enterprise-it) recruitment operations.
 
 *   **Significant Reduction in Time-to-Hire:** By automating the initial screening, profile synthesis, and coordination phases, companies can reduce the time spent on administrative sourcing by up to 60%.
 *   **Improved Quality of Hire:** Because AI matches candidates based on deep capability rather than resume layout optimization, businesses find higher-quality talent that aligns with actual team needs.
@@ -63,7 +63,7 @@ Adopting generative matching technologies delivers measurable bottom-line value 
 
 ## Challenges, Risks, and Guardrails
 
-Despite its capabilities, deploying generative AI in human resources comes with distinct risks that require careful mitigation.
+Despite its capabilities, deploying [generative AI](/blog/generative-ai-employee-self-service-assistants) in human resources comes with distinct risks that require careful mitigation.
 
 ### Algorithmic Bias and Hallucinations
 Generative models are trained on historical data, which can reflect systemic biases. If an LLM is trained on a dataset where successful executives are historically male, it may inadvertently favor male candidates. Additionally, "hallucinations"—where an AI invents credentials or misinterprets a candidate's background—must be kept in check.
@@ -72,13 +72,13 @@ Generative models are trained on historical data, which can reflect systemic bia
 Recruitment involves highly sensitive Personal Identifiable Information (PII). Uploading resume data directly to public, open-source LLM APIs violates basic [compliance](/blog/gen-ai-hr-policy-handbook-generation) frameworks like GDPR and CCPA. Organizations must use secure, sandboxed enterprise instances where data is encrypted and excluded from public model training.
 
 ### Lack of Transparency (The "Black Box" Problem)
-Hiring teams must be able to justify why a candidate was rejected or selected. If an AI system acts as a black box, companies open themselves up to regulatory scrutiny and compliance issues. Every automated recommendation must be accompanied by clear, auditable explanation parameters.
+Hiring teams must be able to justify why a candidate was rejected or selected. If an AI system acts as a black box, companies open themselves up to regulatory scrutiny and [compliance](/blog/gen-ai-in-payroll-future-of-compensation) issues. Every automated recommendation must be accompanied by clear, auditable explanation parameters.
 
 ---
 
 ## How to Implement Gen AI in Recruitment Effectively
 
-To build a reliable, compliant, and highly accurate AI recruitment system, organizations should follow a structured deployment model.
+To build a reliable, compliant, and highly accurate AI [recruitment](/blog/generative-ai-interview-assistants) system, organizations should follow a structured deployment model.
 
 \`\`\`
 [Define Objectives] ➔ [Select & Secure LLM] ➔ [Build Vector Database] ➔ [Apply RAG Pipeline] ➔ [Human-in-the-Loop Validation]

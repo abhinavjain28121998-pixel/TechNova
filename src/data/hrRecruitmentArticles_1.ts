@@ -18,7 +18,7 @@ export const hrRecruitmentArticles_1: Post[] = [
     role: 'HR Technology Analyst'
   },
   content: `
-Talent acquisition leaders face an ongoing operational challenge. They must process hundreds of applications for every open position while simultaneously accelerating the hiring cycle to avoid losing top-tier candidates to competitors. Traditional Applicant Tracking Systems (ATS) often rely on rigid, keyword-based keyword filtering. This approach regularly misses highly qualified non-traditional candidates and lets unqualified, keyword-stuffed resumes pass through.
+[Talent acquisition](/blog/generative-ai-interview-question-generation) leaders face an ongoing operational challenge. They must process hundreds of applications for every open position while simultaneously accelerating the hiring cycle to avoid losing top-tier candidates to competitors. Traditional Applicant Tracking Systems (ATS) often rely on rigid, keyword-based keyword filtering. This approach regularly misses highly qualified non-traditional candidates and lets unqualified, keyword-stuffed resumes pass through.
 
 [Generative AI](/blog/gen-ai-trade-finance-automation) interview assistants offer a dynamic alternative. These advanced tools use context-aware large language models (LLMs) to act as collaborative digital copilots for recruiters. Rather than replacing human judgment, these assistants automate repetitive screening, offer real-time interviewer support, and generate objective talent evaluations. Implementing these tools allows hiring teams to focus on relationship-building and final candidate selection.
 
@@ -30,19 +30,19 @@ In modern recruitment, [generative AI](/blog/generative-ai-employee-onboarding-a
 
 ## Key Use Cases for Generative AI Interview Assistants
 
-Generative AI interview assistants provide concrete value across multiple touchpoints in the hiring lifecycle.
+[Generative AI](/blog/gen-ai-financial-statement-analysis) interview assistants provide concrete value across multiple touchpoints in the hiring lifecycle.
 
 ### 1. Real-Time Interview Copilots
-During live video interviews, a generative AI assistant can run silently in the background, transcribing the conversation in real time. It analyzes candidate answers against the job rubric and suggests tailored, non-leading follow-up questions to the interviewer. If a candidate mentions a specific project, the AI can instantly provide context on that technology, helping the human interviewer probe deeper without disrupting the flow of conversation.
+During live video interviews, a [generative AI](/blog/generative-ai-employee-self-service-assistants) assistant can run silently in the background, transcribing the conversation in real time. It analyzes candidate answers against the job rubric and suggests tailored, non-leading follow-up questions to the interviewer. If a candidate mentions a specific project, the AI can instantly provide context on that technology, helping the human interviewer probe deeper without disrupting the flow of conversation.
 
 ### 2. Conversational First-Round Screening
 Instead of making candidates answer static questionnaire forms, organizations can use asynchronous conversational AI assistants. These agents guide candidates through structured, interactive text or voice interviews. The AI dynamically adjusts its questioning based on previous answers, exploring gaps in employment, validating core technical capabilities, or asking for specific examples of past project successes.
 
 ### 3. Structured Post-Interview Synthesis
-Writing objective interview feedback takes time and often introduces subjective bias. Generative AI assistants analyze interview transcripts to generate structured summaries. They map candidate responses directly to established hiring criteria, such as the STAR method (Situation, Task, Action, Result). This process provides hiring managers with clean, structured summaries that make comparison easier.
+Writing objective interview feedback takes time and often introduces subjective bias. [Generative AI](/blog/gen-ai-mergers-acquisitions-analysis) assistants analyze interview transcripts to generate structured summaries. They map candidate responses directly to established hiring criteria, such as the STAR method (Situation, Task, Action, Result). This process provides hiring managers with clean, structured summaries that make comparison easier.
 
 ### 4. Interactive Candidate Debriefing and Communication
-When candidates are rejected or moved to the next round, they appreciate detailed feedback. Generative AI assistants can generate personalized constructive feedback based on the candidate's actual interview performance. This high-touch communication keeps rejected candidates positively engaged for potential future roles while maintaining a strong, respectful employer brand.
+When candidates are rejected or moved to the next round, they appreciate detailed feedback. [Generative AI](/blog/gen-ai-board-investor-report-generation) assistants can generate personalized constructive feedback based on the candidate's actual interview performance. This high-touch communication keeps rejected candidates positively engaged for potential future roles while maintaining a strong, respectful employer brand.
 
 ## The Tangible Business Benefits of AI-Powered Interviews
 
@@ -72,7 +72,7 @@ Handling candidate resumes, transcripts, and personal information requires robus
 
 ## How to Implement Generative AI Interview Assistants Effectively
 
-Deploying an AI interview assistant requires a structured, step-by-step approach to ensure user adoption, technical reliability, and policy compliance.
+Deploying an AI interview assistant requires a structured, step-by-step approach to ensure user adoption, technical reliability, and policy [compliance](/blog/gen-ai-in-payroll-future-of-compensation).
 
 1. **Keep Humans in the Loop:** Design your workflow so that AI assists and informs, but humans make all final hiring decisions. This approach limits legal liabilities and keeps human empathy at the center of your hiring process.
 2. **Standardize Your Rubrics:** Before training or configuring your AI model, establish structured, objective rubrics for every open role. The AI can only evaluate candidates accurately if it has precise, clear criteria to measure them against.

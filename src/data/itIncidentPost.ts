@@ -92,7 +92,7 @@ An incorrectly trained algorithmic model will rapidly restart thousands of criti
 
 ## Conclusion
 
-Automated incident management represents the ultimate operational safeguard. By intelligently executing rapid root cause analysis and proactive mitigation, AI guarantees high availability while allowing engineering teams to focus on continuous infrastructure improvement. 
+Automated [incident management](/blog/ai-incident-management-automation) represents the ultimate operational safeguard. By intelligently executing rapid root cause analysis and proactive mitigation, AI guarantees high availability while allowing engineering teams to focus on continuous infrastructure improvement. 
 
 `
  }

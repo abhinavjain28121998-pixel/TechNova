@@ -41,6 +41,8 @@ import { onboardingArticle2 } from './onboardingArticle2';
 import { onboardingArticle3 } from './onboardingArticle3';
 import { onboardingArticle4 } from './onboardingArticle4';
 
+import { advancedHrLearningArticles } from './advancedHrLearningArticles';
+
 const authors = {
  alex: {
  name: 'Alex Rivera',
@@ -2071,6 +2073,7 @@ onboardingArticle4,
 ...fourNewUseCases,
 ...advancedFinanceAIArticles,
 ...seoArticlesLatest,
+...advancedHrLearningArticles,
 ];
 
 function extractExcerpt(content: string): string {

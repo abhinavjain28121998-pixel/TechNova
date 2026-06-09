@@ -72,7 +72,7 @@ While profoundly transformative, trusting an algorithm to determine the financia
 
 ### Bias and Fairness
 
-If an AI is trained on historical data representing explicit human bias (such as systemic redlining or discriminatory lending practices), the algorithm will actively amplify that exact bias. If the model incorrectly correlates specific geographic locations or educational backgrounds with high default rates, it effectively weaponizes historical discrimination at a massive digital scale.
+If an AI is trained on historical data representing explicit human bias (such as systemic redlining or discriminatory [lending](/blog/gen-ai-credit-risk-assessment-2026) practices), the algorithm will actively amplify that exact bias. If the model incorrectly correlates specific geographic locations or educational backgrounds with high default rates, it effectively weaponizes historical discrimination at a massive digital scale.
 
 ### Algorithmic Explainability
 

@@ -140,7 +140,7 @@ Analytics is no longer a purely retrospective practice. While traditional busine
 
 ## Implementing Data & Analytics at the Enterprise Level
 
-Execution represents the most significant friction point for corporate adoption. Building a massive analytics capability requires more than merely purchasing a cloud storage provision.
+Execution represents the most significant friction point for corporate adoption. Building a massive [analytics](/blog/askhackett-revolutionizing-benchmarking-ai) capability requires more than merely purchasing a cloud storage provision.
 
 ### Bridging the Gap Between IT and Business
 One of the most persistent failures in enterprise data architecture occurs when data science teams operate totally independently of active business units. A successful Data & Analytics program explicitly aligns the technical data pipeline with specific vertical outcomes—such as reducing customer churn, forecasting precise [supply chain](/blog/gen-ai-in-procurement-strategic-sourcing) bottlenecks, or mathematically optimizing marketing spend. Data engineers and financial controllers must collaborate to ensure the data variables being collected actively support the specific KPIs the C-suite is trying to optimize. For a broader perspective on holistic alignment, enterprise leaders frequently deploy [Applied Intelligence Programs](/blog/applied-intelligence-programs).

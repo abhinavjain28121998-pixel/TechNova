@@ -18,7 +18,7 @@ export const hrRecruitmentArticles_3: Post[] = [
     role: 'HR Technology Analyst'
   },
   content: `
-For most human resource departments, talent acquisition remains a persistent bottleneck. Recruiters spend hours every day sourcing candidates, filtering through piles of resumes, and playing phone tag just to schedule initial screens. Meanwhile, qualified candidates often drop out of the hiring funnel due to slow response times or a lack of clear communication. The dreaded "resume black hole" is not just a candidate pain point; it is a major operational drain that costs organizations top talent.
+For most human resource departments, [talent acquisition](/blog/generative-ai-interview-assistants) remains a persistent bottleneck. Recruiters spend hours every day sourcing candidates, filtering through piles of resumes, and playing phone tag just to schedule initial screens. Meanwhile, qualified candidates often drop out of the hiring funnel due to slow response times or a lack of clear communication. The dreaded "resume black hole" is not just a candidate pain point; it is a major operational drain that costs organizations top talent.
 
 [Generative AI](/blog/ai-automated-financial-reporting-corporate)-powered recruitment chatbots offer a sophisticated solution to these hiring friction points. Unlike the rigid, rule-based chatbots of the past, modern generative AI systems can understand context, hold natural conversations, and guide candidates through the hiring process in real time. 
 
@@ -30,7 +30,7 @@ By integrating these intelligent agents into the front-end of your recruitment e
 
 Historically, recruitment chatbots operated on strict, pre-programmed decision trees. If a candidate asked a question that fell outside of the predefined script, the bot would break, delivering an incredibly frustrating candidate experience. Many leaders integrating these systems also explore synergies with [hr tech](/blog/gen-ai-hr-policy-handbook-generation).
 
-Generative AI fundamentally changes this dynamic. Powered by Large Language Models (LLMs), generative chatbots understand nuance, intent, and colloquial language. They can parse complex questions and construct accurate, human-like answers dynamically. 
+[Generative AI](/blog/generative-ai-employee-self-service-assistants) fundamentally changes this dynamic. Powered by Large Language Models (LLMs), generative chatbots understand nuance, intent, and colloquial language. They can parse complex questions and construct accurate, human-like answers dynamically. 
 
 The integration of [[Gen AI](/blog/payroll-applied-intelligence) in HR](https://www.thehackettgroup.com/gen-ai-in-hr/) represents a shift from administrative tracking to proactive relationship management. Instead of requiring candidates to search through lengthy FAQ pages or wait days for an email reply, a generative chatbot acts as an on-demand, virtual recruitment coordinator. It can instantly explain job requirements, discuss company culture, and walk applicants through the hiring pipeline. 
 
@@ -38,10 +38,10 @@ The integration of [[Gen AI](/blog/payroll-applied-intelligence) in HR](https://
 
 ## Key Use Cases of Generative AI Recruitment Chatbots
 
-To understand how generative AI works in practice, let's explore the key areas where these chatbots are currently delivering value to recruitment teams.
+To understand how [generative AI](/blog/gen-ai-automated-invoice-processing) works in practice, let's explore the key areas where these chatbots are currently delivering value to recruitment teams.
 
 ### 1. Interactive Candidate Screening
-Traditional application forms are static and often lead to high abandonment rates. A generative AI chatbot can transform this step into a conversational interview. 
+Traditional application forms are static and often lead to high abandonment rates. A [generative AI](/blog/ai-financial-assistants-wealth-management) chatbot can transform this step into a conversational interview. 
 
 Instead of filling out form fields, candidates chat with the AI. The bot dynamically asks qualifying questions based on the candidate’s responses and the specific requirements of the job description. For example, if a candidate mentions they have experience with cloud infrastructure, the chatbot can ask follow-up questions about their specific experience with AWS or Azure.
 
@@ -49,7 +49,7 @@ Instead of filling out form fields, candidates chat with the AI. The bot dynamic
 Candidates often research roles outside of normal business hours. If a potential applicant has a question about remote work policies, health benefits, or parental leave at 10:00 PM, a generative chatbot can answer it instantly. By pulling data from internal company wikis and [employee handbooks](/blog/gen-ai-hr-policy-handbook-generation), the bot provides accurate, compliant information immediately, keeping the candidate engaged.
 
 ### 3. Automated Interview Scheduling
-Coordinating schedules is one of the most time-consuming aspects of recruitment. Generative AI chatbots can connect directly with recruiter calendars (such as Google Calendar or Microsoft Outlook). Once a candidate passes the initial conversational screening, the bot can present available time slots, book the interview, send calendar invites, and handle any necessary rescheduling requests without human intervention.
+Coordinating schedules is one of the most time-consuming aspects of recruitment. [Generative AI](/blog/generative-ai-hr-knowledge-management-chatbots) chatbots can connect directly with recruiter calendars (such as Google Calendar or Microsoft Outlook). Once a candidate passes the initial conversational screening, the bot can present available time slots, book the interview, send calendar invites, and handle any necessary rescheduling requests without human intervention.
 
 ### 4. Database Re-engagement
 Many organizations have thousands of qualified profiles sitting idle in their Applicant Tracking Systems (ATS). When a new role opens up, a generative AI chatbot can proactively reach out to these passive candidates via email or SMS. The bot can check if they are open to new opportunities, share the new job details, and ask if their skills or resume have updated, revitalizing old talent pools.
@@ -58,7 +58,7 @@ Many organizations have thousands of qualified profiles sitting idle in their Ap
 
 ## Benefits of AI-Powered Recruitment Chatbots
 
-Implementing generative AI chatbots into your talent acquisition workflow yields significant advantages across the entire organization.
+Implementing generative AI [chatbots](/blog/ai-powered-it-chatbots) into your talent acquisition workflow yields significant advantages across the entire organization.
 
 *   **Accelerated Time-to-Hire:** By automating top-of-funnel tasks like screening and scheduling, recruitment teams can move candidates from application to first-round interview in hours rather than weeks.
 *   **Superior Candidate Experience:** Modern candidates expect instant communication. Providing immediate answers and real-time updates builds trust and presents your organization as a modern, forward-thinking employer.

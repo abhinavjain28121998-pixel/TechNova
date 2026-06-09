@@ -74,7 +74,7 @@ Companies must establish robust feedback loops where human recruiters continuous
 
 ## Why Expert AI Implementation Matters
 
-Configuring screening algorithms that are both functionally aggressive and ethically sound demands highly specialized engineering and deep change management. Partnering with a professional [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) guarantees that your screening models are mathematically fair, legally compliant with global employment regulations, and seamlessly integrated into your existing ATS infrastructure. Consulting experts bring the requisite oversight to prevent algorithmic discrimination, establish safe usage policies, and ensure that the technology directly serves, rather than dictates, the human recruiting strategy.
+Configuring screening algorithms that are both functionally aggressive and ethically sound demands highly specialized engineering and deep [change management](/blog/redefining-digital-transformation-in-the-ai-era). Partnering with a professional [Generative AI consulting company](https://www.thehackettgroup.com/gen-ai-consulting/) guarantees that your screening models are mathematically fair, legally compliant with global employment regulations, and seamlessly integrated into your existing ATS infrastructure. Consulting experts bring the requisite oversight to prevent algorithmic discrimination, establish safe usage policies, and ensure that the technology directly serves, rather than dictates, the human recruiting strategy.
 
 ## Conclusion
 
