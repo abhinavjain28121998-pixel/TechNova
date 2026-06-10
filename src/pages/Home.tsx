@@ -11,6 +11,7 @@ import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
+import { Chatbot } from '../components/Chatbot';
 
 export default function Home() {
   const { posts: fbPosts, loading } = usePosts();
@@ -390,6 +391,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <Chatbot />
     </>
   );
 }
