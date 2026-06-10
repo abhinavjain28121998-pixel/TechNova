@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "tsx server.ts",
     "prebuild": "tsx generate_sitemap.js",
-    "build": "vite build && tsx prerender_seo.ts",
-    "start": "tsx server.ts",
+    "build": "vite build && tsx prerender_seo.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
@@ -26,6 +26,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.3",
     "embla-carousel-react": "^8.6.0",
+    "esbuild": "^0.28.0",
     "express": "^4.21.2",
     "firebase": "^12.12.0",
     "fuse.js": "^7.3.0",

@@ -8,13 +8,10 @@ import { getFirestore, collection, query, where, getDocs } from 'firebase/firest
 import { GoogleGenAI } from '@google/genai';
 import compression from 'compression';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 // Global embeddings cache
 let postEmbeddings = {};
 try {
-  const embeddingsPath = path.resolve(__dirname, 'src/data/embeddings.json');
+  const embeddingsPath = path.resolve(process.cwd(), 'src/data/embeddings.json');
   if (fs.existsSync(embeddingsPath)) {
     postEmbeddings = JSON.parse(fs.readFileSync(embeddingsPath, 'utf8'));
   }
@@ -208,7 +205,7 @@ async function startServer() {
   });
 
   // Load Firebase Config conditionally
-  const firebaseConfigPath = path.resolve(__dirname, 'firebase-applet-config.json');
+  const firebaseConfigPath = path.resolve(process.cwd(), 'firebase-applet-config.json');
   let db = null;
   if (fs.existsSync(firebaseConfigPath)) {
     try {
@@ -301,10 +298,10 @@ ${publishedPosts.map((post: any) => `  <url>
       let template = '';
       
       if (!isProd) {
-        template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+        template = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8');
         template = await vite.transformIndexHtml(url, template);
       } else {
-        template = fs.readFileSync(path.resolve(__dirname, 'dist/index.html'), 'utf-8');
+        template = fs.readFileSync(path.resolve(process.cwd(), 'dist/index.html'), 'utf-8');
       }
 
       // Inject canonical URL globally for all routes

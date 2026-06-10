@@ -48,7 +48,9 @@ export function Chatbot() {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errData = await response.json().catch(() => null);
+        console.error('Server returned error:', response.status, errData);
+        throw new Error(errData?.error || 'Network response was not ok');
       }
 
       const data = await response.json();
@@ -89,7 +91,7 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[350px] shadow-2xl flex flex-col max-h-[600px] h-[80vh] sm:h-[600px]"
+            className="fixed bottom-6 right-6 z-50 w-[calc(100vw-3rem)] sm:w-[350px] shadow-2xl flex flex-col max-h-[600px] h-[80vh] sm:h-[600px]"
           >
             <Card className="flex flex-col h-full border-border/50 bg-card overflow-hidden">
               <CardHeader className="p-4 bg-primary text-primary-foreground flex flex-row items-center justify-between shadow-sm">
