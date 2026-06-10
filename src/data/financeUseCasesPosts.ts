@@ -242,7 +242,7 @@ Financial operations dictate absolute uncompromising compliance. Attempting to d
  title: 'Navigating Risk with Gen AI for Regulatory Compliance Automation',
  slug: 'gen-ai-regulatory-compliance-automation',
  author: authors.marcus,
- coverImage: '/banners/accelerating-corporate-m-a-gen-ai-in-due-diligence-and-risk-assessment.png',
+ coverImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
  date: '2026-05-25T10:00:00Z',
  category: 'Finance',
  tags: ["Compliance", "Regulations", "AI", "Enterprise"],

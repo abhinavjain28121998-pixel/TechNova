@@ -11,7 +11,7 @@ export const advancedHrLearningArticles: Post[] = [
     tags: ["Generative AI","HR Chatbots","Knowledge Management","Healthcare HR","AI Automation"],
     status: "published",
     date: "2026-06-11T09:00:00Z",
-    coverImage: "/banners/the-future-of-human-resources-leading-the-gen-ai-revolution.png",
+    coverImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
     readingTime: "9 min read",
     author: {
   "name": "Elena Rostkova",
@@ -162,7 +162,7 @@ Generative AI for HR knowledge management chatbots is a transformative leap forw
     tags: ["Generative AI","L&D","Training Automation","Tech Industry","Skill Development"],
     status: "published",
     date: "2026-06-11T10:00:00Z",
-    coverImage: "/banners/the-strategic-value-of-gen-ai-consulting-in-enterprise-transformation.png",
+    coverImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
     readingTime: "9 min read",
     author: {
   "name": "Marcus Thorne",
@@ -315,7 +315,7 @@ Generative AI for learning and development content creation is not about replaci
     tags: ["Generative AI","Personalized Training","Retail HR","Talent Development","Upskilling"],
     status: "published",
     date: "2026-06-11T11:00:00Z",
-    coverImage: "/banners/mastering-ai-implementation-a-practical-guide-for-modern-enterprises.png",
+    coverImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
     readingTime: "8 min read",
     author: {
   "name": "Jessica Vance",
@@ -468,7 +468,7 @@ Gen AI for personalized training recommendations is rendering the traditional, o
     tags: ["Generative AI","Career Pathing","Talent Retention","Finance HR","Development Planning"],
     status: "published",
     date: "2026-06-11T12:00:00Z",
-    coverImage: "/banners/transforming-global-business-services-with-gen-ai-a-2026-perspective.png",
+    coverImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
     readingTime: "10 min read",
     author: {
   "name": "Derek Sterling",
