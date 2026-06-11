@@ -43,6 +43,7 @@ import { onboardingArticle4 } from './onboardingArticle4';
 
 import { advancedHrLearningArticles } from './advancedHrLearningArticles';
 import { fourNewEeatArticles } from './fourNewEeatArticles';
+import { fourHrArticles } from './fourHrArticles';
 
 const authors = {
  alex: {
@@ -2076,6 +2077,7 @@ onboardingArticle4,
 ...seoArticlesLatest,
 ...advancedHrLearningArticles,
 ...fourNewEeatArticles,
+...fourHrArticles,
 ];
 
 function extractExcerpt(content: string): string {

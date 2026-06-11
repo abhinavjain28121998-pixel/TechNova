@@ -23,6 +23,7 @@ import NotFound from './NotFound';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { PostComments } from '../components/PostComments';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { NewsletterSignup } from '../components/NewsletterSignup';
 
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
@@ -530,6 +531,8 @@ export default function Post() {
               </Accordion>
             </div>
           )}
+
+          <NewsletterSignup />
 
           <Separator className="my-12" />
 

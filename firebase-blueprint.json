@@ -51,6 +51,20 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["postId", "authorName", "content", "createdAt"]
+    },
+    "Subscriber": {
+      "title": "Subscriber",
+      "description": "Newsletter subscriber profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "subscribedAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["active", "unsubscribed"] },
+        "source": { "type": "string" }
+      },
+      "required": ["email", "subscribedAt", "status"]
     }
   },
   "firestore": {
@@ -65,6 +79,10 @@
     "/users/{userId}": {
       "schema": "User",
       "description": "User profiles and roles"
+    },
+    "/subscribers/{subscriberId}": {
+      "schema": "Subscriber",
+      "description": "Newsletter subscriber documents"
     }
   }
 }
