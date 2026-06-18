@@ -265,6 +265,64 @@ async function run() {
     { '@context': 'https://schema.org', '@graph': [...genericSchemas, caseStudiesBreadcrumb, caseStudiesSchema] }
   );
 
+  // Pre-render Individual Case Studies
+  const caseStudiesModule = await import('./src/data/caseStudiesData.tsx');
+  const allCaseStudies = caseStudiesModule.caseStudies || [];
+  
+  const distCaseStudiesDir = path.join(distDir, 'case-studies');
+  if (!fs.existsSync(distCaseStudiesDir)) {
+    fs.mkdirSync(distCaseStudiesDir, { recursive: true });
+  }
+
+  for (const study of allCaseStudies) {
+    if (!study.slug) continue;
+    const title = `Case Study: ${study.company} | ${siteName}`;
+    const description = (study.context.replace(/<[^>]+>/g, '').substring(0, 160) + '...').trim();
+    const url = `${BASE_URL}/case-studies/${study.slug}`;
+    
+    const studySchema = {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: `Case Study: ${study.company} - ${study.industry}`,
+      description: description,
+      articleSection: study.industry,
+      author: {
+        '@type': 'Organization',
+        name: siteName,
+        '@id': `${BASE_URL}/#organization`,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: siteName,
+        '@id': `${BASE_URL}/#organization`,
+      },
+      about: {
+        '@type': 'Organization',
+        name: study.company,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url
+      }
+    };
+
+    const studyBreadcrumb = generateBreadcrumbSchema([
+      { name: 'Home', item: '/' },
+      { name: 'Case Studies', item: '/case-studies' },
+      { name: study.company, item: `/case-studies/${study.slug}` }
+    ], `${url}#breadcrumb`);
+
+    await createPreRenderedPage(
+      path.join(distCaseStudiesDir, `${study.slug}.html`),
+      title,
+      description,
+      url,
+      defaultImage,
+      'article',
+      { '@context': 'https://schema.org', '@graph': [...genericSchemas, studyBreadcrumb, studySchema] }
+    );
+  }
+
   // Privacy Policy Page
   const privacySchema = {
     '@type': 'WebPage',
