@@ -429,9 +429,9 @@ export default function Post() {
                   {format(parseISO(post.date), 'MMMM d, yyyy')}
                 </time>
               </div>
-              <Badge variant="secondary" className="flex items-center gap-1 font-normal text-muted-foreground bg-secondary/50 rounded-md" title="Estimated reading time">
+              <Badge variant="secondary" className="flex items-center gap-1.5 font-normal text-muted-foreground bg-secondary/50 rounded-md">
                 <Clock className="w-3 h-3" />
-                {calculateReadingTime(post.content)}
+                <span className="font-medium">Estimated Reading Time:</span> {calculateReadingTime(post.content)}
               </Badge>
             </div>
           </div>

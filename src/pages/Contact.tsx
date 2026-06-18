@@ -4,6 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { generateBreadcrumbSchema, generateContactPageSchema, BASE_URL, generateFAQSchema } from '../lib/seo';
 import { Mail, MapPin, Clock } from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export default function Contact() {
   const [error, setError] = useState<string | null>(null);
@@ -62,6 +63,14 @@ export default function Contact() {
         url={`${BASE_URL}/contact`}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-5xl">
+        <div className="mb-8">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Contact', href: '/contact' }
+            ]} 
+          />
+        </div>
         <div className="grid md:grid-cols-2 gap-12">
           
           <div>

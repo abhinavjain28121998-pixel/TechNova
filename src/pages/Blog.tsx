@@ -13,6 +13,7 @@ import { usePosts } from '../hooks/usePosts';
 import { getPosts } from '../lib/postService';
 import { Post } from '../types';
 import Highlighter from 'react-highlight-words';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 let cachedAllPosts: Post[] | null = null;
 
@@ -117,6 +118,14 @@ export default function Blog() {
 
       <div className="bg-background border-b border-border text-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Blog', href: '/blog' }
+              ]} 
+            />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Blog</h1>
           <p className="text-lg text-muted-foreground mb-8">
             Deep dives, tutorials, and insights into the ever-evolving world of technology.

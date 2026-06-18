@@ -1,22 +1,19 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, BarChart3, Building2, Lightbulb, Activity, Layers, Target, TrendingUp, LineChart, Coffee, Music, ShoppingCart, Truck, Store, Landmark, Cpu, Globe } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { BASE_URL } from '../lib/seo';
 import { Button, buttonVariants } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from 'react-router-dom';
 
 import { caseStudies } from '../data/caseStudiesData';
 
 export default function CaseStudies() {
-  const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
-
   const caseStudiesSchema = caseStudies.map((study, index) => ({
     '@type': 'Article',
-    '@id': `${BASE_URL}/case-studies#case-study-${index}`,
+    '@id': `${BASE_URL}/case-studies/${study.slug}`,
     headline: `Case Study: ${study.company} - ${study.industry}`,
     description: study.context.replace(/<[^>]+>/g, ''),
     articleSection: study.industry,
@@ -44,7 +41,7 @@ export default function CaseStudies() {
         '@type': 'ListItem',
         position: index + 1,
         item: {
-          '@id': `${BASE_URL}/case-studies#case-study-${index}`
+          '@id': `${BASE_URL}/case-studies/${study.slug}`
         }
       }))
     }
@@ -64,6 +61,14 @@ export default function CaseStudies() {
       <section className="relative overflow-hidden bg-background pt-20 pb-16 lg:pt-32 lg:pb-24 border-b border-border">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-4xl text-center">
+          <div className="mb-8 flex justify-center">
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Case Studies', href: '/case-studies' }
+              ]} 
+            />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,29 +100,30 @@ export default function CaseStudies() {
             <CarouselContent className="-ml-4 sm:-ml-6">
               {caseStudies.map((study, index) => (
                 <CarouselItem key={study.company} className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
-                  <motion.article 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    onClick={() => setSelectedStudy(study)}
-                    className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col h-full"
-                  >
-                    <div className="p-8 flex flex-col flex-grow">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="p-3 bg-muted rounded-xl w-fit group-hover:scale-105 transition-transform">
-                          {study.icon}
+                  <Link to={`/case-studies/${study.slug}`} className="block h-full outline-none">
+                    <motion.article 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col h-full"
+                    >
+                      <div className="p-8 flex flex-col flex-grow">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="p-3 bg-muted rounded-xl w-fit group-hover:scale-105 transition-transform">
+                            {study.icon}
+                          </div>
+                        </div>
+                        <h2 className="text-2xl font-bold text-foreground mb-2">{study.company}</h2>
+                        <div className="text-sm font-medium text-primary uppercase tracking-wider mb-4">{study.industry}</div>
+                        <div className="text-muted-foreground line-clamp-3 mb-8 flex-grow text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: study.context }} />
+                        
+                        <div className="flex items-center text-primary font-semibold text-sm mt-auto w-fit group-hover:translate-x-2 transition-transform">
+                          Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
                         </div>
                       </div>
-                      <h2 className="text-2xl font-bold text-foreground mb-2">{study.company}</h2>
-                      <div className="text-sm font-medium text-primary uppercase tracking-wider mb-4">{study.industry}</div>
-                      <div className="text-muted-foreground line-clamp-3 mb-8 flex-grow text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: study.context }} />
-                      
-                      <div className="flex items-center text-primary font-semibold text-sm mt-auto w-fit group-hover:translate-x-2 transition-transform">
-                        Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
-                      </div>
-                    </div>
-                  </motion.article>
+                    </motion.article>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -128,72 +134,6 @@ export default function CaseStudies() {
           </Carousel>
         </div>
       </section>
-
-      {/* Case Study Detailed Dialog */}
-      <Dialog open={!!selectedStudy} onOpenChange={(open) => !open && setSelectedStudy(null)}>
-        <DialogContent className="max-w-none sm:max-w-none lg:max-w-none w-screen h-[100dvh] !p-0 m-0 border-none sm:rounded-none overflow-y-auto bg-background duration-300">
-          {selectedStudy && (
-            <div className="mx-auto max-w-4xl p-6 md:p-12 pt-16 md:pt-20">
-              <DialogHeader className="mb-10">
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="p-4 bg-muted rounded-2xl w-fit shrink-0">
-                    {selectedStudy.icon}
-                  </div>
-                  <div className="text-left">
-                    <DialogTitle className="text-4xl md:text-5xl font-bold text-foreground mb-4">{selectedStudy.company}</DialogTitle>
-                    <DialogDescription className="sr-only">Detailed case study for {selectedStudy.company}</DialogDescription>
-                    <div className="text-sm font-bold text-primary uppercase tracking-wider">{selectedStudy.industry}</div>
-                  </div>
-                </div>
-              </DialogHeader>
-
-              <div className="space-y-10">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Layers className="w-5 h-5 text-muted-foreground" /> Context & Background</h3>
-                  <div className="text-muted-foreground space-y-4 leading-relaxed md:text-lg" dangerouslySetInnerHTML={{ __html: selectedStudy.context }} />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-destructive/5 rounded-xl border border-destructive/10 p-6 md:p-8">
-                    <h3 className="font-semibold text-destructive mb-3 text-lg">The Challenge</h3>
-                    <div className="text-sm md:text-base space-y-4 text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.problem }} />
-                  </div>
-                  <div className="bg-primary/5 rounded-xl border border-primary/10 p-6 md:p-8">
-                    <h3 className="font-semibold text-primary mb-3 text-lg">The Strategy</h3>
-                    <div className="text-sm md:text-base space-y-4 text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedStudy.solution }} />
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-4 border-b border-border pb-2">Key Results</h3>
-                  <ul className="space-y-3 md:space-y-4">
-                    {selectedStudy.results.map((res, i) => (
-                        <li key={i} className="flex gap-4 text-muted-foreground">
-                          <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                          <span dangerouslySetInnerHTML={{ __html: res }} className="leading-relaxed md:text-lg" />
-                        </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-muted/50 rounded-xl p-6 md:p-8 border border-border">
-                  <div className="flex items-start gap-4 md:gap-6">
-                    <Lightbulb className="w-8 h-8 text-foreground shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-bold text-foreground mb-2 text-lg">Expert Analysis: What Worked & Why</h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed md:text-lg">{selectedStudy.analysis}</p>
-                      <div className="pt-5 border-t border-border/60">
-                        <span className="text-xs font-bold uppercase tracking-widest text-primary block mb-2">Key Takeaway</span>
-                        <p className="text-foreground font-semibold sm:text-lg italic">&ldquo;{selectedStudy.takeaway}&rdquo;</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {/* Key Trends Section */}
       <section className="py-24 bg-background border-t border-border">

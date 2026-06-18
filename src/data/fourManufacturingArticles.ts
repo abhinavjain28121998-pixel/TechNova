@@ -42,7 +42,7 @@ The era of slow, monolithic product design cycles has permanently ended. Generat
     category: 'Manufacturing',
     tags: ['Generative AI', 'Product Design', 'Consumer Electronics', 'Manufacturing', 'Industrial Design', 'Optimization'],
     status: 'published',
-    date: '2026-06-16T10:00:00Z',
+    date: '2026-06-18T10:00:00Z',
     coverImage: '/banners/gen-ai-product-design-optimization.jpg',
     readingTime: '10 min read',
     author: {
@@ -110,7 +110,7 @@ The future of flight is organic, lightweight, and mathematically flawless. Gener
     category: 'Manufacturing',
     tags: ['Generative AI', 'Generative Engineering', 'Aerospace', 'Manufacturing', 'Topology Optimization', 'Component Design'],
     status: 'published',
-    date: '2026-06-16T10:05:00Z',
+    date: '2026-06-18T10:05:00Z',
     coverImage: '/banners/gen-ai-generative-engineering-aerospace.jpg',
     readingTime: '11 min read',
     author: {
@@ -178,7 +178,7 @@ The physical factory floor is no longer the place for operational experimentatio
     category: 'Manufacturing',
     tags: ['Generative AI', 'Digital Twin', 'Industrial Automation', 'Manufacturing', 'Simulation', 'Smart Factory'],
     status: 'published',
-    date: '2026-06-16T10:10:00Z',
+    date: '2026-06-18T10:10:00Z',
     coverImage: '/banners/gen-ai-digital-twin-creation-simulation.jpg',
     readingTime: '12 min read',
     author: {
@@ -246,7 +246,7 @@ The era of reacting to catastrophic mechanical failure is completely obsolete. G
     category: 'Manufacturing',
     tags: ['Generative AI', 'Predictive Maintenance', 'Heavy Machinery', 'Manufacturing', 'IoT', 'Industrial AI'],
     status: 'published',
-    date: '2026-06-16T10:15:00Z',
+    date: '2026-06-18T10:15:00Z',
     coverImage: '/banners/gen-ai-predictive-maintenance-assistants.jpg',
     readingTime: '13 min read',
     author: {

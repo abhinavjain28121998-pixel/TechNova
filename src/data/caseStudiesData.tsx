@@ -3,6 +3,7 @@ import { BarChart3, Building2, Target, LineChart, Coffee, Music, ShoppingCart, T
 export const caseStudies = [
   {
     company: "Klarna",
+    slug: "klarna",
     industry: "Fintech & E-commerce",
     icon: <BarChart3 className="w-8 h-8 text-primary" />,
     context: "<p>Klarna operates a massive, globally distributed payments network that manages <strong class='text-primary font-bold'>millions of concurrent e-commerce transactions</strong> and customer support queries across multiple different time zones and localized regulations.</p><p>As a 'Buy Now, Pay Later' provider, their customer interactions aren't just informational; they are highly transactional, involving complex financial dispute resolutions, rapid refund requests, and dynamic credit limit adjustments.</p>",
@@ -19,6 +20,7 @@ export const caseStudies = [
   },
   {
     company: "Morgan Stanley",
+    slug: "morgan-stanley",
     industry: "Wealth Management & Finance",
     icon: <Building2 className="w-8 h-8 text-emerald-500" />,
     context: "<p>Morgan Stanley is a premier global financial services firm where thousands of elite financial advisors rely daily on a vast, continuously evolving trove of internal investment strategies, macroeconomic market research, and strict procedural documentation.</p><p>Speed and accuracy of information retrieval directly translate into better client advisory outcomes and higher asset attraction.</p>",
@@ -34,6 +36,7 @@ export const caseStudies = [
   },
   {
     company: "Netflix",
+    slug: "netflix",
     industry: "Streaming Media & Entertainment",
     icon: <Target className="w-8 h-8 text-rose-500" />,
     context: "<p>Netflix operates a globally dominant streaming platform scaling well past <strong class='text-primary font-bold'>260 million subscribers</strong>. They maintain an overwhelmingly vast content library spanning thousands of original and licensed titles.</p><p>In a subscription model, recurring retention is the primary metric of success, and user engagement is the leading indicator of retention.</p>",
@@ -49,6 +52,7 @@ export const caseStudies = [
   },
   {
     company: "The Hackett Group®",
+    slug: "the-hackett-group",
     industry: "Management Consulting",
     icon: <LineChart className="w-8 h-8 text-amber-500" />,
     context: "<p>The Hackett Group is a leading global strategic advisory and operations improvement consulting firm. Their competitive advantage relies heavily on their vast, proprietary repository of corporate benchmarking data.</p><p>They advise the world's largest enterprises on how their operational metrics compare to top-quartile global performers.</p>",
@@ -64,6 +68,7 @@ export const caseStudies = [
   },
   {
     company: "Starbucks",
+    slug: "starbucks",
     industry: "Retail & Food Beverage",
     icon: <Coffee className="w-8 h-8 text-orange-500" />,
     context: "<p>Starbucks is a ubiquitous global coffeehouse chain serving <strong class='text-primary font-bold'>millions of customers daily</strong> across tens of thousands of physical retail locations.</p><p>They sit at the difficult intersection of high-volume physical retail operations and an aggressively modern, digital-first mobile application ecosystem.</p>",
@@ -79,6 +84,7 @@ export const caseStudies = [
   },
   {
     company: "Spotify",
+    slug: "spotify",
     industry: "Audio Streaming",
     icon: <Music className="w-8 h-8 text-green-500" />,
     context: "<p>Spotify is a dominant global music streaming platform fighting for user retention in a highly commoditized market.</p><p>Because Apple Music, Amazon Music, and Spotify broadly share identical content licensing libraries, Spotify cannot compete effectively on content exclusivity alone.</p>",
@@ -94,6 +100,7 @@ export const caseStudies = [
   },
   {
     company: "Amazon",
+    slug: "amazon",
     industry: "E-commerce & Logistics",
     icon: <ShoppingCart className="w-8 h-8 text-amber-500" />,
     context: "<p>Amazon operates the world's largest online retailer marketplace, managing an incomprehensibly vast global supply chain that processes <strong class='text-primary font-bold'>billions of physical packages</strong> annually.</p><p>Their logistics network spans oceanic freight, localized fulfillment centers, and advanced last-mile delivery fleets.</p>",
@@ -109,6 +116,7 @@ export const caseStudies = [
   },
   {
     company: "Maersk",
+    slug: "maersk",
     industry: "Global Shipping",
     icon: <Truck className="w-8 h-8 text-sky-500" />,
     context: "<p>Maersk is an international maritime shipping giant responsible for transporting nearly <strong class='text-primary font-bold'>20% of the entire world's</strong> food, industrial materials, and consumer goods.</p><p>Their operational canvas involves managing hundreds of massive container vessels across extremely unpredictable oceanic routes.</p>",
@@ -124,6 +132,7 @@ export const caseStudies = [
   },
   {
     company: "Walmart",
+    slug: "walmart",
     industry: "Retail & Supply Chain",
     icon: <Store className="w-8 h-8 text-blue-500" />,
     context: "<p>Walmart is the world's largest retailer by gross revenue, operating a staggering network of over <strong class='text-primary font-bold'>10,500 physical stores</strong> globally.</p><p>They manage a massively complex, intercontinental supplier network that must flawlessly deliver millions of disparate SKU items—ranging from consumer electronics to highly perishable fresh groceries—to localized shelves daily.</p>",
@@ -139,6 +148,7 @@ export const caseStudies = [
   },
   {
     company: "JPMorgan Chase",
+    slug: "jpmorgan-chase",
     industry: "Banking & Financial Services",
     icon: <Landmark className="w-8 h-8 text-slate-700" />,
     context: "<p>JPMorgan Chase operates as the largest banking institution in the United States, processing trillions of dollars in capital flows globally.</p><p>As a core function of their commercial banking sector, they interact with millions of complex, highly bespoke legal texts, credit agreements, and corporate loan covenants daily.</p>",
@@ -154,6 +164,7 @@ export const caseStudies = [
   },
   {
     company: "Siemens",
+    slug: "siemens",
     industry: "Industrial Manufacturing",
     icon: <Cpu className="w-8 h-8 text-cyan-600" />,
     context: "<p>Siemens is a dominant European industrial manufacturing giant producing everything from high-speed passenger trains and advanced wind turbines to highly complex medical MRI imaging equipment.</p><p>Their products operate in environments where reliability is not a luxury, but a strict necessity.</p>",
@@ -169,6 +180,7 @@ export const caseStudies = [
   },
   {
     company: "Airbnb",
+    slug: "airbnb",
     industry: "Travel & Hospitality",
     icon: <Globe className="w-8 h-8 text-rose-500" />,
     context: "<p>Airbnb transformed the hospitality industry by creating a global marketplace for decentralized lodging, currently featuring over <strong class='text-primary font-bold'>7 million active listings</strong> worldwide.</p><p>Their supply side is powered entirely by individual hosts acting as independent micro-entrepreneurs managing their own fractional real estate.</p>",

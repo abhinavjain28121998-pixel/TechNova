@@ -10,7 +10,7 @@ let cachedPosts: Post[] | null = null;
 const fetchAllPosts = async (): Promise<Post[]> => {
   if (cachedPosts) return cachedPosts;
   try {
-    const response = await fetch('/data/articles.json');
+    const response = await fetch(`/data/articles.json?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error('Failed to fetch articles');
     }

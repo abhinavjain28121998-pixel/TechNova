@@ -13,6 +13,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const Admin = lazy(() => import('./pages/Admin'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:slug" element={<Post />} />
                 <Route path="case-studies" element={<CaseStudies />} />
+                <Route path="case-studies/:slug" element={<CaseStudy />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="privacy" element={<PrivacyPolicy />} />

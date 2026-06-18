@@ -45,6 +45,7 @@ import { advancedHrLearningArticles } from './advancedHrLearningArticles';
 import { fourNewEeatArticles } from './fourNewEeatArticles';
 import { fourHrArticles } from './fourHrArticles';
 import { fourManufacturingArticles } from './fourManufacturingArticles';
+import { fourManufacturingArticlesPart2 } from './fourManufacturingArticlesPart2';
 
 const authors = {
  alex: {
@@ -2080,6 +2081,7 @@ onboardingArticle4,
 ...fourNewEeatArticles,
 ...fourHrArticles,
 ...fourManufacturingArticles,
+...fourManufacturingArticlesPart2,
 ];
 
 function extractExcerpt(content: string): string {
