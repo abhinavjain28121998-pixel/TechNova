@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Layout } from './components/Layout';
 import { ThemeProvider } from './components/ThemeProvider';
 
@@ -38,6 +39,7 @@ export default function App() {
               </Route>
             </Routes>
           </Suspense>
+          <SpeedInsights />
         </BrowserRouter>
       </HelmetProvider>
     </ThemeProvider>
