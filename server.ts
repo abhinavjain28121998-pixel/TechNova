@@ -220,6 +220,8 @@ async function startServer() {
         '/terms'
       ];
 
+      const { caseStudies } = await import('./src/data/caseStudiesData.tsx');
+
       res.setHeader('Content-Type', 'application/xml');
       res.setHeader('Cache-Control', 'public, max-age=3600');
       
@@ -235,6 +237,12 @@ ${publishedPosts.map((post: any) => `  <url>
     <lastmod>${new Date(post.date || Date.now()).toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>`).join('\n')}
+${caseStudies.map((study: any) => `  <url>
+    <loc>${baseUrl}/case-studies/${study.slug}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>`).join('\n')}
 </urlset>`;
 
@@ -341,6 +349,77 @@ ${publishedPosts.map((post: any) => `  <url>
               <meta name="twitter:image" content="${image}" data-rh="true" />${jsonLdScript}
             `;
             template = template.replace('</head>', `${ogTags}\n</head>`);
+          }
+        } else if (url.startsWith('/case-studies/')) {
+          const caseStudyMatch = url.match(/^\/case-studies\/([^/?#&]+)/);
+          if (caseStudyMatch) {
+            const slug = caseStudyMatch[1];
+            const { caseStudies } = await import('./src/data/caseStudiesData.tsx');
+            const study = caseStudies.find((s: any) => s.slug === slug);
+            
+            if (study) {
+              const { BASE_URL } = await import('./src/lib/seo.ts');
+              const title = `Case Study: ${study.company} | TechNova`;
+              const description = (study.context.replace(/<[^>]+>/g, '').substring(0, 160) + '...').trim();
+              
+              const caseStudySchema = {
+                '@context': 'https://schema.org',
+                '@type': 'Article',
+                '@id': `${BASE_URL}/case-studies/${study.slug}#article`,
+                headline: `Case Study: ${study.company} - ${study.industry}`,
+                description: description,
+                articleSection: study.industry,
+                author: {
+                  '@type': 'Organization',
+                  name: 'TechNova',
+                  '@id': `${BASE_URL}/#organization`,
+                },
+                publisher: {
+                  '@type': 'Organization',
+                  name: 'TechNova',
+                  '@id': `${BASE_URL}/#organization`,
+                },
+                about: {
+                  '@type': 'Organization',
+                  name: study.company,
+                },
+                mainEntityOfPage: {
+                  '@type': 'WebPage',
+                  '@id': `${BASE_URL}/case-studies/${study.slug}`
+                }
+              };
+
+              jsonLdScript = `\n<script type="application/ld+json" data-rh="true">\n${JSON.stringify([generateOrganizationSchema(), generateWebSiteSchema(), caseStudySchema])}\n</script>\n`;
+
+              if (template.includes('<title data-rh="true">')) {
+                template = template.replace(/<title data-rh="true">.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
+              } else if (template.includes('<title>')) {
+                template = template.replace(/<title>.*?<\/title>/i, `<title data-rh="true">${title}</title>`);
+              } else {
+                template = template.replace('</head>', `<title data-rh="true">${title}</title>\n</head>`);
+              }
+              
+              if (template.includes('<meta name="description"')) {
+                template = template.replace(/<meta\s+(?:data-rh="true"\s+)?name="description"\s+content="[^"]*"\s*(?:data-rh="true"\s*)?\/?>/i, `<meta name="description" content="${description}" data-rh="true" />`);
+              } else {
+                template = template.replace('</head>', `<meta name="description" content="${description}" data-rh="true" />\n</head>`);
+              }
+
+              const ogTags = `
+                <meta property="og:title" content="${title}" data-rh="true" />
+                <meta property="og:description" content="${description}" data-rh="true" />
+                <meta property="og:type" content="article" data-rh="true" />
+                <meta property="og:site_name" content="TechNova" data-rh="true" />
+                <meta name="twitter:card" content="summary" data-rh="true" />
+                <meta name="twitter:title" content="${title}" data-rh="true" />
+                <meta name="twitter:description" content="${description}" data-rh="true" />${jsonLdScript}
+              `;
+              template = template.replace('</head>', `${ogTags}\n</head>`);
+            } else {
+              template = template.replace('</head>', `${jsonLdScript}\n</head>`);
+            }
+          } else {
+            template = template.replace('</head>', `${jsonLdScript}\n</head>`);
           }
         } else if (url.startsWith('/blog')) {
           // Blog List Page

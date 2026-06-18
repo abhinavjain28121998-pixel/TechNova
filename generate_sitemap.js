@@ -16,6 +16,9 @@ async function generateSitemapAndRSS() {
   
   const today = new Date().toISOString().split('T')[0];
 
+  const caseStudiesModule = await import('./src/data/caseStudiesData.tsx');
+  const caseStudies = caseStudiesModule.caseStudies || [];
+
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -47,6 +50,14 @@ async function generateSitemapAndRSS() {
     <lastmod>${today}</lastmod>
   </url>
 `;
+
+  caseStudies.forEach(study => {
+    xml += `  <url>
+    <loc>${baseUrl}/case-studies/${study.slug}</loc>
+    <lastmod>${today}</lastmod>
+  </url>\n`;
+  });
+
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
