@@ -157,6 +157,47 @@ async function startServer() {
     }
   });
 
+  app.post('/api/tts', async (req, res) => {
+    try {
+      const { text } = req.body;
+      if (!text) {
+        return res.status(400).json({ error: 'text parameter is required' });
+      }
+
+      if (!process.env.GEMINI_API_KEY) {
+        return res.status(500).json({ error: 'GEMINI_API_KEY is not set' });
+      }
+
+      const ai = new GoogleGenAI({ 
+        apiKey: process.env.GEMINI_API_KEY,
+        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
+      });
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.1-flash-tts-preview",
+        contents: [{ parts: [{ text: text }] }],
+        config: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: { voiceName: 'Kore' },
+              },
+          },
+        },
+      });
+
+      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+      if (!base64Audio) {
+        throw new Error('No audio generated');
+      }
+
+      res.json({ audio: base64Audio });
+    } catch (e) {
+      console.error("TTS generation error:", e);
+      res.status(500).json({ error: 'Failed to generate audio' });
+    }
+  });
+
   // Load Firebase Config conditionally
   const firebaseConfigPath = path.resolve(process.cwd(), 'firebase-applet-config.json');
   let db = null;
