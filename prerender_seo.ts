@@ -125,6 +125,15 @@ async function run() {
   const allPosts = new Map();
   POSTS.forEach(post => allPosts.set(post.slug, post));
   
+  try {
+    const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+    articlesJson.forEach(post => {
+      if (post.slug) allPosts.set(post.slug, post);
+    });
+  } catch(e) {
+    console.warn("Could not read articles.json during prerender", e.message);
+  }
+  
   if (db) {
     const postsRef = collection(db, 'posts');
     const snap = await getDocs(query(postsRef));

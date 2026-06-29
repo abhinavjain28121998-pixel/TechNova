@@ -1,9 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import fs from 'fs';
-import { POSTS } from './src/data/posts.ts';
+import path from 'path';
+import { POSTS } from '../src/data/posts.ts';
 
-const firebaseConfig = JSON.parse(fs.readFileSync('./firebase-applet-config.json', 'utf8'));
+const firebaseConfigPath = path.resolve(process.cwd(), 'firebase-applet-config.json');
+const firebaseConfig = JSON.parse(fs.readFileSync(firebaseConfigPath, 'utf8'));
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 
@@ -16,7 +18,7 @@ async function generateSitemapAndRSS() {
   
   const today = new Date().toISOString().split('T')[0];
 
-  const caseStudiesModule = await import('./src/data/caseStudiesData.tsx');
+  const caseStudiesModule = await import('../src/data/caseStudiesData.tsx');
   const caseStudies = caseStudiesModule.caseStudies || [];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -71,6 +73,14 @@ async function generateSitemapAndRSS() {
   const allPosts = new Map();
   POSTS.forEach(post => allPosts.set(post.id || post.slug, post));
   
+  // Read from articles.json as well
+  try {
+    const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+    articlesJson.forEach(post => allPosts.set(post.id || post.slug, post));
+  } catch(e) {
+    console.warn("Could not read articles.json", e.message);
+  }
+  
   snap.forEach(doc => {
     allPosts.set(doc.id, { id: doc.id, ...doc.data() });
   });
@@ -100,8 +110,8 @@ async function generateSitemapAndRSS() {
   xml += "</urlset>";
   rss += "</channel>\n</rss>";
 
-  fs.writeFileSync('./public/sitemap.xml', xml);
-  fs.writeFileSync('./public/rss.xml', rss);
+  fs.writeFileSync(path.resolve(process.cwd(), 'public/sitemap.xml'), xml);
+  fs.writeFileSync(path.resolve(process.cwd(), 'public/rss.xml'), rss);
   console.log("Sitemap and RSS generated successfully with " + Array.from(allPosts.values()).filter(d => d.status !== 'draft').length + " posts.");
   process.exit(0);
 }

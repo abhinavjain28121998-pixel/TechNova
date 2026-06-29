@@ -1,5 +1,4 @@
 import express from 'express';
-import { createServer as createViteServer } from 'vite';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -165,16 +164,20 @@ async function startServer() {
     try {
       const firebaseConfig = JSON.parse(fs.readFileSync(firebaseConfigPath, 'utf-8'));
       const firebaseApp = initializeApp(firebaseConfig);
-      db = getFirestore(firebaseApp, firebaseConfig.firestoreDatabaseId);
+      db = getFirestore(firebaseApp, firebaseConfig.firestoreDatabaseId || '(default)');
     } catch (e) {
       console.error("Failed to initialize Firebase in server:", e);
     }
   }
 
-  const isProd = process.env.NODE_ENV === 'production';
+  // Determine if we are in production. The bundled server always outputs to dist/server.cjs
+  const isProd = process.env.NODE_ENV === 'production' || (typeof __filename !== 'undefined' && __filename.endsWith('server.cjs'));
 
   let vite;
   if (!isProd) {
+    // Dynamic import to prevent crash in production when vite is not installed
+    const viteModule = await import('vite');
+    const createViteServer = viteModule.createServer;
     // Vite middleware for development
     vite = await createViteServer({
       server: { middlewareMode: true },
@@ -204,7 +207,11 @@ async function startServer() {
       }
       if (postsList.length === 0) {
         const { POSTS } = await import('./src/data/posts.ts');
-        postsList = POSTS;
+        postsList = [...POSTS];
+        try {
+          const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+          postsList = [...postsList, ...articlesJson];
+        } catch(e) {}
       }
 
       const publishedPosts = postsList.filter((p: any) => !p.status || p.status === 'published');
@@ -308,6 +315,13 @@ ${caseStudies.map((study: any) => `  <url>
             // Fallback to local posts data
             const { POSTS } = await import('./src/data/posts.ts');
             postData = POSTS.find((p: any) => p.slug === slug);
+            
+            if (!postData) {
+              try {
+                const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+                postData = articlesJson.find((p: any) => p.slug === slug);
+              } catch(e) {}
+            }
           }
           
           if (postData) {
@@ -435,7 +449,11 @@ ${caseStudies.map((study: any) => `  <url>
           }
           if (postsList.length === 0) {
             const { POSTS } = await import('./src/data/posts.ts');
-            postsList = POSTS;
+            postsList = [...POSTS];
+            try {
+              const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+              postsList = [...postsList, ...articlesJson];
+            } catch(e) {}
           }
           
           genericSchemas.push(generateBreadcrumbSchema([
@@ -469,7 +487,11 @@ ${caseStudies.map((study: any) => `  <url>
             }
             if (postsList.length === 0) {
               const { POSTS } = await import('./src/data/posts.ts');
-              postsList = POSTS;
+              postsList = [...POSTS];
+              try {
+                const articlesJson = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'public/data/articles.json'), 'utf8'));
+                postsList = [...postsList, ...articlesJson];
+              } catch(e) {}
             }
             const posts = postsList.filter((p: any) => p.status === 'published' || !p.status);
             const featuredPosts = posts.filter((post: any) => post.featured);

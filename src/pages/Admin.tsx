@@ -519,7 +519,7 @@ export default function Admin() {
                       </thead>
                       <tbody className="divide-y divide-[#c3c4c7]">
                         {posts.map((post, idx) => (
-                          <tr key={post.id} className={idx % 2 === 0 ? 'bg-white group' : 'bg-[#f9f9f9] group'}>
+                          <tr key={post.slug || post.id} className={idx % 2 === 0 ? 'bg-white group' : 'bg-[#f9f9f9] group'}>
                             <td className="p-2 text-center"><input type="checkbox" className="rounded-sm border-[#8c8f94] cursor-pointer" /></td>
                             <td className="p-2">
                               <div className="font-medium text-[#2271b1] hover:underline cursor-pointer" onClick={() => startEdit(post)}>

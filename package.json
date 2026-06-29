@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "prebuild": "tsx generate_sitemap.js",
+    "prebuild": "tsx scripts/generate_sitemap.js",
     "build": "vite build && tsx prerender_seo.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
@@ -57,7 +57,9 @@
     "puppeteer": "^24.42.0",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "typescript": "~5.8.2"
+  },
+  "overrides": {
+    "node-domexception": "npm:domexception@^4.0.0"
   }
 }

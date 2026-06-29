@@ -20,9 +20,9 @@ export default function Home() {
   
   const featuredPosts = posts.filter(post => post.featured);
   const carouselPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
-  const recentPosts = posts.filter(post => !carouselPosts.find(p => p.id === post.id)).slice(0, 3);
+  const recentPosts = posts.filter(post => !carouselPosts.find(p => (p.id || p.slug) === (post.id || post.slug))).slice(0, 3);
   const trendingCandidates = posts.filter(post => post.trending);
-  const trendingPosts = trendingCandidates.length > 0 ? trendingCandidates.slice(0, 4) : posts.filter(post => !carouselPosts.find(p => p.id === post.id) && !recentPosts.find(p => p.id === post.id)).slice(0, 4);
+  const trendingPosts = trendingCandidates.length > 0 ? trendingCandidates.slice(0, 4) : posts.filter(post => !carouselPosts.find(p => (p.id || p.slug) === (post.id || post.slug)) && !recentPosts.find(p => (p.id || p.slug) === (post.id || post.slug))).slice(0, 4);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -188,7 +188,7 @@ export default function Home() {
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {carouselPosts.map((post, index) => (
-              <div key={post.id} className="w-full flex-shrink-0">
+              <div key={post.slug || post.id} className="w-full flex-shrink-0">
                 <Link to={`/blog/${post.slug}`} className="group block h-full">
                   <div className="grid md:grid-cols-2 h-full items-center bg-card transition-colors hover:bg-card/80">
                     <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden">
@@ -269,7 +269,7 @@ export default function Home() {
               <div className="grid sm:grid-cols-2 gap-6">
                 {recentPosts.map((post, i) => (
                   <motion.div
-                    key={post.id}
+                    key={post.slug || post.id}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -342,7 +342,7 @@ export default function Home() {
                 <div className="space-y-6">
                   {trendingPosts.map((post, index) => (
                     <motion.div 
-                      key={post.id}
+                      key={post.slug || post.id}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}

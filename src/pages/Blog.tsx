@@ -194,7 +194,7 @@ export default function Blog() {
           <div className="space-y-12">
             <div className="flex flex-col gap-8">
               {paginatedPosts.map(post => (
-              <Card key={post.id} as="article" className="overflow-hidden flex flex-col md:flex-row hover:border-primary transition-colors bg-card border-border">
+              <Card key={post.slug || post.id} as="article" className="overflow-hidden flex flex-col md:flex-row hover:border-primary transition-colors bg-card border-border">
                 <Link to={`/blog/${post.slug}`} className="block w-full md:w-1/3 aspect-[16/10] md:aspect-auto overflow-hidden shrink-0" aria-label={`Read article: ${post.title}`}>
                   <img 
                     src={getOptimizedImageUrl(post.coverImage, 600)} 

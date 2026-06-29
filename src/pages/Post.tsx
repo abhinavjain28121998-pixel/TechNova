@@ -269,8 +269,8 @@ export default function Post() {
   // Compute related posts before returns so it's not conditional
   const posts = useMemo(() => {
     if (!post) return [];
-    return allPosts.filter(p => (!p.status || p.status === 'published') && p.id !== post.id);
-  }, [allPosts, post?.id]);
+    return allPosts.filter(p => (!p.status || p.status === 'published') && (p.slug || p.id) !== (post.slug || post.id));
+  }, [allPosts, post?.slug, post?.id]);
 
   const relatedPosts = useMemo(() => {
     if (!post || posts.length === 0) return [];
@@ -572,7 +572,7 @@ export default function Post() {
                 <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {relatedPosts.map(related => (
-                    <article key={related.id} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
+                    <article key={related.slug || related.id} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
                       <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>
                         <div className="aspect-video overflow-hidden">
                           <img 
