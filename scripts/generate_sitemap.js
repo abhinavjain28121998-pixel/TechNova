@@ -5,16 +5,35 @@ import path from 'path';
 import { POSTS } from '../src/data/posts.ts';
 
 const firebaseConfigPath = path.resolve(process.cwd(), 'firebase-applet-config.json');
-const firebaseConfig = JSON.parse(fs.readFileSync(firebaseConfigPath, 'utf8'));
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+let db = null;
+
+if (fs.existsSync(firebaseConfigPath)) {
+  try {
+    const firebaseConfig = JSON.parse(fs.readFileSync(firebaseConfigPath, 'utf8'));
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+  } catch (e) {
+    console.warn("Failed to initialize Firebase in sitemap generator:", e.message);
+  }
+}
 
 const baseUrl = process.env.VITE_SITE_URL || 'https://tech-nova-iota.vercel.app';
 
 async function generateSitemapAndRSS() {
-  const postsRef = collection(db, 'posts');
-  const q = query(postsRef, orderBy('date', 'desc'));
-  const snap = await getDocs(q);
+  let snap = [];
+  if (db) {
+    try {
+      const postsRef = collection(db, 'posts');
+      const q = query(postsRef, orderBy('date', 'desc'));
+      // Add a 5 second timeout to getDocs using Promise.race to prevent builds hanging
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Firestore query timed out")), 5000)
+      );
+      snap = await Promise.race([getDocs(q), timeoutPromise]);
+    } catch (e) {
+      console.warn("Could not query Firestore for sitemap, falling back to static posts:", e.message);
+    }
+  }
   
   const today = new Date().toISOString().split('T')[0];
 
@@ -81,9 +100,11 @@ async function generateSitemapAndRSS() {
     console.warn("Could not read articles.json", e.message);
   }
   
-  snap.forEach(doc => {
-    allPosts.set(doc.id, { id: doc.id, ...doc.data() });
-  });
+  if (snap && typeof snap.forEach === 'function') {
+    snap.forEach(doc => {
+      allPosts.set(doc.id, { id: doc.id, ...doc.data() });
+    });
+  }
 
   Array.from(allPosts.values()).forEach(data => {
     if (data.status === 'draft') return; // Skip drafts

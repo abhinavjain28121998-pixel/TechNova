@@ -49,9 +49,16 @@ function getOptimizedImageUrl(url: string | undefined, width: number = 800): str
   return url;
 }
 
+async function getDocsWithTimeout(q: any, timeoutMs: number = 3000) {
+  const timeoutPromise = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error("Firestore query timed out")), timeoutMs)
+  );
+  return Promise.race([getDocs(q), timeoutPromise]);
+}
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.DEFAULT_APP_PORT ? parseInt(process.env.DEFAULT_APP_PORT, 10) : (process.env.PORT ? parseInt(process.env.PORT, 10) : 3000);
 
   // Enable Gzip/Brotli compression for all Express payloads
   app.use(compression());
@@ -157,47 +164,6 @@ async function startServer() {
     }
   });
 
-  app.post('/api/tts', async (req, res) => {
-    try {
-      const { text } = req.body;
-      if (!text) {
-        return res.status(400).json({ error: 'text parameter is required' });
-      }
-
-      if (!process.env.GEMINI_API_KEY) {
-        return res.status(500).json({ error: 'GEMINI_API_KEY is not set' });
-      }
-
-      const ai = new GoogleGenAI({ 
-        apiKey: process.env.GEMINI_API_KEY,
-        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
-      });
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.1-flash-tts-preview",
-        contents: [{ parts: [{ text: text }] }],
-        config: {
-          responseModalities: ['AUDIO'],
-          speechConfig: {
-              voiceConfig: {
-                prebuiltVoiceConfig: { voiceName: 'Kore' },
-              },
-          },
-        },
-      });
-
-      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      if (!base64Audio) {
-        throw new Error('No audio generated');
-      }
-
-      res.json({ audio: base64Audio });
-    } catch (e) {
-      console.error("TTS generation error:", e);
-      res.status(500).json({ error: 'Failed to generate audio' });
-    }
-  });
-
   // Load Firebase Config conditionally
   const firebaseConfigPath = path.resolve(process.cwd(), 'firebase-applet-config.json');
   let db = null;
@@ -240,7 +206,7 @@ async function startServer() {
       if (db) {
         try {
           const postsRef = collection(db, 'posts');
-          const snap = await getDocs(postsRef);
+          const snap = await getDocsWithTimeout(postsRef);
           postsList = snap.docs.map(d => d.data());
         } catch (e) {
           console.error("Firestore read error for sitemap:", e);
@@ -346,7 +312,7 @@ ${caseStudies.map((study: any) => `  <url>
           if (db) {
             const postsRef = collection(db, 'posts');
             const q = query(postsRef, where('slug', '==', slug));
-            const snap = await getDocs(q);
+            const snap = await getDocsWithTimeout(q);
             if (!snap.empty) {
               postData = snap.docs[0].data();
             }
@@ -484,7 +450,7 @@ ${caseStudies.map((study: any) => `  <url>
           if (db) {
             try {
               const postsRef = collection(db, 'posts');
-              const snap = await getDocs(postsRef);
+              const snap = await getDocsWithTimeout(postsRef);
               postsList = snap.docs.map(d => d.data());
             } catch (e) {}
           }
@@ -522,7 +488,7 @@ ${caseStudies.map((study: any) => `  <url>
             if (db) {
               try {
                 const postsRef = collection(db, 'posts');
-                const snap = await getDocs(postsRef);
+                const snap = await getDocsWithTimeout(postsRef);
                 postsList = snap.docs.map(d => d.data());
               } catch (e) {}
             }

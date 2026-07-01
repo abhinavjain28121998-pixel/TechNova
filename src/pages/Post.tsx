@@ -24,7 +24,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 import { PostComments } from '../components/PostComments';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { NewsletterSignup } from '../components/NewsletterSignup';
-import { AudioPlayer } from '../components/AudioPlayer';
 
 import teamAvatar from '../assets/images/technova_team_avatar_1779105832602.png';
 
@@ -459,7 +458,6 @@ export default function Post() {
           
           {/* Main Article Content */}
           <div className="flex-1 max-w-3xl min-w-0 mx-auto lg:mx-0 w-full lg:order-1 order-2">
-            <AudioPlayer text={post.content} />
             
             {/* Readability Controls */}
             <div className="mb-8 flex flex-col items-end">

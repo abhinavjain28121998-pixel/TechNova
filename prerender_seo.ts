@@ -135,14 +135,23 @@ async function run() {
   }
   
   if (db) {
-    const postsRef = collection(db, 'posts');
-    const snap = await getDocs(query(postsRef));
-    snap.forEach(doc => {
-      const data = doc.data();
-      if (data.slug) {
-        allPosts.set(data.slug, { id: doc.id, ...data });
+    try {
+      const postsRef = collection(db, 'posts');
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Firestore query timed out")), 5000)
+      );
+      const snap = await Promise.race([getDocs(query(postsRef)), timeoutPromise]) as any;
+      if (snap && typeof snap.forEach === 'function') {
+        snap.forEach(doc => {
+          const data = doc.data();
+          if (data.slug) {
+            allPosts.set(data.slug, { id: doc.id, ...data });
+          }
+        });
       }
-    });
+    } catch (e) {
+      console.warn("Could not query Firestore for prerender, using static data:", e.message);
+    }
   }
 
   // 2. Output each post
