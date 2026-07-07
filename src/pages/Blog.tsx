@@ -6,7 +6,8 @@ import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card
 import { Badge } from '../components/ui/badge';
 import { calculateReadingTime, getOptimizedImageUrl } from '../lib/utils';
 import { Input } from '../components/ui/input';
-import { Search, Calendar, Clock, Loader2 } from 'lucide-react';
+import { SearchBar } from '../components/SearchBar';
+import { Calendar, Clock, Loader2, Search } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { generateBreadcrumbSchema, generateBlogIndexGraphSchema, BASE_URL } from '../lib/seo';
 import { usePosts } from '../hooks/usePosts';
@@ -172,20 +173,13 @@ export default function Blog() {
             Deep dives, tutorials, and insights into the ever-evolving world of technology.
           </p>
           
-          <div className="relative max-w-xl mx-auto">
-            {isSearching ? (
-              <Loader2 className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5 animate-spin" />
-            ) : (
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-            )}
-            <Input 
-              type="text" 
-              placeholder="Search articles by title or keywords..." 
-              className="pl-10 h-12 bg-card border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
-              value={localSearchQuery}
-              onChange={(e) => setLocalSearchQuery(e.target.value)}
-            />
-          </div>
+          <SearchBar 
+            value={localSearchQuery}
+            onChange={setLocalSearchQuery}
+            isSearching={isSearching}
+            placeholder="Search articles by title or keywords..."
+            className="max-w-xl mx-auto"
+          />
         </div>
       </div>
 
