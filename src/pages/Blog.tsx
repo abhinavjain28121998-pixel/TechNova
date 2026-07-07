@@ -12,22 +12,63 @@ import { generateBreadcrumbSchema, generateBlogIndexGraphSchema, BASE_URL } from
 import { usePosts } from '../hooks/usePosts';
 import { getPosts } from '../lib/postService';
 import { Post } from '../types';
-import Highlighter from 'react-highlight-words';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+
+function HighlightText({ text, search, highlightClassName }: { text: string; search: string; highlightClassName?: string }) {
+  if (!search.trim()) {
+    return <span>{text}</span>;
+  }
+  const words = search.trim().split(/\s+/).filter(Boolean);
+  if (words.length === 0) {
+    return <span>{text}</span>;
+  }
+  const escapedWords = words.map(w => w.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+  const regex = new RegExp(`(${escapedWords.join('|')})`, 'gi');
+  const parts = text.split(regex);
+
+  return (
+    <span>
+      {parts.map((part, i) => {
+        const isMatch = words.some(w => part.toLowerCase() === w.toLowerCase());
+        return isMatch ? (
+          <span key={i} className={highlightClassName}>
+            {part}
+          </span>
+        ) : (
+          part
+        );
+      })}
+    </span>
+  );
+}
 
 let cachedAllPosts: Post[] | null = null;
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
   
-  const searchQuery = searchParams.get('q') || '';
   const selectedCategory = searchParams.get('category') || null;
   const currentPageParams = searchParams.get('page');
   const safeCurrentPage = currentPageParams ? parseInt(currentPageParams, 10) : 1;
   const [semanticResults, setSemanticResults] = useState<{id: string, score: number}[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchParams.get('q') || '');
+  const searchQuery = searchParams.get('q') || '';
   
   const POSTS_PER_PAGE = 10;
+
+  useEffect(() => {
+    setLocalSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (localSearchQuery !== (searchParams.get('q') || '')) {
+        updateParams({ q: localSearchQuery || null });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [localSearchQuery]);
 
   useEffect(() => {
     if (!searchQuery.trim()) {
@@ -43,7 +84,7 @@ export default function Blog() {
         }
         const Fuse = (await import('fuse.js')).default;
         const fuse = new Fuse(cachedAllPosts, {
-          keys: ['title', 'tags'],
+          keys: ['title', 'tags', 'excerpt'],
           threshold: 0.3,
           ignoreLocation: true,
         });
@@ -139,10 +180,10 @@ export default function Blog() {
             )}
             <Input 
               type="text" 
-              placeholder="Search articles by title or tags..." 
+              placeholder="Search articles by title or keywords..." 
               className="pl-10 h-12 bg-card border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
-              value={searchQuery}
-              onChange={(e) => updateParams({ q: e.target.value || null })}
+              value={localSearchQuery}
+              onChange={(e) => setLocalSearchQuery(e.target.value)}
             />
           </div>
         </div>
@@ -225,20 +266,18 @@ export default function Blog() {
                     </div>
                     <Link to={`/blog/${post.slug}`}>
                       <h2 className="text-2xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2 mb-3">
-                        <Highlighter
-                          searchWords={searchQuery.trim().split(/\s+/)}
-                          autoEscape={true}
-                          textToHighlight={post.title || ''}
+                        <HighlightText
+                          text={post.title || ''}
+                          search={searchQuery}
                           highlightClassName="bg-primary/20 text-primary font-bold px-1 rounded-sm"
                         />
                       </h2>
                     </Link>
                   </header>
                   <p className="text-muted-foreground text-sm line-clamp-3 mb-6 flex-grow">
-                    <Highlighter
-                      searchWords={searchQuery.trim().split(/\s+/)}
-                      autoEscape={true}
-                      textToHighlight={post.excerpt || ''}
+                    <HighlightText
+                      text={post.excerpt || ''}
+                      search={searchQuery}
                       highlightClassName="bg-primary/20 text-primary font-medium px-1 rounded-sm"
                     />
                   </p>

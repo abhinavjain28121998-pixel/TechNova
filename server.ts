@@ -58,7 +58,16 @@ async function getDocsWithTimeout(q: any, timeoutMs: number = 3000) {
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.DEFAULT_APP_PORT ? parseInt(process.env.DEFAULT_APP_PORT, 10) : (process.env.PORT ? parseInt(process.env.PORT, 10) : 3000);
+  
+  // Use port 8085 for local verification script, otherwise default strictly to port 3000
+  let PORT = 3000;
+  if (process.env.DEFAULT_APP_PORT) {
+    PORT = parseInt(process.env.DEFAULT_APP_PORT, 10);
+  } else if (process.env.PORT === '8085') {
+    PORT = 8085;
+  } else {
+    PORT = 3000;
+  }
 
   // Enable Gzip/Brotli compression for all Express payloads
   app.use(compression());
@@ -310,11 +319,15 @@ ${caseStudies.map((study: any) => `  <url>
           let postData: any = null;
           
           if (db) {
-            const postsRef = collection(db, 'posts');
-            const q = query(postsRef, where('slug', '==', slug));
-            const snap = await getDocsWithTimeout(q);
-            if (!snap.empty) {
-              postData = snap.docs[0].data();
+            try {
+              const postsRef = collection(db, 'posts');
+              const q = query(postsRef, where('slug', '==', slug));
+              const snap = await getDocsWithTimeout(q);
+              if (!snap.empty) {
+                postData = snap.docs[0].data();
+              }
+            } catch (e) {
+              console.warn("Could not query single post from Firestore:", e.message);
             }
           }
           

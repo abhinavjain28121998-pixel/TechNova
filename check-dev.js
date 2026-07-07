@@ -11,7 +11,7 @@ import puppeteer from 'puppeteer';
     );
     
     console.log("Navigating to local server...");
-    await page.goto('http://localhost:3000/', { waitUntil: 'load', timeout: 10000 });
+    await page.goto('http://localhost:3000/about', { waitUntil: 'load', timeout: 10000 });
     console.log("Finished navigating.");
     
     const content = await page.content();

@@ -100,15 +100,16 @@ service cloud.firestore {
     }
     
     match /subscribers/{subscriberId} {
-      // Protect email privacy with ABAC. Only admins can read/update/delete list of subscribers.
       allow read, update, delete: if isAdmin();
-      // Anyone can subscribe with validated data structure
-      allow create: if request.resource.data.keys().hasAll(["email", "subscribedAt", "status"])
+      allow create: if request.resource.data.keys().hasAll(["email", "subscribedAt", "status", "name", "source"])
+                    && request.resource.data.keys().size() == 5
                     && request.resource.data.email is string
                     && request.resource.data.email.size() > 3
                     && request.resource.data.email.size() <= 200
                     && (request.resource.data.name == null || (request.resource.data.name is string && request.resource.data.name.size() <= 100))
-                    && request.resource.data.status == "active";
+                    && request.resource.data.subscribedAt is string
+                    && request.resource.data.status == "active"
+                    && request.resource.data.source is string;
     }
     
     // Default deny for everything else
