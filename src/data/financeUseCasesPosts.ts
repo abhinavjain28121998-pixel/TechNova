@@ -55,12 +55,12 @@ Generative AI for credit risk assessment profoundly transforms how financial ins
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@graph": [
+ "@graph": 
  {
  "@type": "Article",
- "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-credit-risk-assessment-2026/#article",
- "headline": "Transforming Lending with [Generative AI](/blog/gen-ai-financial-document-summarization) for Credit Risk Assessment",
- "description": "Discover how [generative AI](/blog/generative-ai-candidate-sourcing) is modernizing credit risk assessment by analyzing unstructured data, automating underwriting decisions, and revolutionizing lending accuracy.",
+ "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-credit-risk-assessment-2026",
+ "headline": "Transforming Lending with [Generative AI for Credit Risk Assessment",
+ "description": "Discover how generative AI is modernizing credit risk assessment by analyzing unstructured data, automating underwriting decisions, and revolutionizing lending accuracy.",
  "author": {
  "@type": "Person",
  "name": "Alex Rivera"
@@ -81,13 +81,13 @@ Generative AI for credit risk assessment profoundly transforms how financial ins
  },
  {
  "@type": "FAQPage",
- "mainEntity": [
+ "mainEntity": 
  {
  "@type": "Question",
- "name": "How is [generative AI](/blog/gen-ai-trade-finance-automation) used in credit risk assessment?",
+ "name": "How is [generative AI used in credit risk assessment?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "[Generative AI](/blog/gen-ai-predictive-financial-forecasting) is uniquely utilized to synthesize massive volumes of unstructured alternative data, including real-time utility histories and disparate accounting records, enabling lenders to make highly accurate, comprehensive underwriting decisions securely."
+ "text": "Generative AI is uniquely utilized to synthesize massive volumes of unstructured alternative data, including real-time utility histories and disparate accounting records, enabling lenders to make highly accurate, comprehensive underwriting decisions securely."
  }
  },
  {
@@ -111,7 +111,7 @@ Generative AI for credit risk assessment profoundly transforms how financial ins
  "name": "Why is expert AI implementation critical in finance?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "Expert implementation completely ensures the lending models adhere tightly to complex [regulations](/blog/gen-ai-regulatory-compliance-automation) like the ECOA, heavily utilizing precise Retrieval-Augmented Generation (RAG) frameworks to definitively prevent harmful AI hallucinations and maintain strict security securely."
+ "text": "Expert implementation completely ensures the lending models adhere tightly to complex regulations like the ECOA, heavily utilizing precise Retrieval-Augmented Generation (RAG) frameworks to definitively prevent harmful AI hallucinations and maintain strict security securely."
  }
  }
  ]
@@ -172,12 +172,12 @@ Financial operations dictate absolute uncompromising compliance. Attempting to d
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@graph": [
+ "@graph": 
  {
  "@type": "Article",
- "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-financial-document-summarization/#article",
- "headline": "Streamlining Analysis with [Generative AI](/blog/generative-ai-employee-self-service-assistants) for Financial Document Summarization",
- "description": "Explore how generative AI models are dramatically accelerating research by perfectly summarizing dense 10-Ks, sprawling [contracts](/blog/gen-ai-in-procurement-strategic-sourcing), and lengthy earnings transcripts.",
+ "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-financial-document-summarization",
+ "headline": "Streamlining Analysis with [Generative AI for Financial Document Summarization",
+ "description": "Explore how generative AI models are dramatically accelerating research by perfectly summarizing dense 10-Ks, sprawling contracts, and lengthy earnings transcripts.",
  "author": {
  "@type": "Person",
  "name": "Sarah Chen"
@@ -198,13 +198,13 @@ Financial operations dictate absolute uncompromising compliance. Attempting to d
  },
  {
  "@type": "FAQPage",
- "mainEntity": [
+ "mainEntity": 
  {
  "@type": "Question",
  "name": "How is AI used for financial document summarization?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "[Generative AI](/blog/generative-ai-personalized-outreach) algorithms effortlessly extract key financial insights from massive dense 10-K filings, earnings transcripts, and complex legal contracts rapidly and accurately."
+ "text": "[Generative AI algorithms effortlessly extract key financial insights from massive dense 10-K filings, earnings transcripts, and complex legal contracts rapidly and accurately."
  }
  },
  {
@@ -212,7 +212,7 @@ Financial operations dictate absolute uncompromising compliance. Attempting to d
  "name": "What are the main benefits of AI document summarization?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "The primary benefits include saving thousands of manual research hours, drastically increasing analyst [productivity](/blog/agent-augmentation-workforce-productivity), and instantly synthesizing critical risk factor changes in real time."
+ "text": "The primary benefits include saving thousands of manual research hours, drastically increasing analyst productivity, and instantly synthesizing critical risk factor changes in real time."
  }
  },
  {
@@ -225,7 +225,7 @@ Financial operations dictate absolute uncompromising compliance. Attempting to d
  },
  {
  "@type": "Question",
- "name": "Why is expert implementation important for AI in [finance](/blog/gen-ai-mergers-acquisitions-analysis)?",
+ "name": "Why is expert implementation important for AI in finance?",
  "acceptedAnswer": {
  "@type": "Answer",
  "text": "Expert integration ensures the deployment of highly secure, compliant cloud environments that completely safeguard proprietary financial documents from data leakage and public model training."
@@ -292,11 +292,11 @@ Generative AI empowers global banking enterprises to effectively navigate the in
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@graph": [
+ "@graph": 
  {
  "@type": "Article",
- "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-regulatory-compliance-[automation](/blog/redefining-digital-transformation-in-the-ai-era)/#article",
- "headline": "Navigating Risk with Gen AI for Regulatory Compliance [Automation](/blog/ai-automated-purchase-order-processing-logistics)",
+ "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-regulatory-compliance-automation)/#article",
+ "headline": "Navigating Risk with Gen AI for Regulatory Compliance [Automation",
  "description": "See how generative AI drastically cuts costs and minimizes catastrophic regulatory risks by automating compliance tracking and policy adjustments.",
  "author": {
  "@type": "Person",
@@ -414,11 +414,11 @@ Generative AI upends the entire established paradigm of customer verification. B
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@graph": [
+ "@graph": 
  {
  "@type": "Article",
- "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-kyc-[automation](/blog/redefining-digital-transformation-in-the-ai-era)/#article",
- "headline": "Enhancing Security with Generative AI for KYC [Automation](/blog/agentic-ai-autonomous-workflows)",
+ "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-kyc-automation)/#article",
+ "headline": "Enhancing Security with Generative AI for KYC [Automation",
  "description": "Find out how generative AI solutions are accelerating customer onboarding significantly while maintaining absolute regulatory integrity against modern fraud.",
  "author": {
  "@type": "Person",
@@ -435,7 +435,7 @@ Generative AI upends the entire established paradigm of customer verification. B
  "datePublished": "2026-05-25T10:30:00+00:00",
  "mainEntityOfPage": {
  "@type": "WebPage",
- "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-kyc-[automation](/blog/gen-ai-in-gbs-future-of-shared-services)"
+ "@id": "https://tech-nova-iota.vercel.app/blog/gen-ai-kyc-automation)"
  }
  },
  {

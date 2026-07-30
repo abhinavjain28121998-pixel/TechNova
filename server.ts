@@ -59,12 +59,12 @@ async function getDocsWithTimeout(q: any, timeoutMs: number = 3000) {
 async function startServer() {
   const app = express();
   
-  // Use port 8085 for local verification script, otherwise default strictly to port 3000
+  // Use port from process.env.PORT if specified, otherwise default to 3000
   let PORT = 3000;
   if (process.env.DEFAULT_APP_PORT) {
     PORT = parseInt(process.env.DEFAULT_APP_PORT, 10);
-  } else if (process.env.PORT === '8085') {
-    PORT = 8085;
+  } else if (process.env.PORT) {
+    PORT = parseInt(process.env.PORT, 10);
   } else {
     PORT = 3000;
   }

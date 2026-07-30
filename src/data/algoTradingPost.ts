@@ -38,7 +38,7 @@ export const algoTradingPost: Post[] = [
  content: `
 Global capital markets are characterized by immense volume and rapid volatility. In an environment where fortunes are won and lost in fractions of a microsecond, the speed of execution and the depth of analytical insight are the primary determinants of firm profitability. Human traders, once the cornerstone of market [liquidity](/blog/gen-ai-intelligent-cash-flow-forecasting), are increasingly shifting towards strategic oversight as automated systems take the helm.
 
-The modern trading floor is heavily reliant on incredibly sophisticated artificial intelligence. By deploying complex neural architectures capable of absorbing and processing planetary-scale financial data instantly, [investment](/blog/ai-driven-investment-research-2026) banks and quantitative hedge funds have completely transformed trading strategies.
+The modern trading floor is heavily reliant on incredibly sophisticated artificial intelligence. By deploying complex neural architectures capable of absorbing and processing planetary-scale financial data instantly, [investment](/blog/ai-risk-assessment-corporate-finance) banks and quantitative hedge funds have completely transformed trading strategies.
 
 ## The Evolution of AI in Capital Markets
 

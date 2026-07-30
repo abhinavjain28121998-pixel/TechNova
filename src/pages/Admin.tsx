@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef, useMemo } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { auth, db, googleProvider } from '../lib/firebase';
 import { 
   signInWithPopup, 
@@ -109,6 +109,30 @@ export default function Admin() {
   const [editingPost, setEditingPost] = useState<Partial<PostRecord> | null>(null);
   const [activeTab, setActiveTab] = useState('list');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const adminMarkdownComponents = useMemo(() => ({
+    a: ({ node, href, ...props }: any) => {
+      const isInternal = href?.startsWith('/') || href?.startsWith('#');
+      if (isInternal) {
+        return (
+          <Link 
+            to={href} 
+            className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+            {...props}
+          />
+        );
+      }
+      return (
+        <a 
+          href={href}
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+          {...props}
+        />
+      );
+    }
+  }), []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -620,9 +644,7 @@ export default function Admin() {
                         <div className="p-6 max-w-none prose prose-slate prose-sm sm:prose-base">
                           {editingPost?.content ? (
                             <ReactMarkdown
-                              components={{
-                                a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
-                              }}
+                              components={adminMarkdownComponents as any}
                             >
                               {editingPost.content}
                             </ReactMarkdown>

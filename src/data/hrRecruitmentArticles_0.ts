@@ -138,7 +138,7 @@ No. Uploading candidate resumes containing names, contact details, or previous e
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "[How Generative AI Is Transforming Interview Question Generation](/blog/generative-ai-interview-question-generation)",
+  "headline": "How Generative AI Is Transforming Interview Question Generation",
   "description": "Learn how Generative AI optimizes talent acquisition by creating precise, role-specific, and unbiased interview questions and evaluation rubrics.",
   "author": {
     "@type": "Organization",

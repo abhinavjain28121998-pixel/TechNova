@@ -93,7 +93,7 @@ Designing a unified, highly secure artificial intelligence assistant that interf
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  "mainEntity": 
     {
       "@type": "Question",
       "name": "What is an AI employee self-service assistant?",
@@ -123,7 +123,7 @@ Designing a unified, highly secure artificial intelligence assistant that interf
       "name": "Is employee data safe when utilizing these internal AI assistants?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, provided the organization utilizes an [enterprise](/blog/gen-ai-consulting-enterprise-transformation)-grade AI deployment that operates entirely within a locked, private tenant. This ensures that internal conversational data is never leaked or used to train external public models."
+        "text": "Yes, provided the organization utilizes an [enterprise-grade AI deployment that operates entirely within a locked, private tenant. This ensures that internal conversational data is never leaked or used to train external public models."
       }
     },
     {
@@ -142,7 +142,7 @@ Designing a unified, highly secure artificial intelligence assistant that interf
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Empower the [Workforce](/blog/optimizing-workforce-with-human-resources-solution-intelligence) with Generative AI for Employee Self-Service Assistants",
+  "headline": "Empower the Workforce with Generative AI for Employee Self-Service Assistants",
   "description": "Explore how generative AI for employee self-service assistants transforms internal support, offering instant resolution to complex HR and IT inquiries 24/7.",
   "author": {
     "@type": "Organization",

@@ -93,7 +93,7 @@ Transitioning to AI-assisted governance is not as simple as purchasing a softwar
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  "mainEntity": 
     {
       "@type": "Question",
       "name": "What is Gen AI for HR policy generation?",
@@ -123,7 +123,7 @@ Transitioning to AI-assisted governance is not as simple as purchasing a softwar
       "name": "Does AI make policy documents more readable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, significantly. [Generative AI](/blog/gen-ai-anti-money-laundering-monitoring) is exceptionally skilled at translating dense, impenetrable 'legalese' into clear, concise, and highly approachable language that standard employees can easily understand."
+        "text": "Yes, significantly. [Generative AI is exceptionally skilled at translating dense, impenetrable 'legalese' into clear, concise, and highly approachable language that standard employees can easily understand."
       }
     },
     {

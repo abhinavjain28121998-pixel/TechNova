@@ -104,8 +104,12 @@ async function run() {
   const kept = new Set();
   const actuallyToUpdate = [];
   for (const p of posts) {
-    if (!p.coverImage || p.coverImage === 'undefined' || p.coverImage.includes('picsum.photos') || freq[p.coverImage] > 1) {
-      if (freq[p.coverImage] > 1 && !kept.has(p.coverImage) && !p.coverImage.includes('picsum.photos')) {
+    const hasCoverImage = p.coverImage && p.coverImage !== 'undefined';
+    const isPicsum = hasCoverImage && p.coverImage.includes('picsum.photos');
+    const isDuplicate = hasCoverImage && freq[p.coverImage] > 1;
+
+    if (!hasCoverImage || isPicsum || isDuplicate) {
+      if (isDuplicate && !kept.has(p.coverImage) && !isPicsum) {
         kept.add(p.coverImage); 
       } else {
         actuallyToUpdate.push(p);
@@ -118,11 +122,12 @@ async function run() {
   for (let i = 0; i < actuallyToUpdate.length; i++) {
     const p = actuallyToUpdate[i];
     try {
-      const svgPath = generateSVG(p.title, p.category, p.id);
-      await updateDoc(doc(db, "posts", p.id), { coverImage: svgPath });
-      console.log(`[${i+1}/${actuallyToUpdate.length}] Saved SVG and updated Firestore for ${p.id}`);
+      const docId = p.slug || p.id;
+      const svgPath = generateSVG(p.title, p.category, docId);
+      await updateDoc(doc(db, "posts", docId), { coverImage: svgPath });
+      console.log(`[${i+1}/${actuallyToUpdate.length}] Saved SVG and updated Firestore for ${docId}`);
     } catch (e) {
-      console.error(`Failed on ${p.id}: ${e.message}`);
+      console.error(`Failed on ${p.slug || p.id}: ${e.message}`);
     }
   }
 }

@@ -38,7 +38,7 @@ export const creditScoringPost: Post[] = [
  content: `
 Access to capital remains a fundamental cornerstone of global economic mobility and [enterprise](/blog/gen-ai-consulting-enterprise-transformation) growth. However, legacy credit scoring methodologies frequently marginalize large demographics simply because their financial histories do not align with traditional modeling parameters. The rapidly expanding fintech sector is systematically dismantling these barriers by utilizing advanced artificial intelligence and predictive modeling.
 
-By evaluating a significantly broader spectrum of borrower data, artificial intelligence is democratizing access to financial resources. This comprehensive article examines exactly how intelligent models are fundamentally rewriting the operational rules of [credit scoring](/blog/generative-ai-loan-underwriting-automation) and loan origination.
+By evaluating a significantly broader spectrum of borrower data, artificial intelligence is democratizing access to financial resources. This comprehensive article examines exactly how intelligent models are fundamentally rewriting the operational rules of [credit scoring](/blog/gen-ai-credit-risk-assessment-2026) and loan origination.
 
 ## The Paradigm Shift in the Lending Industry
 
@@ -92,7 +92,7 @@ Transitioning to deeply algorithmic credit scoring is not merely a software upgr
 
 ## Conclusion
 
-The active deployment of artificial intelligence into credit scoring architectures marks a profound paradigm shift toward financial equality and corporate efficiency. By explicitly moving past archaic, purely historical financial indicators toward highly predictive behavioral analytics, the [fintech](/blog/generative-ai-personalized-financial-advice) industry can democratize global capital access while simultaneously achieving unprecedented risk-adjusted returns.
+The active deployment of artificial intelligence into credit scoring architectures marks a profound paradigm shift toward financial equality and corporate efficiency. By explicitly moving past archaic, purely historical financial indicators toward highly predictive behavioral analytics, the [fintech](/blog/ai-financial-assistants-wealth-management) industry can democratize global capital access while simultaneously achieving unprecedented risk-adjusted returns.
 
 `
  }

@@ -2,79 +2,111 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tech-nova-iota.vercel.app/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/about</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/contact</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/privacy</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/terms</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/klarna</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/morgan-stanley</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/netflix</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/the-hackett-group</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/starbucks</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/spotify</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/amazon</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/maersk</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/walmart</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/jpmorgan-chase</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/siemens</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/case-studies/airbnb</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/agentic-ai-automation-multi-agent-workflows</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/ai-infrastructure-cost-optimization-llm-deployments</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/open-source-enterprise-llms-security-privacy</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/multimodal-ai-data-extraction-complex-documents</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/model-context-protocol-mcp-ai-agents</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/ai-observability-enterprise-llm-deployments</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/reasoning-ai-models-system-2</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/browser-native-ai-web-agents</loc>
+    <lastmod>2026-07-16</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-employee-onboarding-automation</loc>
@@ -94,35 +126,35 @@
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-interview-question-generation</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-interview-assistants</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-candidate-assessment-matching</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-recruitment-chatbot-support</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-candidate-sourcing</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-resume-screening</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-job-description</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-personalized-outreach</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-anti-money-laundering-monitoring</loc>
@@ -621,32 +653,68 @@
     <lastmod>2026-06-25</lastmod>
   </url>
   <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/genai-in-pharmaceuticals-drug-discovery</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://tech-nova-iota.vercel.app/blog/choosing-enterprise-ai-development-company</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/ai-in-fashion-revolutionizing-design-retail</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://tech-nova-iota.vercel.app/blog/high-roi-ai-use-cases-applications</loc>
+    <lastmod>2026-07-29</lastmod>
   </url>
   <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/genai-in-electronics-hardware-design-manufacturing</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://tech-nova-iota.vercel.app/blog/scaling-with-generative-ai-development-company</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/demystifying-deep-learning-enterprise-applications</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/open-source-enterprise-llms-security-privacy</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/multimodal-ai-data-extraction-complex-documents</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-recruitment-chatbot-support</loc>
-    <lastmod>2026-06-23</lastmod>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-interview-assistants</loc>
-    <lastmod>2026-06-23</lastmod>
-  </url>
-  <url>
-    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-candidate-assessment-matching</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-interview-question-generation</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-interview-assistants</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/gen-ai-candidate-assessment-matching</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/ai-infrastructure-cost-optimization-llm-deployments</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/agentic-ai-automation-multi-agent-workflows</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/reasoning-ai-models-system-2</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/model-context-protocol-mcp-ai-agents</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/browser-native-ai-web-agents</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://tech-nova-iota.vercel.app/blog/ai-observability-enterprise-llm-deployments</loc>
+    <lastmod>2026-07-16</lastmod>
   </url>
   <url>
     <loc>https://tech-nova-iota.vercel.app/blog/generative-ai-risk-analysis-institutional</loc>

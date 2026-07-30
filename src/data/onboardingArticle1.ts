@@ -96,10 +96,10 @@ Generative AI for employee onboarding automation represents a critical evolution
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  "mainEntity": 
     {
       "@type": "Question",
-      "name": "What is generative AI for employee onboarding [automation](/blog/gen-ai-in-it-future-of-tech-ops)?",
+      "name": "What is generative AI for employee onboarding [automation?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Generative AI for employee onboarding automation refers to leveraging advanced large language models to autonomously execute and personalize the administrative, informational, and training workflows required when a new employee joins a company."

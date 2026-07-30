@@ -1,3 +1,4 @@
+import { fourMoreTrendingArticles } from './fourMoreTrendingArticles';
 import { allHrRecruitmentArticles } from './hrRecruitmentArticlesAll';
 import { aiUseCaseAML } from './aiUseCaseAML';
 import { aiUseCaseMarket } from './aiUseCaseMarket';
@@ -45,8 +46,10 @@ import { advancedHrLearningArticles } from './advancedHrLearningArticles';
 import { fourNewEeatArticles } from './fourNewEeatArticles';
 import { fourHrArticles } from './fourHrArticles';
 import { fourManufacturingArticles } from './fourManufacturingArticles';
+import { trendingArticlesJuly2026 } from './trendingArticlesJuly2026';
 import { fourManufacturingArticlesPart2 } from './fourManufacturingArticlesPart2';
 import { fourTrendingAiArticles } from './fourTrendingAiArticles';
+import { seoEeatArticles } from './seoEeatArticles';
 
 const authors = {
  alex: {
@@ -2039,6 +2042,8 @@ Procurement strongly definitively clearly acts as completely exactly the central
 ];
 
 const RAW_POSTS: any[] = [
+  ...fourMoreTrendingArticles,
+  ...trendingArticlesJuly2026,
 onboardingArticle1,
 onboardingArticle2,
 onboardingArticle3,
@@ -2084,13 +2089,17 @@ onboardingArticle4,
 ...fourManufacturingArticles,
 ...fourManufacturingArticlesPart2,
 ...fourTrendingAiArticles,
+...seoEeatArticles,
 ];
 
 function extractExcerpt(content: string): string {
- if (!content) return '';
- const blocks = content.trim().split(/\n\s*\n/);
- const paragraphs = blocks.filter(b => b.trim() !== '' && !b.trim().startsWith('#') && !b.trim().startsWith('***') && !b.trim().startsWith('`') && !b.trim().startsWith('<'));
- return paragraphs.slice(0, 2).join(' ').replace(/\s+/g, ' ').trim();
+  if (!content) return '';
+  const cleanContent = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, '');
+  const blocks = cleanContent.trim().split(/\n\s*\n/);
+  const paragraphs = blocks.filter(b => b.trim() !== '' && !b.trim().startsWith('#') && !b.trim().startsWith('***') && !b.trim().startsWith('`') && !b.trim().startsWith('<'));
+  return paragraphs.slice(0, 2).join(' ').replace(/\s+/g, ' ').trim();
 }
 
 const UNSPLASH_MAPPING: Record<string, string> = {
@@ -2172,19 +2181,34 @@ export const POSTS: Post[] = DEDUPED_RAW_POSTS.map(post => {
   if (UNSPLASH_MAPPING[post.slug]) {
     coverImage = `https://images.unsplash.com/photo-${UNSPLASH_MAPPING[post.slug]}`;
   }
+  if (!coverImage || coverImage === 'undefined' || coverImage.includes('undefined')) {
+    coverImage = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+  }
   
   let authorObj = post.author;
-  if (typeof authorObj === 'string') {
+  if (typeof authorObj === 'string' || !authorObj) {
     authorObj = {
-      name: authorObj || 'Alex Rivera',
+      name: (typeof authorObj === 'string' ? authorObj : '') || 'Alex Rivera',
       role: 'AI Analyst',
       avatar: 'https://picsum.photos/seed/alex/100/100',
       bio: 'Expert in deploying Generative AI models within heavily regulated environments.'
     };
   }
 
+  let tags = post.tags;
+  if (!tags || !Array.isArray(tags)) {
+    tags = post.category ? [post.category] : ['AI'];
+  }
+
+  const id = post.id || post.slug || 'untitled';
+  const slug = post.slug || post.id || 'untitled';
+
   return {
     ...post,
+    id,
+    slug,
+    status: post.status || 'published',
+    tags,
     coverImage,
     author: authorObj,
     excerpt: extractExcerpt(post.content) || post.excerpt

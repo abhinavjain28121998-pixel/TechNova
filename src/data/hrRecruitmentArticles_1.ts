@@ -110,7 +110,7 @@ If your current Applicant Tracking System (ATS) has modern APIs, integration is 
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "[How Generative AI Interview Assistants Are Transforming Modern Recruitment](/blog/generative-ai-interview-assistants)",
+  "headline": "How Generative AI Interview Assistants Are Transforming Modern Recruitment",
   "description": "Discover how Generative AI interview assistants optimize recruitment. Explore real-world use cases, integration benefits, risks, and expert implementation.",
   "author": {
     "@type": "Organization",

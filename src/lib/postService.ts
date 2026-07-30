@@ -1,4 +1,6 @@
 import { Post } from '../types';
+import { db } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 export interface PaginatedResponse {
   posts: Post[];
@@ -9,7 +11,45 @@ let cachedPosts: Post[] | null = null;
 
 const fetchAllPosts = async (): Promise<Post[]> => {
   if (cachedPosts) return cachedPosts;
+  
+  // Try fetching from Firestore first
   try {
+    console.log('Attempting to fetch posts from Firestore...');
+    const postsRef = collection(db, 'posts');
+    const snapshot = await getDocs(postsRef);
+    
+    if (!snapshot.empty) {
+      const firestorePosts: Post[] = [];
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        firestorePosts.push({
+          id: doc.id,
+          ...data,
+        } as Post);
+      });
+      
+      // Filter, sort and process
+      cachedPosts = firestorePosts
+        .filter(p => !p.status || p.status === 'published')
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .map(p => {
+          if (!p.coverImage || p.coverImage === 'undefined') {
+            p.coverImage = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+          }
+          return p;
+        });
+        
+      console.log(`Successfully loaded ${cachedPosts.length} published posts from Firestore.`);
+      return cachedPosts;
+    }
+    console.log('Firestore posts collection is empty, falling back to articles.json...');
+  } catch (firestoreError) {
+    console.warn('Error fetching posts from Firestore, falling back to articles.json:', firestoreError);
+  }
+
+  // Fallback to static articles.json
+  try {
+    console.log('Fetching posts from articles.json...');
     const response = await fetch(`/data/articles.json?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error('Failed to fetch articles');

@@ -95,10 +95,10 @@ Engaging a specialized [Generative AI consulting company](https://www.thehackett
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  "mainEntity": 
     {
       "@type": "Question",
-      "name": "What are [generative AI](/blog/gen-ai-candidate-assessment-matching) personalized onboarding guides?",
+      "name": "What are [generative AI personalized onboarding guides?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "They are dynamic, customized learning and integration plans created by AI models that adapt to a new hire's specific role, past experience, learning speed, and department, replacing static, one-size-fits-all training manuals."

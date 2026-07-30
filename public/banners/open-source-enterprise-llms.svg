@@ -1,0 +1,37 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad2755" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="hsl(220, 80%, 15%)" />
+        <stop offset="50%" stop-color="hsl(330, 70%, 10%)" />
+        <stop offset="100%" stop-color="hsl(215, 90%, 5%)" />
+      </linearGradient>
+      <pattern id="grid2755" width="40" height="40" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)" />
+      </pattern>
+      <pattern id="dots2755" width="16" height="16" patternUnits="userSpaceOnUse">
+        <rect width="1" height="1" fill="rgba(255,255,255,0.2)" />
+      </pattern>
+    </defs>
+    <rect width="1200" height="600" fill="url(#grad2755)" />
+    <rect width="1200" height="600" fill="url(#grid2755)" />
+    
+    <g opacity="0.3">
+      <rect x="1000" y="400" width="100" height="100" fill="url(#dots2755)" />
+      <rect x="100" y="100" width="80" height="80" fill="url(#dots2755)" />
+    </g>
+    
+    
+      <polygon points="0,0 1200,600 0,600" fill="hsl(220, 70%, 40%)" opacity="0.05" />
+      <circle cx="600" cy="300" r="400" fill="hsl(330, 80%, 50%)" opacity="0.1" filter="blur(40px)" />
+      <circle cx="900" cy="100" r="200" fill="hsl(215, 90%, 60%)" opacity="0.2" filter="blur(70px)" />
+    
+    <g transform="translate(100, 260)">
+      <text x="0" y="-80" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="20" fill="hsl(220, 80%, 70%)" letter-spacing="4">ARTIFICIAL INTELLIGENCE</text>
+      <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="64" fill="#ffffff" letter-spacing="-1">The Rise of Open-Source</text><text x="0" y="64" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="64" fill="#ffffff" letter-spacing="-1">Enterprise LLMs: Security,</text><text x="0" y="128" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="64" fill="#ffffff" letter-spacing="-1">Privacy, and Control</text>
+    </g>
+    
+    <g transform="translate(100, 520)">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="hsl(330, 80%, 60%)" stroke-width="4" />
+      <text x="80" y="6" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="16" fill="rgba(255,255,255,0.5)">AI STUDIO BUILD / ENTERPRISE</text>
+    </g>
+  </svg>

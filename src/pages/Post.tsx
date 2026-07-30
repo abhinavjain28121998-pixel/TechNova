@@ -68,31 +68,68 @@ const AIImage = ({ src, alt, context, className, ...props }: any) => {
     generateAlt();
   }, [src, alt, context]);
 
+  // If className is specified, it means it is a cover image or explicitly styled container
+  if (className) {
+    return (
+      <span className={`w-full h-full relative block overflow-hidden rounded-xl ${className}`}>
+        <img 
+          src={getOptimizedImageUrl(src, 800)} 
+          alt={altText} 
+          title={altText} 
+          loading="lazy" 
+          decoding="async" 
+          className="w-full h-full object-cover absolute inset-0 rounded-xl" 
+          onError={(e) => {
+            const img = e.currentTarget;
+            if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+              img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+            }
+          }}
+          {...props} 
+        />
+        {isLoading && (
+          <span className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20">
+            <Loader2 className="w-3 h-3 animate-spin" />
+            <span className="hidden sm:inline">Generating Alt Text</span>
+          </span>
+        )}
+        {!isLoading && altText && (
+          <span className="sr-only">{altText}</span>
+        )}
+      </span>
+    );
+  }
+
+  // Beautifully styled container for inline markdown images (no forced aspect-ratio crop)
   return (
-    <span className={`w-full h-full relative block overflow-hidden rounded-xl ${className || 'aspect-video'}`}>
-      <img 
-        src={getOptimizedImageUrl(src, 800)} 
-        alt={altText} 
-        title={altText} 
-        loading="lazy" 
-        decoding="async" 
-        className="w-full h-full object-cover absolute inset-0 rounded-xl" 
-        onError={(e) => {
-          const img = e.currentTarget;
-          if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
-            img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
-          }
-        }}
-        {...props} 
-      />
-      {isLoading && (
-        <span className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20">
-          <Loader2 className="w-3 h-3 animate-spin" />
-          <span className="hidden sm:inline">Generating Alt Text</span>
+    <span className="block my-10 max-w-3xl mx-auto group/img">
+      <span className="block relative overflow-hidden rounded-2xl border border-border/40 shadow-sm bg-muted/20 p-2 sm:p-3 transition-all duration-300 group-hover/img:shadow-md group-hover/img:border-border/60">
+        <img 
+          src={getOptimizedImageUrl(src, 1000)} 
+          alt={altText} 
+          title={altText} 
+          loading="lazy" 
+          decoding="async" 
+          className="w-full h-auto object-contain rounded-xl max-h-[500px] mx-auto bg-background transition-all duration-300 group-hover/img:opacity-95" 
+          onError={(e) => {
+            const img = e.currentTarget;
+            if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
+              img.src = '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png';
+            }
+          }}
+          {...props} 
+        />
+        {isLoading && (
+          <span className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-[10px] sm:text-xs rounded-full font-medium shadow-sm z-10 border border-white/20 animate-pulse">
+            <Loader2 className="w-3 h-3 animate-spin" />
+            <span>Generating Alt Text</span>
+          </span>
+        )}
+      </span>
+      {altText && (
+        <span className="block mt-3 text-center text-xs font-mono text-muted-foreground/70 tracking-tight max-w-xl mx-auto leading-relaxed">
+          <span className="font-semibold text-primary/80 uppercase text-[10px] tracking-widest mr-1.5">Visual:</span> {altText}
         </span>
-      )}
-      {!isLoading && altText && (
-        <span className="sr-only">{altText}</span>
       )}
     </span>
   );
@@ -292,6 +329,56 @@ export default function Post() {
       .slice(0, 3)
       .map(item => item.post);
   }, [posts, post?.category, post?.tags, post?.id]);
+
+  const markdownComponents = useMemo(() => ({
+    a: ({ node, href, ...props }: any) => {
+      const isInternal = href?.startsWith('/') || href?.startsWith('#');
+      if (isInternal) {
+        return (
+          <Link 
+            to={href} 
+            className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+            {...props}
+          />
+        );
+      }
+      return (
+        <a 
+          href={href}
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+          {...props}
+        />
+      );
+    },
+    h1: ({ node, ...props }: any) => <h2 {...props} />,
+    img: ({ node, ...props }: any) => <AIImage context={post?.content} {...props} />
+  }), [post?.content]);
+
+  const faqMarkdownComponents = useMemo(() => ({
+    a: ({ node, href, ...props }: any) => {
+      const isInternal = href?.startsWith('/') || href?.startsWith('#');
+      if (isInternal) {
+        return (
+          <Link 
+            to={href} 
+            className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+            {...props}
+          />
+        );
+      }
+      return (
+        <a 
+          href={href}
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors duration-200"
+          {...props}
+        />
+      );
+    }
+  }), []);
 
   if (!post && loadingPost) {
     return <div className="flex h-screen items-center justify-center bg-background"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
@@ -494,17 +581,13 @@ export default function Post() {
             )}
           </div>
 
-          <div className={`prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:aspect-video prose-img:object-cover ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
+          <div className={`prose dark:prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-28 prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl ${fontSizeClass} ${lineSpacing === 'normal' ? 'prose-p:leading-normal prose-li:leading-normal' : lineSpacing === 'loose' ? 'prose-p:leading-loose prose-li:leading-loose' : 'prose-p:leading-relaxed prose-li:leading-relaxed'}`}>
             <div>
               <ReactMarkdown 
                 rehypePlugins={[rehypeSlug]}
-                components={{
-                  a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />,
-                  h1: ({ node, ...props }) => <h2 {...props} />,
-                  img: ({ node, ...props }) => <AIImage context={post.content} {...props} />
-                }}
+                components={markdownComponents as any}
               >
-                {post.content}
+                {post.content.replace(/```json\s*\{[\s\S]*?"@context"\s*:\s*"https?:\/\/schema\.org"[\s\S]*?\}\s*```/g, '').trim()}
               </ReactMarkdown>
             </div>
           </div>
@@ -520,9 +603,7 @@ export default function Post() {
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground leading-relaxed prose prose-invert prose-sm">
                       <ReactMarkdown
-                        components={{
-                          a: ({ node, ...props }) => <a target="_blank" rel="noopener noreferrer" {...props} />
-                        }}
+                        components={faqMarkdownComponents as any}
                       >
                         {faq.answer}
                       </ReactMarkdown>
