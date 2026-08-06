@@ -79,7 +79,7 @@ export default function CaseStudy() {
 
           <div className="space-y-12">
             <section>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2 border-b border-border pb-2"><Layers className="w-6 h-6 text-muted-foreground" /> Context & Background</h2>
+              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2 border-b border-border/40 pb-2"><Layers className="w-6 h-6 text-muted-foreground" /> Context & Background</h2>
               <div className="text-muted-foreground space-y-4 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: study.context }} />
             </section>
 
@@ -95,10 +95,10 @@ export default function CaseStudy() {
             </div>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-6 border-b border-border pb-2">Key Results</h2>
+              <h2 className="text-2xl font-semibold mb-6 border-b border-border/40 pb-2">Key Results</h2>
               <ul className="space-y-4">
                 {study.results.map((res, i) => (
-                    <li key={i} className="flex gap-4 text-muted-foreground bg-card border border-border p-5 rounded-xl shadow-sm">
+                    <li key={i} className="flex gap-4 text-muted-foreground bg-card border border-border/40 p-5 rounded-xl shadow-sm">
                       <span className="w-2.5 h-2.5 rounded-full bg-primary mt-2 shrink-0" />
                       <span dangerouslySetInnerHTML={{ __html: res }} className="leading-relaxed text-lg" />
                     </li>
@@ -106,13 +106,13 @@ export default function CaseStudy() {
               </ul>
             </section>
 
-            <section className="bg-muted/30 rounded-2xl p-8 md:p-10 border border-border shadow-sm">
+            <section className="bg-muted/30 rounded-2xl p-8 md:p-10 border border-border/40 shadow-sm">
               <div className="flex items-start gap-4 md:gap-6">
                 <Lightbulb className="w-10 h-10 text-primary shrink-0" />
                 <div>
                   <h2 className="font-bold text-foreground mb-3 text-2xl">Expert Analysis: What Worked & Why</h2>
                   <p className="text-muted-foreground mb-8 leading-relaxed text-lg">{study.analysis}</p>
-                  <div className="pt-6 border-t border-border">
+                  <div className="pt-6 border-t border-border/40">
                     <span className="text-sm font-bold uppercase tracking-widest text-primary block mb-3">Key Takeaway</span>
                     <p className="text-foreground font-semibold text-xl italic border-l-4 border-primary pl-4">&ldquo;{study.takeaway}&rdquo;</p>
                   </div>

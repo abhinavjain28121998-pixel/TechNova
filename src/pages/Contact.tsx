@@ -109,7 +109,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="border-t border-border pt-8 hidden md:block">
+            <div className="border-t border-border/40 pt-8 hidden md:block">
               <h2 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
               <div className="space-y-6">
                 {faqs.map((faq, index) => (
@@ -122,7 +122,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="bg-card border border-border p-8 rounded-2xl shadow-sm h-fit">
+          <div className="bg-card border border-border/40 p-8 rounded-2xl shadow-sm h-fit">
             <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
             
             {error && (
@@ -137,12 +137,12 @@ export default function Contact() {
               
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                <Input id="name" type="text" name="name" placeholder="John Doe" required className="bg-background border-border" />
+                <Input id="name" type="text" name="name" placeholder="John Doe" required className="bg-background border-border/40" />
               </div>
               
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium text-foreground">Email Address</label>
-                <Input id="email" type="email" name="email" placeholder="john@example.com" required className="bg-background border-border" />
+                <Input id="email" type="email" name="email" placeholder="john@example.com" required className="bg-background border-border/40" />
               </div>
 
               <div className="space-y-2">
@@ -152,7 +152,7 @@ export default function Contact() {
                   name="message"
                   rows={6}
                   minLength={20}
-                  className="flex w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 resize-y"
+                  className="flex w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 resize-y"
                   placeholder="Your message here..."
                   required
                 ></textarea>
@@ -164,7 +164,7 @@ export default function Contact() {
             </form>
           </div>
           
-          <div className="border-t border-border pt-8 md:hidden">
+          <div className="border-t border-border/40 pt-8 md:hidden">
             <h2 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
             <div className="space-y-6">
               {faqs.map((faq, index) => (

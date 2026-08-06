@@ -158,7 +158,7 @@ export default function Blog() {
         url={`${BASE_URL}/blog`}
       />
 
-      <div className="bg-background border-b border-border text-foreground py-16 md:py-24">
+      <div className="bg-background border-b border-border/40 text-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
           <div className="mb-6 flex justify-center">
             <Breadcrumbs 
@@ -168,7 +168,7 @@ export default function Blog() {
               ]} 
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Our Blog</h1>
           <p className="text-lg text-muted-foreground mb-8">
             Deep dives, tutorials, and insights into the ever-evolving world of technology.
           </p>
@@ -186,18 +186,18 @@ export default function Blog() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {loading ? (
           <div className="space-y-12 animate-pulse">
-            <div className="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-border">
+            <div className="flex flex-wrap items-center gap-2 mb-12 pb-6 border-b border-border/40">
               <div className="h-5 w-16 bg-muted rounded mr-2"></div>
-              <div className="h-6 w-12 bg-muted rounded border border-border"></div>
-              <div className="h-6 w-24 bg-muted rounded border border-border"></div>
-              <div className="h-6 w-20 bg-muted rounded border border-border"></div>
-              <div className="h-6 w-28 bg-muted rounded border border-border"></div>
-              <div className="h-6 w-16 bg-muted rounded border border-border"></div>
+              <div className="h-6 w-12 bg-muted rounded border border-border/40"></div>
+              <div className="h-6 w-24 bg-muted rounded border border-border/40"></div>
+              <div className="h-6 w-20 bg-muted rounded border border-border/40"></div>
+              <div className="h-6 w-28 bg-muted rounded border border-border/40"></div>
+              <div className="h-6 w-16 bg-muted rounded border border-border/40"></div>
             </div>
 
             <div className="flex flex-col gap-8">
               {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col md:flex-row border-border">
+                <div key={i} className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col md:flex-row border-border/40">
                   <div className="w-full md:w-1/3 aspect-[16/10] md:aspect-auto bg-muted shrink-0"></div>
                   <div className="flex flex-col flex-grow p-6">
                     <header className="mb-4">
@@ -213,7 +213,7 @@ export default function Blog() {
                       <div className="h-4 w-full bg-muted rounded"></div>
                       <div className="h-4 w-2/3 bg-muted rounded"></div>
                     </div>
-                    <footer className="flex items-center justify-between border-t border-border pt-4 mt-auto">
+                    <footer className="flex items-center justify-between border-t border-border/40 pt-4 mt-auto">
                       <div className="h-4 w-24 bg-muted rounded"></div>
                       <div className="h-4 w-24 bg-muted rounded"></div>
                     </footer>
@@ -228,8 +228,8 @@ export default function Blog() {
         {paginatedPosts.length > 0 ? (
           <div className="space-y-12">
             <div className="flex flex-col gap-8">
-              {paginatedPosts.map(post => (
-              <Card key={post.slug || post.id} as="article" className="overflow-hidden flex flex-col md:flex-row hover:border-primary transition-colors bg-card border-border">
+              {paginatedPosts.map((post, index) => (
+              <Card key={post.slug || post.id} as="article" className="overflow-hidden flex flex-col md:flex-row hover:border-primary transition-colors bg-card border-border/40">
                 <Link to={`/blog/${post.slug}`} className="block w-full md:w-1/3 aspect-[16/10] md:aspect-auto overflow-hidden shrink-0" aria-label={`Read article: ${post.title}`}>
                   <img 
                     src={getOptimizedImageUrl(post.coverImage, 600)} 
@@ -238,7 +238,7 @@ export default function Blog() {
                     height={375}
                     className="block w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     referrerPolicy="no-referrer"
-                    loading="lazy"
+                    loading={index < 2 ? "eager" : "lazy"}
                     onError={(e) => {
                       const img = e.currentTarget;
                       if (!img.src.includes('expert-outlook-navigating-artificial-intelligence-in-2026.png')) {
@@ -275,7 +275,7 @@ export default function Blog() {
                       highlightClassName="bg-primary/20 text-primary font-medium px-1 rounded-sm"
                     />
                   </p>
-                  <footer className="text-sm text-muted-foreground flex items-center justify-between border-t border-border pt-4 mt-auto">
+                  <footer className="text-sm text-muted-foreground flex items-center justify-between border-t border-border/40 pt-4 mt-auto">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
                       <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
@@ -291,7 +291,7 @@ export default function Blog() {
             </div>
 
             {totalPages > 1 && (
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border pt-8 mt-12 mb-8">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border/40 pt-8 mt-12 mb-8">
                 <div className="text-sm text-muted-foreground whitespace-nowrap">
                   Showing <span className="font-medium text-foreground">{((safeCurrentPage - 1) * POSTS_PER_PAGE) + 1}</span> to <span className="font-medium text-foreground">{Math.min(safeCurrentPage * POSTS_PER_PAGE, totalPosts)}</span> of <span className="font-medium text-foreground">{totalPosts}</span> results
                 </div>
@@ -355,7 +355,7 @@ export default function Blog() {
                      type="number" 
                      min={1} 
                      max={totalPages} 
-                     className="w-16 h-8 text-center bg-card border-border px-1"
+                     className="w-16 h-8 text-center bg-card border-border/40 px-1"
                      defaultValue={safeCurrentPage}
                      onKeyDown={(e) => {
                        if (e.key === 'Enter') {
@@ -382,7 +382,7 @@ export default function Blog() {
           </div>
         ) : (
           <div className="text-center py-24">
-            <h3 className="text-2xl font-semibold text-foreground mb-2">No articles found</h3>
+            <h2 className="text-2xl font-semibold text-foreground mb-2">No articles found</h2>
             <p className="text-muted-foreground">Try adjusting your search or category filter.</p>
           </div>
         )}

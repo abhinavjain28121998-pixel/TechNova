@@ -24,7 +24,7 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary/30 selection:text-primary">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
@@ -35,7 +35,7 @@ export function Layout() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -43,6 +43,7 @@ export function Layout() {
                   className={`text-sm font-medium transition-colors hover:text-foreground ${
                     isActive(item.href) ? 'text-foreground' : 'text-muted-foreground'
                   }`}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                 >
                   {item.name}
                 </Link>
@@ -67,12 +68,14 @@ export function Layout() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="h-6 w-6" aria-hidden="true" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-6 w-6" aria-hidden="true" />
                 )}
               </Button>
             </div>
@@ -81,7 +84,7 @@ export function Layout() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-border bg-background">
+          <nav id="mobile-navigation" aria-label="Mobile Navigation" className="md:hidden border-t border-border/50 bg-background">
             <div className="space-y-1 px-4 pb-3 pt-2">
               {navigation.map((item) => (
                 <Link
@@ -92,13 +95,14 @@ export function Layout() {
                       ? 'bg-secondary text-foreground'
                       : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
                   }`}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
-          </div>
+          </nav>
         )}
       </header>
 
@@ -108,7 +112,7 @@ export function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-background border-t border-border mt-auto">
+      <footer className="bg-background border-t border-border/50 mt-auto">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="col-span-1 md:col-span-1">
@@ -150,7 +154,7 @@ export function Layout() {
               </ul>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+          <div className="mt-12 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} TechNova Blog. All rights reserved.</p>
           </div>
         </div>

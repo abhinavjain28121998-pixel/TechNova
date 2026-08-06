@@ -52,7 +52,7 @@ export function NewsletterSignup() {
   };
 
   return (
-    <Card className="relative overflow-hidden border border-border bg-gradient-to-br from-card to-secondary/30 shadow-md my-12" id="newsletter-signup-card">
+    <Card className="relative overflow-hidden border border-border/40 bg-gradient-to-br from-card to-secondary/30 shadow-md my-12" id="newsletter-signup-card">
       {/* Decorative Blur Background Graphic */}
       <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
@@ -108,7 +108,7 @@ export function NewsletterSignup() {
                         placeholder="John"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="bg-background border-border h-9 text-sm"
+                        className="bg-background border-border/40 h-9 text-sm"
                         disabled={status === 'submitting'}
                       />
                     </div>
@@ -124,7 +124,7 @@ export function NewsletterSignup() {
                           placeholder="john.doe@company.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="pl-9 bg-background border-border h-9 text-sm"
+                          className="pl-9 bg-background border-border/40 h-9 text-sm"
                           disabled={status === 'submitting'}
                           required
                         />

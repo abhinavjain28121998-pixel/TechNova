@@ -76,13 +76,13 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
   };
 
   return (
-    <div className="mt-16 pt-12 border-t border-border">
+    <div className="mt-16 pt-12 border-t border-border/40">
       <div className="flex items-center gap-2 mb-8">
         <MessageSquare className="w-6 h-6 text-primary" />
         <h2 className="text-2xl font-bold text-foreground">Comments ({comments.length})</h2>
       </div>
       
-      <div className="bg-card w-full rounded-2xl p-6 sm:p-8 border border-border shadow-sm mb-12">
+      <div className="bg-card w-full rounded-2xl p-6 sm:p-8 border border-border/40 shadow-sm mb-12">
         <h3 className="text-lg font-semibold mb-4 text-foreground">Leave a reply</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -91,14 +91,14 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
               placeholder="Your Name" 
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
-              className="bg-background border-border max-w-sm"
+              className="bg-background border-border/40 max-w-sm"
               maxLength={50}
               required
             />
           </div>
           <div>
             <textarea
-              className="flex w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[120px] resize-y"
+              className="flex w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[120px] resize-y"
               placeholder="Join the discussion..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -127,7 +127,7 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
           </div>
         ) : comments.length > 0 ? (
           comments.map((comment) => (
-            <div key={comment.id} className="group relative pl-4 border-l-2 border-border/50 hover:border-primary/50 transition-colors py-2">
+            <div key={comment.id} className="group relative pl-4 border-l-2 border-border/40/50 hover:border-primary/50 transition-colors py-2">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex flex-shrink-0 items-center justify-center">
                   <User className="w-4 h-4" />
@@ -145,7 +145,7 @@ export function PostComments({ issueTerm }: PostCommentsProps) {
             </div>
           ))
         ) : (
-          <div className="text-center py-12 px-4 border border-dashed border-border rounded-xl">
+          <div className="text-center py-12 px-4 border border-dashed border-border/40 rounded-xl">
             <MessageSquare className="w-8 h-8 text-muted-foreground mx-auto mb-3 opacity-50" />
             <p className="text-muted-foreground">No comments yet. Be the first to share your thoughts!</p>
           </div>

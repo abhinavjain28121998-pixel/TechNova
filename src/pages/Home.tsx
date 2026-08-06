@@ -92,7 +92,7 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background border-b border-border">
+      <section className="relative overflow-hidden bg-background border-b border-border/40">
         {/* Subtle Background Glows */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3">
           <div className="w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px] opacity-70 animate-pulse-slow mix-blend-screen pointer-events-none" />
@@ -102,7 +102,7 @@ export default function Home() {
         </div>
 
         {/* Optional Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(0,0,0,0.05)_100%)] dark:bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
 
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
@@ -176,7 +176,7 @@ export default function Home() {
           )}
         </div>
         
-        <div className="relative overflow-hidden rounded-2xl border border-border shadow-sm min-h-[400px] bg-card">
+        <div className="relative overflow-hidden rounded-2xl border border-border/40 shadow-sm min-h-[400px] bg-card">
           {loading && posts.length === 0 ? (
             <div className="flex h-full w-full items-center justify-center min-h-[400px]">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
@@ -254,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Latest & Trending Grid */}
-      <section className="py-16 bg-background border-t border-border">
+      <section className="py-16 bg-background border-t border-border/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
             
@@ -276,7 +276,7 @@ export default function Home() {
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     className="h-full"
                   >
-                    <Card as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border">
+                    <Card as="article" className="overflow-hidden flex flex-col h-full hover:border-primary transition-colors bg-card border-border/40">
                       <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden" aria-label={`Read article: ${post.title}`}>
                         <img 
                           src={getOptimizedImageUrl(post.coverImage, 600)} 
@@ -310,7 +310,7 @@ export default function Home() {
                           {post.excerpt}
                         </p>
                       </CardHeader>
-                      <CardFooter className="p-5 pt-4 text-sm text-muted-foreground flex items-center justify-between border-t border-border mt-4">
+                      <CardFooter className="p-5 pt-4 text-sm text-muted-foreground flex items-center justify-between border-t border-border/40 mt-4">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
                           <span>{format(parseISO(post.date), 'MMM d, yyyy')}</span>
@@ -335,7 +335,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border flex items-center gap-2">
+                <h2 className="text-xl font-bold text-foreground mb-6 pb-2 border-b border-border/40 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-primary" />
                   Trending Now
                 </h2>
@@ -353,9 +353,9 @@ export default function Home() {
                           0{index + 1}
                         </span>
                         <div>
-                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-1">
+                          <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-1">
                             {post.title}
-                          </h4>
+                          </h3>
                           <span className="text-xs text-muted-foreground">{format(parseISO(post.date), 'MMM d, yyyy')}</span>
                         </div>
                       </Link>
@@ -370,7 +370,7 @@ export default function Home() {
       </section>
 
       {/* Answer Engine Optimization (AEO) FAQ Section */}
-      <section className="py-16 bg-muted/20 border-t border-border">
+      <section className="py-16 bg-muted/20 border-t border-border/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -381,7 +381,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-card border border-border p-6 rounded-xl shadow-sm">
+                <div key={index} className="bg-card border border-border/40 p-6 rounded-xl shadow-sm">
                   <h3 className="text-xl font-semibold text-foreground mb-3">{faq.question}</h3>
                   <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </div>

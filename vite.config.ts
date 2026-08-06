@@ -14,6 +14,15 @@ export default defineConfig(({mode}) => {
     },
     build: {
       chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["react", "react-dom", "react-router-dom"],
+            firebase: ["firebase/app", "firebase/firestore", "firebase/auth"],
+            ui: ["lucide-react", "motion/react"]
+          }
+        }
+      },
     },
     optimizeDeps: {
       include: ['motion/react', 'date-fns', 'lucide-react', 'react-router-dom', 'react', 'react-dom'],

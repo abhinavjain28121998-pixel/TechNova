@@ -1,3 +1,4 @@
+import { finalEeatArticles } from './finalEeatArticles';
 import { fourMoreTrendingArticles } from './fourMoreTrendingArticles';
 import { allHrRecruitmentArticles } from './hrRecruitmentArticlesAll';
 import { aiUseCaseAML } from './aiUseCaseAML';
@@ -2090,6 +2091,7 @@ onboardingArticle4,
 ...fourManufacturingArticlesPart2,
 ...fourTrendingAiArticles,
 ...seoEeatArticles,
+  ...finalEeatArticles,
 ];
 
 function extractExcerpt(content: string): string {

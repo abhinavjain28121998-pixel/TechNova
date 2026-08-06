@@ -58,7 +58,7 @@ export default function CaseStudies() {
       />
       
       {/* Header Section */}
-      <section className="relative overflow-hidden bg-background pt-20 pb-16 lg:pt-32 lg:pb-24 border-b border-border">
+      <section className="relative overflow-hidden bg-background pt-20 pb-16 lg:pt-32 lg:pb-24 border-b border-border/40">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-4xl text-center">
           <div className="mb-8 flex justify-center">
@@ -106,7 +106,7 @@ export default function CaseStudies() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col h-full"
+                      className="bg-card rounded-2xl border border-border/40 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all group flex flex-col h-full"
                     >
                       <div className="p-8 flex flex-col flex-grow">
                         <div className="flex items-center gap-4 mb-6">
@@ -136,7 +136,7 @@ export default function CaseStudies() {
       </section>
 
       {/* Key Trends Section */}
-      <section className="py-24 bg-background border-t border-border">
+      <section className="py-24 bg-background border-t border-border/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

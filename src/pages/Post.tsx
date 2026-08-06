@@ -103,7 +103,7 @@ const AIImage = ({ src, alt, context, className, ...props }: any) => {
   // Beautifully styled container for inline markdown images (no forced aspect-ratio crop)
   return (
     <span className="block my-10 max-w-3xl mx-auto group/img">
-      <span className="block relative overflow-hidden rounded-2xl border border-border/40 shadow-sm bg-muted/20 p-2 sm:p-3 transition-all duration-300 group-hover/img:shadow-md group-hover/img:border-border/60">
+      <span className="block relative overflow-hidden rounded-2xl border border-border/40/40 shadow-sm bg-muted/20 p-2 sm:p-3 transition-all duration-300 group-hover/img:shadow-md group-hover/img:border-border/40/60">
         <img 
           src={getOptimizedImageUrl(src, 1000)} 
           alt={altText} 
@@ -478,7 +478,7 @@ export default function Post() {
             <Badge variant="secondary" className="text-sm px-3 py-1">{post.category}</Badge>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-8 leading-[1.15]">
             {post.title}
           </h1>
           
@@ -526,7 +526,7 @@ export default function Post() {
 
         {/* Cover Image */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-12">
-          <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border relative">
+          <div className="aspect-video rounded-2xl overflow-hidden bg-muted border border-border/40 relative">
             <AIImage 
               src={(post.coverImage || '/banners/expert-outlook-navigating-artificial-intelligence-in-2026.png')} 
               alt={post.title} 
@@ -560,8 +560,8 @@ export default function Post() {
             </Button>
             
             {showControls && (
-              <div className="mt-2 p-3 bg-card border border-border rounded-lg shadow-sm flex items-center gap-4 transition-all duration-200">
-                <div className="flex items-center gap-2 border-r border-border pr-4">
+              <div className="mt-2 p-3 bg-card border border-border/40 rounded-lg shadow-sm flex items-center gap-4 transition-all duration-200">
+                <div className="flex items-center gap-2 border-r border-border/40 pr-4">
                   <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider mr-1">Text Size</span>
                   <Button variant="outline" size="icon" className="h-8 w-8" onClick={decreaseFontSize} disabled={fontSize === 'sm'}>
                     <Minus className="h-3 w-3" />
@@ -593,11 +593,11 @@ export default function Post() {
           </div>
 
           {post.faqs && post.faqs.length > 0 && (
-            <div className="mt-16 bg-card border border-border p-6 sm:p-8 rounded-2xl shadow-sm">
+            <div className="mt-16 bg-card border border-border/40 p-6 sm:p-8 rounded-2xl shadow-sm">
               <h2 className="text-2xl font-bold text-foreground mb-6" id="frequently-asked-questions">Frequently Asked Questions</h2>
               <Accordion className="w-full">
                 {post.faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-border">
+                  <AccordionItem key={index} value={`item-${index}`} className="border-border/40">
                     <AccordionTrigger className="text-left font-semibold hover:text-primary transition-colors data-[state=open]:text-primary">
                       {faq.question}
                     </AccordionTrigger>
@@ -649,12 +649,12 @@ export default function Post() {
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
-            <section className="bg-background py-16 border-t border-border mt-12 mb-8">
+            <section className="bg-background py-16 border-t border-border/40 mt-12 mb-8">
               <div className="container mx-auto px-0">
                 <h2 className="text-2xl font-bold text-foreground mb-8">Related Articles</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {relatedPosts.map(related => (
-                    <article key={related.slug || related.id} className="group block bg-card rounded-xl border border-border overflow-hidden hover:border-primary transition-colors">
+                    <article key={related.slug || related.id} className="group block bg-card rounded-xl border border-border/40 overflow-hidden hover:border-primary transition-colors">
                       <Link to={`/blog/${related.slug}`} aria-label={`Read article: ${related.title}`}>
                         <div className="aspect-video overflow-hidden">
                           <img 
@@ -696,10 +696,10 @@ export default function Post() {
 
           {/* Table of Contents - Sidebar on Desktop / Top block on Mobile */}
           <aside className="w-full lg:w-72 shrink-0 lg:order-2 order-1">
-            <div className="sticky top-28 bg-card border border-border p-6 rounded-2xl shadow-sm max-h-[calc(100vh-8rem)] overflow-y-auto">
-              <h3 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
+            <div className="sticky top-28 bg-card border border-border/40 p-6 rounded-2xl shadow-sm max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <h2 className="font-bold text-lg mb-4 text-foreground flex items-center gap-2">
                 Table of Contents
-              </h3>
+              </h2>
               <nav className="flex flex-col gap-3 text-sm">
                 {toc.length > 0 ? (
                   toc.map(heading => (

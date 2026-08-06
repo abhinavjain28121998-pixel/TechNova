@@ -59,15 +59,7 @@ async function getDocsWithTimeout(q: any, timeoutMs: number = 3000) {
 async function startServer() {
   const app = express();
   
-  // Use port from process.env.PORT if specified, otherwise default to 3000
-  let PORT = 3000;
-  if (process.env.DEFAULT_APP_PORT) {
-    PORT = parseInt(process.env.DEFAULT_APP_PORT, 10);
-  } else if (process.env.PORT) {
-    PORT = parseInt(process.env.PORT, 10);
-  } else {
-    PORT = 3000;
-  }
+  const PORT = 3000;
 
   // Enable Gzip/Brotli compression for all Express payloads
   app.use(compression());
